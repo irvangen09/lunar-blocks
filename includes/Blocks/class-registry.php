@@ -6,7 +6,10 @@
  * block.json found, at any depth, rather than through a single bulk
  * manifest call — a disabled block must not be registered at all, so
  * that it disappears from the inserter and WordPress never loads its
- * declared style/script assets.
+ * declared style/script assets. Discovery is recursive because
+ * parent and child blocks live nested under one shared folder, e.g.
+ * build/accordion/block.json (parent) and
+ * build/accordion/item/block.json (child).
  *
  * @package Lunar\Blocks
  */
