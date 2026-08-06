@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/definition-list",
+	"title": "Lunar Definition List",
+	"category": "lunar-blocks",
+	"description": "Displays paired terms and definitions in a structured, semantic way.",
+	"keywords": [ "definition", "term", "glossary" ],
+	"textdomain": "lunar-blocks",
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}
