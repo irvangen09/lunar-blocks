@@ -6,5 +6,6 @@ module.exports = {
 	entry: {
 		...defaultConfig.entry(),
 		'admin/index': path.resolve( process.cwd(), 'src/admin/index.js' ),
+		'version-tag/index': path.resolve( process.cwd(), 'src/version-tag/index.js' ),
 	},
 };
