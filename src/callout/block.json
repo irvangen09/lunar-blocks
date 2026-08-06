@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/callout",
+	"title": "Lunar Callout",
+	"category": "lunar-blocks",
+	"description": "Highlights an important piece of information (tip, note, or warning) in the middle of the article.",
+	"keywords": [ "callout", "note", "tip", "warning" ],
+	"textdomain": "lunar-blocks",
+	"attributes": {
+		"variant": {
+			"type": "string",
+			"enum": [ "info", "tips", "warning", "important" ],
+			"default": "info"
+		},
+		"content": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": ".lunar-callout__text"
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}
