@@ -1,19 +1,11 @@
-import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
-export default function save( { attributes } ) {
-	const { variant, content } = attributes;
-
+export default function save() {
 	const blockProps = useBlockProps.save( {
-		className: `lunar-callout lunar-callout--${ variant }`,
+		className: 'lunar-definition-list',
 	} );
 
-	return (
-		<div { ...blockProps }>
-			<RichText.Content
-				tagName="div"
-				className="lunar-callout__text"
-				value={ content }
-			/>
-		</div>
-	);
+	const innerBlocksProps = useInnerBlocksProps.save( blockProps );
+
+	return <dl { ...innerBlocksProps } />;
 }
