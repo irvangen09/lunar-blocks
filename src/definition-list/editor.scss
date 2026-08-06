@@ -1,0 +1,11 @@
+.lunar-definition-item {
+	// Extra padding so the child block's toolbar (drag handle, delete button)
+	// doesn't overlap the text in the editor.
+	padding-block: 2px;
+
+	&__term[data-rich-text-placeholder]::before,
+	&__definition[data-rich-text-placeholder]::before {
+		color: var( --color-text-muted, #6b5d46 );
+		opacity: 0.75;
+	}
+}
