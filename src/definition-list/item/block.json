@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/definition-item",
+	"title": "Lunar Definition Item",
+	"category": "lunar-blocks",
+	"description": "One term-definition pair within a Definition List.",
+	"parent": [ "lunar-blocks/definition-list" ],
+	"textdomain": "lunar-blocks",
+	"attributes": {
+		"term": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": ".lunar-definition-item__term"
+		},
+		"definition": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": ".lunar-definition-item__definition"
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	}
+}
