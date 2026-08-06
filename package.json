@@ -7,7 +7,7 @@
 	"scripts": {
 		"build": "wp-scripts build",
 		"start": "wp-scripts start",
-		"plugin-zip": "wp-scripts plugin-zip"
+		"plugin-zip": "wp-scripts plugin-zip && node bin/strip-docs-from-zip.js"
 	},
 	"files": [
 		"build",
@@ -16,6 +16,7 @@
 		"lunar-blocks.php"
 	],
 	"devDependencies": {
-		"@wordpress/scripts": "^30.0.0"
+		"@wordpress/scripts": "^30.0.0",
+		"adm-zip": "^0.5.18"
 	}
 }
