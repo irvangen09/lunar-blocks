@@ -4,6 +4,7 @@
  * Plugin URI:        https://github.com/irvangen09/lunar-blocks
  * Description:       Standalone Gutenberg block collection for documentation-style content. Works on any WordPress site, with optional enhancements when Lunar Wiki is active.
  * Version:           0.1.0
+ * Requires at least: 6.5
  * Requires PHP:      8.0
  * Author:            Irvan Noerfazri
  * Author URI:        https://github.com/irvangen09
@@ -53,7 +54,7 @@ if ( ! environment_is_supported() ) {
 /**
  * Root-level autoloader for the Lunar\ namespace tree.
  *
- * No Composer dependency for a codebase this size (ARCHITECTURE.md §19).
+ * No Composer dependency for a codebase this size.
  * Maps Lunar\Segment\Class_Name to includes/Segment/class-class-name.php,
  * following WordPress file naming conventions.
  *
@@ -76,11 +77,18 @@ function autoload( string $class_name ): void {
 spl_autoload_register( __NAMESPACE__ . '\\autoload' );
 
 /**
- * Boots all Lunar Blocks components.
- * Order follows the Bootstrap Flow in BLUEPRINT.md §9.
+ * Boots all Lunar Blocks components, in dependency order: the block
+ * category must exist before blocks register into it, and the block
+ * registry must exist before Settings can read/write its state.
  */
 function bootstrap(): void {
 	$categories = new Categories();
 	$categories->init();
+
+	$registry = new Registry( LUNAR_BLOCKS_PLUGIN_DIR . 'build' );
+	$registry->init();
+
+	$settings = new Settings( $registry );
+	$settings->init();
 }
 add_action( 'plugins_loaded', __NAMESPACE__ . '\\bootstrap' );
