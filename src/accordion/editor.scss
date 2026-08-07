@@ -1,0 +1,25 @@
+.lunar-accordion-item {
+	border-bottom: 1px solid var( --color-border, #d9cbaa );
+}
+
+.lunar-accordion-item__header {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 4px;
+}
+
+.lunar-accordion-item__icon {
+	flex-shrink: 0;
+	font-size: 1.1em;
+	color: var( --color-accent, #b2512e );
+}
+
+.lunar-accordion-item__title[data-rich-text-placeholder]::before {
+	color: var( --color-text-muted, #6b5d46 );
+	opacity: 0.75;
+}
+
+.lunar-accordion-item__content {
+	padding: 0 4px 16px;
+}
