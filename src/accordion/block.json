@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/accordion",
+	"title": "Lunar Accordion",
+	"category": "lunar-blocks",
+	"description": "A set of sections that can be expanded or collapsed on mobile, displayed fully open (flat) on desktop.",
+	"keywords": [ "accordion", "toggle", "section" ],
+	"textdomain": "lunar-blocks",
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./view.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}
