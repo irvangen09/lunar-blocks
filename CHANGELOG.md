@@ -7,6 +7,12 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+### Added
+- **Accordion** block family (`src/accordion/`) — parent/child pair (Accordion, Accordion Item) rendering sections that collapse on mobile and stay flat/always-open on desktop (≥768px). Introduces `view.js` (via `viewScript`), the first Lunar Blocks block with frontend-only interactive JS, which sets the native `<details>` `open` attribute based on screen width — a pure-CSS approach isn't reliable here since browsers lock the open/closed state of `<details>` for accessibility consistency.
+
+### Fixed
+- Neutralized color and font-family fallback values (`var(--token, fallback)`) in Accordion's styles — border and accent colors now fall back to `currentColor`, heading/text color and font-family fall back to `inherit`, instead of Lunar's own brand hex/serif values. This lets the block blend into whichever theme is active when Lunar Theme isn't installed, with zero effect on its appearance once Lunar Theme defines the real tokens.
+
 ## [1.0.0] - 2026-08-06
 
 ### Added
