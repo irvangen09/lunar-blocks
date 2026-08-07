@@ -1,0 +1,82 @@
+.lunar-accordion {
+	margin: 1.25em 0;
+	border-top: 1px solid var( --color-border, #d9cbaa );
+}
+
+.lunar-accordion-item {
+	border-bottom: 1px solid var( --color-border, #d9cbaa );
+}
+
+.lunar-accordion-item__summary {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	padding: 14px 4px;
+	cursor: pointer;
+	list-style: none;
+
+	font-family: var( --font-body, inherit );
+
+	&::-webkit-details-marker {
+		display: none;
+	}
+
+	&::after {
+		content: '\25BE';
+		margin-left: auto;
+		color: var( --color-accent, #b2512e );
+		font-family: var( --font-mono, monospace );
+		transition: transform 0.15s ease;
+	}
+
+	&:focus-visible {
+		outline: 2px solid var( --color-accent, #b2512e );
+		outline-offset: 2px;
+	}
+}
+
+.lunar-accordion-item[ open ] > .lunar-accordion-item__summary::after {
+	transform: rotate( 180deg );
+}
+
+.lunar-accordion-item__icon {
+	flex-shrink: 0;
+	font-size: 1.1em;
+	color: var( --color-accent, #b2512e );
+}
+
+.lunar-accordion-item__title {
+	margin: 0;
+
+	font-family: var( --font-display, serif );
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var( --color-text, #2b2015 );
+}
+
+.lunar-accordion-item__content {
+	padding: 0 4px 18px;
+	font-size: 0.95rem;
+}
+
+/* Desktop: flat, non-interactive display. The actual "open" state is
+ * controlled by view.js (native "open" attribute), so this only needs
+ * to handle the visual side — hide the chevron, disable click interaction.
+ */
+@media ( min-width: 768px ) {
+	.lunar-accordion-item__summary {
+		cursor: default;
+		pointer-events: none;
+	}
+
+	.lunar-accordion-item__summary::after {
+		content: none;
+	}
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+	.lunar-accordion-item__summary::after {
+		transition: none;
+	}
+}
