@@ -1,10 +1,10 @@
 .lunar-accordion {
 	margin: 1.25em 0;
-	border-top: 1px solid var( --color-border, #d9cbaa );
+	border-top: 1px solid var( --color-border, #ddd );
 }
 
 .lunar-accordion-item {
-	border-bottom: 1px solid var( --color-border, #d9cbaa );
+	border-bottom: 1px solid var( --color-border, #ddd );
 }
 
 .lunar-accordion-item__summary {
@@ -25,13 +25,13 @@
 	&::after {
 		content: '\25BE';
 		margin-left: auto;
-		color: var( --color-accent, #b2512e );
+		color: var( --color-accent, currentColor );
 		font-family: var( --font-mono, monospace );
 		transition: transform 0.15s ease;
 	}
 
 	&:focus-visible {
-		outline: 2px solid var( --color-accent, #b2512e );
+		outline: 2px solid var( --color-accent, currentColor );
 		outline-offset: 2px;
 	}
 }
@@ -43,16 +43,16 @@
 .lunar-accordion-item__icon {
 	flex-shrink: 0;
 	font-size: 1.1em;
-	color: var( --color-accent, #b2512e );
+	color: var( --color-accent, currentColor );
 }
 
 .lunar-accordion-item__title {
 	margin: 0;
 
-	font-family: var( --font-display, serif );
+	font-family: var( --font-display, inherit );
 	font-size: 1.1rem;
 	font-weight: 600;
-	color: var( --color-text, #2b2015 );
+	color: var( --color-text, inherit );
 }
 
 .lunar-accordion-item__content {
