@@ -1,5 +1,5 @@
 .lunar-accordion-item {
-	border-bottom: 1px solid var( --color-border, #d9cbaa );
+	border-bottom: 1px solid var( --color-border, #ddd );
 }
 
 .lunar-accordion-item__header {
@@ -12,11 +12,11 @@
 .lunar-accordion-item__icon {
 	flex-shrink: 0;
 	font-size: 1.1em;
-	color: var( --color-accent, #b2512e );
+	color: var( --color-accent, currentColor );
 }
 
 .lunar-accordion-item__title[data-rich-text-placeholder]::before {
-	color: var( --color-text-muted, #6b5d46 );
+	color: var( --color-text-muted, currentColor );
 	opacity: 0.75;
 }
 
