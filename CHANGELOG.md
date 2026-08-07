@@ -7,6 +7,8 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-08-06
+
 ### Added
 - Plugin skeleton: main plugin file (`lunar-blocks.php`) with standard header metadata, a PHP-version environment check, a root-level `Lunar\` namespace autoloader, and a `plugins_loaded` bootstrap.
 - `lunar-blocks` block-inserter category registration (`includes/Blocks/class-categories.php`), ported from the pre-split LunarCore implementation.
@@ -18,7 +20,12 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
   - `webpack.config.js` — extends the default `@wordpress/scripts` config to add the `admin/index` entry alongside automatic block discovery.
   - New option `lunar_blocks_disabled_blocks`, cleaned up on uninstall (`uninstall.php`).
 - Repository hygiene: `.gitignore`, `.editorconfig`, `phpcs.xml` (WordPress-Extra ruleset), `LICENSE.md`, `languages/.gitkeep`.
+- **Callout** block (`src/callout/`) — inline highlighted note with four variants (Info, Tips, Warning, Important) and rich-text content.
+- **Definition List** block family (`src/definition-list/`) — parent/child pair (Definition List, Definition Item) rendering paired terms and definitions as semantic `<dl>`/`<dt>`/`<dd>`.
+- **Version/Patch Tag** RichText Format (`src/version-tag/`) — inline badge (Added, Changed, Removed) insertable from the text-selection toolbar. `includes/Blocks/class-formats.php` handles its editor script and editor+frontend style enqueueing, since Formats don't use the block-registration asset pipeline.
+- Manual `version-tag/index` entry in `webpack.config.js`, alongside the existing `admin/index` entry, since Formats have no `block.json` for automatic discovery.
 
 ### Changed
 - `lunar-blocks.php` bootstrap now also initializes `Registry` and `Settings`.
 - Added the missing `Requires at least: 6.5` header field.
+- `lunar-blocks.php` bootstrap now also initializes `Formats`.
