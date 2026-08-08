@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/tabs",
+	"title": "Lunar Tabs",
+	"category": "lunar-blocks",
+	"description": "A set of parallel content sections switched via a horizontal tab menu.",
+	"keywords": [ "tabs", "tab", "menu" ],
+	"textdomain": "lunar-blocks",
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./view.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}
