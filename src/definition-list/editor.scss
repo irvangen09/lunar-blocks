@@ -5,7 +5,7 @@
 
 	&__term[data-rich-text-placeholder]::before,
 	&__definition[data-rich-text-placeholder]::before {
-		color: var( --color-text-muted, #6b5d46 );
+		color: var( --color-text-muted, currentColor );
 		opacity: 0.75;
 	}
 }
