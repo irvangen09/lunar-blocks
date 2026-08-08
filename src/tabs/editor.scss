@@ -1,0 +1,17 @@
+/* All Tab Items are shown stacked in the editor (not as a real tab
+ * widget), so a dashed border here helps writers visually tell where
+ * one Tab Item ends and the next begins.
+ */
+
+.lunar-tabs-item {
+	padding: 10px 4px;
+	margin-bottom: 12px;
+
+	border: 1px dashed var( --color-border, #ddd );
+	border-radius: var( --radius-card, 8px );
+}
+
+.lunar-tabs-item__label[ data-rich-text-placeholder ]::before {
+	color: var( --color-text-muted, currentColor );
+	opacity: 0.75;
+}
