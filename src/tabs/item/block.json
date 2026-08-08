@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/tabs-item",
+	"title": "Lunar Tab Item",
+	"category": "lunar-blocks",
+	"description": "One tab inside the Tabs — a short label and free-form content (paragraphs, images, links, other blocks).",
+	"parent": [ "lunar-blocks/tabs" ],
+	"textdomain": "lunar-blocks",
+	"attributes": {
+		"label": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": ".lunar-tabs-item__label"
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	}
+}
