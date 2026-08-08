@@ -12,6 +12,9 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Fixed
 - Neutralized color and font-family fallback values (`var(--token, fallback)`) in Accordion's styles — border and accent colors now fall back to `currentColor`, heading/text color and font-family fall back to `inherit`, instead of Lunar's own brand hex/serif values. This lets the block blend into whichever theme is active when Lunar Theme isn't installed, with zero effect on its appearance once Lunar Theme defines the real tokens.
+- Applied the same fallback neutralization retroactively to **Callout** and **Definition List**, plus two additional cases not covered by the original pass: surface/background colors now fall back to `transparent` instead of Lunar's cream brand tint, and Callout's per-variant accent colors (Info, Tips, Warning, Important) now fall back to distinguishable WordPress core notice colors instead of Lunar's brand hex, keeping the four variants visually distinct without imposing brand identity on host themes.
+- Removed a hardcoded `font-size` on Accordion's InnerBlocks content wrapper (`.lunar-accordion-item__content`) that was overriding the font size of nested paragraph/list content regardless of the active theme.
+- Removed the hardcoded `font-size`/`font-weight` on Accordion's item title (`.lunar-accordion-item__title`) so it inherits typography from its semantic heading tag and the active theme's heading styles, instead of a fixed Lunar-specific size that could end up visually smaller than the surrounding content.
 
 ## [1.0.0] - 2026-08-06
 
