@@ -1,0 +1,66 @@
+.lunar-steps {
+	counter-reset: lunar-step;
+	list-style: none;
+	margin: 1.25em 0;
+	padding: 0;
+}
+
+.lunar-step {
+	position: relative;
+	counter-increment: lunar-step;
+
+	padding: 0 0 24px 44px;
+
+	font-family: var( --font-body, inherit );
+
+	&::before {
+		content: counter( lunar-step );
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 28px;
+		height: 28px;
+		border-radius: 50%;
+
+		background: var( --color-accent, #6b7280 );
+		color: #fff;
+		font-family: var( --font-mono, monospace );
+		font-size: 0.85rem;
+		font-weight: 600;
+	}
+
+	&::after {
+		content: '';
+
+		position: absolute;
+		top: 28px;
+		bottom: 0;
+		left: 13px;
+
+		width: 2px;
+		background: var( --color-border, #ddd );
+	}
+
+	&:last-child {
+		padding-bottom: 0;
+
+		&::after {
+			display: none;
+		}
+	}
+
+	> *:first-child {
+		margin-top: 0;
+	}
+
+	> *:last-child {
+		margin-bottom: 0;
+	}
+}
