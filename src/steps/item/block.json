@@ -1,0 +1,14 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/step",
+	"title": "Lunar Step",
+	"category": "lunar-blocks",
+	"description": "One step inside the Steps block — automatic sequence number (CSS), free-form content.",
+	"parent": [ "lunar-blocks/steps" ],
+	"textdomain": "lunar-blocks",
+	"supports": {
+		"html": false,
+		"reusable": false
+	}
+}
