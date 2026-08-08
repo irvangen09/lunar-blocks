@@ -50,14 +50,11 @@
 	margin: 0;
 
 	font-family: var( --font-display, inherit );
-	font-size: 1.1rem;
-	font-weight: 600;
 	color: var( --color-text, inherit );
 }
 
 .lunar-accordion-item__content {
 	padding: 0 4px 18px;
-	font-size: 0.95rem;
 }
 
 /* Desktop: flat, non-interactive display. The actual "open" state is
