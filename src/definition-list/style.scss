@@ -1,7 +1,7 @@
 .lunar-definition-list {
 	margin: 1.25em 0;
 
-	border: 1px solid var( --color-border, #d9cbaa );
+	border: 1px solid var( --color-border, #ddd );
 	border-radius: var( --radius-card, 8px );
 	overflow: hidden;
 
@@ -12,7 +12,7 @@
 	display: grid;
 	grid-template-columns: 150px 1fr;
 
-	border-top: 1px solid var( --color-border, #d9cbaa );
+	border-top: 1px solid var( --color-border, #ddd );
 
 	&:first-child {
 		border-top: none;
@@ -27,8 +27,8 @@
 	margin: 0;
 	padding: 10px 16px;
 
-	background: var( --color-surface-2, #f7f1e4 );
-	color: var( --color-text-muted, #6b5d46 );
+	background: var( --color-surface-2, transparent );
+	color: var( --color-text-muted, inherit );
 	font-weight: 600;
 	font-size: 0.88rem;
 }
