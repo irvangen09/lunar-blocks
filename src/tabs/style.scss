@@ -62,11 +62,6 @@
 		color: var( --color-accent, currentColor );
 		border-bottom-color: var( --color-accent, currentColor );
 	}
-
-	&:focus-visible {
-		outline: 2px solid var( --color-accent, currentColor );
-		outline-offset: 2px;
-	}
 }
 
 @media ( prefers-reduced-motion: reduce ) {
