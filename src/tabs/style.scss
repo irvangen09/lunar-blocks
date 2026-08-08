@@ -1,0 +1,76 @@
+/* Two display states:
+ * 1. Before JS runs — labels appear as plain markers above each panel
+ *    (all panels visible, in document order).
+ * 2. After JS runs (.lunar-tabs--enhanced) — labels have been moved by
+ *    view.js into a horizontal tab strip.
+ */
+
+.lunar-tabs {
+	margin: 1.25em 0;
+}
+
+/* ===== Before JS runs ===== */
+.lunar-tabs-item {
+	margin-bottom: 1em;
+}
+
+.lunar-tabs-item__label {
+	margin-bottom: 6px;
+
+	font-family: var( --font-display, inherit );
+	font-size: 1rem;
+	font-weight: 600;
+	color: var( --color-text, inherit );
+}
+
+/* ===== After JS runs ===== */
+.lunar-tabs--enhanced .lunar-tabs-item {
+	margin-bottom: 0;
+}
+
+.lunar-tabs__list {
+	display: flex;
+	gap: 4px;
+	overflow-x: auto;
+	scrollbar-width: thin;
+
+	margin-bottom: 16px;
+	border-bottom: 1px solid var( --color-border, #ddd );
+}
+
+.lunar-tabs__tab {
+	flex-shrink: 0;
+	cursor: pointer;
+
+	padding: 10px 16px;
+	margin-bottom: -1px;
+	border-bottom: 2px solid transparent;
+
+	font-family: var( --font-display, inherit );
+	font-size: 0.92rem;
+	font-weight: 600;
+	white-space: nowrap;
+	color: var( --color-text-muted, inherit );
+
+	transition: color 0.15s ease, border-color 0.15s ease;
+
+	&:hover {
+		color: var( --color-text, inherit );
+	}
+
+	&[ aria-selected='true' ] {
+		color: var( --color-accent, currentColor );
+		border-bottom-color: var( --color-accent, currentColor );
+	}
+
+	&:focus-visible {
+		outline: 2px solid var( --color-accent, currentColor );
+		outline-offset: 2px;
+	}
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+	.lunar-tabs__tab {
+		transition: none;
+	}
+}
