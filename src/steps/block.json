@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/steps",
+	"title": "Lunar Steps",
+	"category": "lunar-blocks",
+	"description": "A numbered sequence of instructions (e.g. how to upgrade a tool, how to complete a quest).",
+	"keywords": [ "steps", "instructions", "tutorial" ],
+	"textdomain": "lunar-blocks",
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}
