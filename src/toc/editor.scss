@@ -1,0 +1,41 @@
+.lunar-toc {
+	padding: 14px 18px;
+
+	background: var( --color-surface, transparent );
+	border: 1px solid var( --color-border, #ddd );
+	border-radius: var( --radius-card, 8px );
+}
+
+.lunar-toc__header {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.lunar-toc__icon {
+	display: flex;
+	flex-shrink: 0;
+	color: var( --color-accent, currentColor );
+}
+
+.lunar-toc__title {
+	flex: 1;
+	width: auto;
+
+	border: none;
+	background: transparent;
+	padding: 0;
+
+	font-family: var( --font-display, inherit );
+	font-size: 1rem;
+	font-weight: 600;
+	color: var( --color-text, inherit );
+}
+
+.lunar-toc__placeholder-note {
+	margin: 10px 0 0;
+
+	font-size: 0.85rem;
+	font-style: italic;
+	color: var( --color-text-muted, currentColor );
+}
