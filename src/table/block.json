@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/table",
+	"title": "Lunar Table",
+	"category": "lunar-blocks",
+	"description": "A documentation table with grouped rows, optional sort and search, and an optional card-grid layout.",
+	"keywords": [ "table", "data", "grid", "comparison" ],
+	"textdomain": "lunar-blocks",
+	"attributes": {
+		"preset": {
+			"type": "string",
+			"enum": [ "standard", "style-1", "style-2" ],
+			"default": "standard"
+		},
+		"columns": {
+			"type": "array",
+			"default": [
+				{ "key": "col-1", "label": "Column 1", "type": "text" },
+				{ "key": "col-2", "label": "Column 2", "type": "text" }
+			]
+		},
+		"rows": {
+			"type": "array",
+			"default": [
+				{ "isDivider": false, "col-1": "", "col-2": "" },
+				{ "isDivider": false, "col-1": "", "col-2": "" }
+			]
+		},
+		"enableSort": {
+			"type": "boolean",
+			"default": true
+		},
+		"enableFilter": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": [ "wide", "full" ],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./view.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}
