@@ -1,0 +1,82 @@
+.lunar-toc {
+	margin: 1.5em 0;
+
+	background: var( --color-surface, transparent );
+	border: 1px solid var( --color-border, #ddd );
+	border-radius: var( --radius-card, 8px );
+}
+
+.lunar-toc__summary {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	padding: 14px 18px;
+	cursor: pointer;
+	list-style: none;
+
+	font-family: var( --font-display, inherit );
+	font-size: 1rem;
+	font-weight: 600;
+	color: var( --color-text, inherit );
+
+	&::-webkit-details-marker {
+		display: none;
+	}
+
+	&::after {
+		content: '+';
+		margin-left: auto;
+		color: var( --color-accent, currentColor );
+		font-family: var( --font-mono, monospace );
+	}
+
+	&:focus-visible {
+		outline: 2px solid var( --color-accent, currentColor );
+		outline-offset: 2px;
+	}
+}
+
+.lunar-toc[ open ] > .lunar-toc__summary::after {
+	content: '\2212';
+}
+
+.lunar-toc__icon {
+	display: flex;
+	flex-shrink: 0;
+	color: var( --color-accent, currentColor );
+}
+
+.lunar-toc__nav {
+	padding: 4px 18px 18px;
+	border-top: 1px solid var( --color-border, #ddd );
+}
+
+.lunar-toc__list {
+	margin: 12px 0 0;
+	padding-left: 1.2em;
+	font-size: 0.92rem;
+
+	.lunar-toc__list {
+		margin-top: 6px;
+	}
+}
+
+.lunar-toc__item {
+	margin-bottom: 6px;
+
+	a {
+		color: var( --color-text, inherit );
+		text-decoration: none;
+
+		&:hover {
+			color: var( --color-accent, currentColor );
+			text-decoration: underline;
+		}
+
+		&:focus-visible {
+			outline: 2px solid var( --color-accent, currentColor );
+			outline-offset: 2px;
+		}
+	}
+}
