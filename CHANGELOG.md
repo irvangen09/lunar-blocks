@@ -7,15 +7,19 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-08-09
+
 ### Added
 - **Accordion** block family (`src/accordion/`) — parent/child pair (Accordion, Accordion Item) rendering sections that collapse on mobile and stay flat/always-open on desktop (≥768px). Introduces `view.js` (via `viewScript`), the first Lunar Blocks block with frontend-only interactive JS, which sets the native `<details>` `open` attribute based on screen width — a pure-CSS approach isn't reliable here since browsers lock the open/closed state of `<details>` for accessibility consistency.
 - **Tabs** block family (`src/tabs/`) — parent/child pair (Tabs, Tab Item) rendering a set of parallel content sections switched via a horizontal tab menu. Ships with a plain, fully-readable no-JS fallback (all panels stacked, labels as plain text) and a `view.js` progressive enhancement that builds a WAI-ARIA APG-compliant tab widget (`role="tablist"`/`"tab"`/`"tabpanel"`, roving `tabindex`, click and Left/Right/Home/End keyboard navigation) at runtime. Unlike earlier blocks, its color/font-family token fallbacks were neutralized from the initial implementation rather than needing a later fix pass, and its InnerBlocks content wrapper does not force a fixed `font-size` onto nested content. A redundant `:focus-visible` outline on the tab control was intentionally omitted, since the active tab's underline already conveys focus/selection state without extra visual noise across host themes.
+- **Steps** block family (`src/steps/`) — parent/child pair (Steps, Step) rendering a numbered sequence of instructions. Simplest architecture in this group: numbering and the connecting line between steps are pure CSS counters, with no `view.js`, `viewScript`, or `render.php` involved at all. Its number badge introduces a new accent-token usage — `--color-accent` as a solid `background-color` fill rather than a text/border/icon color — falling back to a neutral solid gray instead of `currentColor`, since a background fill needs a predictable, high-contrast value rather than one that inherits from surrounding text color.
 
 ### Fixed
 - Neutralized color and font-family fallback values (`var(--token, fallback)`) in Accordion's styles — border and accent colors now fall back to `currentColor`, heading/text color and font-family fall back to `inherit`, instead of Lunar's own brand hex/serif values. This lets the block blend into whichever theme is active when Lunar Theme isn't installed, with zero effect on its appearance once Lunar Theme defines the real tokens.
 - Applied the same fallback neutralization retroactively to **Callout** and **Definition List**, plus two additional cases not covered by the original pass: surface/background colors now fall back to `transparent` instead of Lunar's cream brand tint, and Callout's per-variant accent colors (Info, Tips, Warning, Important) now fall back to distinguishable WordPress core notice colors instead of Lunar's brand hex, keeping the four variants visually distinct without imposing brand identity on host themes.
 - Removed a hardcoded `font-size` on Accordion's InnerBlocks content wrapper (`.lunar-accordion-item__content`) that was overriding the font size of nested paragraph/list content regardless of the active theme.
 - Removed the hardcoded `font-size`/`font-weight` on Accordion's item title (`.lunar-accordion-item__title`) so it inherits typography from its semantic heading tag and the active theme's heading styles, instead of a fixed Lunar-specific size that could end up visually smaller than the surrounding content.
+- Removed a redundant `:focus-visible` outline on Tabs' tab control (`.lunar-tabs__tab`), found during cross-theme testing to add visual noise without conveying any information beyond what the existing active-state underline already provides.
 
 ## [1.0.0] - 2026-08-06
 
