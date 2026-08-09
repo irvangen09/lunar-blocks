@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/toc",
+	"title": "Lunar Table of Contents",
+	"category": "lunar-blocks",
+	"description": "Automatically generated table of contents from the article's headings, with direct links to each section.",
+	"keywords": [ "toc", "table of contents", "outline" ],
+	"textdomain": "lunar-blocks",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": "Table of Contents"
+		}
+	},
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}
