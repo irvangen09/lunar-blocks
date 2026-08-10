@@ -1,0 +1,296 @@
+.lunar-table {
+
+	margin: 1.5em 0;
+	overflow-x: auto;
+	color: inherit;
+
+	.lunar-table__filter {
+		margin-bottom: 12px;
+	}
+
+	.lunar-table__filter-input {
+		width: 100%;
+		max-width: 320px;
+		padding: 8px 14px;
+		background: color-mix( in srgb, currentColor 3%, transparent );
+		border: 1px solid var( --color-border, #ddd );
+		border-radius: var( --radius-inline, 4px );
+		color: inherit;
+		font-size: 0.9rem;
+
+		&:focus-visible {
+			outline: 2px solid var( --color-accent, currentColor );
+			outline-offset: 2px;
+		}
+	}
+
+	.lunar-table__table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 0.92rem;
+		color: inherit;
+
+		th,
+		td {
+			padding: 10px 14px;
+			text-align: left;
+			vertical-align: middle;
+			border: 1px solid var( --color-border, #ddd );
+		}
+
+		td {
+			white-space: pre-line;
+		}
+
+		td img {
+			display: block;
+			max-width: 100%;
+			height: auto;
+		}
+
+		thead th {
+			background: color-mix( in srgb, var( --color-accent, currentColor ) 12%, transparent );
+			font-size: 1.02rem;
+			font-weight: 700;
+			letter-spacing: 0.01em;
+			text-align: center;
+			border-bottom: 2px solid var( --color-accent, currentColor );
+		}
+	}
+
+	// Selector includes "td" explicitly to outrank the base
+	// ".lunar-table__table td" rule (two classes + a type selector
+	// beats two classes alone).
+	td.lunar-table__divider-cell {
+		background: color-mix( in srgb, currentColor 6%, transparent );
+		font-weight: 700;
+		text-align: center;
+		white-space: normal;
+		border-top: 1px solid var( --color-accent, currentColor );
+		border-bottom: 1px solid var( --color-accent, currentColor );
+	}
+
+	// Sort indicator glyph, added by view.js only when data-sort="true".
+	.lunar-table__sortable {
+		position: relative;
+		padding-right: 26px;
+		cursor: pointer;
+
+		&::after {
+			content: "\21C5";
+			position: absolute;
+			right: 10px;
+			font-size: 0.8em;
+			opacity: 0.4;
+		}
+
+		&[ data-sort-direction="asc" ]::after {
+			content: "\2191";
+			color: var( --color-accent, currentColor );
+			opacity: 1;
+		}
+
+		&[ data-sort-direction="desc" ]::after {
+			content: "\2193";
+			color: var( --color-accent, currentColor );
+			opacity: 1;
+		}
+
+		&:focus-visible {
+			outline: 2px solid var( --color-accent, currentColor );
+			outline-offset: -2px;
+		}
+	}
+
+	// Style 2 ("catalog card") is a different render engine entirely
+	// (see save.js), not a CSS-only variant. Grid reflows on its own
+	// at any width, so no separate mobile rules are needed here the
+	// way the table layout needs them.
+	.lunar-table__cards {
+		display: grid;
+		grid-template-columns: repeat( auto-fit, minmax( 240px, 1fr ) );
+		gap: 12px;
+	}
+
+	.lunar-table__cards-divider {
+		grid-column: 1 / -1;
+		padding: 8px 14px;
+		font-weight: 700;
+		text-align: center;
+		background: color-mix( in srgb, currentColor 6%, transparent );
+		border-top: 1px solid var( --color-accent, currentColor );
+		border-bottom: 1px solid var( --color-accent, currentColor );
+	}
+
+	.lunar-table__card {
+		border: 1px solid var( --color-border, #ddd );
+		border-radius: var( --radius-card, 8px );
+		padding: 14px;
+	}
+
+	.lunar-table__card-head {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin-bottom: 10px;
+	}
+
+	// Deliberately not cropped/circular — item art is usually already
+	// isolated on a transparent background and varies in shape, so
+	// forcing a circle would clip it. Only the empty-state placeholder
+	// below is circular.
+	.lunar-table__card-image {
+		display: block;
+		width: 40px;
+		height: 40px;
+		object-fit: contain;
+	}
+
+	.lunar-table__card-image-placeholder {
+		flex-shrink: 0;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background: color-mix( in srgb, currentColor 8%, transparent );
+	}
+
+	.lunar-table__card-title {
+		font-weight: 700;
+	}
+
+	.lunar-table__card-subtitle {
+		font-size: 0.85rem;
+		color: var( --color-text-muted, inherit );
+	}
+
+	.lunar-table__card-body {
+		border-top: 1px solid var( --color-border, #ddd );
+		padding-top: 8px;
+		font-size: 0.88rem;
+		line-height: 1.7;
+	}
+
+	// Preset changes are styling only, never structural.
+	&[ data-preset="style-1" ] .lunar-table__table th,
+	&[ data-preset="style-1" ] .lunar-table__table td {
+		padding: 6px 10px;
+		font-size: 0.85rem;
+	}
+
+	&[ data-preset="style-2" ] .lunar-table__table th,
+	&[ data-preset="style-2" ] .lunar-table__table td {
+		padding: 12px 18px;
+	}
+
+	// --- Mobile: stacked cards, pure CSS — no JS restructuring ---
+	@media ( max-width: 768px ) {
+
+		.lunar-table__table,
+		.lunar-table__table tbody,
+		.lunar-table__table tr,
+		.lunar-table__table td {
+			display: block;
+		}
+
+		// [hidden] (toggled by view.js filter) needs higher specificity
+		// than the plain "tr" rule above to actually stay hidden here.
+		.lunar-table__table tr[ hidden ] {
+			display: none;
+		}
+
+		.lunar-table__table thead {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip: rect( 0 0 0 0 );
+			white-space: nowrap;
+		}
+
+		.lunar-table__table tbody tr {
+			display: block;
+			margin-bottom: 10px;
+			overflow: hidden;
+			border: 1px solid var( --color-border, #ddd );
+			border-radius: var( --radius-card, 8px );
+		}
+
+		.lunar-table__table td {
+			background: none;
+			padding: 6px 12px;
+			border: none;
+			border-bottom: 1px solid var( --color-border, #ddd );
+
+			&:last-child {
+				border-bottom: none;
+			}
+
+			&::before {
+				content: attr( data-label );
+				display: block;
+				margin-bottom: 4px;
+				font-size: 0.95rem;
+				font-weight: 700;
+				color: inherit;
+			}
+		}
+
+		.lunar-table__table tr.lunar-table__row--divider {
+			display: block;
+			margin-top: 14px;
+			margin-bottom: 0;
+			overflow: hidden;
+			border-radius: var( --radius-card, 8px );
+		}
+
+		.lunar-table__table tr.lunar-table__row--divider td {
+			display: block;
+			width: 100%;
+
+			&::before {
+				content: none;
+			}
+		}
+
+		// Style 1: two-column layout — label on the left with a tinted
+		// background, value on the right. The label is ::before
+		// positioned over the td rather than a separate element, so no
+		// markup/JS changes were needed for this.
+		&[ data-preset="style-1" ] {
+
+			.lunar-table__table td {
+				position: relative;
+				padding: 10px 12px 10px calc( 40% + 12px );
+				min-height: 40px;
+				background: none;
+				border-bottom: 1px solid var( --color-border, #ddd );
+
+				&::before {
+					content: attr( data-label );
+					position: absolute;
+					top: 0;
+					left: 0;
+					bottom: 0;
+					width: 40%;
+					display: flex;
+					align-items: center;
+					margin: 0;
+					padding: 0 12px;
+					background: color-mix( in srgb, var( --color-accent, currentColor ) 50%, transparent );
+					color: inherit;
+					font-size: 0.8rem;
+					font-weight: 700;
+				}
+			}
+
+			.lunar-table__table tr.lunar-table__row--divider td {
+				padding-left: 12px;
+
+				&::before {
+					content: none;
+				}
+			}
+		}
+
+	}
+}
