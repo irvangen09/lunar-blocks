@@ -7,6 +7,15 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-08-10
+
+### Added
+- **Table of Contents** block (`lunar-blocks/toc`) — dynamic block that builds an automatic, nested table of contents from the headings in an article (including Accordion Item titles), with direct jump-to-section links. `Heading_Injector` injects stable `id` attributes into the original headings and Accordion Item titles so the generated links actually work, gated to only run on pages that contain a Table of Contents block. `Heading_Anchors` and `Accordion_Item_Title` are supporting shared services used by both the builder and the injector.
+- **Table** block (`src/table/`) — a single block (no child blocks) with three render presets: Standard (plain table), Style 1 — Field List (a two-column stacked layout on mobile, label left / value right), and Style 2 — Catalog Card (a responsive card grid, on any screen width). A contextual toolbar handles row/column actions (insert before/after, delete, change column type, toggle a row as a section divider), image-type columns use the native media library, and an empty-state form creates a starting grid. A frontend enhancement adds sort (scoped within each divider-separated group of rows, skipped for the card layout) and search (working across both render paths), with `aria-sort` kept in sync on sortable headers for assistive tech.
+
+### Known Issues
+- The Table of Contents box doesn't show a consistent visual distinction from the page background on at least one staging environment, despite the underlying code and CSS token being verified correct on the server. Being investigated further during a dedicated refactor pass once every block is built.
+
 ## [1.1.0] - 2026-08-09
 
 ### Added
