@@ -1,0 +1,66 @@
+.lunar-table-editor {
+	overflow-x: auto;
+}
+
+.lunar-table-editor__empty {
+	padding: 24px;
+	text-align: center;
+	background: color-mix( in srgb, currentColor 3%, transparent );
+	border: 1px dashed var( --color-border, #ddd );
+}
+
+.lunar-table-editor__empty-fields {
+	display: flex;
+	gap: 12px;
+	justify-content: center;
+	margin-bottom: 12px;
+}
+
+.lunar-table-editor__grid {
+	border-collapse: collapse;
+
+	th,
+	td {
+		min-width: 140px;
+		padding: 6px;
+		vertical-align: top;
+		border: 1px solid var( --color-border, #ddd );
+	}
+
+	th {
+		background: color-mix( in srgb, var( --color-accent, currentColor ) 12%, transparent );
+	}
+}
+
+.lunar-table-editor__image-cell {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 4px;
+
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		border: 1px solid var( --color-border, #ddd );
+	}
+}
+
+.lunar-table-editor__image-empty {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+// Divider row: only one field (the divider text) — a distinct
+// background and centered bold text make it obviously different
+// from a data row while editing, closer to how it renders up front.
+.lunar-table-editor__row--divider td {
+	background: color-mix( in srgb, var( --color-accent, currentColor ) 10%, transparent );
+	border-left: 3px solid var( --color-accent, currentColor );
+
+	.components-text-control__input {
+		font-weight: 600;
+		text-align: center;
+	}
+}
