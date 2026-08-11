@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/timeline-item",
+	"title": "Lunar Timeline Item",
+	"category": "lunar-blocks",
+	"description": "A single chronological point within the Timeline block — consists of a label, a title, and an optional description.",
+	"parent": [ "lunar-blocks/timeline" ],
+	"textdomain": "lunar-blocks",
+	"attributes": {
+		"label": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": ".lunar-timeline-item__label"
+		},
+		"title": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": ".lunar-timeline-item__title"
+		},
+		"description": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": ".lunar-timeline-item__description"
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	}
+}

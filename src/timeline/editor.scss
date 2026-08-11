@@ -1,0 +1,5 @@
+// Small spacing above the first item so the marker doesn't feel
+// too close to the block toolbar when the block is selected in Gutenberg.
+.lunar-timeline-item:first-child {
+	margin-top: 4px;
+}
