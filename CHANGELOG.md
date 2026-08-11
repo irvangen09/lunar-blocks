@@ -7,6 +7,12 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-08-11
+
+### Added
+- **Gallery** block family (`src/gallery/`) — parent/child pair (Gallery, Gallery Item) rendering a responsive image grid (2/3/4 columns, adapting to a fixed 2-column layout on small screens) with a lightbox for viewing images at full size. The lightbox is a `viewScript` progressive enhancement over a plain link-to-full-size-image fallback; each Gallery instance on a page is treated as its own previous/next navigation group. The lightbox's backdrop, caption, and controls intentionally use a fixed, theme-independent light-on-dark color scheme rather than following theme color tokens, since it's a self-contained overlay layer rather than part of the page's reading surface.
+- **Timeline** block family (`src/timeline/`) — parent/child pair (Timeline, Timeline Item) rendering a vertical sequence of chronological points, each with an optional label, a title, and an optional description. Simplest architecture in the plugin so far: purely CSS and RichText, with no `view.js`, `viewScript`, or PHP involved at all. Item titles render as real `<h3>` headings and follow the active theme's heading typography rather than a fixed size/weight, but are intentionally not picked up by the Table of Contents block, unlike Accordion Item titles.
+
 ## [1.2.0] - 2026-08-10
 
 ### Added
