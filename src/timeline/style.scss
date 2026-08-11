@@ -1,0 +1,73 @@
+.lunar-timeline {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.lunar-timeline-item {
+	position: relative;
+	padding-left: 28px;
+	padding-bottom: 24px;
+
+	&:last-child {
+		padding-bottom: 0;
+	}
+
+	// Round marker on the vertical line.
+	&::before {
+		content: "";
+		position: absolute;
+		top: 6px;
+		left: 0;
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background-color: var( --color-accent, #6b7280 );
+		border: 3px solid var( --color-border, #ddd );
+		box-shadow: 0 0 0 1px var( --color-border, #ddd );
+		z-index: 1;
+	}
+
+	// Connecting line to the next item (not drawn after the last item).
+	&::after {
+		content: "";
+		position: absolute;
+		top: 18px;
+		bottom: 0;
+		left: 5px;
+		width: 2px;
+		background-color: var( --color-border, #ddd );
+	}
+
+	&:last-child::after {
+		display: none;
+	}
+}
+
+.lunar-timeline-item__label {
+	display: block;
+	font-family: var( --font-mono, monospace );
+	font-size: 0.8125rem;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: var( --color-text-muted, inherit );
+	margin-bottom: 4px;
+}
+
+.lunar-timeline-item__title {
+	font-family: var( --font-display, inherit );
+	color: var( --color-text, inherit );
+	margin: 0 0 4px;
+}
+
+.lunar-timeline-item__description {
+	font-family: var( --font-body, inherit );
+	font-size: 1rem;
+	line-height: 1.6;
+	color: var( --color-text, inherit );
+	margin: 0;
+
+	p + p {
+		margin-top: 0.75em;
+	}
+}
