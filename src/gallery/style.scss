@@ -1,0 +1,161 @@
+// The wrapper gets its own visual identity (border + padding + surface)
+// so Gallery reads as clearly different from a plain Image block.
+.lunar-gallery {
+	display: grid;
+	grid-template-columns: repeat( var( --lunar-gallery-columns, 3 ), 1fr );
+	gap: 1rem;
+	padding: 1rem;
+	border: 1px solid var( --color-border, #ddd );
+	border-radius: var( --radius-card, 8px );
+	background: var( --color-surface, transparent );
+}
+
+.lunar-gallery--columns-2 {
+	--lunar-gallery-columns: 2;
+}
+
+.lunar-gallery--columns-3 {
+	--lunar-gallery-columns: 3;
+}
+
+.lunar-gallery--columns-4 {
+	--lunar-gallery-columns: 4;
+}
+
+// On small screens, the grid stays at 2 columns instead of switching to
+// a carousel — keeping the familiar overview-grid behavior where every
+// image stays visible at once. Viewing one image up close is the
+// Lightbox's job (tap an image), not this grid's.
+@media ( max-width: 768px ) {
+	.lunar-gallery {
+		grid-template-columns: repeat( 2, 1fr );
+		gap: 0.75rem;
+	}
+}
+
+.lunar-gallery-item {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.lunar-gallery-item__link {
+	display: block;
+	border-radius: var( --radius-card, 8px );
+	overflow: hidden;
+	border: 1px solid var( --color-border, #ddd );
+	background: var( --color-surface-2, transparent );
+}
+
+.lunar-gallery-item__image {
+	display: block;
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+}
+
+.lunar-gallery-item__caption {
+	margin-top: 0.5rem;
+	font-family: var( --font-body, inherit );
+	font-size: 0.875rem;
+	color: var( --color-text-muted, inherit );
+	text-align: center;
+}
+
+/**
+ * Lightbox overlay
+ */
+
+.lunar-gallery-lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 100000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba( 20, 15, 10, 0.85 );
+	padding: 2rem;
+}
+
+.lunar-gallery-lightbox[hidden] {
+	display: none;
+}
+
+body.lunar-gallery-lightbox-open {
+	overflow: hidden;
+}
+
+.lunar-gallery-lightbox__figure {
+	margin: 0;
+	max-width: min( 90vw, 1100px );
+	max-height: 90vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.lunar-gallery-lightbox__image {
+	max-width: 100%;
+	max-height: 80vh;
+	object-fit: contain;
+	border-radius: var( --radius-inline, 4px );
+}
+
+// The lightbox is a self-contained overlay layer, not part of the host
+// theme's reading surface — its backdrop and controls stay a fixed,
+// theme-independent light-on-dark scheme in every install.
+.lunar-gallery-lightbox__caption {
+	margin-top: 0.75rem;
+	font-family: var( --font-body, inherit );
+	color: #f5f5f5;
+	text-align: center;
+}
+
+.lunar-gallery-lightbox__caption[hidden] {
+	display: none;
+}
+
+.lunar-gallery-lightbox__close,
+.lunar-gallery-lightbox__prev,
+.lunar-gallery-lightbox__next {
+	position: absolute;
+	border: none;
+	background: transparent;
+	color: #f5f5f5;
+	cursor: pointer;
+	line-height: 1;
+}
+
+.lunar-gallery-lightbox__close {
+	top: 1rem;
+	right: 1rem;
+	font-size: 2rem;
+}
+
+.lunar-gallery-lightbox__prev,
+.lunar-gallery-lightbox__next {
+	top: 50%;
+	transform: translateY( -50% );
+	font-size: 2.5rem;
+	padding: 0.5rem 1rem;
+}
+
+.lunar-gallery-lightbox__prev {
+	left: 1rem;
+}
+
+.lunar-gallery-lightbox__next {
+	right: 1rem;
+}
+
+.lunar-gallery-lightbox__prev[hidden],
+.lunar-gallery-lightbox__next[hidden] {
+	display: none;
+}
+
+.lunar-gallery-lightbox__close:focus-visible,
+.lunar-gallery-lightbox__prev:focus-visible,
+.lunar-gallery-lightbox__next:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
