@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/timeline",
+	"title": "Lunar Timeline",
+	"category": "lunar-blocks",
+	"description": "Displays a vertical sequence of chronological points — flexible for version history, storylines, or any ordered sequence of events.",
+	"keywords": [ "timeline", "history", "chronological", "sequence" ],
+	"textdomain": "lunar-blocks",
+	"attributes": {},
+	"supports": {
+		"html": false,
+		"align": [ "wide" ],
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}
