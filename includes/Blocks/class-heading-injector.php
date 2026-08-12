@@ -1,8 +1,9 @@
 <?php
 /**
  * Injects an `id` attribute into real headings in the article body
- * (core/heading) and Accordion Item titles, so the links built by
- * TOC_Builder can actually jump to the intended section.
+ * (core/heading), Accordion Item titles, and Infobox names, so the
+ * links built by TOC_Builder can actually jump to the intended
+ * section.
  *
  * Uses the exact same algorithm and processing order as TOC_Builder
  * (see class-toc-builder.php) — the two run independently, but because
@@ -22,6 +23,7 @@ namespace Lunar\Blocks;
 
 use Lunar\Services\Heading_Anchors;
 use Lunar\Services\Accordion_Item_Title;
+use Lunar\Services\Infobox_Title;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -55,6 +57,7 @@ class Heading_Injector {
 
 		add_filter( 'render_block_core/heading', array( $this, 'inject_heading_anchor' ), 10, 2 );
 		add_filter( 'render_block_lunar-blocks/accordion-item', array( $this, 'inject_accordion_item_anchor' ), 10, 2 );
+		add_filter( 'render_block_lunar-blocks/infobox', array( $this, 'inject_infobox_anchor' ), 10, 2 );
 	}
 
 	/**
@@ -170,6 +173,46 @@ class Heading_Injector {
 		// content happens to contain another heading.
 		return (string) preg_replace(
 			'/(<h[1-6][^>]*class="[^"]*lunar-accordion-item__title[^"]*"[^>]*)(>)/',
+			'$1 id="' . esc_attr( $anchor ) . '"$2',
+			$block_content,
+			1
+		);
+	}
+
+	/**
+	 * Injects an id into an Infobox name, the same way as Accordion
+	 * Item titles. Infobox has no manual HTML Anchor option either, so
+	 * it always auto-generates (unless headingLevel is "none").
+	 *
+	 * @param string $block_content Rendered Infobox markup.
+	 * @param array  $block Block data (attrs, etc).
+	 * @return string
+	 */
+	public function inject_infobox_anchor( string $block_content, array $block ): string {
+		if ( ! $this->is_needed() ) {
+			return $block_content;
+		}
+
+		$heading_level = $block['attrs']['headingLevel'] ?? 'h2';
+
+		if ( 'none' === $heading_level ) {
+			return $block_content;
+		}
+
+		$text = Infobox_Title::extract( $block_content );
+
+		if ( '' === $text ) {
+			return $block_content;
+		}
+
+		$anchor = $this->anchors->generate( $text );
+
+		// Target the heading tag with the "lunar-infobox__name" class
+		// specifically, same reasoning as Accordion Item above — the
+		// Infobox markup also contains other elements (media, fields)
+		// that must not be mistaken for the heading to inject into.
+		return (string) preg_replace(
+			'/(<h[1-6][^>]*class="[^"]*lunar-infobox__name[^"]*"[^>]*)(>)/',
 			'$1 id="' . esc_attr( $anchor ) . '"$2',
 			$block_content,
 			1
