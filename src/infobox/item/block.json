@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/infobox-item",
+	"title": "Lunar Infobox Item",
+	"category": "lunar-blocks",
+	"description": "One row of data inside the Infobox — either a custom field (manual label) or a linked field (synced to a registered field source for filtering).",
+	"keywords": [ "infobox item", "field", "row" ],
+	"parent": [ "lunar-blocks/infobox" ],
+	"textdomain": "lunar-blocks",
+	"attributes": {
+		"mode": {
+			"type": "string",
+			"enum": [ "custom", "linked" ],
+			"default": "custom"
+		},
+		"label": {
+			"type": "string",
+			"default": ""
+		},
+		"fieldSourceId": {
+			"type": "number",
+			"default": 0
+		},
+		"fieldSourceLabel": {
+			"type": "string",
+			"default": ""
+		},
+		"value": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": ".lunar-infobox-item__value"
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	}
+}
