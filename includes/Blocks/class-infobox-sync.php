@@ -17,8 +17,6 @@
 
 namespace Lunar\Blocks;
 
-use Lunar\Services\Infobox_Title;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -134,7 +132,7 @@ class Infobox_Sync {
 
 		$field_data = array(
 			'label'              => (string) ( $attrs['label'] ?? '' ),
-			'value'              => Infobox_Title::extract_value( $block['innerHTML'] ?? '' ),
+			'value'              => $this->extract_value( $block['innerHTML'] ?? '' ),
 			'field_source_id'    => $field_source_id ? $field_source_id : null,
 			'field_source_label' => '' !== $field_source_label ? $field_source_label : null,
 		);
@@ -149,5 +147,23 @@ class Infobox_Sync {
 		 * @param \WP_Post $post       Full post object.
 		 */
 		do_action( 'lunar_blocks_infobox_field_saved', $post->ID, $field_data, $post );
+	}
+
+	/**
+	 * Extracts the value text from Infobox Item markup.
+	 *
+	 * Can't use the block's "value" attribute directly — it's sourced
+	 * from rich-text/HTML, so it isn't available as a plain attrs value
+	 * from parse_blocks().
+	 *
+	 * @param string $html Block innerHTML.
+	 * @return string Value text (tags stripped), or an empty string if not found.
+	 */
+	private function extract_value( string $html ): string {
+		if ( ! preg_match( '/<dd[^>]*class="[^"]*lunar-infobox-item__value[^"]*"[^>]*>(.*?)<\/dd>/s', $html, $matches ) ) {
+			return '';
+		}
+
+		return trim( wp_strip_all_tags( $matches[1] ) );
 	}
 }
