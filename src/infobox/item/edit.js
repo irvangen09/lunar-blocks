@@ -22,9 +22,9 @@ export default function Edit( { attributes, setAttributes } ) {
 		className: 'lunar-infobox-item',
 	} );
 
-	// Generic extension point (see LUNAR_BLOCKS_WIKI_INTEGRATION_CONTRACT.md).
-	// Lunar Blocks has no knowledge of what this maps to (a taxonomy, or
-	// anything else) — a provider plugin registers it, or it stays null.
+	// Public extension point — Lunar Blocks has no knowledge of what this
+	// maps to (a taxonomy, or anything else at all); a provider plugin
+	// registers it, or it stays null.
 	const fieldSource = applyFilters( 'lunarBlocks.infobox.fieldSource', null );
 
 	const { fieldTerms, isLoadingTerms } = useSelect(
