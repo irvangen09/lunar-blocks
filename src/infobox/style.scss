@@ -51,20 +51,20 @@
 	border-top: 1px solid var( --color-border, #ddd );
 }
 
-.lunar-infobox-field__label,
-.lunar-infobox-field__value {
+.lunar-infobox-item__label,
+.lunar-infobox-item__value {
 	margin: 0;
 	border-top: 1px solid var( --color-border, #ddd );
 }
 
 /* The first label/value pair doesn't need a double border-top with
  * .lunar-infobox__fields right above it. */
-.lunar-infobox-field__label:first-child,
-.lunar-infobox-field__label:first-child + .lunar-infobox-field__value {
+.lunar-infobox-item__label:first-child,
+.lunar-infobox-item__label:first-child + .lunar-infobox-item__value {
 	border-top: none;
 }
 
-.lunar-infobox-field__label {
+.lunar-infobox-item__label {
 	display: flex;
 	align-items: center;
 	padding: 8px 14px;
@@ -77,14 +77,14 @@
 /* A linked field (synced to a registered field source) is distinguished by
  * accent color and small-caps typography, staying within the same
  * label/value table format rather than becoming a separate badge. */
-.lunar-infobox-field__label--linked {
+.lunar-infobox-item__label--linked {
 	color: var( --color-accent-secondary, #00a32a );
 	font-size: 0.72rem;
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
 }
 
-.lunar-infobox-field__value {
+.lunar-infobox-item__value {
 	padding: 8px 14px;
 	font-size: 0.88rem;
 }

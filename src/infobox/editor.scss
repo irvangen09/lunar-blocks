@@ -1,0 +1,37 @@
+.lunar-infobox__media {
+	padding: 14px;
+	text-align: center;
+	border-bottom: 1px solid var( --color-border, #ddd );
+}
+
+.lunar-infobox__media-preview img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 400px;
+	object-fit: contain;
+	margin: 0 0 8px;
+	border-radius: var( --radius-inline, 4px );
+}
+
+.lunar-infobox__name[data-rich-text-placeholder]::before {
+	color: var( --color-text-muted, currentColor );
+	opacity: 0.75;
+}
+
+/* Transparent layout wrapper so the child block's dt/dd stay direct
+ * grid children of .lunar-infobox__fields — see item/edit.js for why
+ * this wrapper exists at all. Frontend markup (save.js) never has it. */
+.lunar-infobox-item {
+	display: contents;
+}
+
+.lunar-infobox-item__label[data-rich-text-placeholder]::before,
+.lunar-infobox-item__value[data-rich-text-placeholder]::before {
+	color: var( --color-text-muted, currentColor );
+	opacity: 0.75;
+}
+
+.lunar-infobox-item__label--linked {
+	font-style: italic;
+}
