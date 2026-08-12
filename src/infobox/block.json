@@ -1,0 +1,46 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lunar-blocks/infobox",
+	"title": "Lunar Infobox",
+	"category": "lunar-blocks",
+	"description": "A structured data panel — image, name, and a list of custom or linked fields — for a character, item, location, or similar subject.",
+	"keywords": [ "infobox", "panel", "character", "item" ],
+	"textdomain": "lunar-blocks",
+	"attributes": {
+		"name": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": ".lunar-infobox__name"
+		},
+		"headingLevel": {
+			"type": "string",
+			"enum": [ "none", "h2", "h3", "h4", "h5", "h6" ],
+			"default": "h2"
+		},
+		"icon": {
+			"type": "string",
+			"default": ""
+		},
+		"imageId": {
+			"type": "number",
+			"default": 0
+		},
+		"imageUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"imageAlt": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"anchor": true
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}
