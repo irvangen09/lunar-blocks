@@ -1,8 +1,8 @@
 <?php
 /**
  * Core logic for the TOC block — scans post_content for headings
- * (including Accordion Item titles), then builds a nested structure
- * based on heading level.
+ * (including Accordion Item titles and Infobox names), then builds a
+ * nested structure based on heading level.
  *
  * Kept separate from render.php (rather than a global function inside
  * it) so there's no risk of a "Cannot redeclare function" fatal if
@@ -15,6 +15,7 @@ namespace Lunar\Blocks;
 
 use Lunar\Services\Heading_Anchors;
 use Lunar\Services\Accordion_Item_Title;
+use Lunar\Services\Infobox_Title;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -67,16 +68,14 @@ class TOC_Builder {
 	/**
 	 * Recursively scans the block array returned by parse_blocks().
 	 *
-	 * Recognizes 2 heading sources:
+	 * Recognizes 3 heading sources:
 	 * - Regular "core/heading" blocks, wherever they appear (including
 	 *   nested inside Accordion/Tabs/Steps).
 	 * - "lunar-blocks/accordion-item" titles (unless headingLevel is
 	 *   "none") — this title isn't a separate Heading block, it's an
 	 *   attribute on the block itself.
-	 *
-	 * Infobox needs no special exclusion here — by structure, it can't
-	 * contain "core/heading" or "accordion-item" (its fields are
-	 * rich-text, not InnerBlocks).
+	 * - "lunar-blocks/infobox" names (unless headingLevel is "none"),
+	 *   same reasoning as Accordion Item.
 	 *
 	 * @param array $blocks Block array (from parse_blocks() or innerBlocks).
 	 * @param array $results Collected by reference, not by return value.
@@ -100,6 +99,19 @@ class TOC_Builder {
 
 				if ( 'none' !== $heading_level ) {
 					$text = Accordion_Item_Title::extract( $block['innerHTML'] ?? '' );
+
+					if ( '' !== $text ) {
+						$results[] = array(
+							'level' => (int) substr( $heading_level, 1 ),
+							'text'  => $text,
+						);
+					}
+				}
+			} elseif ( 'lunar-blocks/infobox' === $block_name ) {
+				$heading_level = $block['attrs']['headingLevel'] ?? 'h2';
+
+				if ( 'none' !== $heading_level ) {
+					$text = Infobox_Title::extract( $block['innerHTML'] ?? '' );
 
 					if ( '' !== $text ) {
 						$results[] = array(
