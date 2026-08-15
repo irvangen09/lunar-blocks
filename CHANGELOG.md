@@ -7,6 +7,12 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-08-13
+
+### Added
+- **Infobox** block family (`src/infobox/`) — parent/child pair (Infobox, Infobox Item) rendering a structured data panel (optional image, name, and a list of label/value fields) for a character, item, location, or similar subject. Each Infobox Item field is either a custom field (a free-text label the author types directly) or a linked field, whose label and available options come from a data source registered by another plugin through a public filter (`lunarBlocks.infobox.fieldSource`) — Lunar Blocks itself has no knowledge of what that source actually is, and the field simply falls back to acting as a free-text field when nothing is registered. Infobox names are picked up by the Table of Contents block as navigation entries, the same way Accordion Item titles are.
+- A new public action, `lunar_blocks_infobox_field_saved`, fires for every Infobox Item whenever a post containing one is saved, carrying its label, value, and (if linked) field source id/label as structured data — giving other plugins a reliable way to react to Infobox field changes without depending on Lunar Blocks' internal block structure or resorting to parsing rendered HTML.
+
 ## [1.3.0] - 2026-08-11
 
 ### Added
