@@ -1,6 +1,9 @@
 /**
  * `wp-scripts plugin-zip`, when package.json has a "files" field,
  * builds the archive through npm's own packaging rules — which force
+ * certain metadata files (package.json, LICENSE.md, README.md, and
+ * similar) into the package regardless of what "files" lists. This
+ * script removes them from the finished zip afterward.
  *
  * @package Lunar\Blocks
  */
