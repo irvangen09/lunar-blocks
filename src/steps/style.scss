@@ -1,20 +1,20 @@
 .lunar-steps {
-	counter-reset: lunar-step;
+	counter-reset: lunar-steps-item;
 	list-style: none;
 	margin: 1.25em 0;
 	padding: 0;
 }
 
-.lunar-step {
+.lunar-steps-item {
 	position: relative;
-	counter-increment: lunar-step;
+	counter-increment: lunar-steps-item;
 
 	padding: 0 0 24px 44px;
 
 	font-family: var( --font-body, inherit );
 
 	&::before {
-		content: counter( lunar-step );
+		content: counter( lunar-steps-item );
 
 		position: absolute;
 		top: 0;

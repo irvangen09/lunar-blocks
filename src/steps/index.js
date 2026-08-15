@@ -12,14 +12,12 @@ import './style.scss';
 import './editor.scss';
 
 registerBlockType( stepsMetadata.name, {
-	...stepsMetadata,
 	icon: 'editor-ol',
 	edit: StepsEdit,
 	save: stepsSave,
 } );
 
 registerBlockType( itemMetadata.name, {
-	...itemMetadata,
 	icon: 'editor-ol',
 	edit: ItemEdit,
 	save: itemSave,

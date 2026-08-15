@@ -4,7 +4,7 @@ const CONTENT_TEMPLATE = [ [ 'core/paragraph' ] ];
 
 export default function Edit() {
 	const blockProps = useBlockProps( {
-		className: 'lunar-step',
+		className: 'lunar-steps-item',
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {

@@ -1,10 +1,10 @@
 import { useBlockProps, useInnerBlocksProps, InnerBlocks } from '@wordpress/block-editor';
 
-const ALLOWED_BLOCKS = [ 'lunar-blocks/step' ];
+const ALLOWED_BLOCKS = [ 'lunar-blocks/steps-item' ];
 
 const TEMPLATE = [
-	[ 'lunar-blocks/step' ],
-	[ 'lunar-blocks/step' ],
+	[ 'lunar-blocks/steps-item' ],
+	[ 'lunar-blocks/steps-item' ],
 ];
 
 export default function Edit() {
