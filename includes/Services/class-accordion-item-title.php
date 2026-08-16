@@ -2,10 +2,9 @@
 /**
  * Extracts the title text from Accordion Item markup — shared by
  * Heading_Injector (injecting an id into render_block output) and
- * TOC_Builder (reading the text from parse_blocks() innerHTML).
- * This regex used to be duplicated identically in both files; it was
- * pulled out here so there's only one place to update if the CSS
- * class "lunar-accordion-item__title" ever changes.
+ * TOC_Builder (reading the text from parse_blocks() innerHTML), so
+ * there's only one place to update if the CSS class
+ * "lunar-accordion-item__title" ever changes.
  *
  * @package Lunar\Services
  */
