@@ -94,7 +94,7 @@ function bootstrap(): void {
 	$formats = new Formats( LUNAR_BLOCKS_PLUGIN_DIR . 'build', LUNAR_BLOCKS_PLUGIN_URL . 'build' );
 	$formats->init();
 
-	$heading_injector = new Heading_Injector();
+	$heading_injector = new Heading_Injector( $registry );
 	$heading_injector->init();
 
 	$infobox_sync = new Infobox_Sync();

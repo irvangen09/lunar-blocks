@@ -25,6 +25,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		template: GALLERY_ITEM_TEMPLATE,
+		templateLock: false,
 		orientation: 'horizontal',
 		renderAppender: InnerBlocks.ButtonBlockAppender,
 	} );
