@@ -42,8 +42,14 @@ class Heading_Injector {
 	 */
 	private Heading_Anchors $anchors;
 
-	public function __construct() {
-		$this->anchors = new Heading_Anchors();
+	/**
+	 * @var Registry
+	 */
+	private Registry $registry;
+
+	public function __construct( Registry $registry ) {
+		$this->registry = $registry;
+		$this->anchors  = new Heading_Anchors();
 	}
 
 	/**
@@ -69,7 +75,7 @@ class Heading_Injector {
 	 * earlier post could otherwise leak into unrelated content there.
 	 */
 	private function is_needed(): bool {
-		return is_singular() && has_block( 'lunar-blocks/toc', get_the_ID() );
+		return $this->registry->page_has_block( 'lunar-blocks/toc' );
 	}
 
 	/**
