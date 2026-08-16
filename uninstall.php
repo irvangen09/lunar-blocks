@@ -11,3 +11,4 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 delete_option( 'lunar_blocks_disabled_blocks' );
+delete_transient( 'lunar_blocks_registry_cache' );
