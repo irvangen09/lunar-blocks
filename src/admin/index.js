@@ -27,9 +27,12 @@ function SettingsApp() {
 	const [ blocks, setBlocks ] = useState( null );
 	const [ isSaving, setIsSaving ] = useState( false );
 	const [ notice, setNotice ] = useState( null );
+	const [ loadError, setLoadError ] = useState( false );
 
 	useEffect( () => {
-		apiFetch( { path: '/lunar-blocks/v1/blocks' } ).then( setBlocks );
+		apiFetch( { path: '/lunar-blocks/v1/blocks' } )
+			.then( setBlocks )
+			.catch( () => setLoadError( true ) );
 	}, [] );
 
 	function toggleBlock( slug, enabled ) {
@@ -70,6 +73,19 @@ function SettingsApp() {
 				} );
 			} )
 			.finally( () => setIsSaving( false ) );
+	}
+
+	if ( loadError ) {
+		return (
+			<div className="lunar-blocks-settings__loading">
+				<Notice status="error" isDismissible={ false }>
+					{ __(
+						'Could not load block settings. Please reload the page.',
+						'lunar-blocks'
+					) }
+				</Notice>
+			</div>
+		);
 	}
 
 	if ( null === blocks ) {
