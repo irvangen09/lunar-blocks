@@ -76,6 +76,10 @@ class Infobox_Sync {
 	 * @param \WP_Post $post Post object that was just inserted/updated.
 	 */
 	public function handle_rest_after_insert( \WP_Post $post ): void {
+		if ( wp_is_post_revision( $post->ID ) || wp_is_post_autosave( $post->ID ) ) {
+			return;
+		}
+
 		$this->maybe_sync( $post );
 	}
 
