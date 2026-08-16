@@ -13,6 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.WP.GlobalVariablesOverride.Prohibited, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+// This file is included inside WP_Block::render(), a method's local
+// scope — not the literal global scope these two sniffs guard against
+// for traditional theme template files, which WordPress executes at
+// true global scope. The variables below never collide with anything
+// outside this include.
 $post_id = get_the_ID();
 
 if ( ! $post_id ) {
@@ -33,6 +39,7 @@ $list_html = $builder->render_tree( $tree );
 $title = ! empty( $attributes['title'] ) ? $attributes['title'] : __( 'Table of Contents', 'lunar-blocks' );
 
 $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'lunar-toc' ) );
+// phpcs:enable
 ?>
 <details <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput -- already escaped by get_block_wrapper_attributes(). ?>>
 	<summary class="lunar-toc__summary">

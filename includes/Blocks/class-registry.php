@@ -206,7 +206,7 @@ class Registry {
 				continue;
 			}
 
-			$metadata = json_decode( (string) file_get_contents( $file->getPathname() ), true );
+			$metadata = json_decode( (string) file_get_contents( $file->getPathname() ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local plugin file path, not a remote URL; wp_remote_get() doesn't apply here.
 
 			if ( ! is_array( $metadata ) || empty( $metadata['name'] ) ) {
 				continue;

@@ -148,7 +148,13 @@ class TOC_Builder {
 		);
 
 		foreach ( $headings as $heading ) {
-			while ( count( $stack ) > 1 && $stack[ count( $stack ) - 1 ]['level'] >= $heading['level'] ) {
+			while ( true ) {
+				$stack_size = count( $stack );
+
+				if ( $stack_size <= 1 || $stack[ array_key_last( $stack ) ]['level'] < $heading['level'] ) {
+					break;
+				}
+
 				array_pop( $stack );
 			}
 
