@@ -37,6 +37,16 @@ class Registry {
 	private const OPTION = 'lunar_blocks_disabled_blocks';
 
 	/**
+	 * Transient key the discovered-block list is cached under, so
+	 * every request doesn't have to re-scan and re-decode every
+	 * block.json in build/. Skipped entirely when WP_DEBUG is on, so
+	 * active local development always sees a fresh scan.
+	 *
+	 * @var string
+	 */
+	private const CACHE_KEY = 'lunar_blocks_registry_cache';
+
+	/**
 	 * Absolute path to the build/ directory to scan.
 	 *
 	 * @var string
@@ -83,10 +93,10 @@ class Registry {
 	}
 
 	/**
-	 * Registers translations for a block's editor script handle(s),
-	 * so strings wrapped in `__()` in edit.js are actually translated
-	 * once a translation file for the visitor's locale exists in
-	 * languages/.
+	 * Registers translations for a block's script handle(s) — editor
+	 * (edit.js) and frontend (view.js), so strings wrapped in `__()`
+	 * are actually translated once a translation file for the
+	 * visitor's locale exists in languages/.
 	 *
 	 * @param \WP_Block_Type|false $block_type Return value of
 	 *        register_block_type(), or false if registration failed.
@@ -96,7 +106,12 @@ class Registry {
 			return;
 		}
 
-		foreach ( $block_type->editor_script_handles as $handle ) {
+		$handles = array_merge(
+			$block_type->editor_script_handles,
+			$block_type->view_script_handles
+		);
+
+		foreach ( $handles as $handle ) {
 			wp_set_script_translations( $handle, 'lunar-blocks', LUNAR_BLOCKS_PLUGIN_DIR . 'languages' );
 		}
 	}
@@ -115,10 +130,70 @@ class Registry {
 			return $this->blocks;
 		}
 
-		$this->blocks = array();
+		$cached = $this->get_cached_blocks();
+
+		if ( null !== $cached ) {
+			$this->blocks = $cached;
+			return $this->blocks;
+		}
+
+		$this->blocks = $this->scan_blocks();
+		$this->cache_blocks( $this->blocks );
+
+		return $this->blocks;
+	}
+
+	/**
+	 * Reads the cached block list, if present and still valid for the
+	 * currently running plugin version. Returns null on any cache miss
+	 * (nothing cached, stale version, or WP_DEBUG active) so the
+	 * caller falls back to a fresh scan.
+	 *
+	 * @return array<string, array<string, mixed>>|null
+	 */
+	private function get_cached_blocks(): ?array {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			return null;
+		}
+
+		$cached = get_transient( self::CACHE_KEY );
+
+		if ( ! is_array( $cached ) || ( $cached['version'] ?? null ) !== LUNAR_BLOCKS_VERSION ) {
+			return null;
+		}
+
+		return $cached['blocks'];
+	}
+
+	/**
+	 * Caches the block list, tagged with the currently running plugin
+	 * version — a version bump (i.e. a rebuilt build/ directory) is
+	 * what invalidates it, not a fixed expiry.
+	 *
+	 * @param array<string, array<string, mixed>> $blocks Discovered blocks.
+	 */
+	private function cache_blocks( array $blocks ): void {
+		set_transient(
+			self::CACHE_KEY,
+			array(
+				'version' => LUNAR_BLOCKS_VERSION,
+				'blocks'  => $blocks,
+			),
+			0
+		);
+	}
+
+	/**
+	 * Scans build/ for every block.json, at any depth, and decodes the
+	 * metadata this class needs from each one.
+	 *
+	 * @return array<string, array<string, mixed>>
+	 */
+	private function scan_blocks(): array {
+		$blocks = array();
 
 		if ( ! is_dir( $this->build_path ) ) {
-			return $this->blocks;
+			return $blocks;
 		}
 
 		$iterator = new \RecursiveIteratorIterator(
@@ -139,7 +214,7 @@ class Registry {
 
 			$slug = $this->slug_from_name( $metadata['name'] );
 
-			$this->blocks[ $slug ] = array(
+			$blocks[ $slug ] = array(
 				'name'   => $metadata['name'],
 				'title'  => $metadata['title'] ?? $slug,
 				'path'   => $file->getPath(),
@@ -147,7 +222,7 @@ class Registry {
 			);
 		}
 
-		return $this->blocks;
+		return $blocks;
 	}
 
 	/**
