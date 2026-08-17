@@ -5,7 +5,18 @@ import {
 	InnerBlocks,
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
-import { PanelBody, __experimentalToggleGroupControl as ToggleGroupControl, __experimentalToggleGroupControlOption as ToggleGroupControlOption } from '@wordpress/components';
+import {
+	PanelBody,
+	// ToggleGroupControl has kept this exact "__experimental" import
+	// path unchanged for years across WordPress releases — genuinely
+	// unstable APIs get renamed or removed, this one hasn't. A plain
+	// SelectControl would avoid the lint rule but is worse UX for
+	// picking between 3 short, mutually exclusive options.
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
+} from '@wordpress/components';
 
 const ALLOWED_BLOCKS = [ 'lunar-blocks/gallery-item' ];
 

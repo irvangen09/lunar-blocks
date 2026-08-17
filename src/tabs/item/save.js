@@ -1,4 +1,8 @@
-import { useBlockProps, useInnerBlocksProps, RichText } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	useInnerBlocksProps,
+	RichText,
+} from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
 	const { label } = attributes;
@@ -16,7 +20,11 @@ export default function save( { attributes } ) {
 	// upgrades it into a real interactive tab control at runtime.
 	return (
 		<div { ...blockProps }>
-			<RichText.Content tagName="div" className="lunar-tabs-item__label" value={ label } />
+			<RichText.Content
+				tagName="div"
+				className="lunar-tabs-item__label"
+				value={ label }
+			/>
 			<div { ...innerBlocksProps } />
 		</div>
 	);

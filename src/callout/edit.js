@@ -1,5 +1,9 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, RichText, InspectorControls } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	RichText,
+	InspectorControls,
+} from '@wordpress/block-editor';
 import { PanelBody, SelectControl } from '@wordpress/components';
 
 const VARIANT_OPTIONS = [
@@ -24,7 +28,9 @@ export default function Edit( { attributes, setAttributes } ) {
 						label={ __( 'Callout Type', 'lunar-blocks' ) }
 						value={ variant }
 						options={ VARIANT_OPTIONS }
-						onChange={ ( value ) => setAttributes( { variant: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { variant: value } )
+						}
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -33,9 +39,14 @@ export default function Edit( { attributes, setAttributes } ) {
 				<RichText
 					tagName="div"
 					className="lunar-callout__text"
-					placeholder={ __( 'Write your note here…', 'lunar-blocks' ) }
+					placeholder={ __(
+						'Write your note here…',
+						'lunar-blocks'
+					) }
 					value={ content }
-					onChange={ ( value ) => setAttributes( { content: value } ) }
+					onChange={ ( value ) =>
+						setAttributes( { content: value } )
+					}
 				/>
 			</div>
 		</>

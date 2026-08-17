@@ -16,13 +16,19 @@ export default function save( { attributes } ) {
 			? 'lunar-infobox-item__label lunar-infobox-item__label--linked'
 			: 'lunar-infobox-item__label',
 		'data-mode': mode,
-		...( isLinked && fieldSourceId ? { 'data-field-source': fieldSourceId } : {} ),
+		...( isLinked && fieldSourceId
+			? { 'data-field-source': fieldSourceId }
+			: {} ),
 	} );
 
 	return (
 		<>
 			<dt { ...dtProps }>{ displayLabel }</dt>
-			<RichText.Content tagName="dd" className="lunar-infobox-item__value" value={ value } />
+			<RichText.Content
+				tagName="dd"
+				className="lunar-infobox-item__value"
+				value={ value }
+			/>
 		</>
 	);
 }

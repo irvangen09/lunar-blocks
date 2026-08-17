@@ -1,7 +1,4 @@
-import {
-	useBlockProps,
-	useInnerBlocksProps,
-} from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'lunar-blocks/timeline-item' ];
 

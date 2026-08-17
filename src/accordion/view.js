@@ -9,10 +9,10 @@
  * Only loaded on the frontend (viewScript in block.json), never in the editor.
  */
 ( function () {
-	var DESKTOP_QUERY = '(min-width: 768px)';
+	const DESKTOP_QUERY = '(min-width: 768px)';
 
 	function syncAccordionState( isDesktop ) {
-		var items = document.querySelectorAll( '.lunar-accordion-item' );
+		const items = document.querySelectorAll( '.lunar-accordion-item' );
 
 		items.forEach( function ( item ) {
 			if ( isDesktop ) {
@@ -23,7 +23,7 @@
 		} );
 	}
 
-	var mql = window.matchMedia( DESKTOP_QUERY );
+	const mql = window.matchMedia( DESKTOP_QUERY );
 
 	// Set the initial state as soon as the page loads.
 	syncAccordionState( mql.matches );

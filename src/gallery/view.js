@@ -26,10 +26,7 @@ function buildOverlay() {
 	overlay.className = 'lunar-gallery-lightbox';
 	overlay.setAttribute( 'role', 'dialog' );
 	overlay.setAttribute( 'aria-modal', 'true' );
-	overlay.setAttribute(
-		'aria-label',
-		__( 'Image preview', 'lunar-blocks' )
-	);
+	overlay.setAttribute( 'aria-label', __( 'Image preview', 'lunar-blocks' ) );
 	overlay.hidden = true;
 
 	const closeLabel = __( 'Close', 'lunar-blocks' );

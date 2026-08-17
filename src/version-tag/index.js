@@ -1,6 +1,10 @@
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
-import { registerFormatType, applyFormat, removeFormat } from '@wordpress/rich-text';
+import {
+	registerFormatType,
+	applyFormat,
+	removeFormat,
+} from '@wordpress/rich-text';
 import { RichTextToolbarButton } from '@wordpress/block-editor';
 import { Popover, MenuGroup, MenuItem } from '@wordpress/components';
 
@@ -43,10 +47,16 @@ function VersionTagEdit( { value, onChange, isActive } ) {
 				isActive={ isActive }
 			/>
 			{ isOpen && (
-				<Popover onClose={ () => setIsOpen( false ) } placement="bottom-start">
+				<Popover
+					onClose={ () => setIsOpen( false ) }
+					placement="bottom-start"
+				>
 					<MenuGroup label={ __( 'Choose Type', 'lunar-blocks' ) }>
 						{ VARIANTS.map( ( { value: variant, label } ) => (
-							<MenuItem key={ variant } onClick={ () => applyVariant( variant ) }>
+							<MenuItem
+								key={ variant }
+								onClick={ () => applyVariant( variant ) }
+							>
 								{ label }
 							</MenuItem>
 						) ) }

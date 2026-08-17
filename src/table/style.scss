@@ -84,13 +84,13 @@
 			opacity: 0.4;
 		}
 
-		&[ data-sort-direction="asc" ]::after {
+		&[data-sort-direction="asc"]::after {
 			content: "\2191";
 			color: var( --color-accent, currentColor );
 			opacity: 1;
 		}
 
-		&[ data-sort-direction="desc" ]::after {
+		&[data-sort-direction="desc"]::after {
 			content: "\2193";
 			color: var( --color-accent, currentColor );
 			opacity: 1;
@@ -171,14 +171,14 @@
 	}
 
 	// Preset changes are styling only, never structural.
-	&[ data-preset="style-1" ] .lunar-table__table th,
-	&[ data-preset="style-1" ] .lunar-table__table td {
+	&[data-preset="style-1"] .lunar-table__table th,
+	&[data-preset="style-1"] .lunar-table__table td {
 		padding: 6px 10px;
 		font-size: 0.85rem;
 	}
 
-	&[ data-preset="style-2" ] .lunar-table__table th,
-	&[ data-preset="style-2" ] .lunar-table__table td {
+	&[data-preset="style-2"] .lunar-table__table th,
+	&[data-preset="style-2"] .lunar-table__table td {
 		padding: 12px 18px;
 	}
 
@@ -194,7 +194,7 @@
 
 		// [hidden] (toggled by view.js filter) needs higher specificity
 		// than the plain "tr" rule above to actually stay hidden here.
-		.lunar-table__table tr[ hidden ] {
+		.lunar-table__table tr[hidden] {
 			display: none;
 		}
 
@@ -235,6 +235,35 @@
 			}
 		}
 
+		// Style 1: two-column layout — label on the left with a tinted
+		// background, value on the right. The label is ::before
+		// positioned over the td rather than a separate element, so no
+		// markup/JS changes were needed for this.
+		&[data-preset="style-1"] .lunar-table__table td {
+			position: relative;
+			padding: 10px 12px 10px calc( 40% + 12px );
+			min-height: 40px;
+			background: none;
+			border-bottom: 1px solid var( --color-border, #ddd );
+
+			&::before {
+				content: attr( data-label );
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				width: 40%;
+				display: flex;
+				align-items: center;
+				margin: 0;
+				padding: 0 12px;
+				background: color-mix( in srgb, var( --color-accent, currentColor ) 50%, transparent );
+				color: inherit;
+				font-size: 0.8rem;
+				font-weight: 700;
+			}
+		}
+
 		.lunar-table__table tr.lunar-table__row--divider {
 			display: block;
 			margin-top: 14px;
@@ -252,43 +281,11 @@
 			}
 		}
 
-		// Style 1: two-column layout — label on the left with a tinted
-		// background, value on the right. The label is ::before
-		// positioned over the td rather than a separate element, so no
-		// markup/JS changes were needed for this.
-		&[ data-preset="style-1" ] {
+		&[data-preset="style-1"] .lunar-table__table tr.lunar-table__row--divider td {
+			padding-left: 12px;
 
-			.lunar-table__table td {
-				position: relative;
-				padding: 10px 12px 10px calc( 40% + 12px );
-				min-height: 40px;
-				background: none;
-				border-bottom: 1px solid var( --color-border, #ddd );
-
-				&::before {
-					content: attr( data-label );
-					position: absolute;
-					top: 0;
-					left: 0;
-					bottom: 0;
-					width: 40%;
-					display: flex;
-					align-items: center;
-					margin: 0;
-					padding: 0 12px;
-					background: color-mix( in srgb, var( --color-accent, currentColor ) 50%, transparent );
-					color: inherit;
-					font-size: 0.8rem;
-					font-weight: 700;
-				}
-			}
-
-			.lunar-table__table tr.lunar-table__row--divider td {
-				padding-left: 12px;
-
-				&::before {
-					content: none;
-				}
+			&::before {
+				content: none;
 			}
 		}
 

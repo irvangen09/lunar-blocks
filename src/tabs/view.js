@@ -9,7 +9,7 @@
  */
 ( function () {
 	function initTabs( tabsEl, tabsIndex ) {
-		var items = Array.prototype.slice.call(
+		const items = Array.prototype.slice.call(
 			tabsEl.querySelectorAll( ':scope > .lunar-tabs-item' )
 		);
 
@@ -17,21 +17,25 @@
 			return;
 		}
 
-		var tablist = document.createElement( 'div' );
+		const tablist = document.createElement( 'div' );
 		tablist.className = 'lunar-tabs__list';
 		tablist.setAttribute( 'role', 'tablist' );
 
 		items.forEach( function ( item, itemIndex ) {
-			var label = item.querySelector( ':scope > .lunar-tabs-item__label' );
-			var panel = item.querySelector( ':scope > .lunar-tabs-item__content' );
+			const label = item.querySelector(
+				':scope > .lunar-tabs-item__label'
+			);
+			const panel = item.querySelector(
+				':scope > .lunar-tabs-item__content'
+			);
 
 			if ( ! label || ! panel ) {
 				return;
 			}
 
-			var tabId = 'lunar-tabs-' + tabsIndex + '-tab-' + itemIndex;
-			var panelId = 'lunar-tabs-' + tabsIndex + '-panel-' + itemIndex;
-			var isActive = 0 === itemIndex;
+			const tabId = 'lunar-tabs-' + tabsIndex + '-tab-' + itemIndex;
+			const panelId = 'lunar-tabs-' + tabsIndex + '-panel-' + itemIndex;
+			const isActive = 0 === itemIndex;
 
 			label.classList.add( 'lunar-tabs__tab' );
 			label.setAttribute( 'role', 'tab' );
@@ -58,14 +62,21 @@
 		tabsEl.insertBefore( tablist, tabsEl.firstChild );
 		tabsEl.classList.add( 'lunar-tabs--enhanced' );
 
-		var tabs = Array.prototype.slice.call( tablist.querySelectorAll( '.lunar-tabs__tab' ) );
+		const tabs = Array.prototype.slice.call(
+			tablist.querySelectorAll( '.lunar-tabs__tab' )
+		);
 
 		function activate( tab ) {
 			tabs.forEach( function ( candidate ) {
-				var panel = document.getElementById( candidate.getAttribute( 'aria-controls' ) );
-				var isSelected = candidate === tab;
+				const panel = document.getElementById(
+					candidate.getAttribute( 'aria-controls' )
+				);
+				const isSelected = candidate === tab;
 
-				candidate.setAttribute( 'aria-selected', isSelected ? 'true' : 'false' );
+				candidate.setAttribute(
+					'aria-selected',
+					isSelected ? 'true' : 'false'
+				);
 				candidate.setAttribute( 'tabindex', isSelected ? '0' : '-1' );
 
 				if ( panel ) {
@@ -89,7 +100,7 @@
 			// the WAI-ARIA APG pattern — moving focus automatically activates
 			// the tab.
 			tab.addEventListener( 'keydown', function ( event ) {
-				var newIndex = null;
+				let newIndex = null;
 
 				if ( 'ArrowRight' === event.key ) {
 					newIndex = ( index + 1 ) % tabs.length;
@@ -109,7 +120,9 @@
 		} );
 	}
 
-	document.querySelectorAll( '.lunar-tabs' ).forEach( function ( tabsEl, index ) {
-		initTabs( tabsEl, index );
-	} );
+	document
+		.querySelectorAll( '.lunar-tabs' )
+		.forEach( function ( tabsEl, index ) {
+			initTabs( tabsEl, index );
+		} );
 } )();

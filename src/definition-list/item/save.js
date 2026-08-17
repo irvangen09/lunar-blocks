@@ -9,8 +9,16 @@ export default function save( { attributes } ) {
 
 	return (
 		<div { ...blockProps }>
-			<RichText.Content tagName="dt" className="lunar-definition-item__term" value={ term } />
-			<RichText.Content tagName="dd" className="lunar-definition-item__definition" value={ definition } />
+			<RichText.Content
+				tagName="dt"
+				className="lunar-definition-item__term"
+				value={ term }
+			/>
+			<RichText.Content
+				tagName="dd"
+				className="lunar-definition-item__definition"
+				value={ definition }
+			/>
 		</div>
 	);
 }

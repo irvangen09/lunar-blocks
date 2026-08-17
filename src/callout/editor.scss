@@ -1,4 +1,5 @@
 .lunar-callout {
+
 	.lunar-callout__text[data-rich-text-placeholder]::before {
 		color: var( --color-text-muted, currentColor );
 		opacity: 0.75;

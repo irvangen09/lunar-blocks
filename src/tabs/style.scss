@@ -58,13 +58,14 @@
 		color: var( --color-text, inherit );
 	}
 
-	&[ aria-selected='true' ] {
+	&[aria-selected="true"] {
 		color: var( --color-accent, currentColor );
 		border-bottom-color: var( --color-accent, currentColor );
 	}
 }
 
 @media ( prefers-reduced-motion: reduce ) {
+
 	.lunar-tabs__tab {
 		transition: none;
 	}

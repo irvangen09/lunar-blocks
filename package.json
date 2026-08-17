@@ -7,7 +7,9 @@
 	"scripts": {
 		"build": "wp-scripts build && node bin/strip-bom-from-css.js",
 		"start": "wp-scripts start",
-		"plugin-zip": "wp-scripts plugin-zip && node bin/strip-docs-from-zip.js"
+		"plugin-zip": "wp-scripts plugin-zip && node bin/strip-docs-from-zip.js",
+		"lint:js": "wp-scripts lint-js src",
+		"lint:css": "wp-scripts lint-style \"src/**/*.scss\""
 	},
 	"files": [
 		"build",

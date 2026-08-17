@@ -1,9 +1,17 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, useInnerBlocksProps, RichText, InspectorControls } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	useInnerBlocksProps,
+	RichText,
+	InspectorControls,
+} from '@wordpress/block-editor';
 import { PanelBody, SelectControl, TextControl } from '@wordpress/components';
 
 const HEADING_LEVEL_OPTIONS = [
-	{ label: __( 'No Heading (plain paragraph)', 'lunar-blocks' ), value: 'none' },
+	{
+		label: __( 'No Heading (plain paragraph)', 'lunar-blocks' ),
+		value: 'none',
+	},
 	{ label: 'H2', value: 'h2' },
 	{ label: 'H3', value: 'h3' },
 	{ label: 'H4', value: 'h4' },
@@ -28,7 +36,8 @@ export default function Edit( { attributes, setAttributes } ) {
 	);
 
 	const titleTagName = 'none' === headingLevel ? 'p' : headingLevel;
-	const iconClassName = icon && icon.startsWith( 'dashicons-' ) ? `dashicons ${ icon }` : icon;
+	const iconClassName =
+		icon && icon.startsWith( 'dashicons-' ) ? `dashicons ${ icon }` : icon;
 
 	return (
 		<>
@@ -38,7 +47,9 @@ export default function Edit( { attributes, setAttributes } ) {
 						label={ __( 'Heading Level', 'lunar-blocks' ) }
 						value={ headingLevel }
 						options={ HEADING_LEVEL_OPTIONS }
-						onChange={ ( value ) => setAttributes( { headingLevel: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { headingLevel: value } )
+						}
 						help={ __(
 							'This section title will be picked up by the Table of Contents (unlike the Infobox title, which is purely decorative).',
 							'lunar-blocks'
@@ -47,8 +58,13 @@ export default function Edit( { attributes, setAttributes } ) {
 					<TextControl
 						label={ __( 'Icon (optional)', 'lunar-blocks' ) }
 						value={ icon }
-						onChange={ ( value ) => setAttributes( { icon: value } ) }
-						placeholder={ __( 'e.g. dashicons-clock', 'lunar-blocks' ) }
+						onChange={ ( value ) =>
+							setAttributes( { icon: value } )
+						}
+						placeholder={ __(
+							'e.g. dashicons-clock',
+							'lunar-blocks'
+						) }
 						help={ __( 'Optional.', 'lunar-blocks' ) }
 					/>
 				</PanelBody>
@@ -57,14 +73,19 @@ export default function Edit( { attributes, setAttributes } ) {
 			<div { ...blockProps }>
 				<div className="lunar-accordion-item__header">
 					{ icon && (
-						<span className={ `lunar-accordion-item__icon ${ iconClassName }` } aria-hidden="true" />
+						<span
+							className={ `lunar-accordion-item__icon ${ iconClassName }` }
+							aria-hidden="true"
+						/>
 					) }
 					<RichText
 						tagName={ titleTagName }
 						className="lunar-accordion-item__title"
 						placeholder={ __( 'Section title…', 'lunar-blocks' ) }
 						value={ title }
-						onChange={ ( value ) => setAttributes( { title: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { title: value } )
+						}
 						allowedFormats={ [] }
 					/>
 				</div>

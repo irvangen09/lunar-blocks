@@ -15,7 +15,10 @@ export default function Edit( { attributes, setAttributes } ) {
 				className="lunar-timeline-item__label"
 				value={ label }
 				onChange={ ( value ) => setAttributes( { label: value } ) }
-				placeholder={ __( 'Label (optional — e.g. date, version, or a free-form marker)', 'lunar-blocks' ) }
+				placeholder={ __(
+					'Label (optional — e.g. date, version, or a free-form marker)',
+					'lunar-blocks'
+				) }
 				allowedFormats={ [] }
 			/>
 			<RichText
@@ -30,7 +33,9 @@ export default function Edit( { attributes, setAttributes } ) {
 				tagName="div"
 				className="lunar-timeline-item__description"
 				value={ description }
-				onChange={ ( value ) => setAttributes( { description: value } ) }
+				onChange={ ( value ) =>
+					setAttributes( { description: value } )
+				}
 				placeholder={ __( 'Description (optional)', 'lunar-blocks' ) }
 				allowedFormats={ [ 'core/bold', 'core/italic', 'core/link' ] }
 				multiline="p"

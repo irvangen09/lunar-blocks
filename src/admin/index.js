@@ -116,7 +116,10 @@ function SettingsApp() {
 				) }
 
 				{ blocks.map( ( block ) => (
-					<div className="lunar-blocks-settings__row" key={ block.slug }>
+					<div
+						className="lunar-blocks-settings__row"
+						key={ block.slug }
+					>
 						<CheckboxControl
 							label={ block.title }
 							checked={ block.enabled }

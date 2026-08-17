@@ -27,6 +27,7 @@
 // image stays visible at once. Viewing one image up close is the
 // Lightbox's job (tap an image), not this grid's.
 @media ( max-width: 768px ) {
+
 	.lunar-gallery {
 		grid-template-columns: repeat( 2, 1fr );
 		gap: 0.75rem;

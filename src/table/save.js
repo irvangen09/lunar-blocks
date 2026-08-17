@@ -6,7 +6,12 @@ function renderTable( { columns, rows } ) {
 			<thead>
 				<tr>
 					{ columns.map( ( col ) => (
-						<th key={ col.key } scope="col" data-key={ col.key } data-type={ col.type }>
+						<th
+							key={ col.key }
+							scope="col"
+							data-key={ col.key }
+							data-type={ col.type }
+						>
 							{ col.label }
 						</th>
 					) ) }
@@ -16,8 +21,14 @@ function renderTable( { columns, rows } ) {
 				{ rows.map( ( row, index ) => {
 					if ( row.isDivider ) {
 						return (
-							<tr key={ index } className="lunar-table__row--divider">
-								<td colSpan={ columns.length } className="lunar-table__divider-cell">
+							<tr
+								key={ index }
+								className="lunar-table__row--divider"
+							>
+								<td
+									colSpan={ columns.length }
+									className="lunar-table__divider-cell"
+								>
 									{ row.dividerLabel ?? '' }
 								</td>
 							</tr>
@@ -31,12 +42,21 @@ function renderTable( { columns, rows } ) {
 									const image = row[ col.key ];
 
 									return (
-										<td key={ col.key } data-label={ col.label } data-key={ col.key }>
+										<td
+											key={ col.key }
+											data-label={ col.label }
+											data-key={ col.key }
+										>
 											{ image?.url && (
 												<img
 													src={ image.url }
 													alt={ image.alt || '' }
-													style={ { width: ( col.imageWidth || 48 ) + 'px', height: 'auto' } }
+													style={ {
+														width:
+															( col.imageWidth ||
+																48 ) + 'px',
+														height: 'auto',
+													} }
 												/>
 											) }
 										</td>
@@ -44,7 +64,11 @@ function renderTable( { columns, rows } ) {
 								}
 
 								return (
-									<td key={ col.key } data-label={ col.label } data-key={ col.key }>
+									<td
+										key={ col.key }
+										data-label={ col.label }
+										data-key={ col.key }
+									>
 										{ row[ col.key ] ?? '' }
 									</td>
 								);
@@ -69,7 +93,10 @@ function renderCards( { columns, rows } ) {
 			{ rows.map( ( row, index ) => {
 				if ( row.isDivider ) {
 					return (
-						<div key={ index } className="lunar-table__cards-divider">
+						<div
+							key={ index }
+							className="lunar-table__cards-divider"
+						>
 							{ row.dividerLabel ?? '' }
 						</div>
 					);
@@ -87,12 +114,17 @@ function renderCards( { columns, rows } ) {
 									className="lunar-table__card-image"
 								/>
 							) : (
-								<div className="lunar-table__card-image-placeholder" aria-hidden="true" />
+								<div
+									className="lunar-table__card-image-placeholder"
+									aria-hidden="true"
+								/>
 							) }
 
 							<div className="lunar-table__card-heading">
 								<div className="lunar-table__card-title">
-									{ titleCol ? row[ titleCol.key ] ?? '' : '' }
+									{ titleCol
+										? row[ titleCol.key ] ?? ''
+										: '' }
 								</div>
 								{ subtitleCol && (
 									<div className="lunar-table__card-subtitle">
@@ -105,8 +137,13 @@ function renderCards( { columns, rows } ) {
 						{ detailCols.length > 0 && (
 							<div className="lunar-table__card-body">
 								{ detailCols.map( ( col ) => (
-									<div key={ col.key } className="lunar-table__card-detail" data-key={ col.key }>
-										<strong>{ col.label }:</strong> { row[ col.key ] ?? '' }
+									<div
+										key={ col.key }
+										className="lunar-table__card-detail"
+										data-key={ col.key }
+									>
+										<strong>{ col.label }:</strong>{ ' ' }
+										{ row[ col.key ] ?? '' }
 									</div>
 								) ) }
 							</div>
@@ -137,7 +174,9 @@ export default function save( { attributes } ) {
 
 	return (
 		<div { ...blockProps }>
-			{ isCardLayout ? renderCards( { columns, rows } ) : renderTable( { columns, rows } ) }
+			{ isCardLayout
+				? renderCards( { columns, rows } )
+				: renderTable( { columns, rows } ) }
 		</div>
 	);
 }

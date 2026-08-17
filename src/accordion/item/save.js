@@ -1,4 +1,8 @@
-import { useBlockProps, useInnerBlocksProps, RichText } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	useInnerBlocksProps,
+	RichText,
+} from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
 	const { title, headingLevel, icon } = attributes;
@@ -18,15 +22,23 @@ export default function save( { attributes } ) {
 	// sits inside <summary>, and the HTML spec restricts <summary> content
 	// to phrasing content or a single heading element.
 	const titleTagName = 'none' === headingLevel ? 'span' : headingLevel;
-	const iconClassName = icon && icon.startsWith( 'dashicons-' ) ? `dashicons ${ icon }` : icon;
+	const iconClassName =
+		icon && icon.startsWith( 'dashicons-' ) ? `dashicons ${ icon }` : icon;
 
 	return (
 		<details { ...blockProps }>
 			<summary className="lunar-accordion-item__summary">
 				{ icon && (
-					<span className={ `lunar-accordion-item__icon ${ iconClassName }` } aria-hidden="true" />
+					<span
+						className={ `lunar-accordion-item__icon ${ iconClassName }` }
+						aria-hidden="true"
+					/>
 				) }
-				<RichText.Content tagName={ titleTagName } className="lunar-accordion-item__title" value={ title } />
+				<RichText.Content
+					tagName={ titleTagName }
+					className="lunar-accordion-item__title"
+					value={ title }
+				/>
 			</summary>
 
 			<div { ...innerBlocksProps } />

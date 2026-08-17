@@ -1,4 +1,8 @@
-import { useBlockProps, useInnerBlocksProps, InnerBlocks } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	useInnerBlocksProps,
+	InnerBlocks,
+} from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'lunar-blocks/definition-item' ];
 

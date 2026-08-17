@@ -25,7 +25,7 @@
 	}
 
 	&::after {
-		content: '+';
+		content: "+";
 		margin-left: auto;
 		color: var( --color-accent, currentColor );
 		font-family: var( --font-mono, monospace );
@@ -37,8 +37,8 @@
 	}
 }
 
-.lunar-toc[ open ] > .lunar-toc__summary::after {
-	content: '\2212';
+.lunar-toc[open] > .lunar-toc__summary::after {
+	content: "\2212";
 }
 
 .lunar-toc__icon {

@@ -11,7 +11,7 @@
 	border-radius: var( --radius-card, 8px );
 }
 
-.lunar-tabs-item__label[ data-rich-text-placeholder ]::before {
+.lunar-tabs-item__label[data-rich-text-placeholder]::before {
 	color: var( --color-text-muted, currentColor );
 	opacity: 0.75;
 }

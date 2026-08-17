@@ -1,4 +1,8 @@
-import { useBlockProps, useInnerBlocksProps, RichText } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	useInnerBlocksProps,
+	RichText,
+} from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
 	const { name, headingLevel, icon, imageUrl, imageAlt } = attributes;
@@ -14,7 +18,8 @@ export default function save( { attributes } ) {
 	const nameTagName = 'none' === headingLevel ? 'p' : headingLevel;
 
 	// Same as edit.js — dashicon auto-detection needs the extra base class.
-	const iconClassName = icon && icon.startsWith( 'dashicons-' ) ? `dashicons ${ icon }` : icon;
+	const iconClassName =
+		icon && icon.startsWith( 'dashicons-' ) ? `dashicons ${ icon }` : icon;
 
 	return (
 		<div { ...blockProps }>
@@ -24,8 +29,17 @@ export default function save( { attributes } ) {
 				</div>
 			) }
 			<div className="lunar-infobox__header">
-				{ icon && <span className={ `lunar-infobox__icon ${ iconClassName }` } aria-hidden="true" /> }
-				<RichText.Content tagName={ nameTagName } className="lunar-infobox__name" value={ name } />
+				{ icon && (
+					<span
+						className={ `lunar-infobox__icon ${ iconClassName }` }
+						aria-hidden="true"
+					/>
+				) }
+				<RichText.Content
+					tagName={ nameTagName }
+					className="lunar-infobox__name"
+					value={ name }
+				/>
 			</div>
 			<dl { ...innerBlocksProps } />
 		</div>

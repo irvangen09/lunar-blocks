@@ -1,5 +1,9 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, RichText, InspectorControls } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	RichText,
+	InspectorControls,
+} from '@wordpress/block-editor';
 import { PanelBody, RadioControl, SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { store as coreStore } from '@wordpress/core-data';
@@ -38,8 +42,13 @@ export default function Edit( { attributes, setAttributes } ) {
 			const { getEntityRecords, isResolving } = select( coreStore );
 
 			return {
-				fieldTerms: getEntityRecords( 'taxonomy', restBase, query ) || [],
-				isLoadingTerms: isResolving( 'getEntityRecords', [ 'taxonomy', restBase, query ] ),
+				fieldTerms:
+					getEntityRecords( 'taxonomy', restBase, query ) || [],
+				isLoadingTerms: isResolving( 'getEntityRecords', [
+					'taxonomy',
+					restBase,
+					query,
+				] ),
 			};
 		},
 		[ fieldSource ]
@@ -47,20 +56,27 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	const fieldOptions = [
 		{ label: __( '— Select —', 'lunar-blocks' ), value: 0 },
-		...fieldTerms.map( ( term ) => ( { label: term.name, value: term.id } ) ),
+		...fieldTerms.map( ( term ) => ( {
+			label: term.name,
+			value: term.id,
+		} ) ),
 	];
 
 	const handleFieldChange = ( newValue ) => {
 		const newTermId = Number( newValue );
-		const matchedTerm = fieldTerms.find( ( term ) => term.id === newTermId );
+		const matchedTerm = fieldTerms.find(
+			( term ) => term.id === newTermId
+		);
 		setAttributes( {
 			fieldSourceId: newTermId,
 			fieldSourceLabel: matchedTerm ? matchedTerm.name : '',
 		} );
 	};
 
-	const displayLabel = fieldSourceLabel || __( '— Select a field —', 'lunar-blocks' );
-	const fieldSelectLabel = fieldSource?.label || __( 'Field', 'lunar-blocks' );
+	const displayLabel =
+		fieldSourceLabel || __( '— Select a field —', 'lunar-blocks' );
+	const fieldSelectLabel =
+		fieldSource?.label || __( 'Field', 'lunar-blocks' );
 
 	return (
 		<>
@@ -70,13 +86,24 @@ export default function Edit( { attributes, setAttributes } ) {
 						label={ __( 'Field Mode', 'lunar-blocks' ) }
 						selected={ mode }
 						options={ [
-							{ label: __( 'Custom (manual label)', 'lunar-blocks' ), value: 'custom' },
 							{
-								label: __( 'Linked (synced to filters)', 'lunar-blocks' ),
+								label: __(
+									'Custom (manual label)',
+									'lunar-blocks'
+								),
+								value: 'custom',
+							},
+							{
+								label: __(
+									'Linked (synced to filters)',
+									'lunar-blocks'
+								),
 								value: 'linked',
 							},
 						] }
-						onChange={ ( newMode ) => setAttributes( { mode: newMode } ) }
+						onChange={ ( newMode ) =>
+							setAttributes( { mode: newMode } )
+						}
 					/>
 					{ isLinked && fieldSource && (
 						<SelectControl
@@ -92,7 +119,12 @@ export default function Edit( { attributes, setAttributes } ) {
 						/>
 					) }
 					{ isLinked && ! fieldSource && (
-						<p>{ __( 'No field source is currently available.', 'lunar-blocks' ) }</p>
+						<p>
+							{ __(
+								'No field source is currently available.',
+								'lunar-blocks'
+							) }
+						</p>
 					) }
 				</PanelBody>
 			</InspectorControls>
@@ -107,7 +139,9 @@ export default function Edit( { attributes, setAttributes } ) {
 						className="lunar-infobox-item__label"
 						placeholder={ __( 'Label', 'lunar-blocks' ) }
 						value={ label }
-						onChange={ ( newLabel ) => setAttributes( { label: newLabel } ) }
+						onChange={ ( newLabel ) =>
+							setAttributes( { label: newLabel } )
+						}
 						allowedFormats={ [] }
 					/>
 				) }
@@ -116,7 +150,9 @@ export default function Edit( { attributes, setAttributes } ) {
 					className="lunar-infobox-item__value"
 					placeholder={ __( 'Value', 'lunar-blocks' ) }
 					value={ value }
-					onChange={ ( newValue ) => setAttributes( { value: newValue } ) }
+					onChange={ ( newValue ) =>
+						setAttributes( { value: newValue } )
+					}
 				/>
 			</div>
 		</>
