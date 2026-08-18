@@ -162,7 +162,10 @@ import { __ } from '@wordpress/i18n';
 		} );
 	}
 
-	function initFilter( wrapperEl, tableEl ) {
+	// Builds the search box shared by both the table and card layouts —
+	// same markup and attributes either way, only what happens on
+	// input (and where the box gets inserted) differs.
+	function createSearchInput( onInput ) {
 		const searchWrap = document.createElement( 'div' );
 		searchWrap.className = 'lunar-table__filter';
 
@@ -178,12 +181,21 @@ import { __ } from '@wordpress/i18n';
 			__( 'Search within this table', 'lunar-blocks' )
 		);
 
-		searchWrap.appendChild( input );
-		wrapperEl.insertBefore( searchWrap, tableEl );
-
 		input.addEventListener( 'input', function () {
-			applyFilter( tableEl, input.value.trim().toLowerCase() );
+			onInput( input.value.trim().toLowerCase() );
 		} );
+
+		searchWrap.appendChild( input );
+
+		return searchWrap;
+	}
+
+	function initFilter( wrapperEl, tableEl ) {
+		const searchWrap = createSearchInput( function ( query ) {
+			applyFilter( tableEl, query );
+		} );
+
+		wrapperEl.insertBefore( searchWrap, tableEl );
 	}
 
 	// Card layout (Style 2) has no clickable header, so only search
@@ -222,27 +234,11 @@ import { __ } from '@wordpress/i18n';
 	}
 
 	function initCardFilter( wrapperEl, cardsEl ) {
-		const searchWrap = document.createElement( 'div' );
-		searchWrap.className = 'lunar-table__filter';
-
-		const input = document.createElement( 'input' );
-		input.type = 'search';
-		input.className = 'lunar-table__filter-input';
-		input.setAttribute(
-			'placeholder',
-			__( 'Search this table…', 'lunar-blocks' )
-		);
-		input.setAttribute(
-			'aria-label',
-			__( 'Search within this table', 'lunar-blocks' )
-		);
-
-		searchWrap.appendChild( input );
-		wrapperEl.insertBefore( searchWrap, cardsEl );
-
-		input.addEventListener( 'input', function () {
-			applyCardFilter( cardsEl, input.value.trim().toLowerCase() );
+		const searchWrap = createSearchInput( function ( query ) {
+			applyCardFilter( cardsEl, query );
 		} );
+
+		wrapperEl.insertBefore( searchWrap, cardsEl );
 	}
 
 	document

@@ -1,0 +1,5 @@
+// Plugin-wide mobile breakpoint, used by any block whose layout needs to
+// adapt on small screens (Accordion, Gallery, Table). Not a design token —
+// there's no matching CSS custom property for this, it's a build-time
+// value shared purely to avoid three independent copies of the same number.
+$breakpoint-mobile: 768px;

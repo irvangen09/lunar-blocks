@@ -1,3 +1,5 @@
+@use "../shared/breakpoints" as *;
+
 .lunar-accordion {
 	margin: 1.25em 0;
 	border-top: 1px solid var( --color-border, #ddd );
@@ -61,7 +63,7 @@
  * controlled by view.js (native "open" attribute), so this only needs
  * to handle the visual side — hide the chevron, disable click interaction.
  */
-@media ( min-width: 768px ) {
+@media ( min-width: $breakpoint-mobile ) {
 
 	.lunar-accordion-item__summary {
 		cursor: default;

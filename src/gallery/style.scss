@@ -1,3 +1,5 @@
+@use "../shared/breakpoints" as *;
+
 // The wrapper gets its own visual identity (border + padding + surface)
 // so Gallery reads as clearly different from a plain Image block.
 .lunar-gallery {
@@ -26,7 +28,7 @@
 // a carousel — keeping the familiar overview-grid behavior where every
 // image stays visible at once. Viewing one image up close is the
 // Lightbox's job (tap an image), not this grid's.
-@media ( max-width: 768px ) {
+@media ( max-width: $breakpoint-mobile ) {
 
 	.lunar-gallery {
 		grid-template-columns: repeat( 2, 1fr );
