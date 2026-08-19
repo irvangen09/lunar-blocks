@@ -7,6 +7,31 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [1.4.1] - 2026-08-18
+
+A maintenance release following a full clean-code audit of the entire plugin (structure, build pipeline, PHP, JavaScript, CSS, integration contract compliance, HTML/accessibility, Gutenberg best practices, performance, and maintainability). No new blocks or attributes — every change here is a fix or an internal cleanup.
+
+### Fixed
+- `uninstall.php` was missing from the packaged plugin zip, so the `lunar_blocks_disabled_blocks` option was never cleaned up when the plugin was deleted from a site. It's now correctly included.
+- A stray UTF-8 BOM in the compiled CSS for Accordion, Table, and Table of Contents could cause the first CSS rule in the file to be misread by some browsers/proxies — most visibly, the Table of Contents box sometimes failed to pick up its background/border styling. Compiled CSS is now stripped of any leading BOM on every build.
+- Script translations (`wp_set_script_translations()`) weren't being registered for `viewScript` handles, so Table's search box and Gallery's lightbox labels were never picked up for translation — only editor-side strings were. Both script types are now covered.
+- The Infobox field-sync REST handler didn't skip post revisions/autosaves the way its `save_post` counterpart already did; it now shares the same guard.
+- The block settings admin page showed a spinner indefinitely if the initial request for the block list failed, with no explanation. It now shows an error notice instead.
+- Legacy fallback colors on the Version/Patch Tag format — left over from before the plugin's neutral-fallback color convention was established — are now aligned with the same palette used by Callout and the rest of the plugin.
+
+### Changed
+- The Steps child block was renamed from `lunar-blocks/step` to `lunar-blocks/steps-item`, matching the `{parent}-item` naming used by every other block family (Accordion Item, Tabs Item, and so on). Its CSS class followed the same rename, from `.lunar-step` to `.lunar-steps-item`.
+- `Heading_Injector` now reuses the existing block-detection logic in `Registry` instead of duplicating it.
+- Block discovery (used by both registration and the settings page) is now cached, invalidated automatically on a plugin version change, and skipped entirely when `WP_DEBUG` is on so local development always sees a fresh scan.
+
+### Removed
+- A stray duplicate copy of Accordion's `view.js`, left behind in the wrong folder since an early build, that was never actually loaded by anything.
+
+### Developer
+- Added `.stylelintrc.json`, adjusting a handful of stylistic rules to match conventions already used consistently throughout the codebase (spacing inside `var()`, and the `currentColor` keyword casing), while keeping the rest of the WordPress default ruleset intact.
+- Added `lint:js` and `lint:css` npm scripts.
+- Fixed thousands of line-ending and formatting inconsistencies across the JavaScript and CSS source flagged by the above.
+
 ## [1.4.0] - 2026-08-13
 
 ### Added
