@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-10-10
+
+### Fixed
+
+- The selected tab's underline in the Tabs block is now fully visible on every screen, and the tab row no longer shows a small scrollbar.
+- No outline box appears around a tab, a panel, or an Accordion title when it is clicked or tapped. The outline for keyboard navigation is unchanged.
+
 ## [0.4.0] - 2026-10-10
 
 ### Added

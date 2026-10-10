@@ -2,7 +2,7 @@
 Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
 Requires PHP: 8.0
-Stable tag: 0.4.0
+Stable tag: 0.4.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,11 @@ Yes. Open Settings > Moon Blocks > Blocks and switch off any block. Turning off 
 Yes. Open Settings > Moon Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme.
 
 == Changelog ==
+
+= 0.4.1 =
+
+* Fixed the selected tab's underline in the Tabs block: it is now fully visible on every screen, and the tab row no longer shows a small scrollbar.
+* Fixed an outline box appearing around a tab, a panel, or an Accordion title when it is clicked or tapped. The outline for keyboard navigation is unchanged.
 
 = 0.4.0 =
 
