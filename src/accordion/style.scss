@@ -37,6 +37,10 @@
 			transition: transform var(--moon-duration-fast) ease;
 		}
 
+		&:focus:not(:focus-visible) {
+			outline: none;
+		}
+
 		&:focus-visible {
 			outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
 			outline-offset: var(--moon-focus-ring-offset);
