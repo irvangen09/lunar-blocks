@@ -1,0 +1,170 @@
+@use "../shared/breakpoints" as *;
+
+.moon-infobox {
+
+	/* Dividers between rows and next to the image are lighter than the frame. */
+	--moon-infobox-line: var(--moon-border-width) solid color-mix(in srgb, var(--moon-color-border) 50%, transparent);
+
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: minmax(0, 36%) minmax(0, 1fr);
+
+	/* Vertical only: constrained layouts center blocks with inline margins. */
+	margin-block: var(--moon-space-5);
+	border: var(--moon-border);
+	border-radius: var(--moon-radius);
+	overflow: hidden;
+	color: inherit;
+	font-family: inherit;
+
+	&.moon-infobox--no-image {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	/* Themes often style figures, images, headings, and lists; reset them. */
+	.moon-infobox__media {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0;
+		padding: var(--moon-space-4);
+		background: var(--moon-color-surface);
+		border-inline-end: var(--moon-infobox-line);
+	}
+
+	.moon-infobox__image {
+		display: block;
+		box-sizing: border-box;
+		inline-size: 100%;
+
+		/* 192px; no token for a frame width. */
+		max-inline-size: 12rem;
+		block-size: auto;
+		margin: 0;
+		aspect-ratio: 3 / 4;
+		object-fit: contain;
+		border-radius: var(--moon-radius);
+	}
+
+	.moon-infobox__body {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+	}
+
+	.moon-infobox__title {
+		margin: 0;
+		padding: var(--moon-space-3) var(--moon-space-4);
+		border: 0;
+		border-block-end: var(--moon-border);
+		background: none;
+		color: inherit;
+		font-family: inherit;
+		font-size: var(--moon-font-size-lg);
+		font-weight: var(--moon-font-weight-strong);
+		line-height: var(--moon-line-height-tight);
+
+		/* Heading styles from themes, such as capitals, must not reach the title. */
+		letter-spacing: normal;
+		text-transform: none;
+	}
+
+	/* Rows share the height left over, so the box never has empty space. */
+	.moon-infobox__rows {
+
+		/* No token fits a column width; 11rem leaves room for an icon. */
+		--moon-infobox-label-width: 9rem;
+
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		margin: 0;
+		padding: 0;
+
+		&:has(.moon-infobox-item__icon) {
+			--moon-infobox-label-width: 11rem;
+		}
+	}
+
+	.moon-infobox-item {
+		display: grid;
+		flex: 1 1 auto;
+		grid-template-columns: var(--moon-infobox-label-width) minmax(0, 1fr);
+		align-items: center;
+		margin: 0;
+		padding: 0;
+	}
+
+	.moon-infobox-item + .moon-infobox-item {
+		border-block-start: var(--moon-infobox-line);
+	}
+
+	.moon-infobox-item__label {
+		display: flex;
+		align-items: center;
+		gap: var(--moon-space-2);
+		margin: 0;
+		padding: var(--moon-space-3) var(--moon-space-4);
+		color: var(--moon-color-text-muted);
+		font-size: var(--moon-font-size-sm);
+		font-weight: var(--moon-font-weight-strong);
+		line-height: var(--moon-line-height-tight);
+	}
+
+	.moon-infobox-item__icon {
+		flex: none;
+
+		/* Scales with the label text; no token sizes an icon against text. */
+		inline-size: 1em;
+		block-size: 1em;
+		font-size: 1.25em;
+		color: var(--moon-color-primary);
+	}
+
+	.moon-infobox-item__value {
+		margin: 0;
+		padding-block: var(--moon-space-3);
+		padding-inline: 0 var(--moon-space-4);
+		font-size: var(--moon-font-size-md);
+		overflow-wrap: anywhere;
+	}
+
+	.moon-infobox-item__value a {
+		color: var(--moon-color-primary);
+		text-decoration: underline;
+
+		/* Keeps the underline clear of descenders; no token for it. */
+		text-underline-offset: 0.2em;
+
+		&:focus:not(:focus-visible) {
+			outline: none;
+		}
+
+		&:focus-visible {
+			outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
+			outline-offset: var(--moon-focus-ring-offset);
+		}
+	}
+}
+
+@media (max-width: $moon-breakpoint-mobile) {
+
+	.moon-infobox {
+		grid-template-columns: minmax(0, 1fr);
+
+		.moon-infobox__media {
+			border-inline-end: 0;
+			border-block-end: var(--moon-infobox-line);
+		}
+
+		.moon-infobox__rows,
+		.moon-infobox__rows:has(.moon-infobox-item__icon) {
+			--moon-infobox-label-width: 8rem;
+		}
+
+		/* Icons show on desktop only. */
+		.moon-infobox-item__icon {
+			display: none;
+		}
+	}
+}
