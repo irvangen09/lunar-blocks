@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "moon-blocks/infobox-item",
+  "title": "Moon Infobox Item",
+  "category": "moon-blocks",
+  "description": "One row of an infobox: an optional icon, a label, and a value.",
+  "parent": [ "moon-blocks/infobox" ],
+  "textdomain": "moon-blocks",
+  "attributes": {
+    "icon": {
+      "type": "string",
+      "default": ""
+    },
+    "label": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": ".moon-infobox-item__label-text"
+    },
+    "value": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": ".moon-infobox-item__value"
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  }
+}
