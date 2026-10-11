@@ -1,7 +1,5 @@
 import { RichText, useBlockProps } from '@wordpress/block-editor';
-
-// Only Dashicons class names are written to the markup, never free text.
-export const ICON_PATTERN = /^dashicons-[a-z0-9-]+$/;
+import { ICON_PATTERN } from '../../shared/icon';
 
 export default function save( { attributes } ) {
 	const { icon, label, value } = attributes;
