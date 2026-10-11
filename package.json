@@ -1,6 +1,6 @@
 {
   "name": "moon-blocks",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "A lightweight collection of Gutenberg blocks for documentation, wiki, and knowledge base websites that adapts to any WordPress theme.",
   "author": "Irvan Noerfazri",
   "license": "GPL-2.0-or-later",
@@ -32,5 +32,8 @@
     "@wordpress/element": "^6.33.1",
     "@wordpress/i18n": "^6.6.1",
     "@wordpress/scripts": "^36.0.0"
+  },
+  "dependencies": {
+    "package-lock": "^1.0.5"
   }
 }
