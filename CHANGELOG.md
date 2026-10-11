@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-12
+
+### Added
+
+- Infobox block: a single box with an optional image on the left and a table of labels and values on the right, under a title. Without an image, the table uses the full width. The rows share the height of the box, so it never leaves empty space.
+- Each Infobox row can have an icon, chosen by its Dashicons name. Icons are shown on wide screens only. On narrow screens the box becomes one column, with the image above the table.
+- The Infobox title can be plain text or a heading (H2 to H6). Values can use bold, italic, links, and line breaks.
+
 ## [0.4.1] - 2026-10-10
 
 ### Fixed

@@ -2,7 +2,7 @@
 Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
 Requires PHP: 8.0
-Stable tag: 0.4.1
+Stable tag: 0.5.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,7 @@ It is designed to blend into your site. Typography and colors come from your the
 
 * **Accordion** groups content into sections that visitors can open and close. Items can start open on wide screens and collapsed on mobile, and a link to an item opens it automatically.
 * **Callout** highlights a note, tip, warning, or important point. Each variant has its own icon and an editable label.
+* **Infobox** shows the key facts about one subject, such as a character, an item, or a place, in a single box: an optional image beside a table of labels and values, under a title. Each row can have an icon. On narrow screens the image moves above the table.
 * **Tabs** organizes content into panels that visitors switch between with a row of tabs. Tabs work with the keyboard, and a link to a tab, or to content inside it, opens that tab automatically. Without JavaScript, all panels are shown one after another.
 
 **Settings**
@@ -46,6 +47,12 @@ Yes. Open Settings > Moon Blocks > Blocks and switch off any block. Turning off 
 Yes. Open Settings > Moon Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme.
 
 == Changelog ==
+
+= 0.5.0 =
+
+* Added the Infobox block: a single box with an optional image on the left and a table of labels and values on the right, under a title. Without an image, the table uses the full width. The rows share the height of the box, so it never leaves empty space.
+* Each Infobox row can have an icon, chosen by its Dashicons name. Icons are shown on wide screens only. On narrow screens the box becomes one column, with the image above the table.
+* The Infobox title can be plain text or a heading (H2 to H6). Values can use bold, italic, links, and line breaks.
 
 = 0.4.1 =
 
