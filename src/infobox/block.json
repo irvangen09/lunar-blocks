@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "moon-blocks/infobox",
+  "title": "Moon Infobox",
+  "category": "moon-blocks",
+  "description": "A summary box with an optional image and a list of label and value rows, such as a character, item, or place profile.",
+  "keywords": [ "infobox", "facts", "summary", "profile" ],
+  "textdomain": "moon-blocks",
+  "attributes": {
+    "title": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": ".moon-infobox__title"
+    },
+    "headingLevel": {
+      "type": "string",
+      "enum": [ "none", "h2", "h3", "h4", "h5", "h6" ],
+      "default": "none"
+    },
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "imageUrl": {
+      "type": "string",
+      "source": "attribute",
+      "selector": ".moon-infobox__image",
+      "attribute": "src",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "source": "attribute",
+      "selector": ".moon-infobox__image",
+      "attribute": "alt",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": [ "moon-blocks-tokens", "dashicons", "file:./style-index.css" ]
+}
