@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "moon-blocks/info-list-requirement",
+  "title": "Moon Info List Requirement",
+  "category": "moon-blocks",
+  "description": "One item of an info list requirements section, with an icon marker that defaults to a check mark.",
+  "parent": [ "moon-blocks/info-list-requirements" ],
+  "textdomain": "moon-blocks",
+  "attributes": {
+    "icon": {
+      "type": "string",
+      "default": "dashicons-yes"
+    },
+    "text": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": ".moon-info-list-requirement__text"
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  }
+}
