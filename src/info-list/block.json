@@ -1,0 +1,16 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "moon-blocks/info-list",
+  "title": "Moon Info List",
+  "category": "moon-blocks",
+  "description": "A compact list of label and value rows, with optional requirements sections, such as event details and prerequisites.",
+  "keywords": [ "info", "list", "facts", "requirements" ],
+  "textdomain": "moon-blocks",
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": [ "moon-blocks-tokens", "dashicons", "file:./style-index.css" ]
+}
