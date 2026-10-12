@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "moon-blocks/info-list-item",
+  "title": "Moon Info List Item",
+  "category": "moon-blocks",
+  "description": "One row of an info list: an optional icon, a label, and a value.",
+  "parent": [ "moon-blocks/info-list" ],
+  "textdomain": "moon-blocks",
+  "attributes": {
+    "icon": {
+      "type": "string",
+      "default": ""
+    },
+    "label": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": ".moon-info-list-item__label-text"
+    },
+    "value": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": ".moon-info-list-item__value"
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  }
+}
