@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "moon-blocks/info-list-requirements",
+  "title": "Moon Info List Requirements",
+  "category": "moon-blocks",
+  "description": "A titled checklist section of an info list, with an optional count of its items.",
+  "parent": [ "moon-blocks/info-list" ],
+  "textdomain": "moon-blocks",
+  "attributes": {
+    "title": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": ".moon-info-list-requirements__title"
+    },
+    "showCount": {
+      "type": "boolean",
+      "default": true
+    },
+    "countText": {
+      "type": "string",
+      "source": "text",
+      "selector": ".moon-info-list-requirements__count",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  }
+}
