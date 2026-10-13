@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "moon-blocks/gallery-item",
+  "title": "Moon Gallery Item",
+  "category": "moon-blocks",
+  "description": "One image of a gallery, with an optional caption.",
+  "keywords": [ "gallery item", "image", "caption" ],
+  "parent": [ "moon-blocks/gallery" ],
+  "textdomain": "moon-blocks",
+  "attributes": {
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
+    },
+    "caption": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": ".moon-gallery-item__caption"
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  }
+}
