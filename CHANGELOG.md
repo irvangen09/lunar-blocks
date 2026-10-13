@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-13
+
+### Added
+
+- Info List block: a list of labels and values under a colored top line, with optional Requirements sections. Rows can be added in any order and mixed with Requirements sections.
+- Each Info List row can have an icon, chosen by its Dashicons name. Row icons are shown on wide screens only.
+- A Requirements section has a title and a list of items. Each item has a marker that defaults to a checkmark. You can type another Dashicons name, or leave the field empty for an item without a marker.
+- A Requirements section shows how many items it has, such as "2 requirements". The count follows the number of items automatically and can be turned off.
+
+### Changed
+
+- The icon field of an Infobox row now shares its code with the Info List icon fields. Its behavior is unchanged.
+
 ## [0.5.0] - 2026-10-12
 
 ### Added

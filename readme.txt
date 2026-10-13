@@ -2,7 +2,7 @@
 Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
 Requires PHP: 8.0
-Stable tag: 0.5.0
+Stable tag: 0.6.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,7 @@ It is designed to blend into your site. Typography and colors come from your the
 * **Accordion** groups content into sections that visitors can open and close. Items can start open on wide screens and collapsed on mobile, and a link to an item opens it automatically.
 * **Callout** highlights a note, tip, warning, or important point. Each variant has its own icon and an editable label.
 * **Infobox** shows the key facts about one subject, such as a character, an item, or a place, in a single box: an optional image beside a table of labels and values, under a title. Each row can have an icon. On narrow screens the image moves above the table.
+* **Info List** shows a compact list of labels and values for a page, such as the details of an event, with optional Requirements sections that hold checklist-style items. Each row can have an icon, and each requirement has a marker that defaults to a checkmark. The count of requirements is added for you and can be turned off.
 * **Tabs** organizes content into panels that visitors switch between with a row of tabs. Tabs work with the keyboard, and a link to a tab, or to content inside it, opens that tab automatically. Without JavaScript, all panels are shown one after another.
 
 **Settings**
@@ -47,6 +48,13 @@ Yes. Open Settings > Moon Blocks > Blocks and switch off any block. Turning off 
 Yes. Open Settings > Moon Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme.
 
 == Changelog ==
+
+= 0.6.0 =
+
+* Added the Info List block: a list of labels and values under a colored top line, with optional Requirements sections. Rows can be added in any order and mixed with Requirements sections.
+* Each Info List row can have an icon, chosen by its Dashicons name. Row icons are shown on wide screens only.
+* A Requirements section has a title and a list of items. Each item has a marker that defaults to a checkmark. You can type another Dashicons name, or leave the field empty for an item without a marker.
+* A Requirements section shows how many items it has, such as "2 requirements". The count follows the number of items automatically and can be turned off.
 
 = 0.5.0 =
 
