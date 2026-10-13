@@ -11,6 +11,8 @@
 	--moon-color-primary-subtle: color-mix(in srgb, var(--moon-color-primary) 10%, transparent);
 	--moon-color-surface: color-mix(in srgb, var(--moon-color-text) 4%, transparent);
 	--moon-color-border: color-mix(in srgb, var(--moon-color-text) 20%, transparent);
+	--moon-color-overlay: rgb(0 0 0 / 85%);
+	--moon-color-on-overlay: #f5f5f5;
 
 	/* Typography */
 	--moon-font-size-sm: 0.875em;
