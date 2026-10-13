@@ -15,10 +15,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - A Requirements section has a title and a list of items. Each item has a marker that defaults to a checkmark. You can type another Dashicons name, or leave the field empty for an item without a marker.
 - A Requirements section shows how many items it has, such as "2 requirements". The count follows the number of items automatically and can be turned off.
 
-### Changed
-
-- The icon field of an Infobox row now shares its code with the Info List icon fields. Its behavior is unchanged.
-
 ## [0.5.0] - 2026-10-12
 
 ### Added
