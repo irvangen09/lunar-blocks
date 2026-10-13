@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "moon-blocks/gallery",
+  "title": "Moon Gallery",
+  "category": "moon-blocks",
+  "description": "Shows a set of images in a grid, with a lightbox for viewing each one larger.",
+  "keywords": [ "gallery", "images", "grid", "lightbox" ],
+  "textdomain": "moon-blocks",
+  "attributes": {
+    "columns": {
+      "type": "number",
+      "enum": [ 2, 3, 4 ],
+      "default": 3
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": [ "wide", "full" ]
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": [ "moon-blocks-tokens", "file:./style-index.css" ],
+  "viewScript": "file:./view.js"
+}
