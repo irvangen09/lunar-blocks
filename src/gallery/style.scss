@@ -1,0 +1,234 @@
+@use "../shared/breakpoints" as *;
+
+.moon-gallery {
+
+	/* Number of columns on wide screens; the column modifiers below set it. */
+	--moon-gallery-columns: 3;
+
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: repeat(var(--moon-gallery-columns), minmax(0, 1fr));
+	gap: var(--moon-space-4);
+	padding: var(--moon-space-4);
+	border: var(--moon-border);
+	border-radius: var(--moon-radius);
+	background: var(--moon-color-surface);
+
+	&.moon-gallery--columns-2 {
+		--moon-gallery-columns: 2;
+	}
+
+	&.moon-gallery--columns-3 {
+		--moon-gallery-columns: 3;
+	}
+
+	&.moon-gallery--columns-4 {
+		--moon-gallery-columns: 4;
+	}
+
+	/* Front end only: the editor keeps an empty gallery so items can be added. */
+	&:not(.wp-block):not(:has(.moon-gallery-item)) {
+		display: none;
+	}
+}
+
+/* Small screens keep a grid of two columns instead of a carousel. */
+@media (max-width: $moon-breakpoint-mobile) {
+
+	.moon-gallery {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--moon-space-3);
+	}
+}
+
+/* Themes often style figures, links and images, so reset them explicitly. */
+.moon-gallery-item {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+}
+
+.moon-gallery-item__link {
+	display: block;
+	overflow: hidden;
+	border: var(--moon-border);
+	border-radius: var(--moon-radius);
+	background: var(--moon-color-surface);
+	text-decoration: none;
+
+	&:focus:not(:focus-visible) {
+		outline: none;
+	}
+
+	&:focus-visible {
+		outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
+		outline-offset: var(--moon-focus-ring-offset);
+	}
+}
+
+.moon-gallery-item__image {
+	display: block;
+	box-sizing: border-box;
+	inline-size: 100%;
+	max-inline-size: 100%;
+
+	/* WordPress adds a height attribute; auto lets the ratio decide. */
+	block-size: auto;
+	aspect-ratio: 4 / 3;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	object-fit: cover;
+}
+
+.moon-gallery-item__caption {
+	margin: var(--moon-space-2) 0 0;
+	padding: 0;
+	color: var(--moon-color-text-muted);
+	font-family: inherit;
+	font-size: var(--moon-font-size-sm);
+	text-align: center;
+}
+
+/* Lightbox: built by view.js and added to the page, outside the gallery. */
+body.moon-gallery-lightbox-open {
+	overflow: hidden;
+}
+
+.moon-gallery-lightbox {
+	box-sizing: border-box;
+	inline-size: 100%;
+	block-size: 100%;
+	max-inline-size: none;
+	max-block-size: none;
+	margin: 0;
+	padding: var(--moon-space-6);
+	border: 0;
+	background: var(--moon-color-overlay);
+	color: var(--moon-color-on-overlay);
+	font-family: inherit;
+	font-size: var(--moon-font-size-md);
+
+	/* The dialog covers the screen itself; the browser backdrop adds nothing. */
+	&::backdrop {
+		background: transparent;
+	}
+
+	/* Only while open: a display value on the base rule would show it closed. */
+	&[open] {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+.moon-gallery-lightbox__figure {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	/* Viewport limits keep the picture and caption on screen; no token fits. */
+	max-inline-size: min(90vw, 1100px);
+	max-block-size: 90vh;
+	margin: 0;
+	padding: 0;
+}
+
+.moon-gallery-lightbox__image {
+	display: block;
+	inline-size: auto;
+	max-inline-size: 100%;
+	block-size: auto;
+	max-block-size: 80vh;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: var(--moon-radius);
+	object-fit: contain;
+}
+
+.moon-gallery-lightbox__caption {
+	margin: var(--moon-space-3) 0 0;
+	padding: 0;
+	font-family: inherit;
+	font-size: var(--moon-font-size-md);
+	text-align: center;
+
+	&[hidden] {
+		display: none;
+	}
+}
+
+/* Themes often style buttons, so reset them explicitly. */
+.moon-gallery-lightbox__close,
+.moon-gallery-lightbox__prev,
+.moon-gallery-lightbox__next {
+	position: absolute;
+	box-sizing: content-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: var(--moon-space-2);
+	border: 0;
+	border-radius: var(--moon-radius);
+	background: none;
+	box-shadow: none;
+	color: inherit;
+	font: inherit;
+	line-height: 1;
+	appearance: none;
+	cursor: pointer;
+	touch-action: manipulation;
+
+	&:hover {
+		background: none;
+		color: inherit;
+	}
+
+	&:focus:not(:focus-visible) {
+		outline: none;
+	}
+
+	&:focus-visible {
+		outline: var(--moon-focus-ring-width) solid var(--moon-color-on-overlay);
+		outline-offset: var(--moon-focus-ring-offset);
+	}
+
+	svg {
+		display: block;
+		inline-size: var(--moon-space-6);
+		block-size: var(--moon-space-6);
+		fill: none;
+		stroke: currentcolor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+}
+
+.moon-gallery-lightbox__close {
+	inset-block-start: var(--moon-space-4);
+	inset-inline-end: var(--moon-space-4);
+}
+
+/* Left and right stay physical: the arrows point that way in any direction. */
+.moon-gallery-lightbox__prev,
+.moon-gallery-lightbox__next {
+	top: 50%;
+	transform: translateY(-50%);
+
+	&[hidden] {
+		display: none;
+	}
+}
+
+.moon-gallery-lightbox__prev {
+	left: var(--moon-space-4);
+}
+
+.moon-gallery-lightbox__next {
+	right: var(--moon-space-4);
+}
