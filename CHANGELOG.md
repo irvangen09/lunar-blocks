@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-10-14
+
+### Added
+
+- Gallery block: images in a grid of two to four columns, each with an optional caption. Small screens always show two columns.
+- Clicking an image opens it larger, with Previous and Next buttons, the arrow keys, and Escape to close. Each gallery is its own group, and stepping past the last image continues from the first.
+- Each image has an Alternative text field in its settings. It applies to the gallery only, not to the Media Library.
+- Clicking an image with Ctrl, Cmd, or Shift held, or with the middle button, still opens the image file normally. Without JavaScript, an image opens its file.
+
 ## [0.6.0] - 2026-10-13
 
 ### Added
