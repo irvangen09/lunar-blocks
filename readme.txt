@@ -2,7 +2,7 @@
 Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
 Requires PHP: 8.0
-Stable tag: 0.6.0
+Stable tag: 0.7.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,7 @@ It is designed to blend into your site. Typography and colors come from your the
 
 * **Accordion** groups content into sections that visitors can open and close. Items can start open on wide screens and collapsed on mobile, and a link to an item opens it automatically.
 * **Callout** highlights a note, tip, warning, or important point. Each variant has its own icon and an editable label.
+* **Gallery** shows a set of images in a grid of two to four columns, each with an optional caption. Visitors click an image to view it larger, then move between the images of that gallery with buttons or the arrow keys. Small screens always show two columns. Each image has its own alternative text field.
 * **Infobox** shows the key facts about one subject, such as a character, an item, or a place, in a single box: an optional image beside a table of labels and values, under a title. Each row can have an icon. On narrow screens the image moves above the table.
 * **Info List** shows a compact list of labels and values for a page, such as the details of an event, with optional Requirements sections that hold checklist-style items. Each row can have an icon, and each requirement has a marker that defaults to a checkmark. The count of requirements is added for you and can be turned off.
 * **Tabs** organizes content into panels that visitors switch between with a row of tabs. Tabs work with the keyboard, and a link to a tab, or to content inside it, opens that tab automatically. Without JavaScript, all panels are shown one after another.
@@ -48,6 +49,13 @@ Yes. Open Settings > Moon Blocks > Blocks and switch off any block. Turning off 
 Yes. Open Settings > Moon Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme.
 
 == Changelog ==
+
+= 0.7.0 =
+
+* Added the Gallery block: images in a grid of two to four columns, each with an optional caption. Small screens always show two columns.
+* Clicking an image opens it larger, with Previous and Next buttons, the arrow keys, and Escape to close. Each gallery is its own group, and stepping past the last image continues from the first.
+* Each image has an Alternative text field in its settings. It applies to the gallery only, not to the Media Library.
+* Clicking an image with Ctrl, Cmd, or Shift held, or with the middle button, still opens the image file normally. Without JavaScript, an image opens its file.
 
 = 0.6.0 =
 
