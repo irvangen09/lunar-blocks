@@ -1,0 +1,29 @@
+.moon-gallery {
+
+	/* Core places the appender over the last cell; give it its own row. */
+	> .block-list-appender {
+		position: static;
+		grid-column: 1 / -1;
+		margin: 0;
+	}
+
+	/* The link that frames the image on the front end is absent here. */
+	.moon-gallery-item > .moon-gallery-item__image {
+		border: var(--moon-border);
+		border-radius: var(--moon-radius);
+	}
+
+	/* Core fills this icon; the gallery icons are outlines. */
+	.moon-gallery-item .moon-gallery-item__placeholder-icon {
+		flex: none;
+		inline-size: var(--moon-space-5);
+		block-size: var(--moon-space-5);
+		fill: none;
+	}
+
+	/* Muted token already fades the text; reset core's extra opacity. */
+	.moon-gallery-item__caption [data-rich-text-placeholder]::after {
+		color: var(--moon-color-text-muted);
+		opacity: 1;
+	}
+}
