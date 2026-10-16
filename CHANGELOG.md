@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-10-16
+
+### Added
+
+- TOC block: a table of contents built from the headings of the post, from H2 to H6, nested by level. Add it once to a post or a template.
+- The table of contents appears only when the post has at least two headings. With fewer, nothing is shown, even if the block was added.
+- Headings get readable links based on their text, such as `#Planting_Guide`. Letters from any language are kept, repeated headings get `_2`, `_3`, and a link set with HTML Anchor is never changed.
+- Accordion item titles that are headings are listed too, and a link to one opens the item. A link to a heading inside a tab opens that tab. Headings inside an Infobox are left out.
+- The box can be opened and closed with a plus and minus button, follows the width and fonts of the theme, and highlights the section being read while scrolling.
+
 ## [0.7.0] - 2026-10-14
 
 ### Added
