@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - The table of contents appears only when the post has at least two headings. With fewer, nothing is shown, even if the block was added.
 - Headings get readable links based on their text, such as `#Planting_Guide`. Letters from any language are kept, repeated headings get `_2`, `_3`, and a link set with HTML Anchor is never changed.
 - Accordion item titles that are headings are listed too, and a link to one opens the item. A link to a heading inside a tab opens that tab. Headings inside an Infobox are left out.
-- The box can be opened and closed with a plus and minus button, follows the width and fonts of the theme, and highlights the section being read while scrolling.
+- The box starts closed and opens with a plus and minus button, follows the width and fonts of the theme, and highlights the section being read while scrolling.
 
 ## [0.7.0] - 2026-10-14
 

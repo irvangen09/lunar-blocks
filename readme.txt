@@ -22,7 +22,7 @@ It is designed to blend into your site. Typography and colors come from your the
 * **Infobox** shows the key facts about one subject, such as a character, an item, or a place, in a single box: an optional image beside a table of labels and values, under a title. Each row can have an icon. On narrow screens the image moves above the table.
 * **Info List** shows a compact list of labels and values for a page, such as the details of an event, with optional Requirements sections that hold checklist-style items. Each row can have an icon, and each requirement has a marker that defaults to a checkmark. The count of requirements is added for you and can be turned off.
 * **Tabs** organizes content into panels that visitors switch between with a row of tabs. Tabs work with the keyboard, and a link to a tab, or to content inside it, opens that tab automatically. Without JavaScript, all panels are shown one after another.
-* **TOC** adds a table of contents built from the headings of the post (H2 to H6), nested by level. It appears once the post has at least two headings, can be opened and closed, and highlights the section being read. Headings get readable links such as `#Planting_Guide`, and a link to a heading inside an Accordion item or a tab opens it automatically.
+* **TOC** adds a table of contents built from the headings of the post (H2 to H6), nested by level. It appears once the post has at least two headings, starts closed and can be opened with a click, and highlights the section being read. Headings get readable links such as `#Planting_Guide`, and a link to a heading inside an Accordion item or a tab opens it automatically.
 
 **Settings**
 
@@ -57,7 +57,7 @@ Yes. Open Settings > Moon Blocks > Appearance to set Primary, Surface, and Borde
 * The table of contents appears only when the post has at least two headings. With fewer, nothing is shown, even if the block was added.
 * Headings get readable links based on their text, such as `#Planting_Guide`. Letters from any language are kept, repeated headings get `_2`, `_3`, and a link you set yourself with HTML Anchor is never changed.
 * Accordion item titles that are headings are listed too, and a link to one opens the item. A link to a heading inside a tab opens that tab. Headings inside an Infobox are left out.
-* The box can be opened and closed with the plus and minus button. It follows the width and fonts of your theme, and the section being read is highlighted while you scroll.
+* The box starts closed and opens with the plus and minus button. It follows the width and fonts of your theme, and the section being read is highlighted while you scroll.
 
 = 0.7.0 =
 
