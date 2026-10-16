@@ -3,6 +3,7 @@
 namespace MoonBlocks\Core;
 
 use MoonBlocks\Blocks\BlockRegistry;
+use MoonBlocks\Blocks\Toc\Toc;
 use MoonBlocks\Services\DesignTokens;
 use MoonBlocks\Settings\SettingsPage;
 use MoonBlocks\Settings\SettingsRegistry;
@@ -17,6 +18,8 @@ class Plugin {
 
 		$blocks = new BlockRegistry( $settings );
 		$blocks->register();
+
+		( new Toc() )->register();
 
 		// The settings screen needs the full block list, including disabled blocks.
 		if ( is_admin() ) {
