@@ -1,0 +1,269 @@
+.moon-toc {
+
+	/* Width of the column that holds the current-section marker. */
+	--moon-toc-marker-width: var(--moon-space-3);
+
+	/* Extra indent per nesting level. */
+	--moon-toc-indent: var(--moon-space-5);
+
+	box-sizing: border-box;
+
+	/* Vertical only: constrained layouts center blocks with inline margins. */
+	margin-block: var(--moon-space-5);
+	border: var(--moon-border);
+	border-inline-start-width: var(--moon-border-width-strong);
+	border-inline-start-color: var(--moon-color-primary);
+	background: var(--moon-color-surface);
+	color: inherit;
+	font-family: inherit;
+	font-size: var(--moon-font-size-md);
+
+	/* Themes often style summary, lists and links, so reset them explicitly. */
+	.moon-toc__header {
+		display: flex;
+		align-items: center;
+		gap: var(--moon-space-2);
+		margin: 0;
+		padding: var(--moon-space-3) var(--moon-space-4);
+		border: 0;
+		border-block-end: var(--moon-border-width) dashed var(--moon-color-border);
+		background: none;
+		color: inherit;
+		font-family: inherit;
+		list-style: none;
+	}
+
+	summary.moon-toc__header {
+		cursor: pointer;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		&:focus:not(:focus-visible) {
+			outline: none;
+		}
+
+		&:focus-visible {
+			outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
+			outline-offset: calc(var(--moon-focus-ring-width) * -1);
+		}
+	}
+
+	&:not([open]) > .moon-toc__header {
+		border-block-end: 0;
+	}
+
+	.moon-toc__title {
+		min-width: 0;
+		margin: 0;
+		padding: 0;
+		font-size: var(--moon-font-size-md);
+		font-weight: var(--moon-font-weight-strong);
+	}
+
+	.moon-toc__count {
+		flex: none;
+		color: var(--moon-color-text-muted);
+		font-size: var(--moon-font-size-sm);
+	}
+
+	/* "+" closed, "−" open: two bars; the upright one hides while open. */
+	.moon-toc__toggle {
+		position: relative;
+		flex: none;
+		margin-inline-start: auto;
+		inline-size: var(--moon-space-3);
+		block-size: var(--moon-space-3);
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			background: var(--moon-color-primary);
+		}
+
+		&::before {
+			inset-inline: 0;
+			inset-block: 0;
+			margin-block: auto;
+			block-size: var(--moon-border-width-strong);
+		}
+
+		&::after {
+			inset-inline: 0;
+			inset-block: 0;
+			margin-inline: auto;
+			inline-size: var(--moon-border-width-strong);
+		}
+	}
+
+	&[open] > .moon-toc__header .moon-toc__toggle::after {
+		display: none;
+	}
+
+	.moon-toc__nav {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: none;
+	}
+
+	.moon-toc__list {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: none;
+		list-style: none;
+	}
+
+	.moon-toc__nav > .moon-toc__list {
+		padding-block: var(--moon-space-2);
+	}
+
+	.moon-toc__item {
+		position: relative;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: none;
+		list-style: none;
+	}
+
+	.moon-toc__link {
+		--moon-toc-offset: calc(var(--moon-toc-indent) * var(--moon-toc-depth, 0));
+
+		position: relative;
+		display: grid;
+		grid-template-columns: var(--moon-toc-marker-width) 1fr;
+		align-items: baseline;
+		margin: 0;
+		padding: var(--moon-space-1) var(--moon-space-4);
+		padding-inline-start: calc(var(--moon-space-4) + var(--moon-toc-offset));
+		border: 0;
+		background: none;
+		color: inherit;
+		font-family: inherit;
+		font-size: var(--moon-font-size-md);
+		line-height: var(--moon-line-height-tight);
+		text-decoration: none;
+		transition: color var(--moon-duration-fast) ease;
+
+		&:hover .moon-toc__text {
+			text-decoration: underline;
+			text-decoration-color: var(--moon-color-primary);
+			text-underline-offset: 0.2em;
+		}
+
+		&:focus:not(:focus-visible) {
+			outline: none;
+		}
+
+		&:focus-visible {
+			outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
+			outline-offset: calc(var(--moon-focus-ring-width) * -1);
+		}
+	}
+
+	.moon-toc__text {
+		min-width: 0;
+		overflow-wrap: anywhere;
+	}
+
+	/* The marker only shows on the section being read. */
+	.moon-toc__marker {
+		display: flex;
+		align-items: center;
+		align-self: stretch;
+	}
+
+	.moon-toc__link[aria-current="location"] {
+		background: var(--moon-color-primary-subtle);
+		font-weight: var(--moon-font-weight-strong);
+
+		.moon-toc__marker::before {
+			content: "";
+			inline-size: var(--moon-space-2);
+			block-size: var(--moon-space-3);
+			background: var(--moon-color-primary);
+			clip-path: polygon(0 0, 100% 50%, 0 100%);
+		}
+	}
+
+	/* Nested levels: smaller, muted, with branch lines. Depth sets the indent. */
+	.moon-toc__list--sub {
+		--moon-toc-depth: 1;
+
+		.moon-toc__list--sub {
+			--moon-toc-depth: 2;
+
+			.moon-toc__list--sub {
+				--moon-toc-depth: 3;
+
+				.moon-toc__list--sub {
+					--moon-toc-depth: 4;
+				}
+			}
+		}
+
+		> .moon-toc__item > .moon-toc__link {
+			color: var(--moon-color-text-muted);
+			font-size: var(--moon-font-size-sm);
+		}
+
+		> .moon-toc__item > .moon-toc__link[aria-current="location"] {
+			color: var(--moon-color-text);
+		}
+
+		/* The line runs the full height of every item except the last. */
+		> .moon-toc__item:not(:last-child)::before {
+			content: "";
+			position: absolute;
+			inset-block: 0;
+			inset-inline-start: calc(var(--moon-toc-indent) * var(--moon-toc-depth));
+			border-inline-start: var(--moon-border-width) solid var(--moon-color-border);
+		}
+
+		/* The last item's line stops at the middle of its own row. */
+		> .moon-toc__item:last-child > .moon-toc__link::before {
+			content: "";
+			position: absolute;
+			inset-block: 0 50%;
+			inset-inline-start: calc(var(--moon-toc-indent) * var(--moon-toc-depth));
+			border-inline-start: var(--moon-border-width) solid var(--moon-color-border);
+		}
+
+		/* The hook from the line to the text. */
+		> .moon-toc__item > .moon-toc__link::after {
+			content: "";
+			position: absolute;
+			inset-block-start: 50%;
+			inset-inline-start: calc(var(--moon-toc-indent) * var(--moon-toc-depth));
+			inline-size: var(--moon-space-3);
+			border-block-start: var(--moon-border-width) solid var(--moon-color-border);
+		}
+	}
+}
+
+/* Forced colors replace author backgrounds; system colors are kept. */
+@media (forced-colors: active) {
+
+	.moon-toc {
+		border-inline-start-color: CanvasText;
+
+		.moon-toc__toggle::before,
+		.moon-toc__toggle::after {
+			background: CanvasText;
+		}
+
+		.moon-toc__link[aria-current="location"] {
+			background: none;
+			outline: var(--moon-border-width-strong) solid Highlight;
+			outline-offset: calc(var(--moon-border-width-strong) * -1);
+
+			.moon-toc__marker::before {
+				background: CanvasText;
+			}
+		}
+	}
+}
