@@ -20,18 +20,10 @@ class TocRenderer {
 		}
 
 		$title = '' !== trim( $title ) ? trim( $title ) : __( 'Table of contents', 'moon-blocks' );
-		$count = count( $entries );
 
-		$html  = '<details ' . $wrapper_attributes . ' open>';
+		$html  = '<details ' . $wrapper_attributes . '>';
 		$html .= '<summary class="moon-toc__header">';
 		$html .= '<span class="moon-toc__title">' . esc_html( $title ) . '</span>';
-		$html .= '<span class="moon-toc__count">' . esc_html(
-			sprintf(
-				/* translators: %d: number of sections listed in the table of contents. */
-				_n( '%d section', '%d sections', $count, 'moon-blocks' ),
-				$count
-			)
-		) . '</span>';
 		$html .= '<span class="moon-toc__toggle" aria-hidden="true"></span>';
 		$html .= '</summary>';
 		$html .= '<nav class="moon-toc__nav" aria-label="' . esc_attr( $title ) . '">';
