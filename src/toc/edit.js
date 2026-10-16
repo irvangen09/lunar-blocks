@@ -1,4 +1,4 @@
-import { __, _n, sprintf } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { PlainText, useBlockProps } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 
@@ -122,7 +122,6 @@ export default function Edit( { attributes, setAttributes } ) {
 		[]
 	);
 	const entries = collect( blocks );
-	const count = entries.length;
 
 	return (
 		<div { ...blockProps }>
@@ -139,22 +138,8 @@ export default function Edit( { attributes, setAttributes } ) {
 					placeholder={ __( 'Table of contents', 'moon-blocks' ) }
 					aria-label={ __( 'Title', 'moon-blocks' ) }
 				/>
-				{ count >= MIN_ENTRIES && (
-					<span className="moon-toc__count">
-						{ sprintf(
-							/* translators: %d: number of sections listed in the table of contents. */
-							_n(
-								'%d section',
-								'%d sections',
-								count,
-								'moon-blocks'
-							),
-							count
-						) }
-					</span>
-				) }
 			</div>
-			{ count >= MIN_ENTRIES ? (
+			{ entries.length >= MIN_ENTRIES ? (
 				<nav className="moon-toc__nav">
 					<List nodes={ buildTree( entries ) } />
 				</nav>
