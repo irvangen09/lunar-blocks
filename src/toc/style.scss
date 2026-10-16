@@ -62,12 +62,6 @@
 		font-weight: var(--moon-font-weight-strong);
 	}
 
-	.moon-toc__count {
-		flex: none;
-		color: var(--moon-color-text-muted);
-		font-size: var(--moon-font-size-sm);
-	}
-
 	/* "+" closed, "−" open: two bars; the upright one hides while open. */
 	.moon-toc__toggle {
 		position: relative;
