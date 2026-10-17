@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "moon-blocks/table",
+  "title": "Moon Table",
+  "category": "moon-blocks",
+  "description": "A documentation table with grouped rows, optional sorting and search, and card layouts for small screens.",
+  "keywords": [ "table", "data", "grid", "comparison" ],
+  "textdomain": "moon-blocks",
+  "attributes": {
+    "preset": {
+      "type": "string",
+      "enum": [ "default", "preset-1", "preset-2", "preset-3", "preset-4" ],
+      "default": "default"
+    },
+    "columns": {
+      "type": "array",
+      "default": []
+    },
+    "rows": {
+      "type": "array",
+      "default": []
+    },
+    "enableSort": {
+      "type": "boolean",
+      "default": true
+    },
+    "enableFilter": {
+      "type": "boolean",
+      "default": true
+    },
+    "showCardNote": {
+      "type": "boolean",
+      "default": false
+    },
+    "showCardHighlight": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": [ "wide", "full" ],
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": [ "moon-blocks-tokens", "file:./style-index.css" ],
+  "viewScript": "file:./view.js"
+}
