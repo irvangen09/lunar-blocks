@@ -1,0 +1,85 @@
+.moon-table-editor {
+	overflow-x: auto;
+
+	.moon-table-editor__empty {
+		box-sizing: border-box;
+		padding: var(--moon-space-5);
+		text-align: center;
+		background: var(--moon-color-surface);
+		border: var(--moon-border-width) dashed var(--moon-color-border);
+		border-radius: var(--moon-radius);
+	}
+
+	.moon-table-editor__empty-fields {
+		display: flex;
+		gap: var(--moon-space-3);
+		justify-content: center;
+		margin-block-end: var(--moon-space-3);
+	}
+
+	/* Themes style table cells in the editor too, so spell out the basics. */
+	.moon-table-editor__grid {
+		border-collapse: collapse;
+
+		th,
+		td {
+
+			/* Wide enough for a text field; not a design value. */
+			min-inline-size: 9rem;
+			padding: var(--moon-space-2);
+			vertical-align: top;
+			background: none;
+			border: var(--moon-border);
+
+			/* Inherit the column alignment set on the cell. */
+			.components-text-control__input {
+				text-align: inherit;
+			}
+		}
+
+		th {
+			background: var(--moon-color-primary-subtle);
+
+			.components-text-control__input {
+				font-weight: var(--moon-font-weight-strong);
+			}
+		}
+	}
+
+	.moon-table-editor__cell-text {
+		min-block-size: 2.6em;
+	}
+
+	.moon-table-editor__image-cell {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--moon-space-1);
+
+		img {
+			display: block;
+			max-inline-size: 100%;
+			block-size: auto;
+			border: var(--moon-border);
+			border-radius: var(--moon-radius);
+		}
+	}
+
+	.moon-table-editor__image-empty {
+		display: flex;
+		flex-direction: column;
+		gap: var(--moon-space-2);
+	}
+
+	/* A divider has one field, so a surface background and a strong left
+	   line set it apart from data rows while editing. */
+	.moon-table-editor__row--divider td {
+		background: var(--moon-color-surface);
+		border-inline-start: var(--moon-border-width-strong) solid var(--moon-color-primary);
+
+		.components-text-control__input {
+			font-weight: var(--moon-font-weight-strong);
+			text-align: center;
+		}
+	}
+}
