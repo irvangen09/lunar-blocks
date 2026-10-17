@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-10-17
+
+### Added
+
+- Table block. Build the table in the editor, choose how many columns and rows to start with, add or remove rows and columns, turn a row into a divider, and set each column to text, number, or image.
+- Five styles: Default, Preset 1, Preset 2, Preset 3, and Preset 4. Default is a plain table that scrolls sideways when it is too wide. Preset 1 has a flat header, and on small screens each row becomes a card. Preset 2 shows cards in a grid with their rows lined up, with an optional note beside the title and an optional highlighted line at the bottom. Preset 3 and Preset 4 show one card per row with a checkbox, and Preset 3 adds badges.
+- Every table has a search box above it. Rows that do not match are hidden, and a divider is hidden when nothing under it matches. Search and sorting can be turned off for a table.
+- Default and Preset 1 can be sorted by clicking a column heading: first ascending, then descending, then back to the original order. Sorting stays inside each group between dividers, and image columns are not sorted. On small screens, Preset 1 has a list to choose the column and a button to reverse the order.
+- Image columns show at the width set in "Image width" for the column, in every style, and keep the proportions of the picture. On a narrow screen an image only shrinks when its cell is narrower than that width.
+- The checkbox of Preset 3 and Preset 4 is saved in the visitor's browser, and a ticked card is dimmed. Each table uses its own saved ticks, and clearing the browser data clears them.
+- Default and Preset 1 can align each column to the left, center, or right.
+- Empty or "N/A" values in Preset 2 are shown as a dash, so the cards keep their rows lined up.
+- A new success color for the Table checklist tick. It stays green and is not part of the color settings.
+
 ## [0.8.0] - 2026-10-16
 
 ### Added

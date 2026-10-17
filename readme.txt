@@ -2,7 +2,7 @@
 Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
 Requires PHP: 8.0
-Stable tag: 0.8.0
+Stable tag: 0.9.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,7 @@ It is designed to blend into your site. Typography and colors come from your the
 * **Gallery** shows a set of images in a grid of two to four columns, each with an optional caption. Visitors click an image to view it larger, then move between the images of that gallery with buttons or the arrow keys. Small screens always show two columns. Each image has its own alternative text field.
 * **Infobox** shows the key facts about one subject, such as a character, an item, or a place, in a single box: an optional image beside a table of labels and values, under a title. Each row can have an icon. On narrow screens the image moves above the table.
 * **Info List** shows a compact list of labels and values for a page, such as the details of an event, with optional Requirements sections that hold checklist-style items. Each row can have an icon, and each requirement has a marker that defaults to a checkmark. The count of requirements is added for you and can be turned off.
+* **Table** shows rows of information as a table or as cards, in five styles. Visitors can search every table, and click a column heading to sort it. Rows can be grouped under dividers, and image columns keep the width you set. Two styles are made for lists such as recipes, with a checklist that visitors can tick and the browser remembers.
 * **Tabs** organizes content into panels that visitors switch between with a row of tabs. Tabs work with the keyboard, and a link to a tab, or to content inside it, opens that tab automatically. Without JavaScript, all panels are shown one after another.
 * **TOC** adds a table of contents built from the headings of the post (H2 to H6), nested by level. It appears once the post has at least two headings, starts closed and can be opened with a click, and highlights the section being read. Headings get readable links such as `#Planting_Guide`, and a link to a heading inside an Accordion item or a tab opens it automatically.
 
@@ -47,9 +48,20 @@ Yes. Open Settings > Moon Blocks > Blocks and switch off any block. Turning off 
 
 = Can I change the colors? =
 
-Yes. Open Settings > Moon Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme.
+Yes. Open Settings > Moon Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme. The tick of the Table checklist stays green.
 
 == Changelog ==
+
+= 0.9.0 =
+
+* Added the Table block. Build the table in the editor, choose how many columns and rows to start with, add or remove rows and columns, turn a row into a divider, and set each column to text, number, or image.
+* Five styles: Default, Preset 1, Preset 2, Preset 3, and Preset 4. Default is a plain table that scrolls sideways when it is too wide. Preset 1 has a flat header, and on small screens each row becomes a card. Preset 2 shows cards in a grid with their rows lined up, with an optional note beside the title and an optional highlighted line at the bottom. Preset 3 and Preset 4 show one card per row with a checkbox, and Preset 3 adds badges.
+* Every table has a search box above it. Rows that do not match are hidden, and a divider is hidden when nothing under it matches. Search and sorting can be turned off for a table.
+* Default and Preset 1 can be sorted by clicking a column heading: first ascending, then descending, then back to the original order. Sorting stays inside each group between dividers, and image columns are not sorted. On small screens, Preset 1 has a list to choose the column and a button to reverse the order.
+* Image columns show at the width set in "Image width" for the column, in every style, and keep the proportions of the picture. On a narrow screen an image only shrinks when its cell is narrower than that width.
+* The checkbox of Preset 3 and Preset 4 is saved in the visitor's browser, and a ticked card is dimmed. Each table uses its own saved ticks, and clearing the browser data clears them.
+* Default and Preset 1 can align each column to the left, center, or right.
+* Empty or "N/A" values in Preset 2 are shown as a dash, so the cards keep their rows lined up.
 
 = 0.8.0 =
 
