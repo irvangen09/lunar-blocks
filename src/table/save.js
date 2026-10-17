@@ -17,18 +17,26 @@ import {
 } from './utils';
 
 // The width is set on the image itself, not its wrapper, so a theme rule
-// for img cannot bring back the original size.
+// for img cannot bring back the original size. The same value is kept in
+// a custom property for the stylesheet, which can hold the width against a
+// theme rule that is marked !important.
 function renderImage( col, image ) {
 	if ( ! image?.url ) {
 		return null;
 	}
+
+	const width = getImageWidth( col ) + 'px';
 
 	return (
 		<img
 			className="moon-table__image"
 			src={ image.url }
 			alt={ image.alt || '' }
-			style={ { width: getImageWidth( col ) + 'px', height: 'auto' } }
+			style={ {
+				width,
+				height: 'auto',
+				'--moon-table-image-width': width,
+			} }
 		/>
 	);
 }
@@ -361,18 +369,20 @@ export default function save( { attributes } ) {
 		'data-preset': preset,
 		'data-sort': supportsSort( preset ) && enableSort ? 'true' : 'false',
 		'data-filter': enableFilter ? 'true' : 'false',
-		// Every card has the same number of rows, which lets the grid line
-		// them up.
-		style: isCards
-			? {
-					'--moon-table-card-rows': getCardRowCount(
-						getCardRoles( columns, {
-							showCardNote,
-							showCardHighlight,
-						} )
-					),
-				}
-			: undefined,
+		// The stylesheet needs the column count to keep a Default table wide
+		// enough to scroll instead of squeezing its columns, and the row count
+		// of a card to line up the rows of Preset 2.
+		style: {
+			'--moon-table-columns': columns.length,
+			...( isCards && {
+				'--moon-table-card-rows': getCardRowCount(
+					getCardRoles( columns, {
+						showCardNote,
+						showCardHighlight,
+					} )
+				),
+			} ),
+		},
 	} );
 
 	let tableMarkup;

@@ -1,5 +1,8 @@
 @use "../shared/breakpoints" as *;
 
+// The first width above the mobile layouts.
+$moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
+
 /* The block class is doubled in every rule below. That lets these rules
    out-rank theme rules for tables, inputs and images, such as zebra rows,
    without relying on !important. */
@@ -260,7 +263,7 @@
 }
 
 /* Preset 1, desktop: flat header, hairline rows, no vertical lines. */
-@media (min-width: $moon-breakpoint-mobile + 1) {
+@media (min-width: $moon-table-breakpoint-desktop) {
 
 	.moon-table.moon-table[data-preset="preset-1"] {
 
