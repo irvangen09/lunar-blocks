@@ -94,7 +94,8 @@ export function getCardRowCount( { detailCols, highlightCol } ) {
 	return 1 + detailCols.length + ( highlightCol ? 1 : 0 );
 }
 
-function plainText( value ) {
+// Text of a rich-text cell with its tags removed.
+export function getPlainText( value ) {
 	return String( value ?? '' )
 		.replace( /<br\s*\/?>/gi, ' ' )
 		.replace( /<[^>]*>/g, '' )
@@ -107,10 +108,12 @@ export function isBlankCell( col, value ) {
 		return ! value?.url;
 	}
 
-	return '' === plainText( value );
+	return '' === getPlainText( value );
 }
 
 // A cell holding only "N/A" is shown muted, like an empty one.
 export function isNotApplicable( col, value ) {
-	return 'image' !== col.type && 'N/A' === plainText( value ).toUpperCase();
+	return (
+		'image' !== col.type && 'N/A' === getPlainText( value ).toUpperCase()
+	);
 }
