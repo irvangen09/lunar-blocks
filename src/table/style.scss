@@ -1,0 +1,737 @@
+@use "../shared/breakpoints" as *;
+
+/* The block class is doubled in every rule below. That lets these rules
+   out-rank theme rules for tables, inputs and images, such as zebra rows,
+   without relying on !important. */
+.moon-table.moon-table {
+
+	/* No token for these widths; they only set how wide a label column is. */
+	--moon-table-label-width: 6rem;
+	--moon-table-recipe-label-width: 4rem;
+	--moon-table-min-column: 6rem;
+
+	/* Checkbox box and tick proportions; the tick is drawn with borders. */
+	--moon-table-check-size: 1.25rem;
+
+	/* Vertical only: constrained layouts center blocks with inline margins. */
+	margin-block: var(--moon-space-5);
+	color: inherit;
+	font-family: inherit;
+
+	/* Search and sort controls added by view.js. */
+	.moon-table__controls {
+		display: flex;
+		flex-direction: column;
+		gap: var(--moon-space-2);
+		margin-block-end: var(--moon-space-3);
+	}
+
+	.moon-table__filter-input,
+	.moon-table__sort-select,
+	.moon-table__sort-direction {
+		box-sizing: border-box;
+		margin: 0;
+		padding: var(--moon-space-2) var(--moon-space-3);
+		border: var(--moon-border);
+		border-radius: var(--moon-radius);
+		background: var(--moon-color-surface);
+		box-shadow: none;
+		color: inherit;
+		font-family: inherit;
+		font-size: var(--moon-font-size-sm);
+		line-height: var(--moon-line-height-tight);
+
+		/* Inset: the block can scroll sideways and would clip a ring outside. */
+		&:focus:not(:focus-visible) {
+			outline: none;
+		}
+
+		&:focus-visible {
+			outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
+			outline-offset: calc(-1 * var(--moon-focus-ring-width));
+		}
+	}
+
+	.moon-table__filter-input {
+		display: block;
+		width: 100%;
+		appearance: none;
+	}
+
+	/* Only Preset 1 on small screens, where its header row is hidden. */
+	.moon-table__sort-bar {
+		display: none;
+		gap: var(--moon-space-2);
+	}
+
+	.moon-table__sort-select {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.moon-table__sort-direction {
+		display: inline-flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+
+		/* No token for a dimmed state. */
+		&:disabled {
+			cursor: default;
+			opacity: 0.5;
+		}
+
+		svg {
+			width: var(--moon-font-size-lg);
+			height: var(--moon-font-size-lg);
+			transition: transform var(--moon-duration-fast) ease;
+		}
+
+		/* The arrow points up for ascending and turns for descending. */
+		&[aria-pressed="true"] svg {
+			transform: rotate(180deg);
+		}
+	}
+
+	/* Rows hidden by search. The layouts below set their own display, which
+	   would otherwise win over the hidden attribute. */
+	tr[hidden] {
+		display: none !important; /* stylelint-disable-line declaration-no-important */
+	}
+
+	/* Images keep the width set for their column, at their own proportions,
+	   in every preset. The size rules are !important because some themes
+	   force an image size on all content images; the width comes from the
+	   custom property save() puts on the image, and max-width still lets an
+	   image shrink inside a cell that is narrower than that. */
+	.moon-table__image {
+		display: inline-block;
+		flex: none;
+		width: var(--moon-table-image-width, auto) !important; /* stylelint-disable-line declaration-no-important */
+		max-width: 100% !important; /* stylelint-disable-line declaration-no-important */
+		height: auto !important; /* stylelint-disable-line declaration-no-important */
+		margin: 0;
+		padding: 0;
+		border: 0;
+		object-fit: contain !important; /* stylelint-disable-line declaration-no-important */
+		vertical-align: middle;
+	}
+}
+
+/* Default and Preset 1: a real table with a header row. */
+.moon-table.moon-table {
+
+	.moon-table__table {
+		box-sizing: border-box;
+		width: 100%;
+		margin: 0;
+		border: 0;
+		border-spacing: 0;
+		background: none;
+		color: inherit;
+		font-size: var(--moon-font-size-sm);
+
+		tr {
+			background: none;
+		}
+
+		th,
+		td {
+			box-sizing: border-box;
+			padding: var(--moon-space-2) var(--moon-space-3);
+			border: var(--moon-border);
+			background: none;
+			color: inherit;
+			font-size: inherit;
+			text-align: start;
+			vertical-align: middle;
+			overflow-wrap: anywhere;
+		}
+
+		th {
+			border-bottom: var(--moon-border-width-strong) solid var(--moon-color-primary);
+			background: var(--moon-color-primary-subtle);
+			font-weight: var(--moon-font-weight-strong);
+		}
+
+		/* The column being sorted. */
+		td.moon-table__cell--sorted {
+			background: var(--moon-color-primary-subtle);
+		}
+
+		/* A divider heads the rows after it. */
+		td.moon-table__divider-cell {
+			padding: var(--moon-space-2) var(--moon-space-3);
+			border-width: var(--moon-border-width) 0;
+			background: var(--moon-color-surface);
+			font-weight: var(--moon-font-weight-strong);
+			text-align: center;
+		}
+	}
+
+	.moon-table__sort {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--moon-space-1);
+		margin: 0;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: none;
+		box-shadow: none;
+		color: inherit;
+		font: inherit;
+		letter-spacing: inherit;
+		text-align: inherit;
+		text-transform: none;
+		appearance: none;
+		cursor: pointer;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background: none;
+			box-shadow: none;
+			color: inherit;
+		}
+
+		&:focus:not(:focus-visible) {
+			outline: none;
+		}
+
+		&:focus-visible {
+			outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
+			outline-offset: var(--moon-focus-ring-offset);
+		}
+
+		svg {
+			flex: none;
+			width: var(--moon-font-size-md);
+			height: var(--moon-font-size-md);
+			color: var(--moon-color-text-muted);
+		}
+	}
+
+	/* Neutral shows both chevrons; a sorted column shows only its direction. */
+	th[aria-sort="ascending"] {
+
+		.moon-table__sort-down {
+			display: none;
+		}
+
+		.moon-table__sort-up {
+			stroke: var(--moon-color-primary);
+		}
+	}
+
+	th[aria-sort="descending"] {
+
+		.moon-table__sort-up {
+			display: none;
+		}
+
+		.moon-table__sort-down {
+			stroke: var(--moon-color-primary);
+		}
+	}
+
+	/* Default: a plain table that scrolls sideways at every width. */
+	&[data-preset="default"] {
+		overflow-x: auto;
+
+		.moon-table__table {
+			table-layout: fixed;
+			border-collapse: collapse;
+
+			/* Fixed columns share the width equally, so give each one room
+			   and let the block scroll instead of squeezing them. */
+			min-width: calc(var(--moon-table-columns, 1) * var(--moon-table-min-column));
+		}
+	}
+
+	&[data-preset="preset-1"] {
+		overflow-x: auto;
+
+		.moon-table__table {
+			border-collapse: separate;
+		}
+	}
+}
+
+/* Preset 1, desktop: flat header, hairline rows, no vertical lines. */
+@media (min-width: $moon-breakpoint-mobile + 1) {
+
+	.moon-table.moon-table[data-preset="preset-1"] {
+
+		.moon-table__table {
+			border: var(--moon-border);
+			border-radius: var(--moon-radius);
+
+			th {
+				padding: var(--moon-space-3);
+				border-width: 0 0 var(--moon-border-width-strong);
+				text-align: center;
+				white-space: nowrap;
+			}
+
+			/* Corners follow the rounded border of the table. */
+			thead tr:first-child th:first-child {
+				border-top-left-radius: var(--moon-radius);
+			}
+
+			thead tr:first-child th:last-child {
+				border-top-right-radius: var(--moon-radius);
+			}
+
+			td {
+				border-width: 0 0 var(--moon-border-width);
+			}
+
+			td.moon-table__divider-cell {
+				border-width: var(--moon-border-width) 0;
+			}
+
+			tbody tr:last-child td {
+				border-bottom-width: 0;
+			}
+
+			td.moon-table__cell--title {
+				font-weight: var(--moon-font-weight-strong);
+			}
+
+			td.moon-table__cell--image {
+				text-align: center;
+			}
+
+			tbody tr:hover td {
+				background: var(--moon-color-surface);
+			}
+
+			tbody tr td.moon-table__cell--sorted {
+				background: var(--moon-color-primary-subtle);
+			}
+
+			tbody tr:hover td.moon-table__cell--sorted {
+				background: var(--moon-color-surface);
+			}
+		}
+	}
+}
+
+/* Preset 1, mobile: every row becomes a card of label and value rows. */
+@media (max-width: $moon-breakpoint-mobile) {
+
+	.moon-table.moon-table[data-preset="preset-1"] {
+
+		.moon-table__sort-bar {
+			display: flex;
+		}
+
+		.moon-table__table {
+			display: block;
+
+			/* Header row stays available to screen readers only, so it is
+			   cut down to 1px rather than removed. */
+			thead {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				overflow: hidden;
+				clip-path: inset(50%);
+				white-space: nowrap;
+			}
+
+			tbody {
+				display: block;
+			}
+
+			tbody tr {
+				display: grid;
+				grid-template-columns: auto minmax(0, 1fr);
+				margin: 0 0 var(--moon-space-3);
+				overflow: hidden;
+				border: var(--moon-border);
+				border-radius: var(--moon-radius);
+				background: none;
+			}
+
+			/* A column alignment set in the editor suits the table layout only;
+			   it is an inline style, so only !important can undo it here. */
+			td {
+				display: block;
+				grid-column: 1 / -1;
+				padding: 0;
+				border: 0;
+				background: none;
+				text-align: start !important; /* stylelint-disable-line declaration-no-important */
+			}
+
+			td.moon-table__cell--lead {
+				grid-column: 1;
+				grid-row: 1;
+				align-self: center;
+				padding: var(--moon-space-3) 0 var(--moon-space-3) var(--moon-space-4);
+			}
+
+			td.moon-table__cell--title {
+				align-self: center;
+				padding: var(--moon-space-3) var(--moon-space-4);
+				font-size: var(--moon-font-size-md);
+				font-weight: var(--moon-font-weight-strong);
+				line-height: var(--moon-line-height-tight);
+			}
+
+			td.moon-table__cell--lead + td.moon-table__cell--title {
+				grid-column: 2;
+				grid-row: 1;
+			}
+
+			/* A table inside the cell lets the label and the value sit side
+			   by side even when the value holds bold text or a link. */
+			td[data-label]:not(.moon-table__cell--lead):not(.moon-table__cell--title) {
+				display: table;
+				box-sizing: border-box;
+				width: 100%;
+				padding: var(--moon-space-2) var(--moon-space-4);
+				border-top: var(--moon-border);
+
+				&::before {
+					content: attr(data-label);
+					display: table-cell;
+					width: var(--moon-table-label-width);
+					padding-inline-end: var(--moon-space-3);
+					color: var(--moon-color-text-muted);
+					vertical-align: top;
+				}
+			}
+
+			tr.moon-table__row--divider {
+				display: block;
+				margin-block-start: var(--moon-space-4);
+				border-radius: 0;
+			}
+
+			td.moon-table__divider-cell {
+				padding: var(--moon-space-2) var(--moon-space-4);
+				border-block: var(--moon-border);
+				background: var(--moon-color-surface);
+			}
+		}
+	}
+}
+
+/* Preset 2: a grid of cards whose rows line up from card to card. */
+.moon-table.moon-table {
+
+	.moon-table__cards {
+		display: grid;
+
+		/* A card is never narrower than 17.5rem, unless the block is. */
+		grid-template-columns: repeat(auto-fill, minmax(min(17.5rem, 100%), 1fr));
+		column-gap: var(--moon-space-3);
+		width: 100%;
+		margin: 0;
+		border: 0;
+		background: none;
+		font-size: inherit;
+
+		tbody {
+			display: contents;
+		}
+
+		tr {
+			border: 0;
+			background: none;
+		}
+
+		td {
+			display: block;
+			padding: 0;
+			border: 0;
+			background: none;
+			color: inherit;
+
+			/* 1em: keeps a theme's own cell font size out of the card. */
+			font-size: var(--moon-font-size-md);
+			text-align: start;
+		}
+
+		tr.moon-table__row--divider {
+			grid-column: 1 / -1;
+			margin-block-end: var(--moon-space-3);
+		}
+
+		td.moon-table__cards-divider-cell {
+			padding: var(--moon-space-2) var(--moon-space-4);
+			border-block: var(--moon-border);
+			background: var(--moon-color-surface);
+			font-weight: var(--moon-font-weight-strong);
+			text-align: center;
+		}
+
+		tr.moon-table__card {
+			display: block;
+			margin-block-end: var(--moon-space-3);
+			overflow: hidden;
+			border: var(--moon-border);
+			border-radius: var(--moon-radius);
+		}
+
+		td.moon-table__card-head {
+			display: flex;
+			align-items: center;
+			gap: var(--moon-space-3);
+			padding: var(--moon-space-3) var(--moon-space-4) var(--moon-space-2);
+		}
+
+		.moon-table__card-title {
+			flex: 1;
+			min-width: 0;
+			font-size: var(--moon-font-size-md);
+			font-weight: var(--moon-font-weight-strong);
+			line-height: var(--moon-line-height-tight);
+			overflow-wrap: anywhere;
+		}
+
+		.moon-table__card-note {
+			flex: none;
+			color: var(--moon-color-text-muted);
+			font-size: var(--moon-font-size-sm);
+			white-space: nowrap;
+		}
+
+		td.moon-table__card-detail,
+		td.moon-table__card-highlight {
+			display: grid;
+			grid-template-columns: var(--moon-table-label-width) minmax(0, 1fr);
+			gap: var(--moon-space-3);
+			padding: var(--moon-space-2) var(--moon-space-4);
+			font-size: var(--moon-font-size-sm);
+		}
+
+		.moon-table__card-label {
+			color: var(--moon-color-text-muted);
+		}
+
+		.moon-table__card-value {
+			overflow-wrap: anywhere;
+		}
+
+		.moon-table__card-value--muted {
+			color: var(--moon-color-text-muted);
+		}
+
+		td.moon-table__card-highlight {
+			margin-block-start: var(--moon-space-2);
+			padding-block: var(--moon-space-3);
+			background: var(--moon-color-surface);
+
+			.moon-table__card-value {
+				font-weight: var(--moon-font-weight-strong);
+			}
+		}
+	}
+
+	/* Subgrid gives every card the same row heights; without it the cards
+	   still stack and only their rows stay unaligned. */
+	@supports (grid-template-rows: subgrid) {
+
+		.moon-table__cards tr.moon-table__card {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr);
+			grid-template-rows: subgrid;
+			grid-row: span var(--moon-table-card-rows, 1);
+		}
+	}
+}
+
+@media (max-width: $moon-breakpoint-mobile) {
+
+	/* A single column, as a vertical list. */
+	.moon-table.moon-table .moon-table__cards {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+/* Preset 3 and Preset 4: a vertical list of recipe cards. */
+.moon-table.moon-table {
+
+	.moon-table__recipes {
+		display: block;
+		width: 100%;
+		margin: 0;
+		border: 0;
+		background: none;
+		font-size: inherit;
+
+		tbody {
+			display: flex;
+			flex-direction: column;
+			gap: var(--moon-space-3);
+		}
+
+		tr {
+			border: 0;
+			background: none;
+		}
+
+		td {
+			display: block;
+			padding: 0;
+			border: 0;
+			background: none;
+			color: inherit;
+
+			/* 1em: keeps a theme's own cell font size out of the card. */
+			font-size: var(--moon-font-size-md);
+			text-align: start;
+		}
+
+		tr.moon-table__row--divider {
+			display: block;
+			width: 100%;
+		}
+
+		tr.moon-table__recipe-card {
+			position: relative;
+			display: block;
+			margin-block-end: var(--moon-space-2);
+			padding: var(--moon-space-3) var(--moon-space-4);
+			border: var(--moon-border);
+			border-radius: var(--moon-radius);
+		}
+
+		/* Image and info form one row, so the chips wrap under the name
+		   instead of under the image. The right side is kept free for the
+		   checkbox. */
+		.moon-table__recipe-header {
+			display: flex;
+			align-items: center;
+			gap: var(--moon-space-3);
+			padding-inline-end: calc(var(--moon-table-check-size) + var(--moon-space-3));
+		}
+
+		.moon-table__recipe-info {
+			display: flex;
+			flex: 1;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: var(--moon-space-3);
+			min-width: 0;
+		}
+
+		.moon-table__recipe-name {
+			font-weight: var(--moon-font-weight-strong);
+		}
+
+		.moon-table__recipe-stats {
+			display: flex;
+			flex-wrap: wrap;
+			gap: var(--moon-space-2);
+		}
+
+		.moon-table__recipe-chip {
+			display: inline-flex;
+			align-items: center;
+			padding: var(--moon-space-1) var(--moon-space-2);
+			border: var(--moon-border);
+			border-radius: var(--moon-radius);
+			font-size: var(--moon-font-size-sm);
+			font-weight: var(--moon-font-weight-strong);
+			white-space: nowrap;
+		}
+
+		.moon-table__recipe-chip--accent {
+			background: var(--moon-color-primary-subtle);
+			color: var(--moon-color-primary);
+		}
+
+		.moon-table__recipe-field {
+			display: flex;
+			align-items: baseline;
+			gap: var(--moon-space-2);
+			margin-block-start: var(--moon-space-2);
+			padding-block-start: var(--moon-space-2);
+			border-top: var(--moon-border);
+			font-size: var(--moon-font-size-sm);
+		}
+
+		.moon-table__recipe-field-label {
+			flex: 0 0 var(--moon-table-recipe-label-width);
+			color: var(--moon-color-text-muted);
+		}
+
+		.moon-table__recipe-field-value {
+			min-width: 0;
+			overflow-wrap: anywhere;
+		}
+
+		td.moon-table__recipes-divider-cell {
+			padding: var(--moon-space-2) var(--moon-space-4);
+			border-block: var(--moon-border);
+			background: var(--moon-color-surface);
+			font-weight: var(--moon-font-weight-strong);
+			text-align: center;
+		}
+
+		/* Outlined, not filled; the tick is drawn with borders, so no icon
+		   is needed. */
+		.moon-table__recipe-check {
+			position: absolute;
+			inset-block-start: var(--moon-space-3);
+			inset-inline-end: var(--moon-space-4);
+			z-index: 1;
+			box-sizing: border-box;
+			width: var(--moon-table-check-size);
+			height: var(--moon-table-check-size);
+			min-width: 0;
+			margin: 0;
+			padding: 0;
+			border: var(--moon-border-width-strong) solid var(--moon-color-text-muted);
+			border-radius: var(--moon-radius);
+			background: none;
+			box-shadow: none;
+			appearance: none;
+			cursor: pointer;
+
+			&:checked {
+				border-color: var(--moon-color-success);
+				background: none;
+			}
+
+			&:checked::after {
+				content: "";
+				position: absolute;
+				inset-block-start: 50%;
+				inset-inline-start: 50%;
+
+				/* Tick proportions: half as wide as it is tall. */
+				width: 0.3125rem;
+				height: 0.625rem;
+				border: solid var(--moon-color-success);
+				border-width: 0 var(--moon-border-width-strong) var(--moon-border-width-strong) 0;
+				transform: translate(-50%, -60%) rotate(45deg);
+			}
+
+			&:focus:not(:focus-visible) {
+				outline: none;
+			}
+
+			&:focus-visible {
+				outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
+				outline-offset: var(--moon-focus-ring-offset);
+			}
+		}
+
+		/* The checked state itself dims the card, so the script only has to
+		   remember it. The checkbox stays at full strength. */
+		tr.moon-table__recipe-card:has(.moon-table__recipe-check:checked) {
+
+			.moon-table__recipe-header,
+			.moon-table__recipe-field {
+				opacity: 0.5;
+			}
+		}
+	}
+}
