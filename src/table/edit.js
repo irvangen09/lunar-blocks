@@ -54,7 +54,7 @@ const PRESET_HELP = {
 		'moon-blocks'
 	),
 	[ PRESET_3 ]: __(
-		'A list of cards with a checklist. An image first column becomes the card image and the next column its name. The two columns after that become badges, and the first is split at commas. The rest become fields.',
+		'A list of cards with a checklist. An image first column becomes the card image and the next column its name. The next two text columns become badges, and the first is split at commas. The rest become fields.',
 		'moon-blocks'
 	),
 	[ PRESET_4 ]: __(

@@ -54,6 +54,14 @@ function show( position ) {
 }
 
 function onKeyDown( event ) {
+	// Some themes cancel Escape on the whole document, which stops the
+	// browser from closing the dialog.
+	if ( 'Escape' === event.key ) {
+		event.preventDefault();
+		dialog.close();
+		return;
+	}
+
 	if ( group.length < 2 ) {
 		return;
 	}
