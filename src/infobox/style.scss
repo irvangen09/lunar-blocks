@@ -38,7 +38,7 @@
 		inline-size: 100%;
 
 		/* 192px; no token for a frame width. */
-		max-inline-size: 12rem;
+		max-inline-size: calc(var(--moon-unit) * 12);
 		block-size: auto;
 		margin: 0;
 		aspect-ratio: 3 / 4;
@@ -72,8 +72,8 @@
 	/* Rows share the height left over, so the box never has empty space. */
 	.moon-infobox__rows {
 
-		/* No token fits a column width; 11rem leaves room for an icon. */
-		--moon-infobox-label-width: 9rem;
+		/* No token fits a column width; the wider value leaves room for an icon. */
+		--moon-infobox-label-width: calc(var(--moon-unit) * 9);
 
 		display: flex;
 		flex: 1 1 auto;
@@ -82,7 +82,7 @@
 		padding: 0;
 
 		&:has(.moon-infobox-item__icon) {
-			--moon-infobox-label-width: 11rem;
+			--moon-infobox-label-width: calc(var(--moon-unit) * 11);
 		}
 	}
 
@@ -159,7 +159,7 @@
 
 		.moon-infobox__rows,
 		.moon-infobox__rows:has(.moon-infobox-item__icon) {
-			--moon-infobox-label-width: 8rem;
+			--moon-infobox-label-width: calc(var(--moon-unit) * 8);
 		}
 
 		/* Icons show on desktop only. */
