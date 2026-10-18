@@ -5,8 +5,8 @@
 	/* Dividers between rows are lighter than the line under a section title. */
 	--moon-info-list-line: var(--moon-border-width) solid color-mix(in srgb, var(--moon-color-border) 50%, transparent);
 
-	/* No token fits a column width; 11.5rem leaves room for an icon. */
-	--moon-info-list-label-width: 9.5rem;
+	/* No token fits a column width; the wider value leaves room for an icon. */
+	--moon-info-list-label-width: calc(var(--moon-unit) * 9.5);
 
 	box-sizing: border-box;
 
@@ -19,7 +19,7 @@
 	font-family: inherit;
 
 	&:has(.moon-info-list-item__icon) {
-		--moon-info-list-label-width: 11.5rem;
+		--moon-info-list-label-width: calc(var(--moon-unit) * 11.5);
 	}
 
 	/* Themes often style definition and list elements; reset them. */
@@ -160,7 +160,7 @@
 
 	.moon-info-list,
 	.moon-info-list:has(.moon-info-list-item__icon) {
-		--moon-info-list-label-width: 8rem;
+		--moon-info-list-label-width: calc(var(--moon-unit) * 8);
 	}
 
 	/* Row icons show on desktop only; item markers stay. */
