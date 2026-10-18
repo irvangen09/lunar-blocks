@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.9.1] - 2026-10-18
+
+### Fixed
+
+- Gallery: the image viewer closes with the Escape key in themes that block it.
+- Spacing and column widths keep their size in themes that set a small base font size, such as 10px, instead of shrinking.
+- Table Preset 3 and Preset 4: a checkmark drawn by the theme no longer shows next to the checkbox tick, and a card label no longer breaks inside a word.
+- Table Preset 3 and Preset 4: an image column that is not the first column shows as a labeled field instead of the text "[object Object]". A table saved this way before this version shows a recovery prompt in the editor and needs to be saved again.
+
 ## [0.9.0] - 2026-10-17
 
 ### Added

@@ -2,7 +2,7 @@
 Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
 Requires PHP: 8.0
-Stable tag: 0.9.0
+Stable tag: 0.9.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,13 @@ Yes. Open Settings > Moon Blocks > Blocks and switch off any block. Turning off 
 Yes. Open Settings > Moon Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme. The tick of the Table checklist stays green.
 
 == Changelog ==
+
+= 0.9.1 =
+
+* Gallery: the image viewer closes with the Escape key in themes that block it.
+* Spacing and column widths keep their size in themes that set a small base font size, such as 10px, instead of shrinking.
+* Table Preset 3 and Preset 4: a checkmark drawn by the theme no longer shows next to the checkbox tick, and a card label no longer breaks inside a word.
+* Table Preset 3 and Preset 4: an image column that is not the first column shows as a labeled field instead of the text "[object Object]". A table saved this way before this version shows a recovery prompt in the editor and needs to be saved again.
 
 = 0.9.0 =
 
