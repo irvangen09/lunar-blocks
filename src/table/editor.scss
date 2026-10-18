@@ -25,7 +25,7 @@
 		td {
 
 			/* Wide enough for a text field; not a design value. */
-			min-inline-size: 9rem;
+			min-inline-size: calc(var(--moon-unit) * 9);
 			padding: var(--moon-space-2);
 			vertical-align: top;
 			background: none;
