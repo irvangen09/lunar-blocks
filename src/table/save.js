@@ -237,13 +237,20 @@ function splitChips( value ) {
 }
 
 // Roles follow the column type: an image first column, then the name.
-// With badges (Preset 3) the next column holds chips and the one after
-// it a price chip; every remaining column is a labeled field.
+// With badges (Preset 3) the next text column holds chips and the one
+// after it a price chip; every remaining column is a labeled field.
 function renderRecipes( { columns, rows, hasBadges } ) {
 	const { imageCol, titleCol, restCols } = getColumnRoles( columns );
-	const statCol = hasBadges ? restCols[ 0 ] : undefined;
-	const priceCol = hasBadges ? restCols[ 1 ] : undefined;
-	const fieldCols = hasBadges ? restCols.slice( 2 ) : restCols;
+
+	// An image cannot be a chip, so image columns stay labeled fields.
+	const chipCols = hasBadges
+		? restCols.filter( ( col ) => 'image' !== col.type )
+		: [];
+	const statCol = chipCols[ 0 ];
+	const priceCol = chipCols[ 1 ];
+	const fieldCols = restCols.filter(
+		( col ) => col !== statCol && col !== priceCol
+	);
 
 	return (
 		<table className="moon-table__recipes">
