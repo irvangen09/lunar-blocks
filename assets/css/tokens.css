@@ -32,12 +32,13 @@
 	--moon-duration-fast: 150ms;
 
 	/* Spacing */
-	--moon-space-1: 0.25rem;
-	--moon-space-2: 0.5rem;
-	--moon-space-3: 0.75rem;
-	--moon-space-4: 1rem;
-	--moon-space-5: 1.5rem;
-	--moon-space-6: 2rem;
+	--moon-unit: max(1rem, 16px);
+	--moon-space-1: calc(var(--moon-unit) * 0.25);
+	--moon-space-2: calc(var(--moon-unit) * 0.5);
+	--moon-space-3: calc(var(--moon-unit) * 0.75);
+	--moon-space-4: var(--moon-unit);
+	--moon-space-5: calc(var(--moon-unit) * 1.5);
+	--moon-space-6: calc(var(--moon-unit) * 2);
 }
 
 @media (prefers-reduced-motion: reduce) {
