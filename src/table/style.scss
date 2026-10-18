@@ -9,12 +9,12 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 .moon-table.moon-table {
 
 	/* No token for these widths; they only set how wide a label column is. */
-	--moon-table-label-width: 6rem;
-	--moon-table-recipe-label-width: 4rem;
-	--moon-table-min-column: 6rem;
+	--moon-table-label-width: calc(var(--moon-unit) * 6);
+	--moon-table-recipe-label-width: calc(var(--moon-unit) * 4);
+	--moon-table-min-column: calc(var(--moon-unit) * 6);
 
 	/* Checkbox box and tick proportions; the tick is drawn with borders. */
-	--moon-table-check-size: 1.25rem;
+	--moon-table-check-size: calc(var(--moon-unit) * 1.25);
 
 	/* Vertical only: constrained layouts center blocks with inline margins. */
 	margin-block: var(--moon-space-5);
@@ -430,8 +430,8 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 	.moon-table__cards {
 		display: grid;
 
-		/* A card is never narrower than 17.5rem, unless the block is. */
-		grid-template-columns: repeat(auto-fill, minmax(min(17.5rem, 100%), 1fr));
+		/* A card is never narrower than 17.5 units, unless the block is. */
+		grid-template-columns: repeat(auto-fill, minmax(min(calc(var(--moon-unit) * 17.5), 100%), 1fr));
 		column-gap: var(--moon-space-3);
 		width: 100%;
 		margin: 0;
@@ -660,8 +660,13 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 			font-size: var(--moon-font-size-sm);
 		}
 
+		/* A label never breaks inside a word: it grows to its longest word
+		   instead, even when the theme allows breaks inside words. */
 		.moon-table__recipe-field-label {
 			flex: 0 0 var(--moon-table-recipe-label-width);
+			min-inline-size: min-content;
+			overflow-wrap: normal;
+			word-break: normal;
 			color: var(--moon-color-text-muted);
 		}
 
@@ -703,6 +708,11 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 				background: none;
 			}
 
+			/* Some themes draw their own tick with ::before. */
+			&::before {
+				content: none;
+			}
+
 			&:checked::after {
 				content: "";
 				position: absolute;
@@ -710,8 +720,8 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 				inset-inline-start: 50%;
 
 				/* Tick proportions: half as wide as it is tall. */
-				width: 0.3125rem;
-				height: 0.625rem;
+				width: calc(var(--moon-unit) * 0.3125);
+				height: calc(var(--moon-unit) * 0.625);
 				border: solid var(--moon-color-success);
 				border-width: 0 var(--moon-border-width-strong) var(--moon-border-width-strong) 0;
 				transform: translate(-50%, -60%) rotate(45deg);
