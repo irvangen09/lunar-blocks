@@ -27,9 +27,16 @@ function renderImage( col, image ) {
 
 	const width = getImageWidth( col ) + 'px';
 
+	// The wp-image class lets WordPress add srcset, dimensions and lazy
+	// loading when rendering.
+	const imageClassName =
+		image.id > 0
+			? `moon-table__image wp-image-${ image.id }`
+			: 'moon-table__image';
+
 	return (
 		<img
-			className="moon-table__image"
+			className={ imageClassName }
 			src={ image.url }
 			alt={ image.alt || '' }
 			style={ {
@@ -278,10 +285,6 @@ function renderRecipes( { columns, rows, hasBadges } ) {
 							data-recipe-id={ row.id }
 						>
 							<td className="moon-table__recipe-cell">
-								<input
-									type="checkbox"
-									className="moon-table__recipe-check"
-								/>
 								<div className="moon-table__recipe-header">
 									{ imageCol &&
 										renderImage(

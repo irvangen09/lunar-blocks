@@ -341,55 +341,63 @@ function initFilter( tableEl, controlsEl ) {
 	controlsEl.insertBefore( wrap, controlsEl.firstChild );
 }
 
-// The checkbox is native, so it works without this file; only saving the
-// ticks needs it. Storage can throw (blocked by browser settings), and
-// the checkbox then works for this page view only.
+// The checkbox is added here, not saved with the content: WordPress strips
+// input elements from content saved by users who cannot post unfiltered
+// HTML. Storage can throw (blocked by browser settings), and the checkbox
+// then works for this page view only.
 function initChecklist( recipesEl ) {
-	recipesEl
-		.querySelectorAll( '.moon-table__recipe-check' )
-		.forEach( ( checkbox ) => {
-			const card = checkbox.closest( '[data-recipe-id]' );
-			const name = card?.querySelector( '.moon-table__recipe-name' );
-			const title = name ? name.textContent.trim() : '';
+	recipesEl.querySelectorAll( '[data-recipe-id]' ).forEach( ( card ) => {
+		const cell = card.querySelector( '.moon-table__recipe-cell' );
 
-			checkbox.setAttribute(
-				'aria-label',
-				title
-					? sprintf(
-							/* translators: %s: recipe name. */
-							__( 'Mark %s as obtained', 'moon-blocks' ),
-							title
-						)
-					: __( 'Mark as obtained', 'moon-blocks' )
-			);
+		if ( ! cell ) {
+			return;
+		}
 
-			const recipeId = card?.dataset.recipeId;
+		const checkbox = createElement( 'input', 'moon-table__recipe-check' );
+		checkbox.type = 'checkbox';
+		cell.prepend( checkbox );
 
-			if ( ! recipeId ) {
-				return;
-			}
+		const name = card.querySelector( '.moon-table__recipe-name' );
+		const title = name ? name.textContent.trim() : '';
 
-			const storageKey = CHECKLIST_KEY_PREFIX + recipeId;
+		checkbox.setAttribute(
+			'aria-label',
+			title
+				? sprintf(
+						/* translators: %s: recipe name. */
+						__( 'Mark %s as obtained', 'moon-blocks' ),
+						title
+					)
+				: __( 'Mark as obtained', 'moon-blocks' )
+		);
 
+		const recipeId = card.dataset.recipeId;
+
+		if ( ! recipeId ) {
+			return;
+		}
+
+		const storageKey = CHECKLIST_KEY_PREFIX + recipeId;
+
+		try {
+			checkbox.checked =
+				'1' === window.localStorage.getItem( storageKey );
+		} catch {
+			return;
+		}
+
+		checkbox.addEventListener( 'change', () => {
 			try {
-				checkbox.checked =
-					'1' === window.localStorage.getItem( storageKey );
-			} catch {
-				return;
-			}
-
-			checkbox.addEventListener( 'change', () => {
-				try {
-					if ( checkbox.checked ) {
-						window.localStorage.setItem( storageKey, '1' );
-					} else {
-						window.localStorage.removeItem( storageKey );
-					}
-				} catch {
-					// Not saved; see above.
+				if ( checkbox.checked ) {
+					window.localStorage.setItem( storageKey, '1' );
+				} else {
+					window.localStorage.removeItem( storageKey );
 				}
-			} );
+			} catch {
+				// Not saved; see above.
+			}
 		} );
+	} );
 }
 
 function initBlock( blockEl ) {
