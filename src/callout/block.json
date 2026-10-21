@@ -22,6 +22,9 @@
       "type": "string",
       "source": "text",
       "selector": ".moon-callout__label"
+    },
+    "variantName": {
+      "type": "string"
     }
   },
   "supports": {

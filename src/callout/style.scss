@@ -1,3 +1,17 @@
+@use "sass:map";
+
+/* Icon shapes are drawn as masks, so the saved markup needs no SVG. The
+   stroke color inside the data URI only sets the opacity of the mask. */
+$callout-icon-start: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E";
+$callout-icon-end: "%3C/svg%3E";
+
+$callout-icons: (
+	"info": "%3Cpath d='M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z'/%3E%3Cpath d='M12 11v5'/%3E%3Cpath d='M12 7.5h.01'/%3E",
+	"tips": "%3Cpath d='M12 3a6 6 0 0 0-3.6 10.8c.6.5 1.1 1.2 1.1 2.2h5c0-1 .5-1.7 1.1-2.2A6 6 0 0 0 12 3z'/%3E%3Cpath d='M9.5 18.5h5'/%3E%3Cpath d='M10.5 21h3'/%3E",
+	"warning": "%3Cpath d='M12 4 3 19.5h18L12 4z'/%3E%3Cpath d='M12 10v4'/%3E%3Cpath d='M12 16.8h.01'/%3E",
+	"important": "%3Cpath d='M8.5 3h7L21 8.5v7L15.5 21h-7L3 15.5v-7L8.5 3z'/%3E%3Cpath d='M12 7.5v5'/%3E%3Cpath d='M12 16h.01'/%3E",
+);
+
 .moon-callout {
 
 	box-sizing: border-box;
@@ -17,6 +31,9 @@
 	font-family: inherit;
 	font-size: var(--moon-font-size-md);
 
+	/* A variant without its own rule shows the info icon. */
+	--moon-callout-icon: url("#{$callout-icon-start}#{map.get($callout-icons, "info")}#{$callout-icon-end}");
+
 	.moon-callout__icon {
 		flex: none;
 		width: var(--moon-font-size-lg);
@@ -24,7 +41,24 @@
 
 		/* Centers the icon on the first line of text. */
 		margin-top: calc((1lh - var(--moon-font-size-lg)) / 2);
-		color: var(--moon-color-primary);
+		background-color: var(--moon-color-primary);
+		mask: var(--moon-callout-icon) center / contain no-repeat;
+	}
+
+	@each $variant in ("tips", "warning", "important") {
+
+		&.moon-callout--#{$variant} {
+			--moon-callout-icon: url("#{$callout-icon-start}#{map.get($callout-icons, $variant)}#{$callout-icon-end}");
+		}
+	}
+
+	/* System colors replace the primary color; keep the icon visible. */
+	@media (forced-colors: active) {
+
+		.moon-callout__icon {
+			forced-color-adjust: none;
+			background-color: CanvasText;
+		}
 	}
 
 	.moon-callout__body {

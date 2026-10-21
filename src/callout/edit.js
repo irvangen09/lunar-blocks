@@ -8,8 +8,6 @@ import {
 import { PanelBody, SelectControl } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 
-import { CalloutIcon } from './icons';
-
 // Called at render time so translations are loaded.
 function getVariants() {
 	return [
@@ -27,7 +25,7 @@ function getVariantName( value ) {
 }
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { variant, content, label } = attributes;
+	const { variant, content, label, variantName } = attributes;
 	const blockProps = useBlockProps( {
 		className: `moon-callout moon-callout--${ variant }`,
 	} );
@@ -41,13 +39,18 @@ export default function Edit( { attributes, setAttributes } ) {
 		if ( undefined === label && isContentEmpty ) {
 			setAttributes( { label: getVariantName( variant ) } );
 		}
-	}, [ label, isContentEmpty, variant, setAttributes ] );
+
+		if ( undefined === variantName ) {
+			setAttributes( { variantName: getVariantName( variant ) } );
+		}
+	}, [ label, isContentEmpty, variant, variantName, setAttributes ] );
 
 	function onVariantChange( next ) {
 		const isDefaultLabel = label === getVariantName( variant );
 
 		setAttributes( {
 			variant: next,
+			variantName: getVariantName( next ),
 			label: isDefaultLabel ? getVariantName( next ) : label,
 		} );
 	}
@@ -67,10 +70,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				</PanelBody>
 			</InspectorControls>
 			<div { ...blockProps }>
-				<CalloutIcon
-					variant={ variant }
-					className="moon-callout__icon"
-				/>
+				<span className="moon-callout__icon" aria-hidden="true" />
 				<div className="moon-callout__body">
 					<PlainText
 						className="moon-callout__label"
