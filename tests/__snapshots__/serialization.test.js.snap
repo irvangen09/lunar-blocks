@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`saved markup accordion, closed on desktop matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/accordion {"openOnDesktop":false} -->
+<div class="wp-block-moon-blocks-accordion moon-accordion"><!-- wp:moon-blocks/accordion-item {"headingLevel":"h2"} -->
+<details class="wp-block-moon-blocks-accordion-item moon-accordion-item"><summary class="moon-accordion-item__summary"><h2 class="moon-accordion-item__title">Only</h2></summary><div class="moon-accordion-item__content"></div></details>
+<!-- /wp:moon-blocks/accordion-item --></div>
+<!-- /wp:moon-blocks/accordion -->"
+`;
+
+exports[`saved markup accordion, open on desktop matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/accordion -->
+<div class="wp-block-moon-blocks-accordion moon-accordion moon-accordion--open-desktop"><!-- wp:moon-blocks/accordion-item -->
+<details class="wp-block-moon-blocks-accordion-item moon-accordion-item"><summary class="moon-accordion-item__summary"><h3 class="moon-accordion-item__title">First</h3></summary><div class="moon-accordion-item__content"></div></details>
+<!-- /wp:moon-blocks/accordion-item -->
+
+<!-- wp:moon-blocks/accordion-item {"headingLevel":"none"} -->
+<details class="wp-block-moon-blocks-accordion-item moon-accordion-item"><summary class="moon-accordion-item__summary"><span class="moon-accordion-item__title">Second</span></summary><div class="moon-accordion-item__content"></div></details>
+<!-- /wp:moon-blocks/accordion-item --></div>
+<!-- /wp:moon-blocks/accordion -->"
+`;
+
+exports[`saved markup callout without label matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/callout {"variantName":"Info"} -->
+<div class="wp-block-moon-blocks-callout moon-callout moon-callout--info" role="note" aria-label="Info"><span class="moon-callout__icon" aria-hidden="true"></span><div class="moon-callout__body"><div class="moon-callout__text">Body</div></div></div>
+<!-- /wp:moon-blocks/callout -->"
+`;
+
+exports[`saved markup callout, important matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/callout {"variant":"important","variantName":"important"} -->
+<div class="wp-block-moon-blocks-callout moon-callout moon-callout--important" role="note"><span class="moon-callout__icon" aria-hidden="true"></span><div class="moon-callout__body"><p class="moon-callout__label">important</p><div class="moon-callout__text">Body</div></div></div>
+<!-- /wp:moon-blocks/callout -->"
+`;
+
+exports[`saved markup callout, info matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/callout {"variantName":"info"} -->
+<div class="wp-block-moon-blocks-callout moon-callout moon-callout--info" role="note"><span class="moon-callout__icon" aria-hidden="true"></span><div class="moon-callout__body"><p class="moon-callout__label">info</p><div class="moon-callout__text">Body</div></div></div>
+<!-- /wp:moon-blocks/callout -->"
+`;
+
+exports[`saved markup callout, tips matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/callout {"variant":"tips","variantName":"tips"} -->
+<div class="wp-block-moon-blocks-callout moon-callout moon-callout--tips" role="note"><span class="moon-callout__icon" aria-hidden="true"></span><div class="moon-callout__body"><p class="moon-callout__label">tips</p><div class="moon-callout__text">Body</div></div></div>
+<!-- /wp:moon-blocks/callout -->"
+`;
+
+exports[`saved markup callout, warning matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/callout {"variant":"warning","variantName":"warning"} -->
+<div class="wp-block-moon-blocks-callout moon-callout moon-callout--warning" role="note"><span class="moon-callout__icon" aria-hidden="true"></span><div class="moon-callout__body"><p class="moon-callout__label">warning</p><div class="moon-callout__text">Body</div></div></div>
+<!-- /wp:moon-blocks/callout -->"
+`;
+
+exports[`saved markup gallery, 3 columns matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/gallery -->
+<div class="wp-block-moon-blocks-gallery moon-gallery moon-gallery--columns-3"><!-- wp:moon-blocks/gallery-item {"imageId":12,"imageUrl":"https://example.com/wp-content/uploads/photo.jpg","imageAlt":"A photo"} -->
+<figure class="wp-block-moon-blocks-gallery-item moon-gallery-item"><a class="moon-gallery-item__link" href="https://example.com/wp-content/uploads/photo.jpg"><img class="moon-gallery-item__image wp-image-12" src="https://example.com/wp-content/uploads/photo.jpg" alt="A photo"/></a><figcaption class="moon-gallery-item__caption">Caption</figcaption></figure>
+<!-- /wp:moon-blocks/gallery-item -->
+
+<!-- wp:moon-blocks/gallery-item {"imageUrl":"https://example.com/wp-content/uploads/photo.jpg"} -->
+<figure class="wp-block-moon-blocks-gallery-item moon-gallery-item"><a class="moon-gallery-item__link" href="https://example.com/wp-content/uploads/photo.jpg"><img class="moon-gallery-item__image" src="https://example.com/wp-content/uploads/photo.jpg" alt=""/></a></figure>
+<!-- /wp:moon-blocks/gallery-item --></div>
+<!-- /wp:moon-blocks/gallery -->"
+`;
+
+exports[`saved markup info list matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/info-list -->
+<dl class="wp-block-moon-blocks-info-list moon-info-list"><!-- wp:moon-blocks/info-list-item {"icon":"dashicons-calendar"} -->
+<div class="wp-block-moon-blocks-info-list-item moon-info-list-item"><dt class="moon-info-list-item__label"><span class="moon-info-list-item__icon dashicons dashicons-calendar" aria-hidden="true"></span><span class="moon-info-list-item__label-text">Season</span></dt><dd class="moon-info-list-item__value">Spring</dd></div>
+<!-- /wp:moon-blocks/info-list-item -->
+
+<!-- wp:moon-blocks/info-list-requirements -->
+<div class="wp-block-moon-blocks-info-list-requirements moon-info-list-requirements"><dt class="moon-info-list-requirements__header"><span class="moon-info-list-requirements__title">Needs</span></dt><dd class="moon-info-list-requirements__body"><ul class="moon-info-list-requirements__list"><!-- wp:moon-blocks/info-list-requirement -->
+<li class="wp-block-moon-blocks-info-list-requirement moon-info-list-requirement"><span class="moon-info-list-requirement__icon dashicons dashicons-yes" aria-hidden="true"></span><span class="moon-info-list-requirement__text">Hoe</span></li>
+<!-- /wp:moon-blocks/info-list-requirement --></ul></dd></div>
+<!-- /wp:moon-blocks/info-list-requirements --></dl>
+<!-- /wp:moon-blocks/info-list -->"
+`;
+
+exports[`saved markup info list, no count matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/info-list -->
+<dl class="wp-block-moon-blocks-info-list moon-info-list"><!-- wp:moon-blocks/info-list-requirements {"showCount":false} -->
+<div class="wp-block-moon-blocks-info-list-requirements moon-info-list-requirements"><dt class="moon-info-list-requirements__header"><span class="moon-info-list-requirements__title">Needs</span></dt><dd class="moon-info-list-requirements__body"><ul class="moon-info-list-requirements__list"><!-- wp:moon-blocks/info-list-requirement -->
+<li class="wp-block-moon-blocks-info-list-requirement moon-info-list-requirement"><span class="moon-info-list-requirement__icon dashicons dashicons-yes" aria-hidden="true"></span><span class="moon-info-list-requirement__text">Water</span></li>
+<!-- /wp:moon-blocks/info-list-requirement --></ul></dd></div>
+<!-- /wp:moon-blocks/info-list-requirements --></dl>
+<!-- /wp:moon-blocks/info-list -->"
+`;
+
+exports[`saved markup infobox with image matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/infobox {"headingLevel":"h2","imageId":12} -->
+<div class="wp-block-moon-blocks-infobox moon-infobox"><figure class="moon-infobox__media"><img class="moon-infobox__image wp-image-12" src="https://example.com/wp-content/uploads/photo.jpg" alt="Portrait"/></figure><div class="moon-infobox__body"><h2 class="moon-infobox__title">Character</h2><dl class="moon-infobox__rows"><!-- wp:moon-blocks/infobox-item {"icon":"dashicons-heart"} -->
+<div class="wp-block-moon-blocks-infobox-item moon-infobox-item"><dt class="moon-infobox-item__label"><span class="moon-infobox-item__icon dashicons dashicons-heart" aria-hidden="true"></span><span class="moon-infobox-item__label-text">Birthday</span></dt><dd class="moon-infobox-item__value">Spring 4</dd></div>
+<!-- /wp:moon-blocks/infobox-item --></dl></div></div>
+<!-- /wp:moon-blocks/infobox -->"
+`;
+
+exports[`saved markup infobox without image matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/infobox -->
+<div class="wp-block-moon-blocks-infobox moon-infobox moon-infobox--no-image"><div class="moon-infobox__body"><p class="moon-infobox__title">Place</p><dl class="moon-infobox__rows"><!-- wp:moon-blocks/infobox-item -->
+<div class="wp-block-moon-blocks-infobox-item moon-infobox-item"><dt class="moon-infobox-item__label"><span class="moon-infobox-item__label-text">Region</span></dt><dd class="moon-infobox-item__value">North</dd></div>
+<!-- /wp:moon-blocks/infobox-item --></dl></div></div>
+<!-- /wp:moon-blocks/infobox -->"
+`;
+
+exports[`saved markup table of contents matches the stored snapshot 1`] = `"<!-- wp:moon-blocks/toc {"title":"Contents"} /-->"`;
+
+exports[`saved markup table, default matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/table {"columns":[{"key":"col_a","label":"Picture","type":"image","imageWidth":48},{"key":"col_b","label":"Name","type":"text"},{"key":"col_c","label":"Price","type":"number","align":"right"},{"key":"col_d","label":"Note","type":"text"}],"rows":[{"id":"row_1","isDivider":false,"col_a":{"id":12,"url":"https://example.com/wp-content/uploads/photo.jpg","alt":"A photo"},"col_b":"Turnip \\u003cstrong\\u003eseeds\\u003c/strong\\u003e","col_c":"120","col_d":"Spring"},{"id":"row_2","isDivider":true,"dividerLabel":"Summer"},{"id":"row_3","isDivider":false,"col_a":{"id":0,"url":"https://example.com/wp-content/uploads/photo.jpg","alt":""},"col_b":"Tomato seeds","col_c":"","col_d":""}],"showCardNote":true,"showCardHighlight":true} -->
+<div class="wp-block-moon-blocks-table moon-table" data-preset="default" data-sort="true" data-filter="true" style="--moon-table-columns:4"><table class="moon-table__table"><thead><tr><th scope="col" data-key="col_a" data-type="image" style="text-align:left">Picture</th><th scope="col" data-key="col_b" data-type="text" style="text-align:left">Name</th><th scope="col" data-key="col_c" data-type="number" style="text-align:right">Price</th><th scope="col" data-key="col_d" data-type="text" style="text-align:left">Note</th></tr></thead><tbody><tr><td class="moon-table__cell--image moon-table__cell--lead" data-label="Picture" data-key="col_a"><img class="moon-table__image wp-image-12" src="https://example.com/wp-content/uploads/photo.jpg" alt="A photo" style="width:48px;height:auto;--moon-table-image-width:48px"/></td><td class="moon-table__cell--title" data-label="Name" data-key="col_b">Turnip <strong>seeds</strong></td><td data-label="Price" data-key="col_c" style="text-align:right">120</td><td data-label="Note" data-key="col_d">Spring</td></tr><tr class="moon-table__row--divider"><td colspan="4" class="moon-table__divider-cell">Summer</td></tr><tr><td class="moon-table__cell--image moon-table__cell--lead" data-label="Picture" data-key="col_a"><img class="moon-table__image" src="https://example.com/wp-content/uploads/photo.jpg" alt="" style="width:48px;height:auto;--moon-table-image-width:48px"/></td><td class="moon-table__cell--title" data-label="Name" data-key="col_b">Tomato seeds</td><td data-label="Price" data-key="col_c" style="text-align:right"></td><td data-label="Note" data-key="col_d"></td></tr></tbody></table></div>
+<!-- /wp:moon-blocks/table -->"
+`;
+
+exports[`saved markup table, preset-1 matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/table {"preset":"preset-1","columns":[{"key":"col_a","label":"Picture","type":"image","imageWidth":48},{"key":"col_b","label":"Name","type":"text"},{"key":"col_c","label":"Price","type":"number","align":"right"},{"key":"col_d","label":"Note","type":"text"}],"rows":[{"id":"row_1","isDivider":false,"col_a":{"id":12,"url":"https://example.com/wp-content/uploads/photo.jpg","alt":"A photo"},"col_b":"Turnip \\u003cstrong\\u003eseeds\\u003c/strong\\u003e","col_c":"120","col_d":"Spring"},{"id":"row_2","isDivider":true,"dividerLabel":"Summer"},{"id":"row_3","isDivider":false,"col_a":{"id":0,"url":"https://example.com/wp-content/uploads/photo.jpg","alt":""},"col_b":"Tomato seeds","col_c":"","col_d":""}],"showCardNote":true,"showCardHighlight":true} -->
+<div class="wp-block-moon-blocks-table moon-table" data-preset="preset-1" data-sort="true" data-filter="true" style="--moon-table-columns:4"><table class="moon-table__table"><thead><tr><th scope="col" data-key="col_a" data-type="image" style="text-align:center">Picture</th><th scope="col" data-key="col_b" data-type="text" style="text-align:center">Name</th><th scope="col" data-key="col_c" data-type="number" style="text-align:right">Price</th><th scope="col" data-key="col_d" data-type="text" style="text-align:center">Note</th></tr></thead><tbody><tr><td class="moon-table__cell--image moon-table__cell--lead" data-label="Picture" data-key="col_a"><img class="moon-table__image wp-image-12" src="https://example.com/wp-content/uploads/photo.jpg" alt="A photo" style="width:48px;height:auto;--moon-table-image-width:48px"/></td><td class="moon-table__cell--title" data-label="Name" data-key="col_b">Turnip <strong>seeds</strong></td><td data-label="Price" data-key="col_c" style="text-align:right">120</td><td data-label="Note" data-key="col_d">Spring</td></tr><tr class="moon-table__row--divider"><td colspan="4" class="moon-table__divider-cell">Summer</td></tr><tr><td class="moon-table__cell--image moon-table__cell--lead" data-label="Picture" data-key="col_a"><img class="moon-table__image" src="https://example.com/wp-content/uploads/photo.jpg" alt="" style="width:48px;height:auto;--moon-table-image-width:48px"/></td><td class="moon-table__cell--title" data-label="Name" data-key="col_b">Tomato seeds</td><td data-label="Price" data-key="col_c" style="text-align:right"></td><td data-label="Note" data-key="col_d"></td></tr></tbody></table></div>
+<!-- /wp:moon-blocks/table -->"
+`;
+
+exports[`saved markup table, preset-2 matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/table {"preset":"preset-2","columns":[{"key":"col_a","label":"Picture","type":"image","imageWidth":48},{"key":"col_b","label":"Name","type":"text"},{"key":"col_c","label":"Price","type":"number","align":"right"},{"key":"col_d","label":"Note","type":"text"}],"rows":[{"id":"row_1","isDivider":false,"col_a":{"id":12,"url":"https://example.com/wp-content/uploads/photo.jpg","alt":"A photo"},"col_b":"Turnip \\u003cstrong\\u003eseeds\\u003c/strong\\u003e","col_c":"120","col_d":"Spring"},{"id":"row_2","isDivider":true,"dividerLabel":"Summer"},{"id":"row_3","isDivider":false,"col_a":{"id":0,"url":"https://example.com/wp-content/uploads/photo.jpg","alt":""},"col_b":"Tomato seeds","col_c":"","col_d":""}],"showCardNote":true,"showCardHighlight":true} -->
+<div class="wp-block-moon-blocks-table moon-table" data-preset="preset-2" data-sort="false" data-filter="true" style="--moon-table-columns:4;--moon-table-card-rows:2"><table class="moon-table__cards"><tbody><tr class="moon-table__card"><td class="moon-table__card-head"><img class="moon-table__image wp-image-12" src="https://example.com/wp-content/uploads/photo.jpg" alt="A photo" style="width:48px;height:auto;--moon-table-image-width:48px"/><span class="moon-table__card-title">Turnip <strong>seeds</strong></span><span class="moon-table__card-note">120</span></td><td class="moon-table__card-highlight"><span class="moon-table__card-label">Note</span><span class="moon-table__card-value">Spring</span></td></tr><tr class="moon-table__row--divider"><td class="moon-table__cards-divider-cell">Summer</td></tr><tr class="moon-table__card"><td class="moon-table__card-head"><img class="moon-table__image" src="https://example.com/wp-content/uploads/photo.jpg" alt="" style="width:48px;height:auto;--moon-table-image-width:48px"/><span class="moon-table__card-title">Tomato seeds</span></td><td class="moon-table__card-highlight"><span class="moon-table__card-label">Note</span><span class="moon-table__card-value moon-table__card-value--muted">—</span></td></tr></tbody></table></div>
+<!-- /wp:moon-blocks/table -->"
+`;
+
+exports[`saved markup table, preset-3 matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/table {"preset":"preset-3","columns":[{"key":"col_a","label":"Picture","type":"image","imageWidth":48},{"key":"col_b","label":"Name","type":"text"},{"key":"col_c","label":"Price","type":"number","align":"right"},{"key":"col_d","label":"Note","type":"text"}],"rows":[{"id":"row_1","isDivider":false,"col_a":{"id":12,"url":"https://example.com/wp-content/uploads/photo.jpg","alt":"A photo"},"col_b":"Turnip \\u003cstrong\\u003eseeds\\u003c/strong\\u003e","col_c":"120","col_d":"Spring"},{"id":"row_2","isDivider":true,"dividerLabel":"Summer"},{"id":"row_3","isDivider":false,"col_a":{"id":0,"url":"https://example.com/wp-content/uploads/photo.jpg","alt":""},"col_b":"Tomato seeds","col_c":"","col_d":""}],"showCardNote":true,"showCardHighlight":true} -->
+<div class="wp-block-moon-blocks-table moon-table" data-preset="preset-3" data-sort="false" data-filter="true" style="--moon-table-columns:4"><table class="moon-table__recipes"><tbody><tr class="moon-table__recipe-card" data-recipe-id="row_1"><td class="moon-table__recipe-cell"><div class="moon-table__recipe-header"><img class="moon-table__image wp-image-12" src="https://example.com/wp-content/uploads/photo.jpg" alt="A photo" style="width:48px;height:auto;--moon-table-image-width:48px"/><div class="moon-table__recipe-info"><span class="moon-table__recipe-name">Turnip <strong>seeds</strong></span><span class="moon-table__recipe-stats"><span class="moon-table__recipe-chip moon-table__recipe-chip--accent">120</span><span class="moon-table__recipe-chip">Spring</span></span></div></div></td></tr><tr class="moon-table__row--divider"><td class="moon-table__recipes-divider-cell">Summer</td></tr><tr class="moon-table__recipe-card" data-recipe-id="row_3"><td class="moon-table__recipe-cell"><div class="moon-table__recipe-header"><img class="moon-table__image" src="https://example.com/wp-content/uploads/photo.jpg" alt="" style="width:48px;height:auto;--moon-table-image-width:48px"/><div class="moon-table__recipe-info"><span class="moon-table__recipe-name">Tomato seeds</span></div></div></td></tr></tbody></table></div>
+<!-- /wp:moon-blocks/table -->"
+`;
+
+exports[`saved markup table, preset-4 matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/table {"preset":"preset-4","columns":[{"key":"col_a","label":"Picture","type":"image","imageWidth":48},{"key":"col_b","label":"Name","type":"text"},{"key":"col_c","label":"Price","type":"number","align":"right"},{"key":"col_d","label":"Note","type":"text"}],"rows":[{"id":"row_1","isDivider":false,"col_a":{"id":12,"url":"https://example.com/wp-content/uploads/photo.jpg","alt":"A photo"},"col_b":"Turnip \\u003cstrong\\u003eseeds\\u003c/strong\\u003e","col_c":"120","col_d":"Spring"},{"id":"row_2","isDivider":true,"dividerLabel":"Summer"},{"id":"row_3","isDivider":false,"col_a":{"id":0,"url":"https://example.com/wp-content/uploads/photo.jpg","alt":""},"col_b":"Tomato seeds","col_c":"","col_d":""}],"showCardNote":true,"showCardHighlight":true} -->
+<div class="wp-block-moon-blocks-table moon-table" data-preset="preset-4" data-sort="false" data-filter="true" style="--moon-table-columns:4"><table class="moon-table__recipes"><tbody><tr class="moon-table__recipe-card" data-recipe-id="row_1"><td class="moon-table__recipe-cell"><div class="moon-table__recipe-header"><img class="moon-table__image wp-image-12" src="https://example.com/wp-content/uploads/photo.jpg" alt="A photo" style="width:48px;height:auto;--moon-table-image-width:48px"/><div class="moon-table__recipe-info"><span class="moon-table__recipe-name">Turnip <strong>seeds</strong></span></div></div><div class="moon-table__recipe-field"><span class="moon-table__recipe-field-label">Price</span><span class="moon-table__recipe-field-value">120</span></div><div class="moon-table__recipe-field"><span class="moon-table__recipe-field-label">Note</span><span class="moon-table__recipe-field-value">Spring</span></div></td></tr><tr class="moon-table__row--divider"><td class="moon-table__recipes-divider-cell">Summer</td></tr><tr class="moon-table__recipe-card" data-recipe-id="row_3"><td class="moon-table__recipe-cell"><div class="moon-table__recipe-header"><img class="moon-table__image" src="https://example.com/wp-content/uploads/photo.jpg" alt="" style="width:48px;height:auto;--moon-table-image-width:48px"/><div class="moon-table__recipe-info"><span class="moon-table__recipe-name">Tomato seeds</span></div></div></td></tr></tbody></table></div>
+<!-- /wp:moon-blocks/table -->"
+`;
+
+exports[`saved markup table, sort and filter off matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/table {"columns":[{"key":"col_a","label":"Picture","type":"image","imageWidth":48},{"key":"col_b","label":"Name","type":"text"},{"key":"col_c","label":"Price","type":"number","align":"right"},{"key":"col_d","label":"Note","type":"text"}],"rows":[{"id":"row_1","isDivider":false,"col_a":{"id":12,"url":"https://example.com/wp-content/uploads/photo.jpg","alt":"A photo"},"col_b":"Turnip \\u003cstrong\\u003eseeds\\u003c/strong\\u003e","col_c":"120","col_d":"Spring"},{"id":"row_2","isDivider":true,"dividerLabel":"Summer"},{"id":"row_3","isDivider":false,"col_a":{"id":0,"url":"https://example.com/wp-content/uploads/photo.jpg","alt":""},"col_b":"Tomato seeds","col_c":"","col_d":""}],"enableSort":false,"enableFilter":false} -->
+<div class="wp-block-moon-blocks-table moon-table" data-preset="default" data-sort="false" data-filter="false" style="--moon-table-columns:4"><table class="moon-table__table"><thead><tr><th scope="col" data-key="col_a" data-type="image" style="text-align:left">Picture</th><th scope="col" data-key="col_b" data-type="text" style="text-align:left">Name</th><th scope="col" data-key="col_c" data-type="number" style="text-align:right">Price</th><th scope="col" data-key="col_d" data-type="text" style="text-align:left">Note</th></tr></thead><tbody><tr><td class="moon-table__cell--image moon-table__cell--lead" data-label="Picture" data-key="col_a"><img class="moon-table__image wp-image-12" src="https://example.com/wp-content/uploads/photo.jpg" alt="A photo" style="width:48px;height:auto;--moon-table-image-width:48px"/></td><td class="moon-table__cell--title" data-label="Name" data-key="col_b">Turnip <strong>seeds</strong></td><td data-label="Price" data-key="col_c" style="text-align:right">120</td><td data-label="Note" data-key="col_d">Spring</td></tr><tr class="moon-table__row--divider"><td colspan="4" class="moon-table__divider-cell">Summer</td></tr><tr><td class="moon-table__cell--image moon-table__cell--lead" data-label="Picture" data-key="col_a"><img class="moon-table__image" src="https://example.com/wp-content/uploads/photo.jpg" alt="" style="width:48px;height:auto;--moon-table-image-width:48px"/></td><td class="moon-table__cell--title" data-label="Name" data-key="col_b">Tomato seeds</td><td data-label="Price" data-key="col_c" style="text-align:right"></td><td data-label="Note" data-key="col_d"></td></tr></tbody></table></div>
+<!-- /wp:moon-blocks/table -->"
+`;
+
+exports[`saved markup tabs matches the stored snapshot 1`] = `
+"<!-- wp:moon-blocks/tabs -->
+<div class="wp-block-moon-blocks-tabs moon-tabs"><!-- wp:moon-blocks/tabs-item -->
+<div class="wp-block-moon-blocks-tabs-item moon-tabs-item"><div class="moon-tabs-item__label">One</div><div class="moon-tabs-item__content"></div></div>
+<!-- /wp:moon-blocks/tabs-item -->
+
+<!-- wp:moon-blocks/tabs-item -->
+<div class="wp-block-moon-blocks-tabs-item moon-tabs-item"><div class="moon-tabs-item__label">Two</div><div class="moon-tabs-item__content"></div></div>
+<!-- /wp:moon-blocks/tabs-item --></div>
+<!-- /wp:moon-blocks/tabs -->"
+`;
