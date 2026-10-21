@@ -20,8 +20,10 @@ vendor
 composer.json
 composer.lock
 
-# Uncompiled source (build/ is what ships)
+# Uncompiled source and tests (build/ is what ships)
 src
+tests
+jest.config.cjs
 
 # GitHub-only documentation
 README.md
