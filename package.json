@@ -33,8 +33,5 @@
     "@wordpress/i18n": "^6.6.1",
     "@wordpress/data": "^10.33.1",
     "@wordpress/scripts": "^36.0.0"
-  },
-  "dependencies": {
-    "package-lock": "^1.0.5"
   }
 }
