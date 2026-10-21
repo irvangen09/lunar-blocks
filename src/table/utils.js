@@ -94,8 +94,13 @@ export function getCardRowCount( { detailCols, highlightCol } ) {
 	return 1 + detailCols.length + ( highlightCol ? 1 : 0 );
 }
 
-// Text of a rich-text cell with its tags removed.
+// Text of a rich-text cell with its tags removed. A cell that holds an
+// image object, left over from a column type change, has no text.
 export function getPlainText( value ) {
+	if ( 'object' === typeof value ) {
+		return '';
+	}
+
 	return String( value ?? '' )
 		.replace( /<br\s*\/?>/gi, ' ' )
 		.replace( /<[^>]*>/g, '' )
