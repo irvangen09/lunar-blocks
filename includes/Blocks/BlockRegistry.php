@@ -25,6 +25,23 @@ class BlockRegistry {
 	public function register(): void {
 		add_action( 'init', array( $this, 'register_blocks' ) );
 		add_filter( 'block_categories_all', array( $this, 'add_category' ) );
+		add_filter( 'block_type_metadata', array( $this, 'add_version' ) );
+	}
+
+	/**
+	 * Gives block stylesheets the plugin version. Without it WordPress uses its
+	 * own version, so a cached stylesheet outlives a plugin update.
+	 *
+	 * @param array $metadata Block metadata.
+	 */
+	public function add_version( array $metadata ): array {
+		$name = $metadata['name'] ?? '';
+
+		if ( is_string( $name ) && str_starts_with( $name, self::NAMESPACE_PREFIX ) ) {
+			$metadata['version'] = MOON_BLOCKS_VERSION;
+		}
+
+		return $metadata;
 	}
 
 	public function register_blocks(): void {
