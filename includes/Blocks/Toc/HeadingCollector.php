@@ -21,7 +21,7 @@ class HeadingCollector {
 	private const CACHE_LIFETIME = DAY_IN_SECONDS;
 
 	/**
-	 * Blocks whose contents never reach the TOC (#52).
+	 * Blocks whose contents never reach the TOC.
 	 */
 	private const SKIPPED_BLOCKS = array( 'moon-blocks/infobox' );
 
@@ -199,8 +199,9 @@ class HeadingCollector {
 	}
 
 	/**
-	 * The raw content of a post. In a preview the global post is the unsaved
-	 * revision, so it wins over the stored post with the same ID.
+	 * The raw content of a post, or an empty string when the visitor may not
+	 * read it. In a preview the global post is the unsaved revision, so it wins
+	 * over the stored post with the same ID.
 	 *
 	 * @param int $post_id Post ID.
 	 */
@@ -208,7 +209,31 @@ class HeadingCollector {
 		$current = get_post();
 		$post    = ( $current instanceof \WP_Post && $post_id === $current->ID ) ? $current : get_post( $post_id );
 
-		return $post instanceof \WP_Post ? (string) $post->post_content : '';
+		if ( ! $post instanceof \WP_Post || ! $this->can_read( $post ) ) {
+			return '';
+		}
+
+		return (string) $post->post_content;
+	}
+
+	/**
+	 * Whether the visitor may see the content of a post. The TOC can sit in a
+	 * template, outside the post content, where WordPress has not checked this.
+	 *
+	 * @param \WP_Post $post Post.
+	 */
+	private function can_read( \WP_Post $post ): bool {
+		if ( post_password_required( $post ) ) {
+			return false;
+		}
+
+		$status = get_post_status_object( get_post_status( $post ) );
+
+		if ( $status && $status->public ) {
+			return true;
+		}
+
+		return current_user_can( 'read_post', $post->ID );
 	}
 
 	private function cache_key( int $post_id ): string {
