@@ -52,6 +52,25 @@ Yes. Open Settings > Moon Blocks > Appearance to set Primary, Surface, and Borde
 
 == Changelog ==
 
+= 0.9.2 =
+
+* Gallery, Infobox, and Table images now load at the size they are shown, so pages download less data, most of all on phones.
+* The settings page asks for confirmation before you leave it with unsaved changes.
+* Table Preset 3 and Preset 4: a ticked card now has a struck-through name, muted text, and a faded image instead of fading the whole card, so the text stays easy to read.
+* The shared color and spacing styles are now loaded together with the page, which saves one request.
+* Callout: the icon is drawn by the stylesheet, so it is no longer lost when a site filters the post content. Screen readers announce the type of the callout.
+* TOC: no table of contents is built for a post the visitor cannot read, such as a password-protected post.
+* Table: image data left in a cell after changing a column type is treated as an empty cell instead of text.
+* Table Preset 3 and Preset 4: the checkbox is added when the page loads, and content saved with an older checkbox does not get a second one.
+* Block styles are reloaded after an update instead of coming from the browser cache.
+* Block icons in the editor inserter are outlined as intended instead of filled.
+* Callout and Table Preset 1: the accent bar and spacing follow the reading direction in right-to-left languages.
+* Gallery: the image viewer stays readable in high contrast modes, and image links without alternative text get a name for screen readers.
+* Table: keyboard focus skips the hidden header sort buttons on small screens, and a table that scrolls sideways can be focused and scrolled with the keyboard.
+* Tabs and Accordion: the page no longer jumps when the blocks finish loading, and an item without a title gets a name for screen readers.
+* The plugin now loads on pre-release versions of WordPress, such as 6.9-RC1.
+* Deleting the plugin also removes the saved Table of Contents data.
+
 = 0.9.1 =
 
 * Gallery: the image viewer closes with the Escape key in themes that block it.
