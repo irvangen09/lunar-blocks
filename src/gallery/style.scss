@@ -130,7 +130,7 @@ body.moon-gallery-lightbox-open {
 	align-items: center;
 
 	/* Viewport limits keep the picture and caption on screen; no token fits. */
-	max-inline-size: min(90vw, 1100px);
+	max-inline-size: min(90vw, calc(var(--moon-unit) * 69));
 	max-block-size: 90vh;
 	margin: 0;
 	padding: 0;
@@ -231,4 +231,14 @@ body.moon-gallery-lightbox-open {
 
 .moon-gallery-lightbox__next {
 	right: var(--moon-space-4);
+}
+
+/* The overlay is translucent, so with system colors the page would show
+   through; a solid system background keeps the lightbox readable. */
+@media (forced-colors: active) {
+
+	.moon-gallery-lightbox {
+		background: Canvas;
+		color: CanvasText;
+	}
 }
