@@ -22,6 +22,9 @@ class DesignTokens {
 	public function register_style(): void {
 		wp_register_style( self::HANDLE, MOON_BLOCKS_URL . 'assets/css/tokens.css', array(), MOON_BLOCKS_VERSION );
 
+		// The file is small, so WordPress prints it inline instead of as a separate request.
+		wp_style_add_data( self::HANDLE, 'path', MOON_BLOCKS_DIR . 'assets/css/tokens.css' );
+
 		$css = $this->build_override_css();
 
 		if ( '' !== $css ) {
