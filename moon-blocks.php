@@ -14,8 +14,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// A pre-release such as 6.9-RC1 sorts below 6.9, so only the release part is compared.
+$moon_blocks_wp_version = (string) strtok( get_bloginfo( 'version' ), '-' );
+
 // Checked before any class is loaded: the classes use syntax that older PHP cannot parse.
-if ( version_compare( PHP_VERSION, '8.0', '<' ) || version_compare( get_bloginfo( 'version' ), '6.9', '<' ) ) {
+if ( version_compare( PHP_VERSION, '8.0', '<' ) || version_compare( $moon_blocks_wp_version, '6.9', '<' ) ) {
 	add_action(
 		'admin_notices',
 		function () {
