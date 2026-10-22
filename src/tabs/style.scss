@@ -103,6 +103,30 @@
 	}
 }
 
+/* With scripting on, view.js is about to turn the items into tabs. Showing
+ * only the first item until then keeps the page from jumping when it runs.
+ * If the script never arrives, the animation brings the rest back. */
+@keyframes moon-tabs-reveal {
+
+	to {
+		height: auto;
+		margin-block-end: var(--moon-space-4);
+		overflow: visible;
+		visibility: visible;
+	}
+}
+
+@media (scripting: enabled) {
+
+	.moon-tabs:not(.moon-tabs--enhanced) > .moon-tabs-item:not(:first-child) {
+		height: 0;
+		margin-block-end: 0;
+		overflow: hidden;
+		visibility: hidden;
+		animation: moon-tabs-reveal 0s 3s forwards;
+	}
+}
+
 /* Forced colors replace author colors; system colors keep the selection
  * visible. */
 @media (forced-colors: active) {
