@@ -374,7 +374,8 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 				grid-column: 1;
 				grid-row: 1;
 				align-self: center;
-				padding: var(--moon-space-3) 0 var(--moon-space-3) var(--moon-space-4);
+				padding-block: var(--moon-space-3);
+				padding-inline: var(--moon-space-4) 0;
 			}
 
 			td.moon-table__cell--title {
@@ -737,12 +738,23 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 			}
 		}
 
-		/* The checked state itself dims the card, so the script only has to
-		   remember it. The checkbox stays at full strength. */
+		/* The checked state itself marks the card, so the script only has to
+		   remember it. Fading the text would drop it below readable contrast,
+		   so the text turns muted and only the image fades. */
 		tr.moon-table__recipe-card:has(.moon-table__recipe-check:checked) {
 
 			.moon-table__recipe-header,
 			.moon-table__recipe-field {
+				color: var(--moon-color-text-muted);
+			}
+
+			.moon-table__recipe-name {
+				text-decoration: line-through;
+			}
+
+			.moon-table__image {
+
+				/* No token for a dimmed state. */
 				opacity: 0.5;
 			}
 		}
