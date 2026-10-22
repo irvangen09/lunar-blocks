@@ -3,6 +3,7 @@
 namespace MoonBlocks\Core;
 
 use MoonBlocks\Blocks\BlockRegistry;
+use MoonBlocks\Blocks\ImageSizes;
 use MoonBlocks\Blocks\Toc\Toc;
 use MoonBlocks\Services\DesignTokens;
 use MoonBlocks\Settings\SettingsPage;
@@ -20,6 +21,7 @@ class Plugin {
 		$blocks->register();
 
 		( new Toc() )->register();
+		( new ImageSizes() )->register();
 
 		// The settings screen needs the full block list, including disabled blocks.
 		if ( is_admin() ) {
