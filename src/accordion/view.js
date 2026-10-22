@@ -1,3 +1,4 @@
+import { __, sprintf } from '@wordpress/i18n';
 import { MOBILE_BREAKPOINT } from '../shared/breakpoint';
 
 const ACCORDION = '.moon-accordion--open-desktop';
@@ -44,13 +45,47 @@ function openFromHash() {
 	}
 }
 
+// An item without a title would be announced as an empty button.
+function nameEmptySummaries() {
+	document.querySelectorAll( '.moon-accordion' ).forEach( ( accordion ) => {
+		accordion
+			.querySelectorAll( `:scope > ${ ITEM } > summary` )
+			.forEach( ( summary, position ) => {
+				if ( '' !== summary.textContent.trim() ) {
+					return;
+				}
+
+				const name = sprintf(
+					/* translators: %d: item number. */
+					__( 'Section %d', 'moon-blocks' ),
+					position + 1
+				);
+
+				// The title may be a heading, which needs the name itself.
+				const title =
+					summary.querySelector( '.moon-accordion-item__title' ) ||
+					summary;
+
+				title.setAttribute( 'aria-label', name );
+			} );
+	} );
+}
+
 function init() {
+	nameEmptySummaries();
+
 	const desktop = window.matchMedia(
 		`(min-width: ${ MOBILE_BREAKPOINT + 1 }px)`
 	);
 
 	syncItems( desktop.matches );
 	openFromHash();
+
+	document
+		.querySelectorAll( ACCORDION )
+		.forEach( ( accordion ) =>
+			accordion.classList.add( 'moon-accordion--ready' )
+		);
 
 	// Sync only when crossing the breakpoint, so a visitor's own
 	// open/close choices survive resizes within the same range.
