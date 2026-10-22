@@ -1,3 +1,5 @@
+import { __, sprintf } from '@wordpress/i18n';
+
 const TABS = '.moon-tabs';
 const ITEM = '.moon-tabs-item';
 const LABEL = '.moon-tabs-item__label';
@@ -35,7 +37,10 @@ function enhance( tabsEl ) {
 			tab.type = 'button';
 			tab.className = 'moon-tabs__tab';
 			tab.id = `moon-tabs-${ index }-tab-${ n }`;
-			tab.textContent = label.textContent;
+			tab.textContent =
+				label.textContent.trim() ||
+				/* translators: %d: tab number. */
+				sprintf( __( 'Tab %d', 'moon-blocks' ), n + 1 );
 			tab.setAttribute( 'role', 'tab' );
 			tab.setAttribute(
 				'aria-controls',
