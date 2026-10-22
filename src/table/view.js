@@ -1,4 +1,5 @@
 import { __, sprintf } from '@wordpress/i18n';
+import { MOBILE_BREAKPOINT } from '../shared/breakpoint';
 
 const BLOCK = '.moon-table';
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -281,6 +282,26 @@ function initSort( blockEl, tableEl, controlsEl ) {
 	bar.appendChild( select );
 	bar.appendChild( directionButton );
 	controlsEl.appendChild( bar );
+
+	// The header buttons are invisible on small screens and the bar above
+	// replaces them, so keyboard focus skips them there.
+	const smallScreen = window.matchMedia(
+		`(max-width: ${ MOBILE_BREAKPOINT }px)`
+	);
+	const headerButtons = tableEl.querySelectorAll( 'thead .moon-table__sort' );
+
+	function syncHeaderFocus() {
+		headerButtons.forEach( ( button ) => {
+			if ( smallScreen.matches ) {
+				button.tabIndex = -1;
+			} else {
+				button.removeAttribute( 'tabindex' );
+			}
+		} );
+	}
+
+	syncHeaderFocus();
+	smallScreen.addEventListener( 'change', syncHeaderFocus );
 }
 
 // Searchable text is read once, without field labels, so a word such as
@@ -353,9 +374,14 @@ function initChecklist( recipesEl ) {
 			return;
 		}
 
-		const checkbox = createElement( 'input', 'moon-table__recipe-check' );
-		checkbox.type = 'checkbox';
-		cell.prepend( checkbox );
+		// Content saved before the checkbox moved here still carries one.
+		let checkbox = cell.querySelector( '.moon-table__recipe-check' );
+
+		if ( ! checkbox ) {
+			checkbox = createElement( 'input', 'moon-table__recipe-check' );
+			checkbox.type = 'checkbox';
+			cell.prepend( checkbox );
+		}
 
 		const name = card.querySelector( '.moon-table__recipe-name' );
 		const title = name ? name.textContent.trim() : '';
@@ -400,6 +426,43 @@ function initChecklist( recipesEl ) {
 	} );
 }
 
+const FOCUSABLE =
+	'a[href], button, input, select, textarea, summary, [tabindex]';
+
+// A table that scrolls sideways and holds nothing to focus cannot be
+// scrolled with the keyboard in every browser, so the table itself becomes
+// a stop while it overflows.
+function initScrollRegion( blockEl ) {
+	if ( 'auto' !== window.getComputedStyle( blockEl ).overflowX ) {
+		return;
+	}
+
+	function sync() {
+		const needed =
+			blockEl.scrollWidth > blockEl.clientWidth &&
+			! blockEl.querySelector( FOCUSABLE );
+
+		if ( needed ) {
+			blockEl.tabIndex = 0;
+			blockEl.setAttribute( 'role', 'region' );
+			blockEl.setAttribute(
+				'aria-label',
+				__( 'Scrollable table', 'moon-blocks' )
+			);
+		} else {
+			blockEl.removeAttribute( 'tabindex' );
+			blockEl.removeAttribute( 'role' );
+			blockEl.removeAttribute( 'aria-label' );
+		}
+	}
+
+	sync();
+
+	if ( 'function' === typeof window.ResizeObserver ) {
+		new window.ResizeObserver( sync ).observe( blockEl );
+	}
+}
+
 function initBlock( blockEl ) {
 	const tableEl = blockEl.querySelector(
 		'.moon-table__table, .moon-table__cards, .moon-table__recipes'
@@ -427,6 +490,8 @@ function initBlock( blockEl ) {
 	if ( tableEl.classList.contains( 'moon-table__recipes' ) ) {
 		initChecklist( tableEl );
 	}
+
+	initScrollRegion( blockEl );
 }
 
 function init() {
