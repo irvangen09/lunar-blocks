@@ -24,8 +24,10 @@ $callout-icons: (
 	padding: var(--moon-space-3) var(--moon-space-4);
 
 	/* No 4px width token; double the strong width. */
-	border-left: calc(var(--moon-border-width-strong) * 2) solid var(--moon-color-primary);
-	border-radius: 0 var(--moon-radius) var(--moon-radius) 0;
+	border-inline-start: calc(var(--moon-border-width-strong) * 2) solid var(--moon-color-primary);
+	border-radius: var(--moon-radius);
+	border-start-start-radius: 0;
+	border-end-start-radius: 0;
 	background: var(--moon-color-surface);
 	color: inherit;
 	font-family: inherit;
