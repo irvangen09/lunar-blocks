@@ -13,6 +13,7 @@ export function AccordionIcon( { className } ) {
 			className={ className }
 			viewBox="0 0 24 24"
 			fill="none"
+			style={ { fill: 'none' } }
 			stroke="currentColor"
 			strokeWidth="2"
 			strokeLinecap="round"
