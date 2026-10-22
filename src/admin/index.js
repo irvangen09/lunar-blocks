@@ -63,6 +63,19 @@ function SettingsApp( { option, blocks } ) {
 
 	const isDirty = JSON.stringify( settings ) !== JSON.stringify( saved );
 
+	// Leaving with unsaved changes asks the browser to confirm.
+	useEffect( () => {
+		if ( ! isDirty ) {
+			return undefined;
+		}
+
+		const warn = ( event ) => event.preventDefault();
+
+		window.addEventListener( 'beforeunload', warn );
+
+		return () => window.removeEventListener( 'beforeunload', warn );
+	}, [ isDirty ] );
+
 	return (
 		<div className="moon-settings">
 			{ notice && (
