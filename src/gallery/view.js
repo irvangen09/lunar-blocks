@@ -1,4 +1,4 @@
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 const LINK = '.moon-gallery-item__link';
 const GALLERY = '.moon-gallery';
@@ -141,6 +141,46 @@ function open( link ) {
 	show( Math.max( group.indexOf( link ), 0 ) );
 	document.body.classList.add( BODY_CLASS );
 	dialog.showModal();
+}
+
+// A link around an image without alt text has no name, so it takes the
+// caption or its place in the gallery.
+function nameLinks() {
+	document.querySelectorAll( GALLERY ).forEach( ( gallery ) => {
+		const links = gallery.querySelectorAll( LINK );
+
+		links.forEach( ( link, position ) => {
+			const alt =
+				link.querySelector( 'img' )?.getAttribute( 'alt' ) ?? '';
+
+			if ( '' !== alt.trim() ) {
+				return;
+			}
+
+			const text =
+				link
+					.closest( ITEM )
+					?.querySelector( CAPTION )
+					?.textContent.trim() ?? '';
+
+			link.setAttribute(
+				'aria-label',
+				text ||
+					sprintf(
+						/* translators: 1: image number, 2: number of images. */
+						__( 'Image %1$d of %2$d', 'moon-blocks' ),
+						position + 1,
+						links.length
+					)
+			);
+		} );
+	} );
+}
+
+if ( 'loading' === document.readyState ) {
+	document.addEventListener( 'DOMContentLoaded', nameLinks );
+} else {
+	nameLinks();
 }
 
 // Without <dialog> support the links keep opening the full-size file.
