@@ -1,3 +1,5 @@
+@use "../shared/focus" as *;
+
 .moon-toc {
 
 	/* Width of the column that holds the current-section marker. */
@@ -40,14 +42,7 @@
 			display: none;
 		}
 
-		&:focus:not(:focus-visible) {
-			outline: none;
-		}
-
-		&:focus-visible {
-			outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
-			outline-offset: calc(var(--moon-focus-ring-width) * -1);
-		}
+		@include focus-ring(inset);
 	}
 
 	&:not([open]) > .moon-toc__header {
@@ -149,14 +144,7 @@
 			text-underline-offset: 0.2em;
 		}
 
-		&:focus:not(:focus-visible) {
-			outline: none;
-		}
-
-		&:focus-visible {
-			outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
-			outline-offset: calc(var(--moon-focus-ring-width) * -1);
-		}
+		@include focus-ring(inset);
 	}
 
 	.moon-toc__text {

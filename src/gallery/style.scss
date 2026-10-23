@@ -1,4 +1,5 @@
 @use "../shared/breakpoints" as *;
+@use "../shared/focus" as *;
 
 .moon-gallery {
 
@@ -57,14 +58,7 @@
 	background: var(--moon-color-surface);
 	text-decoration: none;
 
-	&:focus:not(:focus-visible) {
-		outline: none;
-	}
-
-	&:focus-visible {
-		outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
-		outline-offset: var(--moon-focus-ring-offset);
-	}
+	@include focus-ring;
 }
 
 .moon-gallery-item__image {
@@ -188,14 +182,7 @@ body.moon-gallery-lightbox-open {
 		color: inherit;
 	}
 
-	&:focus:not(:focus-visible) {
-		outline: none;
-	}
-
-	&:focus-visible {
-		outline: var(--moon-focus-ring-width) solid var(--moon-color-on-overlay);
-		outline-offset: var(--moon-focus-ring-offset);
-	}
+	@include focus-ring($color: var(--moon-color-on-overlay));
 
 	svg {
 		display: block;

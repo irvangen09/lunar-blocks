@@ -1,3 +1,5 @@
+@use "../shared/focus" as *;
+
 .moon-tabs {
 
 	/* Vertical only: constrained layouts center blocks with inline margins. */
@@ -66,15 +68,8 @@
 			color: var(--moon-color-primary);
 		}
 
-		&:focus:not(:focus-visible) {
-			outline: none;
-		}
-
 		/* Inset: the scrolling tab row would clip a ring drawn outside. */
-		&:focus-visible {
-			outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
-			outline-offset: calc(-1 * var(--moon-focus-ring-width));
-		}
+		@include focus-ring(inset);
 	}
 
 	/* No vertical margin or padding: a panel hidden with until-found keeps
@@ -88,14 +83,7 @@
 			display: none;
 		}
 
-		&:focus:not(:focus-visible) {
-			outline: none;
-		}
-
-		&:focus-visible {
-			outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
-			outline-offset: var(--moon-focus-ring-offset);
-		}
+		@include focus-ring;
 
 		> :last-child {
 			margin-block-end: 0;

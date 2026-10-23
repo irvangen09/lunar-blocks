@@ -1,4 +1,5 @@
 @use "../shared/breakpoints" as *;
+@use "../shared/focus" as *;
 
 .moon-infobox {
 
@@ -136,14 +137,7 @@
 		/* Keeps the underline clear of descenders; no token for it. */
 		text-underline-offset: 0.2em;
 
-		&:focus:not(:focus-visible) {
-			outline: none;
-		}
-
-		&:focus-visible {
-			outline: var(--moon-focus-ring-width) solid var(--moon-color-text);
-			outline-offset: var(--moon-focus-ring-offset);
-		}
+		@include focus-ring;
 	}
 }
 
