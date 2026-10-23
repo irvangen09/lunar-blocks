@@ -17,8 +17,8 @@ function findChild( parent, selector ) {
 	);
 }
 
-function enhance( tabsEl ) {
-	const index = instances++;
+// Turns each item's label into a tab button and its content into a panel.
+function collectEntries( tabsEl, index ) {
 	const entries = [];
 
 	Array.from( tabsEl.children )
@@ -58,19 +58,11 @@ function enhance( tabsEl ) {
 			entries.push( { item, tab, panel } );
 		} );
 
-	if ( 0 === entries.length ) {
-		return;
-	}
+	return entries;
+}
 
-	const list = document.createElement( 'div' );
-
-	list.className = 'moon-tabs__list';
-	list.setAttribute( 'role', 'tablist' );
-	entries.forEach( ( { tab } ) => list.appendChild( tab ) );
-	tabsEl.insertBefore( list, tabsEl.firstChild );
-	tabsEl.classList.add( 'moon-tabs--enhanced' );
-
-	function select( target, focus ) {
+function createSelect( entries ) {
+	return function select( target, focus ) {
 		entries.forEach( ( entry ) => {
 			const selected = entry === target;
 
@@ -93,61 +85,88 @@ function enhance( tabsEl ) {
 				inline: 'nearest',
 			} );
 		}
+	};
+}
+
+// Index of the tab a key moves to, or null when the key does nothing.
+function getTargetIndex( key, current, count, rtl ) {
+	if ( 'ArrowRight' === key ) {
+		return current + ( rtl ? -1 : 1 );
 	}
 
-	entries.forEach( ( entry, i ) => {
-		const { item, tab, panel } = entry;
+	if ( 'ArrowLeft' === key ) {
+		return current + ( rtl ? 1 : -1 );
+	}
 
-		// Initial state: first tab selected, without scrolling the page.
-		tab.setAttribute( 'aria-selected', String( 0 === i ) );
-		tab.tabIndex = 0 === i ? 0 : -1;
+	if ( 'Home' === key ) {
+		return 0;
+	}
 
-		if ( 0 !== i ) {
-			panel.setAttribute( 'hidden', 'until-found' );
+	return 'End' === key ? count - 1 : null;
+}
+
+function wireEntry( entry, i, { entries, list, select } ) {
+	const { item, tab, panel } = entry;
+
+	// Initial state: first tab selected, without scrolling the page.
+	tab.setAttribute( 'aria-selected', String( 0 === i ) );
+	tab.tabIndex = 0 === i ? 0 : -1;
+
+	if ( 0 !== i ) {
+		panel.setAttribute( 'hidden', 'until-found' );
+	}
+
+	showers.set( item, () => {
+		if ( 'true' === tab.getAttribute( 'aria-selected' ) ) {
+			return false;
 		}
 
-		showers.set( item, () => {
-			if ( 'true' === tab.getAttribute( 'aria-selected' ) ) {
-				return false;
-			}
+		select( entry, false );
 
-			select( entry, false );
-
-			return true;
-		} );
-
-		tab.addEventListener( 'click', () => select( entry, true ) );
-
-		// Fired when the browser reveals the panel for find-in-page.
-		panel.addEventListener( 'beforematch', () => select( entry, false ) );
-
-		tab.addEventListener( 'keydown', ( event ) => {
-			if ( event.altKey || event.ctrlKey || event.metaKey ) {
-				return;
-			}
-
-			const rtl = 'rtl' === window.getComputedStyle( list ).direction;
-			let next = null;
-
-			if ( 'ArrowRight' === event.key ) {
-				next = i + ( rtl ? -1 : 1 );
-			} else if ( 'ArrowLeft' === event.key ) {
-				next = i + ( rtl ? 1 : -1 );
-			} else if ( 'Home' === event.key ) {
-				next = 0;
-			} else if ( 'End' === event.key ) {
-				next = entries.length - 1;
-			}
-
-			if ( null !== next ) {
-				event.preventDefault();
-				select(
-					entries[ ( next + entries.length ) % entries.length ],
-					true
-				);
-			}
-		} );
+		return true;
 	} );
+
+	tab.addEventListener( 'click', () => select( entry, true ) );
+
+	// Fired when the browser reveals the panel for find-in-page.
+	panel.addEventListener( 'beforematch', () => select( entry, false ) );
+
+	tab.addEventListener( 'keydown', ( event ) => {
+		if ( event.altKey || event.ctrlKey || event.metaKey ) {
+			return;
+		}
+
+		const rtl = 'rtl' === window.getComputedStyle( list ).direction;
+		const next = getTargetIndex( event.key, i, entries.length, rtl );
+
+		if ( null !== next ) {
+			event.preventDefault();
+			select(
+				entries[ ( next + entries.length ) % entries.length ],
+				true
+			);
+		}
+	} );
+}
+
+function enhance( tabsEl ) {
+	const entries = collectEntries( tabsEl, instances++ );
+
+	if ( 0 === entries.length ) {
+		return;
+	}
+
+	const list = document.createElement( 'div' );
+
+	list.className = 'moon-tabs__list';
+	list.setAttribute( 'role', 'tablist' );
+	entries.forEach( ( { tab } ) => list.appendChild( tab ) );
+	tabsEl.insertBefore( list, tabsEl.firstChild );
+	tabsEl.classList.add( 'moon-tabs--enhanced' );
+
+	const context = { entries, list, select: createSelect( entries ) };
+
+	entries.forEach( ( entry, i ) => wireEntry( entry, i, context ) );
 }
 
 // Shows the tab of every item that contains the hash target, including
