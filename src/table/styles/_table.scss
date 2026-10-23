@@ -1,0 +1,301 @@
+@use "../../shared/breakpoints" as *;
+@use "../../shared/focus" as *;
+
+// The first width above the mobile layouts.
+$moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
+
+/* Default and Preset 1: a real table with a header row. */
+.moon-table.moon-table {
+
+	.moon-table__table {
+		box-sizing: border-box;
+		width: 100%;
+		margin: 0;
+		border: 0;
+		border-spacing: 0;
+		background: none;
+		color: inherit;
+		font-size: var(--moon-font-size-sm);
+
+		tr {
+			background: none;
+		}
+
+		th,
+		td {
+			box-sizing: border-box;
+			padding: var(--moon-space-2) var(--moon-space-3);
+			border: var(--moon-border);
+			background: none;
+			color: inherit;
+			font-size: inherit;
+			text-align: start;
+			vertical-align: middle;
+			overflow-wrap: anywhere;
+		}
+
+		th {
+			border-bottom: var(--moon-border-width-strong) solid var(--moon-color-primary);
+			background: var(--moon-color-primary-subtle);
+			font-weight: var(--moon-font-weight-strong);
+		}
+
+		/* The column being sorted. */
+		td.moon-table__cell--sorted {
+			background: var(--moon-color-primary-subtle);
+		}
+
+		/* A divider heads the rows after it. */
+		td.moon-table__divider-cell {
+			padding: var(--moon-space-2) var(--moon-space-3);
+			border-width: var(--moon-border-width) 0;
+			background: var(--moon-color-surface);
+			font-weight: var(--moon-font-weight-strong);
+			text-align: center;
+		}
+	}
+
+	.moon-table__sort {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--moon-space-1);
+		margin: 0;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: none;
+		box-shadow: none;
+		color: inherit;
+		font: inherit;
+		letter-spacing: inherit;
+		text-align: inherit;
+		text-transform: none;
+		appearance: none;
+		cursor: pointer;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background: none;
+			box-shadow: none;
+			color: inherit;
+		}
+
+		@include focus-ring;
+
+		svg {
+			flex: none;
+			width: var(--moon-font-size-md);
+			height: var(--moon-font-size-md);
+			color: var(--moon-color-text-muted);
+		}
+	}
+
+	/* Neutral shows both chevrons; a sorted column shows only its direction. */
+	th[aria-sort="ascending"] {
+
+		.moon-table__sort-down {
+			display: none;
+		}
+
+		.moon-table__sort-up {
+			stroke: var(--moon-color-primary);
+		}
+	}
+
+	th[aria-sort="descending"] {
+
+		.moon-table__sort-up {
+			display: none;
+		}
+
+		.moon-table__sort-down {
+			stroke: var(--moon-color-primary);
+		}
+	}
+
+	/* Default: a plain table that scrolls sideways at every width. */
+	&[data-preset="default"] {
+		overflow-x: auto;
+
+		.moon-table__table {
+			table-layout: fixed;
+			border-collapse: collapse;
+
+			/* Fixed columns share the width equally, so give each one room
+			   and let the block scroll instead of squeezing them. */
+			min-width: calc(var(--moon-table-columns, 1) * var(--moon-table-min-column));
+		}
+	}
+
+	&[data-preset="preset-1"] {
+		overflow-x: auto;
+
+		.moon-table__table {
+			border-collapse: separate;
+		}
+	}
+}
+
+/* Preset 1, desktop: flat header, hairline rows, no vertical lines. */
+@media (min-width: $moon-table-breakpoint-desktop) {
+
+	.moon-table.moon-table[data-preset="preset-1"] {
+
+		.moon-table__table {
+			border: var(--moon-border);
+			border-radius: var(--moon-radius);
+
+			th {
+				padding: var(--moon-space-3);
+				border-width: 0 0 var(--moon-border-width-strong);
+				text-align: center;
+				white-space: nowrap;
+			}
+
+			/* Corners follow the rounded border of the table. */
+			thead tr:first-child th:first-child {
+				border-top-left-radius: var(--moon-radius);
+			}
+
+			thead tr:first-child th:last-child {
+				border-top-right-radius: var(--moon-radius);
+			}
+
+			td {
+				border-width: 0 0 var(--moon-border-width);
+			}
+
+			td.moon-table__divider-cell {
+				border-width: var(--moon-border-width) 0;
+			}
+
+			tbody tr:last-child td {
+				border-bottom-width: 0;
+			}
+
+			td.moon-table__cell--title {
+				font-weight: var(--moon-font-weight-strong);
+			}
+
+			td.moon-table__cell--image {
+				text-align: center;
+			}
+
+			tbody tr:hover td {
+				background: var(--moon-color-surface);
+			}
+
+			tbody tr td.moon-table__cell--sorted {
+				background: var(--moon-color-primary-subtle);
+			}
+
+			tbody tr:hover td.moon-table__cell--sorted {
+				background: var(--moon-color-surface);
+			}
+		}
+	}
+}
+
+/* Preset 1, mobile: every row becomes a card of label and value rows. */
+@media (max-width: $moon-breakpoint-mobile) {
+
+	.moon-table.moon-table[data-preset="preset-1"] {
+
+		.moon-table__sort-bar {
+			display: flex;
+		}
+
+		.moon-table__table {
+			display: block;
+
+			/* Header row stays available to screen readers only, so it is
+			   cut down to 1px rather than removed. */
+			thead {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				overflow: hidden;
+				clip-path: inset(50%);
+				white-space: nowrap;
+			}
+
+			tbody {
+				display: block;
+			}
+
+			tbody tr {
+				display: grid;
+				grid-template-columns: auto minmax(0, 1fr);
+				margin: 0 0 var(--moon-space-3);
+				overflow: hidden;
+				border: var(--moon-border);
+				border-radius: var(--moon-radius);
+				background: none;
+			}
+
+			/* A column alignment set in the editor suits the table layout only;
+			   it is an inline style, so only !important can undo it here. */
+			td {
+				display: block;
+				grid-column: 1 / -1;
+				padding: 0;
+				border: 0;
+				background: none;
+				text-align: start !important; /* stylelint-disable-line declaration-no-important */
+			}
+
+			td.moon-table__cell--lead {
+				grid-column: 1;
+				grid-row: 1;
+				align-self: center;
+				padding-block: var(--moon-space-3);
+				padding-inline: var(--moon-space-4) 0;
+			}
+
+			td.moon-table__cell--title {
+				align-self: center;
+				padding: var(--moon-space-3) var(--moon-space-4);
+				font-size: var(--moon-font-size-md);
+				font-weight: var(--moon-font-weight-strong);
+				line-height: var(--moon-line-height-tight);
+			}
+
+			td.moon-table__cell--lead + td.moon-table__cell--title {
+				grid-column: 2;
+				grid-row: 1;
+			}
+
+			/* A table inside the cell lets the label and the value sit side
+			   by side even when the value holds bold text or a link. */
+			td[data-label]:not(.moon-table__cell--lead):not(.moon-table__cell--title) {
+				display: table;
+				box-sizing: border-box;
+				width: 100%;
+				padding: var(--moon-space-2) var(--moon-space-4);
+				border-top: var(--moon-border);
+
+				&::before {
+					content: attr(data-label);
+					display: table-cell;
+					width: var(--moon-table-label-width);
+					padding-inline-end: var(--moon-space-3);
+					color: var(--moon-color-text-muted);
+					vertical-align: top;
+				}
+			}
+
+			tr.moon-table__row--divider {
+				display: block;
+				margin-block-start: var(--moon-space-4);
+				border-radius: 0;
+			}
+
+			td.moon-table__divider-cell {
+				padding: var(--moon-space-2) var(--moon-space-4);
+				border-block: var(--moon-border);
+				background: var(--moon-color-surface);
+			}
+		}
+	}
+}

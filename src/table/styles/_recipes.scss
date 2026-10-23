@@ -1,0 +1,197 @@
+@use "../../shared/focus" as *;
+
+/* Preset 3 and Preset 4: a vertical list of recipe cards. */
+.moon-table.moon-table {
+
+	.moon-table__recipes {
+		display: block;
+		width: 100%;
+		margin: 0;
+		border: 0;
+		background: none;
+		font-size: inherit;
+
+		tbody {
+			display: flex;
+			flex-direction: column;
+			gap: var(--moon-space-3);
+		}
+
+		tr {
+			border: 0;
+			background: none;
+		}
+
+		td {
+			display: block;
+			padding: 0;
+			border: 0;
+			background: none;
+			color: inherit;
+
+			/* 1em: keeps a theme's own cell font size out of the card. */
+			font-size: var(--moon-font-size-md);
+			text-align: start;
+		}
+
+		tr.moon-table__row--divider {
+			display: block;
+			width: 100%;
+		}
+
+		tr.moon-table__recipe-card {
+			position: relative;
+			display: block;
+			margin-block-end: var(--moon-space-2);
+			padding: var(--moon-space-3) var(--moon-space-4);
+			border: var(--moon-border);
+			border-radius: var(--moon-radius);
+		}
+
+		/* Image and info form one row, so the chips wrap under the name
+		   instead of under the image. The right side is kept free for the
+		   checkbox. */
+		.moon-table__recipe-header {
+			display: flex;
+			align-items: center;
+			gap: var(--moon-space-3);
+			padding-inline-end: calc(var(--moon-table-check-size) + var(--moon-space-3));
+		}
+
+		.moon-table__recipe-info {
+			display: flex;
+			flex: 1;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: var(--moon-space-3);
+			min-width: 0;
+		}
+
+		.moon-table__recipe-name {
+			font-weight: var(--moon-font-weight-strong);
+		}
+
+		.moon-table__recipe-stats {
+			display: flex;
+			flex-wrap: wrap;
+			gap: var(--moon-space-2);
+		}
+
+		.moon-table__recipe-chip {
+			display: inline-flex;
+			align-items: center;
+			padding: var(--moon-space-1) var(--moon-space-2);
+			border: var(--moon-border);
+			border-radius: var(--moon-radius);
+			font-size: var(--moon-font-size-sm);
+			font-weight: var(--moon-font-weight-strong);
+			white-space: nowrap;
+		}
+
+		.moon-table__recipe-chip--accent {
+			background: var(--moon-color-primary-subtle);
+			color: var(--moon-color-primary);
+		}
+
+		.moon-table__recipe-field {
+			display: flex;
+			align-items: baseline;
+			gap: var(--moon-space-2);
+			margin-block-start: var(--moon-space-2);
+			padding-block-start: var(--moon-space-2);
+			border-top: var(--moon-border);
+			font-size: var(--moon-font-size-sm);
+		}
+
+		/* A label never breaks inside a word: it grows to its longest word
+		   instead, even when the theme allows breaks inside words. */
+		.moon-table__recipe-field-label {
+			flex: 0 0 var(--moon-table-recipe-label-width);
+			min-inline-size: min-content;
+			overflow-wrap: normal;
+			word-break: normal;
+			color: var(--moon-color-text-muted);
+		}
+
+		.moon-table__recipe-field-value {
+			min-width: 0;
+			overflow-wrap: anywhere;
+		}
+
+		td.moon-table__recipes-divider-cell {
+			padding: var(--moon-space-2) var(--moon-space-4);
+			border-block: var(--moon-border);
+			background: var(--moon-color-surface);
+			font-weight: var(--moon-font-weight-strong);
+			text-align: center;
+		}
+
+		/* Outlined, not filled; the tick is drawn with borders, so no icon
+		   is needed. */
+		.moon-table__recipe-check {
+			position: absolute;
+			inset-block-start: var(--moon-space-3);
+			inset-inline-end: var(--moon-space-4);
+			z-index: 1;
+			box-sizing: border-box;
+			width: var(--moon-table-check-size);
+			height: var(--moon-table-check-size);
+			min-width: 0;
+			margin: 0;
+			padding: 0;
+			border: var(--moon-border-width-strong) solid var(--moon-color-text-muted);
+			border-radius: var(--moon-radius);
+			background: none;
+			box-shadow: none;
+			appearance: none;
+			cursor: pointer;
+
+			&:checked {
+				border-color: var(--moon-color-success);
+				background: none;
+			}
+
+			/* Some themes draw their own tick with ::before. */
+			&::before {
+				content: none;
+			}
+
+			&:checked::after {
+				content: "";
+				position: absolute;
+				inset-block-start: 50%;
+				inset-inline-start: 50%;
+
+				/* Tick proportions: half as wide as it is tall. */
+				width: calc(var(--moon-unit) * 0.3125);
+				height: calc(var(--moon-unit) * 0.625);
+				border: solid var(--moon-color-success);
+				border-width: 0 var(--moon-border-width-strong) var(--moon-border-width-strong) 0;
+				transform: translate(-50%, -60%) rotate(45deg);
+			}
+
+			@include focus-ring;
+		}
+
+		/* The checked state itself marks the card, so the script only has to
+		   remember it. Fading the text would drop it below readable contrast,
+		   so the text turns muted and only the image fades. */
+		tr.moon-table__recipe-card:has(.moon-table__recipe-check:checked) {
+
+			.moon-table__recipe-header,
+			.moon-table__recipe-field {
+				color: var(--moon-color-text-muted);
+			}
+
+			.moon-table__recipe-name {
+				text-decoration: line-through;
+			}
+
+			.moon-table__image {
+
+				/* No token for a dimmed state. */
+				opacity: 0.5;
+			}
+		}
+	}
+}
