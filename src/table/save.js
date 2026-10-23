@@ -243,6 +243,83 @@ function splitChips( value ) {
 		.filter( Boolean );
 }
 
+function renderRecipeStats( statChips, priceValue ) {
+	if ( ! statChips.length && ! priceValue ) {
+		return null;
+	}
+
+	return (
+		<span className="moon-table__recipe-stats">
+			{ statChips.map( ( chip, i ) => (
+				<span
+					key={ i }
+					className="moon-table__recipe-chip moon-table__recipe-chip--accent"
+				>
+					{ chip }
+				</span>
+			) ) }
+			{ priceValue && (
+				<span className="moon-table__recipe-chip">{ priceValue }</span>
+			) }
+		</span>
+	);
+}
+
+function renderRecipeField( col, value ) {
+	if ( isBlankCell( col, value ) ) {
+		return null;
+	}
+
+	return (
+		<div key={ col.key } className="moon-table__recipe-field">
+			<span className="moon-table__recipe-field-label">
+				{ col.label }
+			</span>
+			<span className="moon-table__recipe-field-value">
+				{ renderCellValue( col, value ) }
+			</span>
+		</div>
+	);
+}
+
+function renderRecipeCard(
+	row,
+	index,
+	{ imageCol, titleCol, statCol, priceCol, fieldCols }
+) {
+	const statChips = statCol ? splitChips( row[ statCol.key ] ) : [];
+	const priceValue = priceCol ? getPlainText( row[ priceCol.key ] ) : '';
+
+	return (
+		<tr
+			key={ index }
+			className="moon-table__recipe-card"
+			data-recipe-id={ row.id }
+		>
+			<td className="moon-table__recipe-cell">
+				<div className="moon-table__recipe-header">
+					{ imageCol && renderImage( imageCol, row[ imageCol.key ] ) }
+					<div className="moon-table__recipe-info">
+						{ titleCol && (
+							<span className="moon-table__recipe-name">
+								{ renderCellValue(
+									titleCol,
+									row[ titleCol.key ]
+								) }
+							</span>
+						) }
+						{ renderRecipeStats( statChips, priceValue ) }
+					</div>
+				</div>
+
+				{ fieldCols.map( ( col ) =>
+					renderRecipeField( col, row[ col.key ] )
+				) }
+			</td>
+		</tr>
+	);
+}
+
 // Roles follow the column type: an image first column, then the name.
 // With badges (Preset 3) the next text column holds chips and the one
 // after it a price chip; every remaining column is a labeled field.
@@ -255,102 +332,28 @@ function renderRecipes( { columns, rows, hasBadges } ) {
 		: [];
 	const statCol = chipCols[ 0 ];
 	const priceCol = chipCols[ 1 ];
-	const fieldCols = restCols.filter(
-		( col ) => col !== statCol && col !== priceCol
-	);
+	const roles = {
+		imageCol,
+		titleCol,
+		statCol,
+		priceCol,
+		fieldCols: restCols.filter(
+			( col ) => col !== statCol && col !== priceCol
+		),
+	};
 
 	return (
 		<table className="moon-table__recipes">
 			<tbody>
-				{ rows.map( ( row, index ) => {
-					if ( row.isDivider ) {
-						return renderDividerRow(
-							row,
-							index,
-							'moon-table__recipes-divider-cell'
-						);
-					}
-
-					const statChips = statCol
-						? splitChips( row[ statCol.key ] )
-						: [];
-					const priceValue = priceCol
-						? getPlainText( row[ priceCol.key ] )
-						: '';
-
-					return (
-						<tr
-							key={ index }
-							className="moon-table__recipe-card"
-							data-recipe-id={ row.id }
-						>
-							<td className="moon-table__recipe-cell">
-								<div className="moon-table__recipe-header">
-									{ imageCol &&
-										renderImage(
-											imageCol,
-											row[ imageCol.key ]
-										) }
-									<div className="moon-table__recipe-info">
-										{ titleCol && (
-											<span className="moon-table__recipe-name">
-												{ renderCellValue(
-													titleCol,
-													row[ titleCol.key ]
-												) }
-											</span>
-										) }
-										{ ( statChips.length > 0 ||
-											priceValue ) && (
-											<span className="moon-table__recipe-stats">
-												{ statChips.map(
-													( chip, i ) => (
-														<span
-															key={ i }
-															className="moon-table__recipe-chip moon-table__recipe-chip--accent"
-														>
-															{ chip }
-														</span>
-													)
-												) }
-												{ priceValue && (
-													<span className="moon-table__recipe-chip">
-														{ priceValue }
-													</span>
-												) }
-											</span>
-										) }
-									</div>
-								</div>
-
-								{ fieldCols.map( ( col ) => {
-									const value = row[ col.key ];
-
-									if ( isBlankCell( col, value ) ) {
-										return null;
-									}
-
-									return (
-										<div
-											key={ col.key }
-											className="moon-table__recipe-field"
-										>
-											<span className="moon-table__recipe-field-label">
-												{ col.label }
-											</span>
-											<span className="moon-table__recipe-field-value">
-												{ renderCellValue(
-													col,
-													value
-												) }
-											</span>
-										</div>
-									);
-								} ) }
-							</td>
-						</tr>
-					);
-				} ) }
+				{ rows.map( ( row, index ) =>
+					row.isDivider
+						? renderDividerRow(
+								row,
+								index,
+								'moon-table__recipes-divider-cell'
+							)
+						: renderRecipeCard( row, index, roles )
+				) }
 			</tbody>
 		</table>
 	);

@@ -271,6 +271,50 @@ function buildSamples() {
 		}
 	);
 
+	// Recipe cards read their roles from the column types: chips, a price chip
+	// and labeled fields, with one blank value that is left out.
+	const recipeColumns = [
+		{ key: 'col_a', label: 'Picture', type: 'image', imageWidth: 48 },
+		{ key: 'col_b', label: 'Name', type: 'text' },
+		{ key: 'col_c', label: 'Stats', type: 'text' },
+		{ key: 'col_d', label: 'Price', type: 'number' },
+		{ key: 'col_e', label: 'Level', type: 'text' },
+		{ key: 'col_f', label: 'Photo', type: 'image', imageWidth: 32 },
+		{ key: 'col_g', label: 'Tools', type: 'text' },
+	];
+	const recipeRows = [
+		{
+			id: 'row_1',
+			isDivider: false,
+			col_a: image,
+			col_b: 'Mayonnaise',
+			col_c: 'Easy, Quick',
+			col_d: '230',
+			col_e: '<em>Chef</em> 4',
+			col_f: image,
+			col_g: 'Whisk',
+		},
+		{ id: 'row_2', isDivider: true, dividerLabel: 'Sauces' },
+		{
+			id: 'row_3',
+			isDivider: false,
+			col_a: { id: 0, url: image.url, alt: '' },
+			col_b: 'Plain',
+			col_c: '',
+			col_d: '',
+			col_e: '',
+			col_f: null,
+			col_g: 'N/A',
+		},
+	];
+
+	[ 'preset-3', 'preset-4' ].forEach( ( preset ) => {
+		samples[ `table, ${ preset } with fields` ] = createBlock(
+			'moon-blocks/table',
+			{ preset, columns: recipeColumns, rows: recipeRows }
+		);
+	} );
+
 	samples[ 'table, sort and filter off' ] = createBlock(
 		'moon-blocks/table',
 		{
