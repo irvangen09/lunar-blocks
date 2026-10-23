@@ -6,23 +6,9 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 import { PanelBody, SelectControl } from '@wordpress/components';
+import { getHeadingOptions } from '../../shared/heading-options';
 
 const CONTENT_TEMPLATE = [ [ 'core/paragraph' ] ];
-
-// Called at render time so translations are loaded.
-function getHeadingOptions() {
-	return [
-		{
-			value: 'none',
-			label: __( 'No heading (plain text)', 'moon-blocks' ),
-		},
-		{ value: 'h2', label: 'H2' },
-		{ value: 'h3', label: 'H3' },
-		{ value: 'h4', label: 'H4' },
-		{ value: 'h5', label: 'H5' },
-		{ value: 'h6', label: 'H6' },
-	];
-}
 
 export default function Edit( { attributes, setAttributes } ) {
 	const { title, headingLevel } = attributes;
