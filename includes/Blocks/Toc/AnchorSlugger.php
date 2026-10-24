@@ -29,8 +29,17 @@ class AnchorSlugger {
 	 */
 	public function reserve( string $id ): void {
 		if ( '' !== $id ) {
-			$this->used[ mb_strtolower( $id ) ] = true;
+			$this->used[ self::fold( $id ) ] = true;
 		}
+	}
+
+	/**
+	 * Lowercases an id for comparison. Hosts without mbstring fall back to ASCII.
+	 *
+	 * @param string $id Element id.
+	 */
+	private static function fold( string $id ): string {
+		return function_exists( 'mb_strtolower' ) ? mb_strtolower( $id, 'UTF-8' ) : strtolower( $id );
 	}
 
 	/**
@@ -44,7 +53,7 @@ class AnchorSlugger {
 		$id   = $base;
 		$n    = 2;
 
-		while ( isset( $this->used[ mb_strtolower( $id ) ] ) ) {
+		while ( isset( $this->used[ self::fold( $id ) ] ) ) {
 			$id = $base . '_' . $n;
 			++$n;
 		}

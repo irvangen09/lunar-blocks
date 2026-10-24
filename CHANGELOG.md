@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Indonesian (id_ID) translation, for the settings page, the block editor, and the front end.
 
+### Fixed
+
+- TOC: a post with a table of contents no longer fails to load on hosting where the PHP mbstring extension is missing.
+
 ## [0.9.2] - 2026-10-23
 
 ### Added
