@@ -1,0 +1,941 @@
+# Copyright (C) 2026 Irvan Noerfazri
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Moon Blocks 0.9.2\n"
+"Report-Msgid-Bugs-To: https://github.com/irvangen09/moon-blocks/issues\n"
+"Last-Translator: Irvan Noerfazri\n"
+"Language-Team: Indonesian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-24T00:57:12+00:00\n"
+"PO-Revision-Date: 2026-10-24 08:00+0700\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: moon-blocks\n"
+"Language: id_ID\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. Plugin Name of the plugin
+#: moon-blocks.php
+#: includes/Blocks/BlockRegistry.php:58
+#: includes/Settings/SettingsPage.php:27
+#: includes/Settings/SettingsPage.php:28
+msgid "Moon Blocks"
+msgstr "Moon Blocks"
+
+#. Plugin URI of the plugin
+#: moon-blocks.php
+msgid "https://github.com/irvangen09/moon-blocks"
+msgstr "https://github.com/irvangen09/moon-blocks"
+
+#. Description of the plugin
+#: moon-blocks.php
+msgid "Lightweight Gutenberg blocks for documentation, wiki, and knowledge base websites."
+msgstr "Blok Gutenberg ringan untuk situs dokumentasi, wiki, dan basis pengetahuan."
+
+#. Author of the plugin
+#: moon-blocks.php
+msgid "Irvan Noerfazri"
+msgstr "Irvan Noerfazri"
+
+#: includes/Blocks/Toc/TocRenderer.php:22
+#: build/toc/index.js:1
+msgid "Table of contents"
+msgstr "Daftar isi"
+
+#: includes/Settings/SettingsPage.php:39
+msgid "The Moon Blocks settings interface could not be loaded. Please reinstall the plugin."
+msgstr "Antarmuka pengaturan Moon Blocks tidak dapat dimuat. Silakan pasang ulang plugin."
+
+#: moon-blocks.php:29
+msgid "Moon Blocks requires PHP 8.0 or later and WordPress 6.9 or later."
+msgstr "Moon Blocks memerlukan PHP 8.0 atau lebih baru dan WordPress 6.9 atau lebih baru."
+
+#: build/accordion/index.js:1
+#: build/callout/index.js:1
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: build/accordion/index.js:1
+msgid "Open items on desktop"
+msgstr "Buka item di desktop"
+
+#: build/accordion/index.js:1
+msgid "Items start open on wide screens and collapsed on mobile. Visitors can still open and close each item."
+msgstr "Item terbuka saat dimuat di layar lebar dan tertutup di ponsel. Pengunjung tetap dapat membuka dan menutup setiap item."
+
+#: build/accordion/index.js:1
+#: build/infobox/index.js:1
+msgid "Title Settings"
+msgstr "Pengaturan Judul"
+
+#: build/accordion/index.js:1
+#: build/infobox/index.js:1
+msgid "Heading Level"
+msgstr "Tingkat Heading"
+
+#: build/accordion/index.js:1
+#: build/infobox/index.js:1
+msgid "No heading (plain text)"
+msgstr "Tanpa heading (teks biasa)"
+
+#: build/accordion/index.js:1
+msgid "The heading level shapes the heading structure of the page. Choose a level that fits the surrounding content."
+msgstr "Tingkat heading membentuk struktur heading halaman. Pilih tingkat yang sesuai dengan konten di sekitarnya."
+
+#: build/accordion/index.js:1
+msgid "Section title…"
+msgstr "Judul bagian…"
+
+#. translators: %d: item number.
+#: build/accordion/view.js:2
+#, js-format
+msgid "Section %d"
+msgstr "Bagian %d"
+
+#: build/admin/index.js:1
+msgid "Primary"
+msgstr "Utama"
+
+#: build/admin/index.js:1
+msgid "Accent for active items, indicators and icons."
+msgstr "Warna aksen untuk item aktif, penanda, dan ikon."
+
+#: build/admin/index.js:1
+msgid "Surface"
+msgstr "Permukaan"
+
+#: build/admin/index.js:1
+msgid "Background of panels, cards and code."
+msgstr "Latar panel, kartu, dan kode."
+
+#: build/admin/index.js:1
+msgid "Border"
+msgstr "Garis tepi"
+
+#: build/admin/index.js:1
+msgid "Lines and dividers."
+msgstr "Garis dan pemisah."
+
+#: build/admin/index.js:1
+msgid "Colors you leave unset follow your theme. Make sure a color you choose has enough contrast with your theme."
+msgstr "Warna yang tidak diatur mengikuti tema Anda. Pastikan warna yang Anda pilih memiliki kontras yang cukup dengan tema Anda."
+
+#: build/admin/index.js:1
+msgid "Theme default"
+msgstr "Bawaan tema"
+
+#: build/admin/index.js:1
+msgid "Reset"
+msgstr "Atur ulang"
+
+#: build/admin/index.js:1
+msgid "No blocks are available yet."
+msgstr "Belum ada blok yang tersedia."
+
+#: build/admin/index.js:1
+msgid "Turn off the blocks you do not need. A disabled block is not available in the editor and loads no CSS or JavaScript. Content that already uses it may no longer display as intended."
+msgstr "Matikan blok yang tidak Anda perlukan. Blok yang dimatikan tidak tersedia di editor dan tidak memuat CSS maupun JavaScript. Konten yang sudah memakainya mungkin tidak lagi tampil sebagaimana mestinya."
+
+#: build/admin/index.js:1
+msgid "Blocks"
+msgstr "Blok"
+
+#: build/admin/index.js:1
+msgid "Appearance"
+msgstr "Tampilan"
+
+#: build/admin/index.js:1
+msgid "Settings saved."
+msgstr "Pengaturan disimpan."
+
+#: build/admin/index.js:1
+msgid "Save Changes"
+msgstr "Simpan Perubahan"
+
+#: build/callout/index.js:1
+msgid "Info"
+msgstr "Info"
+
+#: build/callout/index.js:1
+msgid "Tips"
+msgstr "Tips"
+
+#: build/callout/index.js:1
+msgid "Warning"
+msgstr "Peringatan"
+
+#: build/callout/index.js:1
+msgid "Important"
+msgstr "Penting"
+
+#: build/callout/index.js:1
+msgid "Variant"
+msgstr "Varian"
+
+#: build/callout/index.js:1
+msgid "Label (optional)"
+msgstr "Label (opsional)"
+
+#: build/callout/index.js:1
+#: build/info-list/index.js:1
+#: build/infobox/index.js:1
+msgid "Label"
+msgstr "Label"
+
+#: build/callout/index.js:1
+msgid "Write your note…"
+msgstr "Tulis catatan Anda…"
+
+#: build/gallery/index.js:1
+msgid "Gallery Settings"
+msgstr "Pengaturan Galeri"
+
+#: build/gallery/index.js:1
+msgid "Columns"
+msgstr "Kolom"
+
+#: build/gallery/index.js:1
+msgid "Number of columns on wide screens. Small screens always show two."
+msgstr "Jumlah kolom di layar lebar. Layar kecil selalu menampilkan dua."
+
+#: build/gallery/index.js:1
+#: build/infobox/index.js:1
+msgid "Replace image"
+msgstr "Ganti gambar"
+
+#: build/gallery/index.js:1
+#: build/infobox/index.js:1
+#: build/table/index.js:1
+msgid "Remove image"
+msgstr "Hapus gambar"
+
+#: build/gallery/index.js:1
+msgid "Image Settings"
+msgstr "Pengaturan Gambar"
+
+#: build/gallery/index.js:1
+#: build/infobox/index.js:1
+msgid "Alternative text"
+msgstr "Teks alternatif"
+
+#: build/gallery/index.js:1
+msgid "Describe the image for people who cannot see it. It applies to this gallery only, not to the Media Library."
+msgstr "Jelaskan gambar bagi orang yang tidak dapat melihatnya. Berlaku hanya di galeri ini, bukan di Pustaka Media."
+
+#: build/gallery/index.js:1
+msgid "Caption (optional)…"
+msgstr "Keterangan (opsional)…"
+
+#: build/gallery/index.js:1
+#: build/infobox/index.js:1
+#: build/table/index.js:1
+msgid "Image"
+msgstr "Gambar"
+
+#: build/gallery/index.js:1
+msgid "Select or upload an image for this gallery item."
+msgstr "Pilih atau unggah gambar untuk item galeri ini."
+
+#. translators: 1: image number, 2: number of images.
+#: build/gallery/view.js:2
+#, js-format
+msgid "Image %1$d of %2$d"
+msgstr "Gambar %1$d dari %2$d"
+
+#: build/gallery/view.js:2
+msgid "Image preview"
+msgstr "Pratinjau gambar"
+
+#: build/gallery/view.js:2
+msgid "Close"
+msgstr "Tutup"
+
+#: build/gallery/view.js:2
+msgid "Previous"
+msgstr "Sebelumnya"
+
+#: build/gallery/view.js:2
+msgid "Next"
+msgstr "Berikutnya"
+
+#: build/info-list/index.js:1
+#: build/infobox/index.js:1
+msgid "Icon"
+msgstr "Ikon"
+
+#: build/info-list/index.js:1
+#: build/infobox/index.js:1
+msgid "Browse Dashicons"
+msgstr "Jelajahi Dashicons"
+
+#: build/info-list/index.js:1
+#: build/infobox/index.js:1
+msgid "This icon name is not saved. Use a name that starts with \"dashicons-\", such as dashicons-calendar-alt."
+msgstr "Nama ikon ini tidak disimpan. Gunakan nama yang diawali \"dashicons-\", misalnya dashicons-calendar-alt."
+
+#: build/info-list/index.js:1
+#: build/infobox/index.js:1
+msgid "Field Settings"
+msgstr "Pengaturan Baris"
+
+#: build/info-list/index.js:1
+#: build/infobox/index.js:1
+msgid "Dashicons class name. Leave empty if this field does not need an icon. Icons show on desktop only."
+msgstr "Nama class Dashicons. Biarkan kosong jika baris ini tidak memerlukan ikon. Ikon hanya tampil di desktop."
+
+#: build/info-list/index.js:1
+#: build/infobox/index.js:1
+msgid "Value"
+msgstr "Nilai"
+
+#: build/info-list/index.js:1
+msgid "Requirements"
+msgstr "Syarat"
+
+#. translators: %d: number of requirement items.
+#: build/info-list/index.js:2
+#, js-format
+msgid "%d requirement"
+msgid_plural "%d requirements"
+msgstr[0] "%d syarat"
+
+#: build/info-list/index.js:2
+msgid "Requirements Settings"
+msgstr "Pengaturan Syarat"
+
+#: build/info-list/index.js:2
+msgid "Show count"
+msgstr "Tampilkan jumlah"
+
+#: build/info-list/index.js:2
+msgid "Shows the number of items next to the title."
+msgstr "Menampilkan jumlah butir di samping judul."
+
+#: build/info-list/index.js:2
+msgid "Requirements title"
+msgstr "Judul syarat"
+
+#: build/info-list/index.js:2
+msgid "Requirement Settings"
+msgstr "Pengaturan Butir Syarat"
+
+#: build/info-list/index.js:2
+msgid "Dashicons class name. Leave empty if this item does not need an icon."
+msgstr "Nama class Dashicons. Biarkan kosong jika butir ini tidak memerlukan ikon."
+
+#: build/info-list/index.js:2
+msgid "Requirement…"
+msgstr "Syarat…"
+
+#: build/infobox/index.js:1
+msgid "Describe the image for people who cannot see it. Leave empty if the image is only decoration."
+msgstr "Jelaskan gambar bagi orang yang tidak dapat melihatnya. Biarkan kosong jika gambar hanya sebagai hiasan."
+
+#: build/infobox/index.js:1
+msgid "Select image"
+msgstr "Pilih gambar"
+
+#: build/infobox/index.js:1
+msgid "Optional. Without an image, the table uses the full width."
+msgstr "Opsional. Tanpa gambar, tabel memakai lebar penuh."
+
+#: build/infobox/index.js:1
+msgid "The heading level shapes the heading structure of the page. Choose a level that fits the surrounding content, or no heading for a plain label."
+msgstr "Tingkat heading membentuk struktur heading halaman. Pilih tingkat yang sesuai dengan konten di sekitarnya, atau tanpa heading untuk label biasa."
+
+#: build/infobox/index.js:1
+msgid "Infobox title…"
+msgstr "Judul Infobox…"
+
+#: build/table/index.js:1
+msgid "Alt text"
+msgstr "Teks alt"
+
+#: build/table/index.js:1
+msgid "Describe this image…"
+msgstr "Jelaskan gambar ini…"
+
+#: build/table/index.js:1
+msgid "Replace"
+msgstr "Ganti"
+
+#: build/table/index.js:1
+msgid "Choose image"
+msgstr "Pilih gambar"
+
+#: build/table/index.js:1
+msgid "Image URL"
+msgstr "URL gambar"
+
+#: build/table/index.js:1
+msgid "or paste image URL…"
+msgstr "atau tempel URL gambar…"
+
+#: build/table/index.js:1
+msgid "Cell value"
+msgstr "Isi sel"
+
+#: build/table/index.js:1
+msgid "Column label"
+msgstr "Label kolom"
+
+#: build/table/index.js:1
+msgid "Divider text"
+msgstr "Teks pemisah"
+
+#: build/table/index.js:1
+msgid "Divider text…"
+msgstr "Teks pemisah…"
+
+#: build/table/index.js:1
+msgid "Create a new table."
+msgstr "Buat tabel baru."
+
+#: build/table/index.js:1
+msgid "Number of columns"
+msgstr "Jumlah kolom"
+
+#: build/table/index.js:1
+msgid "Number of rows"
+msgstr "Jumlah baris"
+
+#: build/table/index.js:1
+msgid "Create Table"
+msgstr "Buat Tabel"
+
+#: build/table/index.js:1
+msgid "Default"
+msgstr "Bawaan"
+
+#: build/table/index.js:1
+msgid "Preset 1"
+msgstr "Preset 1"
+
+#: build/table/index.js:1
+msgid "Preset 2"
+msgstr "Preset 2"
+
+#: build/table/index.js:1
+msgid "Preset 3"
+msgstr "Preset 3"
+
+#: build/table/index.js:1
+msgid "Preset 4"
+msgstr "Preset 4"
+
+#: build/table/index.js:1
+msgid "A plain table that scrolls sideways on small screens."
+msgstr "Tabel biasa yang dapat digeser ke samping di layar kecil."
+
+#: build/table/index.js:1
+msgid "A table with a flat header. On small screens each row becomes a card. An image first column becomes the card image and the next column its title."
+msgstr "Tabel dengan header datar. Di layar kecil setiap baris menjadi kartu. Kolom pertama yang berisi gambar menjadi gambar kartu, dan kolom berikutnya menjadi judulnya."
+
+#: build/table/index.js:1
+msgid "A grid of cards. An image first column becomes the card image and the next column its title. The other columns become rows."
+msgstr "Kisi kartu. Kolom pertama yang berisi gambar menjadi gambar kartu, dan kolom berikutnya menjadi judulnya. Kolom lainnya menjadi baris."
+
+#: build/table/index.js:1
+msgid "A list of cards with a checklist. An image first column becomes the card image and the next column its name. The next two text columns become badges, and the first is split at commas. The rest become fields."
+msgstr "Daftar kartu dengan daftar centang. Kolom pertama yang berisi gambar menjadi gambar kartu, dan kolom berikutnya menjadi namanya. Dua kolom teks berikutnya menjadi lencana, dan yang pertama dipecah di setiap koma. Sisanya menjadi isian."
+
+#: build/table/index.js:1
+msgid "A list of cards with a checklist. An image first column becomes the card image and the next column its name. The other columns become fields."
+msgstr "Daftar kartu dengan daftar centang. Kolom pertama yang berisi gambar menjadi gambar kartu, dan kolom berikutnya menjadi namanya. Kolom lainnya menjadi isian."
+
+#: build/table/index.js:1
+msgid "Note in card header"
+msgstr "Catatan di header kartu"
+
+#: build/table/index.js:1
+msgid "Shows the first column after the title as a small note, such as a level."
+msgstr "Menampilkan kolom pertama setelah judul sebagai catatan kecil, misalnya tingkat."
+
+#: build/table/index.js:1
+msgid "Highlight band"
+msgstr "Pita sorotan"
+
+#: build/table/index.js:1
+msgid "Shows the last column as a highlighted band at the bottom of the card."
+msgstr "Menampilkan kolom terakhir sebagai pita sorotan di bagian bawah kartu."
+
+#: build/table/index.js:1
+msgid "Image width — focused column (px)"
+msgstr "Lebar gambar — kolom terpilih (px)"
+
+#: build/table/index.js:1
+msgid "The focused column is whichever cell you last clicked."
+msgstr "Kolom terpilih adalah sel yang terakhir Anda klik."
+
+#: build/table/index.js:1
+msgid "Table Settings"
+msgstr "Pengaturan Tabel"
+
+#: build/table/index.js:1
+msgid "Preset"
+msgstr "Preset"
+
+#: build/table/index.js:1
+msgid "Sortable"
+msgstr "Dapat diurutkan"
+
+#: build/table/index.js:1
+msgid "Searchable"
+msgstr "Dapat dicari"
+
+#: build/table/index.js:1
+msgid "Text"
+msgstr "Teks"
+
+#: build/table/index.js:1
+msgid "Number"
+msgstr "Angka"
+
+#: build/table/index.js:1
+msgid "Align column left"
+msgstr "Ratakan kolom ke kiri"
+
+#: build/table/index.js:1
+msgid "Align column center"
+msgstr "Ratakan kolom ke tengah"
+
+#: build/table/index.js:1
+msgid "Align column right"
+msgstr "Ratakan kolom ke kanan"
+
+#: build/table/index.js:1
+msgid "Row"
+msgstr "Baris"
+
+#: build/table/index.js:1
+msgid "Row actions"
+msgstr "Aksi baris"
+
+#: build/table/index.js:1
+msgid "Insert row before"
+msgstr "Sisipkan baris di atas"
+
+#: build/table/index.js:1
+msgid "Insert row after"
+msgstr "Sisipkan baris di bawah"
+
+#: build/table/index.js:1
+msgid "Delete this row"
+msgstr "Hapus baris ini"
+
+#: build/table/index.js:1
+msgid "Divider"
+msgstr "Pemisah"
+
+#: build/table/index.js:1
+msgid "Unset as divider"
+msgstr "Bukan lagi pemisah"
+
+#: build/table/index.js:1
+msgid "Make this row a divider"
+msgstr "Jadikan baris ini pemisah"
+
+#: build/table/index.js:1
+msgid "Column"
+msgstr "Kolom"
+
+#: build/table/index.js:1
+msgid "Column actions"
+msgstr "Aksi kolom"
+
+#: build/table/index.js:1
+msgid "Insert column before"
+msgstr "Sisipkan kolom di kiri"
+
+#: build/table/index.js:1
+msgid "Insert column after"
+msgstr "Sisipkan kolom di kanan"
+
+#: build/table/index.js:1
+msgid "Delete this column"
+msgstr "Hapus kolom ini"
+
+#: build/table/index.js:1
+msgid "Change column type"
+msgstr "Ubah jenis kolom"
+
+#: build/table/index.js:1
+msgid "Change column alignment"
+msgstr "Ubah perataan kolom"
+
+#: build/table/index.js:1
+msgid "Reset alignment"
+msgstr "Atur ulang perataan"
+
+#: build/table/view.js:1
+msgid "Sort by"
+msgstr "Urutkan berdasarkan"
+
+#: build/table/view.js:1
+msgid "Original order"
+msgstr "Urutan asli"
+
+#. translators: %s: column name.
+#: build/table/view.js:2
+#, js-format
+msgid "Sort: %s"
+msgstr "Urutkan: %s"
+
+#: build/table/view.js:2
+msgid "Descending order"
+msgstr "Urutan menurun"
+
+#: build/table/view.js:2
+msgid "Search this table…"
+msgstr "Cari di tabel ini…"
+
+#: build/table/view.js:2
+msgid "Search within this table"
+msgstr "Cari di dalam tabel ini"
+
+#. translators: %s: recipe name.
+#: build/table/view.js:3
+#, js-format
+msgid "Mark %s as obtained"
+msgstr "Tandai %s sudah didapat"
+
+#: build/table/view.js:3
+msgid "Mark as obtained"
+msgstr "Tandai sudah didapat"
+
+#: build/table/view.js:3
+msgid "Scrollable table"
+msgstr "Tabel yang dapat digulir"
+
+#: build/tabs/index.js:1
+msgid "Tab label…"
+msgstr "Label tab…"
+
+#. translators: %d: tab number.
+#: build/tabs/view.js:2
+#, js-format
+msgid "Tab %d"
+msgstr "Tab %d"
+
+#: build/toc/index.js:1
+msgid "Title"
+msgstr "Judul"
+
+#: build/toc/index.js:1
+msgid "The table of contents appears on the page once it has at least two headings."
+msgstr "Daftar isi akan tampil di halaman setelah memiliki sedikitnya dua heading."
+
+#: build/accordion/block.json
+msgctxt "block title"
+msgid "Moon Accordion"
+msgstr "Moon Akordeon"
+
+#: build/accordion/block.json
+msgctxt "block description"
+msgid "Groups content into sections that visitors can expand and collapse."
+msgstr "Mengelompokkan konten ke dalam bagian yang dapat dibuka dan ditutup pengunjung."
+
+#: build/accordion/block.json
+msgctxt "block keyword"
+msgid "accordion"
+msgstr "akordeon"
+
+#: build/accordion/block.json
+msgctxt "block keyword"
+msgid "toggle"
+msgstr "toggle"
+
+#: build/accordion/block.json
+msgctxt "block keyword"
+msgid "section"
+msgstr "bagian"
+
+#: build/accordion/block.json
+msgctxt "block keyword"
+msgid "faq"
+msgstr "faq"
+
+#: build/accordion/item/block.json
+msgctxt "block title"
+msgid "Moon Accordion Item"
+msgstr "Moon Item Akordeon"
+
+#: build/accordion/item/block.json
+msgctxt "block description"
+msgid "One section of an accordion: a title and free-form content."
+msgstr "Satu bagian akordeon: judul dan konten bebas."
+
+#: build/callout/block.json
+msgctxt "block title"
+msgid "Moon Callout"
+msgstr "Moon Callout"
+
+#: build/callout/block.json
+msgctxt "block description"
+msgid "Highlights a note, tip, or warning within an article."
+msgstr "Menyorot catatan, tips, atau peringatan di dalam artikel."
+
+#: build/callout/block.json
+msgctxt "block keyword"
+msgid "callout"
+msgstr "callout"
+
+#: build/callout/block.json
+msgctxt "block keyword"
+msgid "note"
+msgstr "catatan"
+
+#: build/callout/block.json
+msgctxt "block keyword"
+msgid "tip"
+msgstr "tips"
+
+#: build/callout/block.json
+msgctxt "block keyword"
+msgid "warning"
+msgstr "peringatan"
+
+#: build/gallery/block.json
+msgctxt "block title"
+msgid "Moon Gallery"
+msgstr "Moon Galeri"
+
+#: build/gallery/block.json
+msgctxt "block description"
+msgid "Shows a set of images in a grid, with a lightbox for viewing each one larger."
+msgstr "Menampilkan sekumpulan gambar dalam kisi, dengan lightbox untuk melihat tiap gambar lebih besar."
+
+#: build/gallery/block.json
+msgctxt "block keyword"
+msgid "gallery"
+msgstr "galeri"
+
+#: build/gallery/block.json
+msgctxt "block keyword"
+msgid "images"
+msgstr "gambar"
+
+#: build/gallery/block.json
+#: build/table/block.json
+msgctxt "block keyword"
+msgid "grid"
+msgstr "kisi"
+
+#: build/gallery/block.json
+msgctxt "block keyword"
+msgid "lightbox"
+msgstr "lightbox"
+
+#: build/gallery/item/block.json
+msgctxt "block title"
+msgid "Moon Gallery Item"
+msgstr "Moon Item Galeri"
+
+#: build/gallery/item/block.json
+msgctxt "block description"
+msgid "One image of a gallery, with an optional caption."
+msgstr "Satu gambar galeri, dengan keterangan opsional."
+
+#: build/gallery/item/block.json
+msgctxt "block keyword"
+msgid "gallery item"
+msgstr "item galeri"
+
+#: build/gallery/item/block.json
+msgctxt "block keyword"
+msgid "image"
+msgstr "gambar"
+
+#: build/gallery/item/block.json
+msgctxt "block keyword"
+msgid "caption"
+msgstr "keterangan"
+
+#: build/info-list/block.json
+msgctxt "block title"
+msgid "Moon Info List"
+msgstr "Moon Daftar Info"
+
+#: build/info-list/block.json
+msgctxt "block description"
+msgid "A compact list of label and value rows, with optional requirements sections, such as event details and prerequisites."
+msgstr "Daftar ringkas berisi baris label dan nilai, dengan bagian syarat opsional, misalnya rincian acara dan prasyarat."
+
+#: build/info-list/block.json
+msgctxt "block keyword"
+msgid "info"
+msgstr "info"
+
+#: build/info-list/block.json
+msgctxt "block keyword"
+msgid "list"
+msgstr "daftar"
+
+#: build/info-list/block.json
+#: build/infobox/block.json
+msgctxt "block keyword"
+msgid "facts"
+msgstr "fakta"
+
+#: build/info-list/block.json
+msgctxt "block keyword"
+msgid "requirements"
+msgstr "syarat"
+
+#: build/info-list/item/block.json
+msgctxt "block title"
+msgid "Moon Info List Item"
+msgstr "Moon Item Daftar Info"
+
+#: build/info-list/item/block.json
+msgctxt "block description"
+msgid "One row of an info list: an optional icon, a label, and a value."
+msgstr "Satu baris daftar info: ikon opsional, label, dan nilai."
+
+#: build/info-list/requirements/block.json
+msgctxt "block title"
+msgid "Moon Info List Requirements"
+msgstr "Moon Syarat Daftar Info"
+
+#: build/info-list/requirements/block.json
+msgctxt "block description"
+msgid "A titled checklist section of an info list, with an optional count of its items."
+msgstr "Bagian daftar centang berjudul di dalam daftar info, dengan jumlah butir opsional."
+
+#: build/info-list/requirements/requirement/block.json
+msgctxt "block title"
+msgid "Moon Info List Requirement"
+msgstr "Moon Butir Syarat Daftar Info"
+
+#: build/info-list/requirements/requirement/block.json
+msgctxt "block description"
+msgid "One item of an info list requirements section, with an icon marker that defaults to a check mark."
+msgstr "Satu butir bagian syarat daftar info, dengan penanda ikon yang bawaannya tanda centang."
+
+#: build/infobox/block.json
+msgctxt "block title"
+msgid "Moon Infobox"
+msgstr "Moon Infobox"
+
+#: build/infobox/block.json
+msgctxt "block description"
+msgid "A summary box with an optional image and a list of label and value rows, such as a character, item, or place profile."
+msgstr "Kotak ringkasan dengan gambar opsional dan daftar baris label dan nilai, misalnya profil tokoh, benda, atau tempat."
+
+#: build/infobox/block.json
+msgctxt "block keyword"
+msgid "infobox"
+msgstr "infobox"
+
+#: build/infobox/block.json
+msgctxt "block keyword"
+msgid "summary"
+msgstr "ringkasan"
+
+#: build/infobox/block.json
+msgctxt "block keyword"
+msgid "profile"
+msgstr "profil"
+
+#: build/infobox/item/block.json
+msgctxt "block title"
+msgid "Moon Infobox Item"
+msgstr "Moon Item Infobox"
+
+#: build/infobox/item/block.json
+msgctxt "block description"
+msgid "One row of an infobox: an optional icon, a label, and a value."
+msgstr "Satu baris infobox: ikon opsional, label, dan nilai."
+
+#: build/table/block.json
+msgctxt "block title"
+msgid "Moon Table"
+msgstr "Moon Tabel"
+
+#: build/table/block.json
+msgctxt "block description"
+msgid "A documentation table with grouped rows, optional sorting and search, and card layouts for small screens."
+msgstr "Tabel dokumentasi dengan baris berkelompok, pengurutan dan pencarian opsional, serta tampilan kartu untuk layar kecil."
+
+#: build/table/block.json
+msgctxt "block keyword"
+msgid "table"
+msgstr "tabel"
+
+#: build/table/block.json
+msgctxt "block keyword"
+msgid "data"
+msgstr "data"
+
+#: build/table/block.json
+msgctxt "block keyword"
+msgid "comparison"
+msgstr "perbandingan"
+
+#: build/tabs/block.json
+msgctxt "block title"
+msgid "Moon Tabs"
+msgstr "Moon Tab"
+
+#: build/tabs/block.json
+msgctxt "block description"
+msgid "Organizes content into panels that visitors switch between with a row of tabs."
+msgstr "Menata konten ke dalam panel yang dipilih pengunjung lewat deretan tab."
+
+#: build/tabs/block.json
+msgctxt "block keyword"
+msgid "tabs"
+msgstr "tab"
+
+#: build/tabs/block.json
+msgctxt "block keyword"
+msgid "tab"
+msgstr "tab"
+
+#: build/tabs/block.json
+msgctxt "block keyword"
+msgid "panel"
+msgstr "panel"
+
+#: build/tabs/item/block.json
+msgctxt "block title"
+msgid "Moon Tab Item"
+msgstr "Moon Item Tab"
+
+#: build/tabs/item/block.json
+msgctxt "block description"
+msgid "One tab of a tabs block: a short label and free-form content."
+msgstr "Satu tab dari blok tab: label singkat dan konten bebas."
+
+#: build/toc/block.json
+msgctxt "block title"
+msgid "Moon TOC"
+msgstr "Moon Daftar Isi"
+
+#: build/toc/block.json
+msgctxt "block description"
+msgid "A table of contents built from the headings of the post, with links to each section."
+msgstr "Daftar isi yang dibuat dari heading tulisan, dengan tautan ke setiap bagian."
+
+#: build/toc/block.json
+msgctxt "block keyword"
+msgid "toc"
+msgstr "toc"
+
+#: build/toc/block.json
+msgctxt "block keyword"
+msgid "table of contents"
+msgstr "daftar isi"
+
+#: build/toc/block.json
+msgctxt "block keyword"
+msgid "contents"
+msgstr "isi"
+
+#: build/toc/block.json
+msgctxt "block keyword"
+msgid "daftar isi"
+
+msgstr "daftar isi"

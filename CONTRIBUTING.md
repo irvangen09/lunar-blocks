@@ -70,7 +70,18 @@ The markup a block saves, its attribute names and defaults, and the Table preset
 
 ## Translations
 
-Translations are bundled in the `languages/` folder. To improve a translation or add a language, open an issue or a pull request with the `.po` file for your language.
+Translations are bundled in the `languages/` folder. `moon-blocks.pot` is the template, and each language has a `.po` file, a compiled `.mo` file, and `.json` files that translate the editor and front-end scripts.
+
+To improve a translation or add a language, open an issue or a pull request with the `.po` file for your language. The other files can be generated from it with [WP-CLI](https://wp-cli.org/):
+
+```bash
+npm run build
+wp i18n make-pot . languages/moon-blocks.pot --slug=moon-blocks --exclude=node_modules,vendor,tests,src
+wp i18n make-mo languages
+wp i18n make-json languages --no-purge
+```
+
+The template is made from the compiled `build/` folder, not from `src/`, so always build first.
 
 ## License
 
