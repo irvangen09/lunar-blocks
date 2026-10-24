@@ -1,6 +1,13 @@
 import { __, sprintf } from '@wordpress/i18n';
 import { MOBILE_BREAKPOINT } from '../../shared/breakpoint';
-import { createElement, createIcon, getBodyRows, toSections } from './dom';
+import {
+	createElement,
+	createIcon,
+	getBodyRows,
+	isDividerRow,
+	toSections,
+} from './dom';
+import { isNoValue, isNumericColumn, parseLeadingNumber } from './number';
 
 // A table cell holds one column; a card holds its values in elements that
 // carry the key, and a column can show as several chips. A muted dash stands
@@ -33,32 +40,25 @@ function getCellText( row, key ) {
 	return texts.get( key );
 }
 
-function parseNumber( text ) {
-	const number = parseFloat( text.replace( /,/g, '' ) );
-
-	return Number.isNaN( number ) ? null : number;
-}
-
-// Empty cells go last in both directions.
-function compareRows( a, b, { key, type, direction } ) {
+// Empty cells go last in both directions. Amounts sort by their value; the
+// text breaks a tie, so equal amounts still come out in a stable order.
+function compareRows( a, b, { key, direction }, numeric ) {
 	const aText = getCellText( a, key );
 	const bText = getCellText( b, key );
-	const aValue = 'number' === type ? parseNumber( aText ) : aText;
-	const bValue = 'number' === type ? parseNumber( bText ) : bText;
-	const aEmpty = null === aValue || '' === aValue;
-	const bEmpty = null === bValue || '' === bValue;
+	const aValue = numeric ? parseLeadingNumber( aText ) : aText;
+	const bValue = numeric ? parseLeadingNumber( bText ) : bText;
+	const aEmpty = null === aValue || '' === aValue || isNoValue( aText );
+	const bEmpty = null === bValue || '' === bValue || isNoValue( bText );
 
 	if ( aEmpty || bEmpty ) {
 		return Number( aEmpty ) - Number( bEmpty );
 	}
 
-	const result =
-		'number' === type
-			? aValue - bValue
-			: aValue.localeCompare( bValue, undefined, {
-					numeric: true,
-					sensitivity: 'base',
-				} );
+	const byText = aText.localeCompare( bText, undefined, {
+		numeric: true,
+		sensitivity: 'base',
+	} );
+	const result = numeric ? aValue - bValue || byText : byText;
 
 	return 'desc' === direction ? -result : result;
 }
@@ -74,13 +74,22 @@ function sortBody( tableEl, originalRows, sort ) {
 		return;
 	}
 
+	// A column of amounts is decided once, from every row, not per section.
+	const numeric =
+		'number' === sort.type ||
+		isNumericColumn(
+			originalRows
+				.filter( ( row ) => ! isDividerRow( row ) )
+				.map( ( row ) => getCellText( row, sort.key ) )
+		);
+
 	toSections( originalRows ).forEach( ( { divider, rows } ) => {
 		if ( divider ) {
 			tbody.appendChild( divider );
 		}
 
 		[ ...rows ]
-			.sort( ( a, b ) => compareRows( a, b, sort ) )
+			.sort( ( a, b ) => compareRows( a, b, sort, numeric ) )
 			.forEach( ( row ) => tbody.appendChild( row ) );
 	} );
 }
