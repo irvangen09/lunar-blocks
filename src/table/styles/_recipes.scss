@@ -95,7 +95,9 @@
 
 		.moon-table__recipe-field {
 			display: flex;
-			align-items: baseline;
+
+			/* The label and the value center on each other, whichever is taller. */
+			align-items: center;
 			gap: var(--moon-space-2);
 			margin-block-start: var(--moon-space-2);
 			padding-block-start: var(--moon-space-2);

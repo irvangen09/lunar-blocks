@@ -283,6 +283,18 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 					color: var(--moon-color-text-muted);
 					vertical-align: top;
 				}
+
+				/* The script wraps the value, so the label and the value can
+				   center on each other, whichever is taller. Without the
+				   script both stay at the top. */
+				&:has(> .moon-table__cell-value)::before {
+					vertical-align: middle;
+				}
+
+				> .moon-table__cell-value {
+					display: table-cell;
+					vertical-align: middle;
+				}
 			}
 
 			tr.moon-table__row--divider {

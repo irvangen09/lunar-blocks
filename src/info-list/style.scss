@@ -38,7 +38,9 @@
 
 	.moon-info-list-item__label {
 		display: flex;
-		align-items: flex-start;
+
+		/* The label and the value center on each other, whichever is taller. */
+		align-items: center;
 		gap: var(--moon-space-2);
 		margin: 0;
 		padding: var(--moon-space-3) var(--moon-space-4);
@@ -55,6 +57,11 @@
 	}
 
 	.moon-info-list-item__value {
+
+		/* A block box, so the value keeps its inline flow; align-content
+		   centers it in the row without splitting its text into items. */
+		display: flow-root;
+		align-content: center;
 		margin: 0;
 		padding: var(--moon-space-3) var(--moon-space-4);
 		font-size: var(--moon-font-size-md);

@@ -1,3 +1,4 @@
+import { wrapCellValues } from './frontend/cell-value';
 import { createElement } from './frontend/dom';
 import { initChecklist } from './frontend/checklist';
 import { initFilter } from './frontend/filter';
@@ -20,6 +21,10 @@ function initBlock( blockEl ) {
 
 	const controlsEl = createElement( 'div', 'moon-table__controls' );
 	const isTable = tableEl.classList.contains( 'moon-table__table' );
+
+	if ( isTable && 'preset-1' === blockEl.dataset.preset ) {
+		wrapCellValues( tableEl );
+	}
 
 	if ( isTable && 'true' === blockEl.dataset.sort ) {
 		initSort( blockEl, tableEl, controlsEl );
