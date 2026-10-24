@@ -6,12 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-25
+
 ### Added
 
+- Table: every style can now be sorted, not only Default and Preset 1. Preset 2, Preset 3, and Preset 4 get a list to choose the column and a button to reverse the order, right under the search box. Preset 1 keeps its header buttons on wide screens and this list on small screens.
+- Table: the "Sortable" setting is shown for every style.
 - Indonesian (id_ID) translation, for the settings page, the block editor, and the front end.
+
+### Changed
+
+- Table: a new table starts with search and sorting turned off, because they are meant for tables with many rows. Turn them on in the block settings. Tables that are already saved keep their settings.
+- Table Preset 1 (small screens), Preset 2, Preset 3, Preset 4, and Info List: a label is now centered vertically against its value, so it stays level with the value whether the value is one line or several.
+- Table Preset 2, Preset 3, and Preset 4 saved before this version are updated the first time they are opened in the editor. They look and behave as before, and do not get sorting until you turn on "Sortable".
 
 ### Fixed
 
+- Table: sorting a column of amounts now goes by the number. Before, "100 G" came after "1.000 G" because only the digits were compared, a dot between thousands was not understood, and a minus sign was ignored. Now "100 G" comes before "1.000 G", and "-50 FAT" before "+20 STA".
 - TOC: a post with a table of contents no longer fails to load on hosting where the PHP mbstring extension is missing.
 
 ## [0.9.2] - 2026-10-23
