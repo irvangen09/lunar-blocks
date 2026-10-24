@@ -1,8 +1,9 @@
 === Moon Blocks ===
 Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
+Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 0.9.1
+Stable tag: 0.9.2
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 

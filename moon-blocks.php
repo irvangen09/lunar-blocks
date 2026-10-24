@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name:       Moon Blocks
+ * Plugin URI:        https://github.com/irvangen09/moon-blocks
  * Description:       Lightweight Gutenberg blocks for documentation, wiki, and knowledge base websites.
  * Version:           0.9.2
  * Requires at least: 6.9
