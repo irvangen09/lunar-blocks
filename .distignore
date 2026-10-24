@@ -26,7 +26,6 @@ tests
 jest.config.cjs
 
 # GitHub-only documentation
-LICENSE
 README.md
 CHANGELOG.md
 CONTRIBUTING.md
