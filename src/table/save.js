@@ -8,12 +8,13 @@ import {
 	getColumnRoles,
 	getImageWidth,
 	getPlainText,
+	getSortColumns,
+	getSortProps,
 	headerAlignStyle,
 	isBlankCell,
 	isCardPreset,
 	isNotApplicable,
 	isRecipePreset,
-	supportsSort,
 } from './utils';
 
 // The width is set on the image itself, not its wrapper, so a theme rule
@@ -144,7 +145,7 @@ function renderTable( { columns, rows, preset } ) {
 
 // A label with its value. Empty and "N/A" values show a muted dash,
 // and the row stays so the cards of a grid keep their rows aligned.
-function renderCardField( col, value, className ) {
+function renderCardField( col, value, className, sortable ) {
 	const isMuted = isBlankCell( col, value ) || isNotApplicable( col, value );
 
 	return (
@@ -156,6 +157,7 @@ function renderCardField( col, value, className ) {
 						? 'moon-table__card-value moon-table__card-value--muted'
 						: 'moon-table__card-value'
 				}
+				{ ...getSortProps( col, sortable ) }
 			>
 				{ isMuted ? '—' : renderCellValue( col, value ) }
 			</span>
@@ -165,7 +167,13 @@ function renderCardField( col, value, className ) {
 
 // Roles follow the column type: an image first column, then the title,
 // then an optional note, detail rows and an optional highlight band.
-function renderCards( { columns, rows, showCardNote, showCardHighlight } ) {
+function renderCards( {
+	columns,
+	rows,
+	showCardNote,
+	showCardHighlight,
+	sortable,
+} ) {
 	const { imageCol, titleCol, noteCol, highlightCol, detailCols } =
 		getCardRoles( columns, { showCardNote, showCardHighlight } );
 
@@ -194,7 +202,10 @@ function renderCards( { columns, rows, showCardNote, showCardHighlight } ) {
 										imageCol,
 										row[ imageCol.key ]
 									) }
-								<span className="moon-table__card-title">
+								<span
+									className="moon-table__card-title"
+									{ ...getSortProps( titleCol, sortable ) }
+								>
 									{ titleCol
 										? renderCellValue(
 												titleCol,
@@ -203,7 +214,10 @@ function renderCards( { columns, rows, showCardNote, showCardHighlight } ) {
 										: '' }
 								</span>
 								{ note && (
-									<span className="moon-table__card-note">
+									<span
+										className="moon-table__card-note"
+										{ ...getSortProps( noteCol, sortable ) }
+									>
 										{ renderCellValue(
 											noteCol,
 											row[ noteCol.key ]
@@ -216,7 +230,8 @@ function renderCards( { columns, rows, showCardNote, showCardHighlight } ) {
 								renderCardField(
 									col,
 									row[ col.key ],
-									'moon-table__card-detail'
+									'moon-table__card-detail',
+									sortable
 								)
 							) }
 
@@ -224,7 +239,8 @@ function renderCards( { columns, rows, showCardNote, showCardHighlight } ) {
 								renderCardField(
 									highlightCol,
 									row[ highlightCol.key ],
-									'moon-table__card-highlight'
+									'moon-table__card-highlight',
+									sortable
 								) }
 						</tr>
 					);
@@ -243,7 +259,10 @@ function splitChips( value ) {
 		.filter( Boolean );
 }
 
-function renderRecipeStats( statChips, priceValue ) {
+function renderRecipeStats(
+	{ statChips, priceValue, statCol, priceCol },
+	sortable
+) {
 	if ( ! statChips.length && ! priceValue ) {
 		return null;
 	}
@@ -254,18 +273,24 @@ function renderRecipeStats( statChips, priceValue ) {
 				<span
 					key={ i }
 					className="moon-table__recipe-chip moon-table__recipe-chip--accent"
+					{ ...getSortProps( statCol, sortable ) }
 				>
 					{ chip }
 				</span>
 			) ) }
 			{ priceValue && (
-				<span className="moon-table__recipe-chip">{ priceValue }</span>
+				<span
+					className="moon-table__recipe-chip"
+					{ ...getSortProps( priceCol, sortable ) }
+				>
+					{ priceValue }
+				</span>
 			) }
 		</span>
 	);
 }
 
-function renderRecipeField( col, value ) {
+function renderRecipeField( col, value, sortable ) {
 	if ( isBlankCell( col, value ) ) {
 		return null;
 	}
@@ -275,7 +300,10 @@ function renderRecipeField( col, value ) {
 			<span className="moon-table__recipe-field-label">
 				{ col.label }
 			</span>
-			<span className="moon-table__recipe-field-value">
+			<span
+				className="moon-table__recipe-field-value"
+				{ ...getSortProps( col, sortable ) }
+			>
 				{ renderCellValue( col, value ) }
 			</span>
 		</div>
@@ -285,7 +313,8 @@ function renderRecipeField( col, value ) {
 function renderRecipeCard(
 	row,
 	index,
-	{ imageCol, titleCol, statCol, priceCol, fieldCols }
+	{ imageCol, titleCol, statCol, priceCol, fieldCols },
+	sortable
 ) {
 	const statChips = statCol ? splitChips( row[ statCol.key ] ) : [];
 	const priceValue = priceCol ? getPlainText( row[ priceCol.key ] ) : '';
@@ -301,19 +330,25 @@ function renderRecipeCard(
 					{ imageCol && renderImage( imageCol, row[ imageCol.key ] ) }
 					<div className="moon-table__recipe-info">
 						{ titleCol && (
-							<span className="moon-table__recipe-name">
+							<span
+								className="moon-table__recipe-name"
+								{ ...getSortProps( titleCol, sortable ) }
+							>
 								{ renderCellValue(
 									titleCol,
 									row[ titleCol.key ]
 								) }
 							</span>
 						) }
-						{ renderRecipeStats( statChips, priceValue ) }
+						{ renderRecipeStats(
+							{ statChips, priceValue, statCol, priceCol },
+							sortable
+						) }
 					</div>
 				</div>
 
 				{ fieldCols.map( ( col ) =>
-					renderRecipeField( col, row[ col.key ] )
+					renderRecipeField( col, row[ col.key ], sortable )
 				) }
 			</td>
 		</tr>
@@ -323,7 +358,7 @@ function renderRecipeCard(
 // Roles follow the column type: an image first column, then the name.
 // With badges (Preset 3) the next text column holds chips and the one
 // after it a price chip; every remaining column is a labeled field.
-function renderRecipes( { columns, rows, hasBadges } ) {
+function renderRecipes( { columns, rows, hasBadges, sortable } ) {
 	const { imageCol, titleCol, restCols } = getColumnRoles( columns );
 
 	// An image cannot be a chip, so image columns stay labeled fields.
@@ -352,7 +387,7 @@ function renderRecipes( { columns, rows, hasBadges } ) {
 								index,
 								'moon-table__recipes-divider-cell'
 							)
-						: renderRecipeCard( row, index, roles )
+						: renderRecipeCard( row, index, roles, sortable )
 				) }
 			</tbody>
 		</table>
@@ -377,11 +412,18 @@ export default function save( { attributes } ) {
 	const isCards = isCardPreset( preset );
 	const isRecipes = isRecipePreset( preset );
 
+	// Cards have no header row to read the columns from, so a card layout
+	// that can sort carries its columns, and its values carry their column.
+	const sortable = enableSort && ( isCards || isRecipes );
+
 	const blockProps = useBlockProps.save( {
 		className: 'moon-table',
 		'data-preset': preset,
-		'data-sort': supportsSort( preset ) && enableSort ? 'true' : 'false',
+		'data-sort': enableSort ? 'true' : 'false',
 		'data-filter': enableFilter ? 'true' : 'false',
+		'data-columns': sortable
+			? JSON.stringify( getSortColumns( columns ) )
+			: undefined,
 		// The stylesheet needs the column count to keep a Default table wide
 		// enough to scroll instead of squeezing its columns, and the row count
 		// of a card to line up the rows of Preset 2.
@@ -406,12 +448,14 @@ export default function save( { attributes } ) {
 			rows,
 			showCardNote,
 			showCardHighlight,
+			sortable,
 		} );
 	} else if ( isRecipes ) {
 		tableMarkup = renderRecipes( {
 			columns,
 			rows,
 			hasBadges: PRESET_3 === preset,
+			sortable,
 		} );
 	} else {
 		tableMarkup = renderTable( { columns, rows, preset } );

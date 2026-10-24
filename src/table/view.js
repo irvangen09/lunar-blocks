@@ -26,7 +26,7 @@ function initBlock( blockEl ) {
 		wrapCellValues( tableEl );
 	}
 
-	if ( isTable && 'true' === blockEl.dataset.sort ) {
+	if ( 'true' === blockEl.dataset.sort ) {
 		initSort( blockEl, tableEl, controlsEl );
 	}
 

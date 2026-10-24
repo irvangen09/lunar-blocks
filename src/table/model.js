@@ -35,7 +35,9 @@ export function createTableData( columnCount, rowCount ) {
 		() => buildEmptyRow( columns )
 	);
 
-	return { columns, rows };
+	// Search and sort are for tables with many rows, so a new table starts
+	// without them; tables saved before this keep what they stored.
+	return { columns, rows, enableSort: false, enableFilter: false };
 }
 
 export function insertColumnData( columns, rows, atIndex ) {

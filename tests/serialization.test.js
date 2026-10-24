@@ -90,7 +90,12 @@ function registerAllBlocks() {
 			? require( savePath ).default
 			: () => null;
 
-		registerBlockType( metadata, { edit: () => null, save } );
+		const deprecatedPath = path.join( directory, 'deprecated.js' );
+		const deprecated = fs.existsSync( deprecatedPath )
+			? require( deprecatedPath ).default
+			: undefined;
+
+		registerBlockType( metadata, { edit: () => null, save, deprecated } );
 		names.push( metadata.name );
 	} );
 
@@ -312,6 +317,15 @@ function buildSamples() {
 		samples[ `table, ${ preset } with fields` ] = createBlock(
 			'moon-blocks/table',
 			{ preset, columns: recipeColumns, rows: recipeRows }
+		);
+	} );
+
+	// A card layout with sorting off is saved exactly as before sorting
+	// reached the card layouts.
+	[ 'preset-2', 'preset-3' ].forEach( ( preset ) => {
+		samples[ `table, ${ preset }, sort off` ] = createBlock(
+			'moon-blocks/table',
+			{ preset, columns, rows, enableSort: false }
 		);
 	} );
 

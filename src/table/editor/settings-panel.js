@@ -15,7 +15,6 @@ import {
 	PRESET_4,
 	getImageWidth,
 	isCardPreset,
-	supportsSort,
 } from '../utils';
 
 const PRESET_OPTIONS = [
@@ -133,16 +132,14 @@ export default function SettingsPanel( {
 					options={ PRESET_OPTIONS }
 					onChange={ ( value ) => setAttributes( { preset: value } ) }
 				/>
-				{ supportsSort( preset ) && (
-					<ToggleControl
-						__nextHasNoMarginBottom
-						label={ __( 'Sortable', 'moon-blocks' ) }
-						checked={ enableSort }
-						onChange={ ( value ) =>
-							setAttributes( { enableSort: value } )
-						}
-					/>
-				) }
+				<ToggleControl
+					__nextHasNoMarginBottom
+					label={ __( 'Sortable', 'moon-blocks' ) }
+					checked={ enableSort }
+					onChange={ ( value ) =>
+						setAttributes( { enableSort: value } )
+					}
+				/>
 				<ToggleControl
 					__nextHasNoMarginBottom
 					label={ __( 'Searchable', 'moon-blocks' ) }

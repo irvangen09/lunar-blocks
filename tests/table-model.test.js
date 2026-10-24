@@ -37,6 +37,13 @@ describe( 'table model', () => {
 		} );
 	} );
 
+	test( 'starts a new table without search and sort', () => {
+		const data = createTableData( '2', '2' );
+
+		expect( data.enableSort ).toBe( false );
+		expect( data.enableFilter ).toBe( false );
+	} );
+
 	test.each( [
 		[ '', '' ],
 		[ 'abc', '0' ],

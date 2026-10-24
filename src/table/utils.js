@@ -21,11 +21,6 @@ export function isRecipePreset( preset ) {
 	return PRESET_3 === preset || PRESET_4 === preset;
 }
 
-// Sorting needs a clickable header, which only table presets have.
-export function supportsSort( preset ) {
-	return isTablePreset( preset );
-}
-
 // Alignment only has a visible effect where a header row and columns
 // exist. Card layouts have no column grid to align.
 export function supportsAlignment( preset ) {
@@ -48,6 +43,24 @@ export function headerAlignStyle( col, preset ) {
 			textAlign: PRESET_1 === preset ? 'center' : 'left',
 		}
 	);
+}
+
+// A value that can be sorted carries the key of its column. Image columns
+// cannot be sorted, and a missing column (a card with no title column) has
+// nothing to carry.
+export function getSortProps( col, sortable ) {
+	if ( ! sortable || ! col || 'image' === col.type ) {
+		return undefined;
+	}
+
+	return { 'data-key': col.key };
+}
+
+// The columns a card layout can sort by, in column order.
+export function getSortColumns( columns ) {
+	return columns
+		.filter( ( col ) => 'image' !== col.type )
+		.map( ( { key, label, type } ) => ( { key, label, type } ) );
 }
 
 export function getImageWidth( col ) {

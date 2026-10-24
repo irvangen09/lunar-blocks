@@ -2,10 +2,35 @@ import { __, sprintf } from '@wordpress/i18n';
 import { MOBILE_BREAKPOINT } from '../../shared/breakpoint';
 import { createElement, createIcon, getBodyRows, toSections } from './dom';
 
-function getCellText( row, key ) {
-	const cell = [ ...row.cells ].find( ( c ) => c.dataset.key === key );
+// A table cell holds one column; a card holds its values in elements that
+// carry the key, and a column can show as several chips. A muted dash stands
+// for an empty or "N/A" value, so it counts as empty.
+function readCellText( row, key ) {
+	return [ ...row.querySelectorAll( '[data-key]' ) ]
+		.filter(
+			( el ) =>
+				el.dataset.key === key &&
+				! el.classList.contains( 'moon-table__card-value--muted' )
+		)
+		.map( ( el ) => el.textContent.trim() )
+		.join( ', ' );
+}
 
-	return cell ? cell.textContent.trim() : '';
+// Rows never change their text, so each value is read once.
+const cellTexts = new WeakMap();
+
+function getCellText( row, key ) {
+	if ( ! cellTexts.has( row ) ) {
+		cellTexts.set( row, new Map() );
+	}
+
+	const texts = cellTexts.get( row );
+
+	if ( ! texts.has( key ) ) {
+		texts.set( key, readCellText( row, key ) );
+	}
+
+	return texts.get( key );
 }
 
 function parseNumber( text ) {
@@ -117,7 +142,7 @@ function addHeaderButton( th, getSort, applySort ) {
 
 // Preset 1 hides its header on small screens, so it gets a select and a
 // direction button that share the same sort state.
-function createSortBar( sortableHeaders, getSort, applySort ) {
+function createSortBar( columns, getSort, applySort ) {
 	const element = createElement( 'div', 'moon-table__sort-bar' );
 	const select = createElement( 'select', 'moon-table__sort-select' );
 	const directionButton = createElement(
@@ -133,14 +158,14 @@ function createSortBar( sortableHeaders, getSort, applySort ) {
 	original.textContent = __( 'Original order', 'moon-blocks' );
 	select.appendChild( original );
 
-	sortableHeaders.forEach( ( th ) => {
+	columns.forEach( ( col ) => {
 		const option = document.createElement( 'option' );
 
-		option.value = th.dataset.key;
+		option.value = col.key;
 		option.textContent = sprintf(
 			/* translators: %s: column name. */
 			__( 'Sort: %s', 'moon-blocks' ),
-			th.textContent
+			col.label
 		);
 		select.appendChild( option );
 	} );
@@ -157,18 +182,10 @@ function createSortBar( sortableHeaders, getSort, applySort ) {
 	);
 
 	select.addEventListener( 'change', () => {
-		const th = sortableHeaders.find(
-			( h ) => h.dataset.key === select.value
-		);
+		const col = columns.find( ( c ) => c.key === select.value );
 
 		applySort(
-			th
-				? {
-						key: th.dataset.key,
-						type: th.dataset.type,
-						direction: 'asc',
-					}
-				: null
+			col ? { key: col.key, type: col.type, direction: 'asc' } : null
 		);
 	} );
 
@@ -221,12 +238,33 @@ function skipHeaderButtonsOnSmallScreens( tableEl ) {
 	smallScreen.addEventListener( 'change', sync );
 }
 
-export function initSort( blockEl, tableEl, controlsEl ) {
-	const sortableHeaders = [
-		...tableEl.querySelectorAll( 'thead th' ),
-	].filter( ( th ) => 'image' !== th.dataset.type );
+// Default and Preset 1 read their columns from the header row. Card layouts
+// have none, so they save their columns on the block.
+function getSortColumns( blockEl, headers ) {
+	if ( headers.length ) {
+		return headers.map( ( th ) => ( {
+			key: th.dataset.key,
+			label: th.textContent,
+			type: th.dataset.type,
+		} ) );
+	}
 
-	if ( ! sortableHeaders.length ) {
+	try {
+		const columns = JSON.parse( blockEl.dataset.columns );
+
+		return Array.isArray( columns ) ? columns : [];
+	} catch {
+		return [];
+	}
+}
+
+export function initSort( blockEl, tableEl, controlsEl ) {
+	const headers = [ ...tableEl.querySelectorAll( 'thead th' ) ].filter(
+		( th ) => 'image' !== th.dataset.type
+	);
+	const columns = getSortColumns( blockEl, headers );
+
+	if ( ! columns.length ) {
 		return;
 	}
 
@@ -241,7 +279,7 @@ export function initSort( blockEl, tableEl, controlsEl ) {
 		sortBody( tableEl, originalRows, sort );
 		markSortedCells( tableEl, sort );
 
-		sortableHeaders.forEach( ( th ) =>
+		headers.forEach( ( th ) =>
 			th.setAttribute( 'aria-sort', getAriaSort( th, sort ) )
 		);
 
@@ -252,16 +290,18 @@ export function initSort( blockEl, tableEl, controlsEl ) {
 
 	const getSort = () => sort;
 
-	sortableHeaders.forEach( ( th ) =>
-		addHeaderButton( th, getSort, applySort )
-	);
+	headers.forEach( ( th ) => addHeaderButton( th, getSort, applySort ) );
 
-	if ( 'preset-1' !== blockEl.dataset.preset ) {
+	// A table with a header row sorts there; the bar is for the layouts that
+	// have none, and for Preset 1 on small screens, where its header is hidden.
+	if ( headers.length && 'preset-1' !== blockEl.dataset.preset ) {
 		return;
 	}
 
-	bar = createSortBar( sortableHeaders, getSort, applySort );
+	bar = createSortBar( columns, getSort, applySort );
 	controlsEl.appendChild( bar.element );
 
-	skipHeaderButtonsOnSmallScreens( tableEl );
+	if ( headers.length ) {
+		skipHeaderButtonsOnSmallScreens( tableEl );
+	}
 }

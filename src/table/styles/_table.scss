@@ -142,6 +142,11 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 
 	.moon-table.moon-table[data-preset="preset-1"] {
 
+		/* The header row sorts here. */
+		.moon-table__sort-bar {
+			display: none;
+		}
+
 		.moon-table__table {
 			border: var(--moon-border);
 			border-radius: var(--moon-radius);
@@ -201,10 +206,6 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 @media (max-width: $moon-breakpoint-mobile) {
 
 	.moon-table.moon-table[data-preset="preset-1"] {
-
-		.moon-table__sort-bar {
-			display: flex;
-		}
 
 		.moon-table__table {
 			display: block;

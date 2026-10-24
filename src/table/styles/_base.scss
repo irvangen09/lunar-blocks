@@ -51,9 +51,10 @@
 		appearance: none;
 	}
 
-	/* Only Preset 1 on small screens, where its header row is hidden. */
+	/* The sort select and direction button. A table with a header row sorts
+	   there instead, so Preset 1 shows the bar on small screens only. */
 	.moon-table__sort-bar {
-		display: none;
+		display: flex;
 		gap: var(--moon-space-2);
 	}
 
