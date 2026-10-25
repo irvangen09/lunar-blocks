@@ -10,7 +10,7 @@
   "attributes": {
     "openOnDesktop": {
       "type": "boolean",
-      "default": true
+      "default": false
     }
   },
   "supports": {

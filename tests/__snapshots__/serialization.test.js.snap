@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`saved markup accordion, closed on desktop matches the stored snapshot 1`] = `
-"<!-- wp:moon-blocks/accordion {"openOnDesktop":false} -->
+"<!-- wp:moon-blocks/accordion -->
 <div class="wp-block-moon-blocks-accordion moon-accordion"><!-- wp:moon-blocks/accordion-item {"headingLevel":"h2"} -->
 <details class="wp-block-moon-blocks-accordion-item moon-accordion-item"><summary class="moon-accordion-item__summary"><h2 class="moon-accordion-item__title">Only</h2></summary><div class="moon-accordion-item__content"></div></details>
 <!-- /wp:moon-blocks/accordion-item --></div>
@@ -9,7 +9,7 @@ exports[`saved markup accordion, closed on desktop matches the stored snapshot 1
 `;
 
 exports[`saved markup accordion, open on desktop matches the stored snapshot 1`] = `
-"<!-- wp:moon-blocks/accordion -->
+"<!-- wp:moon-blocks/accordion {"openOnDesktop":true} -->
 <div class="wp-block-moon-blocks-accordion moon-accordion moon-accordion--open-desktop"><!-- wp:moon-blocks/accordion-item -->
 <details class="wp-block-moon-blocks-accordion-item moon-accordion-item"><summary class="moon-accordion-item__summary"><h3 class="moon-accordion-item__title">First</h3></summary><div class="moon-accordion-item__content"></div></details>
 <!-- /wp:moon-blocks/accordion-item -->
