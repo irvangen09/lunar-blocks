@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-25
+
+### Changed
+
+- Accordion: a new Accordion starts with every item collapsed, also on wide screens, because an Accordion is meant to hide long content. To open the items on wide screens, turn on "Open items on desktop" in the block settings; it applies to every item in the Accordion.
+- Accordions that are already saved keep opening on wide screens. They are updated the first time they are opened in the editor, and look and behave as before.
+
 ## [1.0.0] - 2026-10-25
 
 ### Added

@@ -3,7 +3,7 @@ Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ It is designed to blend into your site. Typography and colors come from your the
 
 **Blocks**
 
-* **Accordion** groups content into sections that visitors can open and close. Items can start open on wide screens and collapsed on mobile, and a link to an item opens it automatically.
+* **Accordion** groups content into sections that visitors can open and close. Items start collapsed and can be set to start open on wide screens, and a link to an item opens it automatically.
 * **Callout** highlights a note, tip, warning, or important point. Each variant has its own icon and an editable label.
 * **Gallery** shows a set of images in a grid of two to four columns, each with an optional caption. Visitors click an image to view it larger, then move between the images of that gallery with buttons or the arrow keys. Small screens always show two columns. Each image has its own alternative text field.
 * **Infobox** shows the key facts about one subject, such as a character, an item, or a place, in a single box: an optional image beside a table of labels and values, under a title. Each row can have an icon. On narrow screens the image moves above the table.
@@ -52,6 +52,11 @@ Yes. Open Settings > Moon Blocks > Blocks and switch off any block. Turning off 
 Yes. Open Settings > Moon Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme. The tick of the Table checklist stays green.
 
 == Changelog ==
+
+= 1.1.0 =
+
+* Accordion: a new Accordion starts with every item collapsed, also on wide screens, because an Accordion is meant to hide long content. To open the items on wide screens, turn on "Open items on desktop" in the block settings; it applies to every item in the Accordion.
+* Accordions that are already saved keep opening on wide screens. They are updated the first time they are opened in the editor, and look and behave as before.
 
 = 1.0.0 =
 

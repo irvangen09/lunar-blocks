@@ -11,7 +11,7 @@ Moon Blocks is made to blend into your site. Fonts come from your theme, colors 
 
 | Block | What it does |
 | --- | --- |
-| **Accordion** | Sections that visitors open and close. Items can start open on wide screens and collapsed on mobile, and a link to an item opens it. |
+| **Accordion** | Sections that visitors open and close. Items start collapsed and can be set to start open on wide screens, and a link to an item opens it. |
 | **Callout** | A note, tip, warning, or important point, with an icon and an editable label for each variant. |
 | **Gallery** | Images in a grid of two to four columns, with optional captions and a viewer with keyboard navigation. |
 | **Infobox** | The key facts about one subject in a single box: an optional image beside a table of labels and values. |
