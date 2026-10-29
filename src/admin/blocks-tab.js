@@ -3,7 +3,7 @@ import { Card, CardBody, ToggleControl } from '@wordpress/components';
 
 export default function BlocksTab( { blocks, disabled, onChange } ) {
 	if ( blocks.length === 0 ) {
-		return <p>{ __( 'No blocks are available yet.', 'moon-blocks' ) }</p>;
+		return <p>{ __( 'No blocks are available yet.', 'lunar-blocks' ) }</p>;
 	}
 
 	const toggle = ( name, isEnabled ) =>
@@ -18,11 +18,11 @@ export default function BlocksTab( { blocks, disabled, onChange } ) {
 			<p>
 				{ __(
 					'Turn off the blocks you do not need. A disabled block is not available in the editor and loads no CSS or JavaScript. Content that already uses it may no longer display as intended.',
-					'moon-blocks'
+					'lunar-blocks'
 				) }
 			</p>
 			<Card>
-				<CardBody className="moon-settings__blocks">
+				<CardBody className="lunar-settings__blocks">
 					{ blocks.map( ( block ) => (
 						<ToggleControl
 							__nextHasNoMarginBottom

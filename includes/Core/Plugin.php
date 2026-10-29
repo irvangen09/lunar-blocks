@@ -1,13 +1,13 @@
 <?php
 
-namespace MoonBlocks\Core;
+namespace LunarBlocks\Core;
 
-use MoonBlocks\Blocks\BlockRegistry;
-use MoonBlocks\Blocks\ImageSizes;
-use MoonBlocks\Blocks\Toc\Toc;
-use MoonBlocks\Services\DesignTokens;
-use MoonBlocks\Settings\SettingsPage;
-use MoonBlocks\Settings\SettingsRegistry;
+use LunarBlocks\Blocks\BlockRegistry;
+use LunarBlocks\Blocks\ImageSizes;
+use LunarBlocks\Blocks\Toc\Toc;
+use LunarBlocks\Services\DesignTokens;
+use LunarBlocks\Settings\SettingsPage;
+use LunarBlocks\Settings\SettingsRegistry;
 
 class Plugin {
 

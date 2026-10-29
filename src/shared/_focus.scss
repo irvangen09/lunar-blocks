@@ -1,19 +1,19 @@
 // Focus ring for keyboard users only; a pointer click shows no ring.
 // "inset" draws the ring inside the box, for elements whose overflow would
 // clip a ring drawn outside.
-@mixin focus-ring($placement: outside, $color: var(--moon-color-text)) {
+@mixin focus-ring($placement: outside, $color: var(--lunar-color-text)) {
 
 	&:focus:not(:focus-visible) {
 		outline: none;
 	}
 
 	&:focus-visible {
-		outline: var(--moon-focus-ring-width) solid $color;
+		outline: var(--lunar-focus-ring-width) solid $color;
 
 		@if inset == $placement {
-			outline-offset: calc(-1 * var(--moon-focus-ring-width));
+			outline-offset: calc(-1 * var(--lunar-focus-ring-width));
 		} @else {
-			outline-offset: var(--moon-focus-ring-offset);
+			outline-offset: var(--lunar-focus-ring-offset);
 		}
 	}
 }

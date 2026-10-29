@@ -1,6 +1,6 @@
 <?php
 
-namespace MoonBlocks\Blocks\Toc;
+namespace LunarBlocks\Blocks\Toc;
 
 /**
  * Turns heading text into unique, wiki-style ids ("Panduan_Story_of_Seasons").
