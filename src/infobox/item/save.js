@@ -5,27 +5,27 @@ export default function save( { attributes } ) {
 	const { icon, label, value } = attributes;
 
 	const blockProps = useBlockProps.save( {
-		className: 'moon-infobox-item',
+		className: 'lunar-infobox-item',
 	} );
 
 	return (
 		<div { ...blockProps }>
-			<dt className="moon-infobox-item__label">
+			<dt className="lunar-infobox-item__label">
 				{ ICON_PATTERN.test( icon ) && (
 					<span
-						className={ `moon-infobox-item__icon dashicons ${ icon }` }
+						className={ `lunar-infobox-item__icon dashicons ${ icon }` }
 						aria-hidden="true"
 					/>
 				) }
 				<RichText.Content
 					tagName="span"
-					className="moon-infobox-item__label-text"
+					className="lunar-infobox-item__label-text"
 					value={ label }
 				/>
 			</dt>
 			<RichText.Content
 				tagName="dd"
-				className="moon-infobox-item__value"
+				className="lunar-infobox-item__value"
 				value={ value }
 			/>
 		</div>

@@ -18,30 +18,30 @@ import {
 } from '@wordpress/components';
 import { getHeadingOptions } from '../shared/heading-options';
 
-const ALLOWED_BLOCKS = [ 'moon-blocks/infobox-item' ];
+const ALLOWED_BLOCKS = [ 'lunar-blocks/infobox-item' ];
 
 const TEMPLATE = [
-	[ 'moon-blocks/infobox-item' ],
-	[ 'moon-blocks/infobox-item' ],
-	[ 'moon-blocks/infobox-item' ],
+	[ 'lunar-blocks/infobox-item' ],
+	[ 'lunar-blocks/infobox-item' ],
+	[ 'lunar-blocks/infobox-item' ],
 ];
 
 function ImagePanel( { imageAlt, setAttributes, onRemoveImage } ) {
 	return (
-		<PanelBody title={ __( 'Image', 'moon-blocks' ) }>
+		<PanelBody title={ __( 'Image', 'lunar-blocks' ) }>
 			<TextControl
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
-				label={ __( 'Alternative text', 'moon-blocks' ) }
+				label={ __( 'Alternative text', 'lunar-blocks' ) }
 				value={ imageAlt }
 				onChange={ ( value ) => setAttributes( { imageAlt: value } ) }
 				help={ __(
 					'Describe the image for people who cannot see it. Leave empty if the image is only decoration.',
-					'moon-blocks'
+					'lunar-blocks'
 				) }
 			/>
 			<Button variant="secondary" isDestructive onClick={ onRemoveImage }>
-				{ __( 'Remove image', 'moon-blocks' ) }
+				{ __( 'Remove image', 'lunar-blocks' ) }
 			</Button>
 		</PanelBody>
 	);
@@ -49,15 +49,15 @@ function ImagePanel( { imageAlt, setAttributes, onRemoveImage } ) {
 
 function Media( { imageId, imageUrl, imageAlt, onSelectImage } ) {
 	return (
-		<figure className="moon-infobox__media">
+		<figure className="lunar-infobox__media">
 			{ '' !== imageUrl ? (
 				<img
-					className="moon-infobox__image"
+					className="lunar-infobox__image"
 					src={ imageUrl }
 					alt={ imageAlt }
 				/>
 			) : (
-				<div className="moon-infobox__image-empty">
+				<div className="lunar-infobox__image-empty">
 					<MediaUploadCheck>
 						<MediaUpload
 							allowedTypes={ [ 'image' ] }
@@ -65,15 +65,15 @@ function Media( { imageId, imageUrl, imageAlt, onSelectImage } ) {
 							onSelect={ onSelectImage }
 							render={ ( { open } ) => (
 								<Button variant="secondary" onClick={ open }>
-									{ __( 'Select image', 'moon-blocks' ) }
+									{ __( 'Select image', 'lunar-blocks' ) }
 								</Button>
 							) }
 						/>
 					</MediaUploadCheck>
-					<p className="moon-infobox__image-hint">
+					<p className="lunar-infobox__image-hint">
 						{ __(
 							'Optional. Without an image, the table uses the full width.',
-							'moon-blocks'
+							'lunar-blocks'
 						) }
 					</p>
 				</div>
@@ -86,11 +86,11 @@ export default function Edit( { attributes, setAttributes } ) {
 	const { title, headingLevel, imageId, imageUrl, imageAlt } = attributes;
 
 	const blockProps = useBlockProps( {
-		className: 'moon-infobox',
+		className: 'lunar-infobox',
 	} );
 
 	const rowsProps = useInnerBlocksProps(
-		{ className: 'moon-infobox__rows' },
+		{ className: 'lunar-infobox__rows' },
 		{
 			allowedBlocks: ALLOWED_BLOCKS,
 			template: TEMPLATE,
@@ -122,7 +122,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			{ hasImage && (
 				<BlockControls group="other">
 					<MediaReplaceFlow
-						name={ __( 'Replace image', 'moon-blocks' ) }
+						name={ __( 'Replace image', 'lunar-blocks' ) }
 						mediaId={ imageId }
 						mediaURL={ imageUrl }
 						allowedTypes={ [ 'image' ] }
@@ -133,11 +133,11 @@ export default function Edit( { attributes, setAttributes } ) {
 			) }
 
 			<InspectorControls>
-				<PanelBody title={ __( 'Title Settings', 'moon-blocks' ) }>
+				<PanelBody title={ __( 'Title Settings', 'lunar-blocks' ) }>
 					<SelectControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
-						label={ __( 'Heading Level', 'moon-blocks' ) }
+						label={ __( 'Heading Level', 'lunar-blocks' ) }
 						value={ headingLevel }
 						options={ getHeadingOptions() }
 						onChange={ ( value ) =>
@@ -145,7 +145,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						}
 						help={ __(
 							'The heading level shapes the heading structure of the page. Choose a level that fits the surrounding content, or no heading for a plain label.',
-							'moon-blocks'
+							'lunar-blocks'
 						) }
 					/>
 				</PanelBody>
@@ -166,11 +166,11 @@ export default function Edit( { attributes, setAttributes } ) {
 					onSelectImage={ onSelectImage }
 				/>
 
-				<div className="moon-infobox__body">
+				<div className="lunar-infobox__body">
 					<RichText
 						tagName={ 'none' === headingLevel ? 'p' : headingLevel }
-						className="moon-infobox__title"
-						placeholder={ __( 'Infobox title…', 'moon-blocks' ) }
+						className="lunar-infobox__title"
+						placeholder={ __( 'Infobox title…', 'lunar-blocks' ) }
 						value={ title }
 						onChange={ ( value ) =>
 							setAttributes( { title: value } )

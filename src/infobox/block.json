@@ -1,17 +1,17 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "moon-blocks/infobox",
-  "title": "Moon Infobox",
-  "category": "moon-blocks",
+  "name": "lunar-blocks/infobox",
+  "title": "Lunar Infobox",
+  "category": "lunar-blocks",
   "description": "A summary box with an optional image and a list of label and value rows, such as a character, item, or place profile.",
   "keywords": [ "infobox", "facts", "summary", "profile" ],
-  "textdomain": "moon-blocks",
+  "textdomain": "lunar-blocks",
   "attributes": {
     "title": {
       "type": "rich-text",
       "source": "rich-text",
-      "selector": ".moon-infobox__title"
+      "selector": ".lunar-infobox__title"
     },
     "headingLevel": {
       "type": "string",
@@ -25,14 +25,14 @@
     "imageUrl": {
       "type": "string",
       "source": "attribute",
-      "selector": ".moon-infobox__image",
+      "selector": ".lunar-infobox__image",
       "attribute": "src",
       "default": ""
     },
     "imageAlt": {
       "type": "string",
       "source": "attribute",
-      "selector": ".moon-infobox__image",
+      "selector": ".lunar-infobox__image",
       "attribute": "alt",
       "default": ""
     }
@@ -43,5 +43,5 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": [ "moon-blocks-tokens", "dashicons", "file:./style-index.css" ]
+  "style": [ "lunar-blocks-tokens", "dashicons", "file:./style-index.css" ]
 }

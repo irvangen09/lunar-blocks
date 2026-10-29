@@ -1,45 +1,45 @@
-.moon-infobox {
+.lunar-infobox {
 
 	/* A dashed frame marks the empty image slot, in the same 3:4 ratio. */
-	.moon-infobox__image-empty {
+	.lunar-infobox__image-empty {
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: var(--moon-space-2);
+		gap: var(--lunar-space-2);
 		inline-size: 100%;
 
 		/* Matches the image frame in style.scss. */
-		max-inline-size: calc(var(--moon-unit) * 12);
+		max-inline-size: calc(var(--lunar-unit) * 12);
 		aspect-ratio: 3 / 4;
-		padding: var(--moon-space-2);
-		border: var(--moon-border-width) dashed var(--moon-color-border);
-		border-radius: var(--moon-radius);
+		padding: var(--lunar-space-2);
+		border: var(--lunar-border-width) dashed var(--lunar-color-border);
+		border-radius: var(--lunar-radius);
 		text-align: center;
 	}
 
-	.moon-infobox__image-hint {
+	.lunar-infobox__image-hint {
 		margin: 0;
-		color: var(--moon-color-text-muted);
-		font-size: var(--moon-font-size-sm);
-		line-height: var(--moon-line-height-tight);
+		color: var(--lunar-color-text-muted);
+		font-size: var(--lunar-font-size-sm);
+		line-height: var(--lunar-line-height-tight);
 	}
 
 	/* Core places the appender over the last row; keep it in the flow instead. */
-	.moon-infobox__rows > .block-list-appender {
+	.lunar-infobox__rows > .block-list-appender {
 		position: static;
 		flex: none;
 		margin: 0;
-		padding: var(--moon-space-2) var(--moon-space-4);
-		border-block-start: var(--moon-infobox-line);
+		padding: var(--lunar-space-2) var(--lunar-space-4);
+		border-block-start: var(--lunar-infobox-line);
 	}
 
 	/* Muted token already fades the text; reset core's extra opacity. */
-	.moon-infobox__title [data-rich-text-placeholder]::after,
-	.moon-infobox-item__label [data-rich-text-placeholder]::after,
-	.moon-infobox-item__value [data-rich-text-placeholder]::after {
-		color: var(--moon-color-text-muted);
+	.lunar-infobox__title [data-rich-text-placeholder]::after,
+	.lunar-infobox-item__label [data-rich-text-placeholder]::after,
+	.lunar-infobox-item__value [data-rich-text-placeholder]::after {
+		color: var(--lunar-color-text-muted);
 		opacity: 1;
 	}
 }
