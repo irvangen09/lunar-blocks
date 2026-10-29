@@ -20,7 +20,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 	const { imageId, imageUrl, imageAlt, caption } = attributes;
 
 	const blockProps = useBlockProps( {
-		className: 'moon-gallery-item',
+		className: 'lunar-gallery-item',
 	} );
 
 	const onSelectImage = ( media ) => {
@@ -44,13 +44,13 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 			<div { ...blockProps }>
 				<MediaPlaceholder
 					icon={
-						<GalleryItemIcon className="moon-gallery-item__placeholder-icon" />
+						<GalleryItemIcon className="lunar-gallery-item__placeholder-icon" />
 					}
 					labels={ {
-						title: __( 'Image', 'moon-blocks' ),
+						title: __( 'Image', 'lunar-blocks' ),
 						instructions: __(
 							'Select or upload an image for this gallery item.',
-							'moon-blocks'
+							'lunar-blocks'
 						),
 					} }
 					onSelect={ onSelectImage }
@@ -65,7 +65,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 		<>
 			<BlockControls group="other">
 				<MediaReplaceFlow
-					name={ __( 'Replace image', 'moon-blocks' ) }
+					name={ __( 'Replace image', 'lunar-blocks' ) }
 					mediaId={ imageId }
 					mediaURL={ imageUrl }
 					allowedTypes={ ALLOWED_MEDIA_TYPES }
@@ -74,23 +74,23 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 				/>
 				<ToolbarButton
 					icon={ <CloseIcon /> }
-					label={ __( 'Remove image', 'moon-blocks' ) }
+					label={ __( 'Remove image', 'lunar-blocks' ) }
 					onClick={ onRemoveImage }
 				/>
 			</BlockControls>
 
 			<InspectorControls>
-				<PanelBody title={ __( 'Image Settings', 'moon-blocks' ) }>
+				<PanelBody title={ __( 'Image Settings', 'lunar-blocks' ) }>
 					<TextareaControl
 						__nextHasNoMarginBottom
-						label={ __( 'Alternative text', 'moon-blocks' ) }
+						label={ __( 'Alternative text', 'lunar-blocks' ) }
 						value={ imageAlt }
 						onChange={ ( value ) =>
 							setAttributes( { imageAlt: value } )
 						}
 						help={ __(
 							'Describe the image for people who cannot see it. It applies to this gallery only, not to the Media Library.',
-							'moon-blocks'
+							'lunar-blocks'
 						) }
 					/>
 				</PanelBody>
@@ -98,17 +98,17 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 
 			<figure { ...blockProps }>
 				<img
-					className="moon-gallery-item__image"
+					className="lunar-gallery-item__image"
 					src={ imageUrl }
 					alt={ imageAlt }
 				/>
 				{ ( isSelected || ! RichText.isEmpty( caption ) ) && (
 					<RichText
 						tagName="figcaption"
-						className="moon-gallery-item__caption"
+						className="lunar-gallery-item__caption"
 						placeholder={ __(
 							'Caption (optional)…',
-							'moon-blocks'
+							'lunar-blocks'
 						) }
 						value={ caption }
 						onChange={ ( value ) =>

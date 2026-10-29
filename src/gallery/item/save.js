@@ -9,18 +9,18 @@ export default function save( { attributes } ) {
 	}
 
 	const blockProps = useBlockProps.save( {
-		className: 'moon-gallery-item',
+		className: 'lunar-gallery-item',
 	} );
 
 	// The wp-image class lets WordPress add srcset and dimensions when rendering.
 	const imageClassName =
 		imageId > 0
-			? `moon-gallery-item__image wp-image-${ imageId }`
-			: 'moon-gallery-item__image';
+			? `lunar-gallery-item__image wp-image-${ imageId }`
+			: 'lunar-gallery-item__image';
 
 	return (
 		<figure { ...blockProps }>
-			<a className="moon-gallery-item__link" href={ imageUrl }>
+			<a className="lunar-gallery-item__link" href={ imageUrl }>
 				<img
 					className={ imageClassName }
 					src={ imageUrl }
@@ -30,7 +30,7 @@ export default function save( { attributes } ) {
 			{ ! RichText.isEmpty( caption ) && (
 				<RichText.Content
 					tagName="figcaption"
-					className="moon-gallery-item__caption"
+					className="lunar-gallery-item__caption"
 					value={ caption }
 				/>
 			) }
