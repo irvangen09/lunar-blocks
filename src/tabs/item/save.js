@@ -9,17 +9,17 @@ import {
 export default function save( { attributes } ) {
 	const { label } = attributes;
 
-	const blockProps = useBlockProps.save( { className: 'moon-tabs-item' } );
+	const blockProps = useBlockProps.save( { className: 'lunar-tabs-item' } );
 
 	const innerBlocksProps = useInnerBlocksProps.save( {
-		className: 'moon-tabs-item__content',
+		className: 'lunar-tabs-item__content',
 	} );
 
 	return (
 		<div { ...blockProps }>
 			<RichText.Content
 				tagName="div"
-				className="moon-tabs-item__label"
+				className="lunar-tabs-item__label"
 				value={ label }
 			/>
 			<div { ...innerBlocksProps } />

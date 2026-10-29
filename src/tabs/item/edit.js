@@ -10,10 +10,10 @@ const CONTENT_TEMPLATE = [ [ 'core/paragraph' ] ];
 export default function Edit( { attributes, setAttributes } ) {
 	const { label } = attributes;
 
-	const blockProps = useBlockProps( { className: 'moon-tabs-item' } );
+	const blockProps = useBlockProps( { className: 'lunar-tabs-item' } );
 
 	const innerBlocksProps = useInnerBlocksProps(
-		{ className: 'moon-tabs-item__content' },
+		{ className: 'lunar-tabs-item__content' },
 		{ template: CONTENT_TEMPLATE }
 	);
 
@@ -21,8 +21,8 @@ export default function Edit( { attributes, setAttributes } ) {
 		<div { ...blockProps }>
 			<RichText
 				tagName="div"
-				className="moon-tabs-item__label"
-				placeholder={ __( 'Tab label…', 'moon-blocks' ) }
+				className="lunar-tabs-item__label"
+				placeholder={ __( 'Tab label…', 'lunar-blocks' ) }
 				value={ label }
 				onChange={ ( value ) => setAttributes( { label: value } ) }
 				allowedFormats={ [] }

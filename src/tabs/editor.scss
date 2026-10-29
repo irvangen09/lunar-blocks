@@ -1,16 +1,16 @@
-.moon-tabs {
+.lunar-tabs {
 
 	/* Items are stacked in the editor; a dashed border shows where each ends. */
-	.moon-tabs-item {
+	.lunar-tabs-item {
 		box-sizing: border-box;
-		padding: var(--moon-space-2);
-		border: var(--moon-border-width) dashed var(--moon-color-border);
-		border-radius: var(--moon-radius);
+		padding: var(--lunar-space-2);
+		border: var(--lunar-border-width) dashed var(--lunar-color-border);
+		border-radius: var(--lunar-radius);
 	}
 
 	/* Muted token already fades the text; reset core's extra opacity. */
-	.moon-tabs-item__label [data-rich-text-placeholder]::after {
-		color: var(--moon-color-text-muted);
+	.lunar-tabs-item__label [data-rich-text-placeholder]::after {
+		color: var(--lunar-color-text-muted);
 		opacity: 1;
 	}
 }
