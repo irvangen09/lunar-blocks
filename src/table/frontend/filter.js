@@ -8,7 +8,7 @@ function getSearchText( row ) {
 
 	clone
 		.querySelectorAll(
-			'.moon-table__card-label, .moon-table__recipe-field-label'
+			'.lunar-table__card-label, .lunar-table__recipe-field-label'
 		)
 		.forEach( ( label ) => label.remove() );
 
@@ -24,14 +24,14 @@ export function initFilter( tableEl, controlsEl ) {
 		}
 	} );
 
-	const wrap = createElement( 'div', 'moon-table__filter' );
-	const input = createElement( 'input', 'moon-table__filter-input' );
+	const wrap = createElement( 'div', 'lunar-table__filter' );
+	const input = createElement( 'input', 'lunar-table__filter-input' );
 
 	input.type = 'search';
-	input.placeholder = __( 'Search this table…', 'moon-blocks' );
+	input.placeholder = __( 'Search this table…', 'lunar-blocks' );
 	input.setAttribute(
 		'aria-label',
-		__( 'Search within this table', 'moon-blocks' )
+		__( 'Search within this table', 'lunar-blocks' )
 	);
 
 	input.addEventListener( 'input', () => {

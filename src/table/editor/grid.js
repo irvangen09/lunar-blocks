@@ -31,7 +31,7 @@ function Cell( { row, rowIndex, col, colIndex, actions } ) {
 			<TextControl
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
-				label={ __( 'Cell value', 'moon-blocks' ) }
+				label={ __( 'Cell value', 'lunar-blocks' ) }
 				hideLabelFromVision
 				type="number"
 				value={ row[ col.key ] ?? '' }
@@ -44,13 +44,13 @@ function Cell( { row, rowIndex, col, colIndex, actions } ) {
 	return (
 		<RichText
 			tagName="div"
-			className="moon-table-editor__cell-text"
-			aria-label={ __( 'Cell value', 'moon-blocks' ) }
+			className="lunar-table-editor__cell-text"
+			aria-label={ __( 'Cell value', 'lunar-blocks' ) }
 			value={ row[ col.key ] ?? '' }
 			onChange={ ( value ) => updateCell( rowIndex, col.key, value ) }
 			onFocus={ () => focusCell( rowIndex, colIndex ) }
 			allowedFormats={ TEXT_CELL_FORMATS }
-			placeholder={ __( 'Cell value', 'moon-blocks' ) }
+			placeholder={ __( 'Cell value', 'lunar-blocks' ) }
 		/>
 	);
 }
@@ -63,9 +63,9 @@ function HeaderRow( { preset, columns, actions } ) {
 					<TextControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
-						label={ __( 'Column label', 'moon-blocks' ) }
+						label={ __( 'Column label', 'lunar-blocks' ) }
 						hideLabelFromVision
-						placeholder={ __( 'Column label', 'moon-blocks' ) }
+						placeholder={ __( 'Column label', 'lunar-blocks' ) }
 						value={ col.label }
 						onChange={ ( value ) =>
 							actions.updateColumn( colIndex, { label: value } )
@@ -84,9 +84,9 @@ function DividerRow( { row, rowIndex, columnCount, actions } ) {
 			<TextControl
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
-				label={ __( 'Divider text', 'moon-blocks' ) }
+				label={ __( 'Divider text', 'lunar-blocks' ) }
 				hideLabelFromVision
-				placeholder={ __( 'Divider text…', 'moon-blocks' ) }
+				placeholder={ __( 'Divider text…', 'lunar-blocks' ) }
 				value={ row.dividerLabel ?? '' }
 				onChange={ ( value ) =>
 					actions.updateRow( rowIndex, { dividerLabel: value } )
@@ -99,7 +99,7 @@ function DividerRow( { row, rowIndex, columnCount, actions } ) {
 
 export default function Grid( { preset, columns, rows, actions } ) {
 	return (
-		<table className="moon-table-editor__grid">
+		<table className="lunar-table-editor__grid">
 			<thead>
 				<HeaderRow
 					preset={ preset }
@@ -113,7 +113,7 @@ export default function Grid( { preset, columns, rows, actions } ) {
 						key={ rowIndex }
 						className={
 							row.isDivider
-								? 'moon-table-editor__row--divider'
+								? 'lunar-table-editor__row--divider'
 								: undefined
 						}
 					>

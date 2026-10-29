@@ -29,7 +29,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	const [ widthDraft, setWidthDraft ] = useState( null );
 
 	const blockProps = useBlockProps( {
-		className: 'moon-table-editor',
+		className: 'lunar-table-editor',
 	} );
 
 	const { rowIndex, colIndex } = focusedCell;

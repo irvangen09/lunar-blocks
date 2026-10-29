@@ -1,10 +1,10 @@
 import { __, sprintf } from '@wordpress/i18n';
 import { createElement } from './dom';
 
-const CHECKLIST_KEY_PREFIX = 'moon-blocks-table:';
+const CHECKLIST_KEY_PREFIX = 'lunar-blocks-table:';
 
 function nameCheckbox( checkbox, card ) {
-	const name = card.querySelector( '.moon-table__recipe-name' );
+	const name = card.querySelector( '.lunar-table__recipe-name' );
 	const title = name ? name.textContent.trim() : '';
 
 	checkbox.setAttribute(
@@ -12,10 +12,10 @@ function nameCheckbox( checkbox, card ) {
 		title
 			? sprintf(
 					/* translators: %s: recipe name. */
-					__( 'Mark %s as obtained', 'moon-blocks' ),
+					__( 'Mark %s as obtained', 'lunar-blocks' ),
 					title
 				)
-			: __( 'Mark as obtained', 'moon-blocks' )
+			: __( 'Mark as obtained', 'lunar-blocks' )
 	);
 }
 
@@ -48,17 +48,17 @@ function rememberChecked( checkbox, recipeId ) {
 // HTML.
 export function initChecklist( recipesEl ) {
 	recipesEl.querySelectorAll( '[data-recipe-id]' ).forEach( ( card ) => {
-		const cell = card.querySelector( '.moon-table__recipe-cell' );
+		const cell = card.querySelector( '.lunar-table__recipe-cell' );
 
 		if ( ! cell ) {
 			return;
 		}
 
 		// Content saved before the checkbox moved here still carries one.
-		let checkbox = cell.querySelector( '.moon-table__recipe-check' );
+		let checkbox = cell.querySelector( '.lunar-table__recipe-check' );
 
 		if ( ! checkbox ) {
-			checkbox = createElement( 'input', 'moon-table__recipe-check' );
+			checkbox = createElement( 'input', 'lunar-table__recipe-check' );
 			checkbox.type = 'checkbox';
 			cell.prepend( checkbox );
 		}
