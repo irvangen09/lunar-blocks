@@ -7,10 +7,10 @@ import { createElement } from './dom';
 export function wrapCellValues( tableEl ) {
 	tableEl
 		.querySelectorAll(
-			'td[data-label]:not(.moon-table__cell--lead):not(.moon-table__cell--title)'
+			'td[data-label]:not(.lunar-table__cell--lead):not(.lunar-table__cell--title)'
 		)
 		.forEach( ( cell ) => {
-			const value = createElement( 'span', 'moon-table__cell-value' );
+			const value = createElement( 'span', 'lunar-table__cell-value' );
 
 			while ( cell.firstChild ) {
 				value.appendChild( cell.firstChild );

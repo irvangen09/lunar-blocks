@@ -41,7 +41,7 @@ export function getBodyRows( tableEl ) {
 }
 
 export function isDividerRow( row ) {
-	return row.classList.contains( 'moon-table__row--divider' );
+	return row.classList.contains( 'lunar-table__row--divider' );
 }
 
 // A divider heads the rows that follow it. Rows before the first

@@ -42,7 +42,7 @@ function register( save, extra = {} ) {
 
 // The markup the plugin wrote before this change.
 function legacyMarkup( attributes ) {
-	setCategories( [ { slug: 'moon-blocks', title: 'Moon Blocks' } ] );
+	setCategories( [ { slug: 'lunar-blocks', title: 'Lunar Blocks' } ] );
 	register( legacySave );
 
 	return serialize( createBlock( metadata.name, attributes ) );

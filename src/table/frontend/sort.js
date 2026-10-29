@@ -17,7 +17,7 @@ function readCellText( row, key ) {
 		.filter(
 			( el ) =>
 				el.dataset.key === key &&
-				! el.classList.contains( 'moon-table__card-value--muted' )
+				! el.classList.contains( 'lunar-table__card-value--muted' )
 		)
 		.map( ( el ) => el.textContent.trim() )
 		.join( ', ' );
@@ -97,7 +97,7 @@ function sortBody( tableEl, originalRows, sort ) {
 function markSortedCells( tableEl, sort ) {
 	tableEl.querySelectorAll( 'td[data-key]' ).forEach( ( cell ) => {
 		cell.classList.toggle(
-			'moon-table__cell--sorted',
+			'lunar-table__cell--sorted',
 			!! sort && cell.dataset.key === sort.key
 		);
 	} );
@@ -113,8 +113,8 @@ function getAriaSort( th, sort ) {
 
 // Each click moves one step: ascending, descending, original order.
 function addHeaderButton( th, getSort, applySort ) {
-	const button = createElement( 'button', 'moon-table__sort' );
-	const label = createElement( 'span', 'moon-table__sort-label' );
+	const button = createElement( 'button', 'lunar-table__sort' );
+	const label = createElement( 'span', 'lunar-table__sort-label' );
 
 	button.type = 'button';
 	label.textContent = th.textContent;
@@ -122,8 +122,8 @@ function addHeaderButton( th, getSort, applySort ) {
 	button.appendChild( label );
 	button.appendChild(
 		createIcon( [
-			[ 'M8 10l4-4 4 4', 'moon-table__sort-up' ],
-			[ 'M8 14l4 4 4-4', 'moon-table__sort-down' ],
+			[ 'M8 10l4-4 4 4', 'lunar-table__sort-up' ],
+			[ 'M8 14l4 4 4-4', 'lunar-table__sort-down' ],
 		] )
 	);
 
@@ -152,19 +152,19 @@ function addHeaderButton( th, getSort, applySort ) {
 // Preset 1 hides its header on small screens, so it gets a select and a
 // direction button that share the same sort state.
 function createSortBar( columns, getSort, applySort ) {
-	const element = createElement( 'div', 'moon-table__sort-bar' );
-	const select = createElement( 'select', 'moon-table__sort-select' );
+	const element = createElement( 'div', 'lunar-table__sort-bar' );
+	const select = createElement( 'select', 'lunar-table__sort-select' );
 	const directionButton = createElement(
 		'button',
-		'moon-table__sort-direction'
+		'lunar-table__sort-direction'
 	);
 
-	select.setAttribute( 'aria-label', __( 'Sort by', 'moon-blocks' ) );
+	select.setAttribute( 'aria-label', __( 'Sort by', 'lunar-blocks' ) );
 
 	const original = document.createElement( 'option' );
 
 	original.value = '';
-	original.textContent = __( 'Original order', 'moon-blocks' );
+	original.textContent = __( 'Original order', 'lunar-blocks' );
 	select.appendChild( original );
 
 	columns.forEach( ( col ) => {
@@ -173,7 +173,7 @@ function createSortBar( columns, getSort, applySort ) {
 		option.value = col.key;
 		option.textContent = sprintf(
 			/* translators: %s: column name. */
-			__( 'Sort: %s', 'moon-blocks' ),
+			__( 'Sort: %s', 'lunar-blocks' ),
 			col.label
 		);
 		select.appendChild( option );
@@ -184,7 +184,7 @@ function createSortBar( columns, getSort, applySort ) {
 	directionButton.setAttribute( 'aria-pressed', 'false' );
 	directionButton.setAttribute(
 		'aria-label',
-		__( 'Descending order', 'moon-blocks' )
+		__( 'Descending order', 'lunar-blocks' )
 	);
 	directionButton.appendChild(
 		createIcon( [ [ 'M12 19V5' ], [ 'M6 11l6-6 6 6' ] ] )
@@ -231,7 +231,9 @@ function skipHeaderButtonsOnSmallScreens( tableEl ) {
 	const smallScreen = window.matchMedia(
 		`(max-width: ${ MOBILE_BREAKPOINT }px)`
 	);
-	const headerButtons = tableEl.querySelectorAll( 'thead .moon-table__sort' );
+	const headerButtons = tableEl.querySelectorAll(
+		'thead .lunar-table__sort'
+	);
 
 	function sync() {
 		headerButtons.forEach( ( button ) => {

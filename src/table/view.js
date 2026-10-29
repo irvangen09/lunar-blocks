@@ -5,22 +5,22 @@ import { initFilter } from './frontend/filter';
 import { initScrollRegion } from './frontend/scroll-region';
 import { initSort } from './frontend/sort';
 
-const BLOCK = '.moon-table';
+const BLOCK = '.lunar-table';
 
 // Without this file the table still renders fully and stays readable;
 // it only adds sort, search and the recipe checklist.
 
 function initBlock( blockEl ) {
 	const tableEl = blockEl.querySelector(
-		'.moon-table__table, .moon-table__cards, .moon-table__recipes'
+		'.lunar-table__table, .lunar-table__cards, .lunar-table__recipes'
 	);
 
 	if ( ! tableEl ) {
 		return;
 	}
 
-	const controlsEl = createElement( 'div', 'moon-table__controls' );
-	const isTable = tableEl.classList.contains( 'moon-table__table' );
+	const controlsEl = createElement( 'div', 'lunar-table__controls' );
+	const isTable = tableEl.classList.contains( 'lunar-table__table' );
 
 	if ( isTable && 'preset-1' === blockEl.dataset.preset ) {
 		wrapCellValues( tableEl );
@@ -38,7 +38,7 @@ function initBlock( blockEl ) {
 		blockEl.insertBefore( controlsEl, tableEl );
 	}
 
-	if ( tableEl.classList.contains( 'moon-table__recipes' ) ) {
+	if ( tableEl.classList.contains( 'lunar-table__recipes' ) ) {
 		initChecklist( tableEl );
 	}
 

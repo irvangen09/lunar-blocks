@@ -10,15 +10,15 @@ import {
 import { supportsAlignment } from './utils';
 
 const COLUMN_TYPE_LABELS = {
-	text: __( 'Text', 'moon-blocks' ),
-	number: __( 'Number', 'moon-blocks' ),
-	image: __( 'Image', 'moon-blocks' ),
+	text: __( 'Text', 'lunar-blocks' ),
+	number: __( 'Number', 'lunar-blocks' ),
+	image: __( 'Image', 'lunar-blocks' ),
 };
 
 const COLUMN_ALIGN_LABELS = {
-	left: __( 'Align column left', 'moon-blocks' ),
-	center: __( 'Align column center', 'moon-blocks' ),
-	right: __( 'Align column right', 'moon-blocks' ),
+	left: __( 'Align column left', 'lunar-blocks' ),
+	center: __( 'Align column center', 'lunar-blocks' ),
+	right: __( 'Align column right', 'lunar-blocks' ),
 };
 
 // A menu entry that runs its action and then closes the menu.
@@ -52,8 +52,8 @@ function RowMenu( {
 
 	return (
 		<DropdownMenu
-			text={ __( 'Row', 'moon-blocks' ) }
-			label={ __( 'Row actions', 'moon-blocks' ) }
+			text={ __( 'Row', 'lunar-blocks' ) }
+			label={ __( 'Row actions', 'lunar-blocks' ) }
 		>
 			{ ( { onClose } ) => (
 				<>
@@ -63,14 +63,14 @@ function RowMenu( {
 							onAction={ onInsertRowBefore }
 							onClose={ onClose }
 						>
-							{ __( 'Insert row before', 'moon-blocks' ) }
+							{ __( 'Insert row before', 'lunar-blocks' ) }
 						</Action>
 						<Action
 							disabled={ ! hasFocusedRow }
 							onAction={ onInsertRowAfter }
 							onClose={ onClose }
 						>
-							{ __( 'Insert row after', 'moon-blocks' ) }
+							{ __( 'Insert row after', 'lunar-blocks' ) }
 						</Action>
 						<Action
 							disabled={ ! hasFocusedRow }
@@ -78,20 +78,20 @@ function RowMenu( {
 							onAction={ onDeleteRow }
 							onClose={ onClose }
 						>
-							{ __( 'Delete this row', 'moon-blocks' ) }
+							{ __( 'Delete this row', 'lunar-blocks' ) }
 						</Action>
 					</MenuGroup>
-					<MenuGroup label={ __( 'Divider', 'moon-blocks' ) }>
+					<MenuGroup label={ __( 'Divider', 'lunar-blocks' ) }>
 						<Action
 							disabled={ ! hasFocusedRow }
 							onAction={ onToggleDivider }
 							onClose={ onClose }
 						>
 							{ focusedRowIsDivider
-								? __( 'Unset as divider', 'moon-blocks' )
+								? __( 'Unset as divider', 'lunar-blocks' )
 								: __(
 										'Make this row a divider',
-										'moon-blocks'
+										'lunar-blocks'
 									) }
 						</Action>
 					</MenuGroup>
@@ -114,8 +114,8 @@ function ColumnMenu( {
 
 	return (
 		<DropdownMenu
-			text={ __( 'Column', 'moon-blocks' ) }
-			label={ __( 'Column actions', 'moon-blocks' ) }
+			text={ __( 'Column', 'lunar-blocks' ) }
+			label={ __( 'Column actions', 'lunar-blocks' ) }
 		>
 			{ ( { onClose } ) => (
 				<>
@@ -125,14 +125,14 @@ function ColumnMenu( {
 							onAction={ onInsertColumnBefore }
 							onClose={ onClose }
 						>
-							{ __( 'Insert column before', 'moon-blocks' ) }
+							{ __( 'Insert column before', 'lunar-blocks' ) }
 						</Action>
 						<Action
 							disabled={ disabled }
 							onAction={ onInsertColumnAfter }
 							onClose={ onClose }
 						>
-							{ __( 'Insert column after', 'moon-blocks' ) }
+							{ __( 'Insert column after', 'lunar-blocks' ) }
 						</Action>
 						<Action
 							disabled={ disabled }
@@ -140,11 +140,11 @@ function ColumnMenu( {
 							onAction={ onDeleteColumn }
 							onClose={ onClose }
 						>
-							{ __( 'Delete this column', 'moon-blocks' ) }
+							{ __( 'Delete this column', 'lunar-blocks' ) }
 						</Action>
 					</MenuGroup>
 					<MenuGroup
-						label={ __( 'Change column type', 'moon-blocks' ) }
+						label={ __( 'Change column type', 'lunar-blocks' ) }
 					>
 						{ Object.keys( COLUMN_TYPE_LABELS ).map( ( type ) => (
 							<Action
@@ -161,7 +161,7 @@ function ColumnMenu( {
 						<MenuGroup
 							label={ __(
 								'Change column alignment',
-								'moon-blocks'
+								'lunar-blocks'
 							) }
 						>
 							{ Object.keys( COLUMN_ALIGN_LABELS ).map(
@@ -183,7 +183,7 @@ function ColumnMenu( {
 								onAction={ () => onSetColumnAlign( undefined ) }
 								onClose={ onClose }
 							>
-								{ __( 'Reset alignment', 'moon-blocks' ) }
+								{ __( 'Reset alignment', 'lunar-blocks' ) }
 							</Action>
 						</MenuGroup>
 					) }

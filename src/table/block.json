@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "moon-blocks/table",
-  "title": "Moon Table",
-  "category": "moon-blocks",
+  "name": "lunar-blocks/table",
+  "title": "Lunar Table",
+  "category": "lunar-blocks",
   "description": "A documentation table with grouped rows, optional sorting and search, and card layouts for small screens.",
   "keywords": [ "table", "data", "grid", "comparison" ],
-  "textdomain": "moon-blocks",
+  "textdomain": "lunar-blocks",
   "attributes": {
     "preset": {
       "type": "string",
@@ -49,6 +49,6 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": [ "moon-blocks-tokens", "file:./style-index.css" ],
+  "style": [ "lunar-blocks-tokens", "file:./style-index.css" ],
   "viewScript": "file:./view.js"
 }

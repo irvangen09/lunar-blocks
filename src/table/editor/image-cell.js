@@ -21,7 +21,7 @@ export default function ImageCell( {
 
 					<div onFocus={ onFocus }>
 						{ image?.url ? (
-							<div className="moon-table-editor__image-cell">
+							<div className="lunar-table-editor__image-cell">
 								<img
 									src={ image.url }
 									alt=""
@@ -30,11 +30,11 @@ export default function ImageCell( {
 								<TextControl
 									__next40pxDefaultSize
 									__nextHasNoMarginBottom
-									label={ __( 'Alt text', 'moon-blocks' ) }
+									label={ __( 'Alt text', 'lunar-blocks' ) }
 									hideLabelFromVision
 									placeholder={ __(
 										'Describe this image…',
-										'moon-blocks'
+										'lunar-blocks'
 									) }
 									value={ image.alt || '' }
 									onChange={ onAlt }
@@ -44,7 +44,7 @@ export default function ImageCell( {
 									size="small"
 									onClick={ open }
 								>
-									{ __( 'Replace', 'moon-blocks' ) }
+									{ __( 'Replace', 'lunar-blocks' ) }
 								</Button>
 								<Button
 									variant="link"
@@ -52,26 +52,26 @@ export default function ImageCell( {
 									isDestructive
 									onClick={ onRemove }
 								>
-									{ __( 'Remove image', 'moon-blocks' ) }
+									{ __( 'Remove image', 'lunar-blocks' ) }
 								</Button>
 							</div>
 						) : (
-							<div className="moon-table-editor__image-empty">
+							<div className="lunar-table-editor__image-empty">
 								<Button
 									variant="secondary"
 									size="small"
 									onClick={ open }
 								>
-									{ __( 'Choose image', 'moon-blocks' ) }
+									{ __( 'Choose image', 'lunar-blocks' ) }
 								</Button>
 								<TextControl
 									__next40pxDefaultSize
 									__nextHasNoMarginBottom
-									label={ __( 'Image URL', 'moon-blocks' ) }
+									label={ __( 'Image URL', 'lunar-blocks' ) }
 									hideLabelFromVision
 									placeholder={ __(
 										'or paste image URL…',
-										'moon-blocks'
+										'lunar-blocks'
 									) }
 									onKeyDown={ ( event ) => {
 										if ( 'Enter' !== event.key ) {

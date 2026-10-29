@@ -9,13 +9,13 @@ export default function NewTableForm( {
 	onCreate,
 } ) {
 	return (
-		<div className="moon-table-editor__empty">
-			<p>{ __( 'Create a new table.', 'moon-blocks' ) }</p>
-			<div className="moon-table-editor__empty-fields">
+		<div className="lunar-table-editor__empty">
+			<p>{ __( 'Create a new table.', 'lunar-blocks' ) }</p>
+			<div className="lunar-table-editor__empty-fields">
 				<TextControl
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
-					label={ __( 'Number of columns', 'moon-blocks' ) }
+					label={ __( 'Number of columns', 'lunar-blocks' ) }
 					type="number"
 					min="1"
 					value={ columnCount }
@@ -24,7 +24,7 @@ export default function NewTableForm( {
 				<TextControl
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
-					label={ __( 'Number of rows', 'moon-blocks' ) }
+					label={ __( 'Number of rows', 'lunar-blocks' ) }
 					type="number"
 					min="1"
 					value={ rowCount }
@@ -36,7 +36,7 @@ export default function NewTableForm( {
 				variant="primary"
 				onClick={ onCreate }
 			>
-				{ __( 'Create Table', 'moon-blocks' ) }
+				{ __( 'Create Table', 'lunar-blocks' ) }
 			</Button>
 		</div>
 	);
