@@ -81,7 +81,7 @@ function findBlockDirectories( directory ) {
 function registerAllBlocks() {
 	const names = [];
 
-	setCategories( [ { slug: 'moon-blocks', title: 'Moon Blocks' } ] );
+	setCategories( [ { slug: 'lunar-blocks', title: 'Lunar Blocks' } ] );
 
 	findBlockDirectories( SRC ).forEach( ( directory ) => {
 		const metadata = require( path.join( directory, 'block.json' ) );
@@ -139,82 +139,82 @@ const rows = [
 function buildSamples() {
 	const samples = {
 		'accordion, open on desktop': createBlock(
-			'moon-blocks/accordion',
+			'lunar-blocks/accordion',
 			{ openOnDesktop: true },
 			[
-				createBlock( 'moon-blocks/accordion-item', {
+				createBlock( 'lunar-blocks/accordion-item', {
 					title: 'First',
 					headingLevel: 'h3',
 				} ),
-				createBlock( 'moon-blocks/accordion-item', {
+				createBlock( 'lunar-blocks/accordion-item', {
 					title: 'Second',
 					headingLevel: 'none',
 				} ),
 			]
 		),
 		'accordion, closed on desktop': createBlock(
-			'moon-blocks/accordion',
+			'lunar-blocks/accordion',
 			{ openOnDesktop: false },
 			[
-				createBlock( 'moon-blocks/accordion-item', {
+				createBlock( 'lunar-blocks/accordion-item', {
 					title: 'Only',
 					headingLevel: 'h2',
 				} ),
 			]
 		),
-		'callout without label': createBlock( 'moon-blocks/callout', {
+		'callout without label': createBlock( 'lunar-blocks/callout', {
 			variant: 'info',
 			content: 'Body',
 			label: '',
 			variantName: 'Info',
 		} ),
 		'gallery, 3 columns': createBlock(
-			'moon-blocks/gallery',
+			'lunar-blocks/gallery',
 			{ columns: 3 },
 			[
-				createBlock( 'moon-blocks/gallery-item', {
+				createBlock( 'lunar-blocks/gallery-item', {
 					imageId: 12,
 					imageUrl: image.url,
 					imageAlt: 'A photo',
 					caption: 'Caption',
 				} ),
-				createBlock( 'moon-blocks/gallery-item', {
+				createBlock( 'lunar-blocks/gallery-item', {
 					imageId: 0,
 					imageUrl: image.url,
 					imageAlt: '',
 				} ),
 			]
 		),
-		'info list': createBlock( 'moon-blocks/info-list', {}, [
-			createBlock( 'moon-blocks/info-list-item', {
+		'info list': createBlock( 'lunar-blocks/info-list', {}, [
+			createBlock( 'lunar-blocks/info-list-item', {
 				icon: 'dashicons-calendar',
 				label: 'Season',
 				value: 'Spring',
 			} ),
 			createBlock(
-				'moon-blocks/info-list-requirements',
+				'lunar-blocks/info-list-requirements',
 				{ title: 'Needs' },
 				[
-					createBlock( 'moon-blocks/info-list-requirement', {
+					createBlock( 'lunar-blocks/info-list-requirement', {
 						icon: 'dashicons-yes',
 						text: 'Hoe',
 					} ),
 				]
 			),
 		] ),
-		'info list, no count': createBlock( 'moon-blocks/info-list', {}, [
+		'info list, no count': createBlock( 'lunar-blocks/info-list', {}, [
 			createBlock(
-				'moon-blocks/info-list-requirements',
+				'lunar-blocks/info-list-requirements',
 				{ title: 'Needs', showCount: false, countText: '' },
 				[
-					createBlock( 'moon-blocks/info-list-requirement', {
+					createBlock( 'lunar-blocks/info-list-requirement', {
 						text: 'Water',
 					} ),
 				]
 			),
 		] ),
 		'infobox with image': createBlock(
-			'moon-blocks/infobox',
+			'lunar-blocks/infobox',
 			{
 				title: 'Character',
 				headingLevel: 'h2',
@@ -223,7 +223,7 @@ function buildSamples() {
 				imageAlt: 'Portrait',
 			},
 			[
-				createBlock( 'moon-blocks/infobox-item', {
+				createBlock( 'lunar-blocks/infobox-item', {
 					icon: 'dashicons-heart',
 					label: 'Birthday',
 					value: 'Spring 4',
@@ -231,27 +231,27 @@ function buildSamples() {
 			]
 		),
 		'infobox without image': createBlock(
-			'moon-blocks/infobox',
+			'lunar-blocks/infobox',
 			{ title: 'Place', headingLevel: 'none' },
 			[
-				createBlock( 'moon-blocks/infobox-item', {
+				createBlock( 'lunar-blocks/infobox-item', {
 					label: 'Region',
 					value: 'North',
 				} ),
 			]
 		),
-		tabs: createBlock( 'moon-blocks/tabs', {}, [
-			createBlock( 'moon-blocks/tabs-item', { label: 'One' } ),
-			createBlock( 'moon-blocks/tabs-item', { label: 'Two' } ),
+		tabs: createBlock( 'lunar-blocks/tabs', {}, [
+			createBlock( 'lunar-blocks/tabs-item', { label: 'One' } ),
+			createBlock( 'lunar-blocks/tabs-item', { label: 'Two' } ),
 		] ),
-		'table of contents': createBlock( 'moon-blocks/toc', {
+		'table of contents': createBlock( 'lunar-blocks/toc', {
 			title: 'Contents',
 		} ),
 	};
 
 	[ 'info', 'tips', 'warning', 'important' ].forEach( ( variant ) => {
 		samples[ `callout, ${ variant }` ] = createBlock(
-			'moon-blocks/callout',
+			'lunar-blocks/callout',
 			{
 				variant,
 				content: 'Body',
@@ -264,7 +264,7 @@ function buildSamples() {
 	[ 'default', 'preset-1', 'preset-2', 'preset-3', 'preset-4' ].forEach(
 		( preset ) => {
 			samples[ `table, ${ preset }` ] = createBlock(
-				'moon-blocks/table',
+				'lunar-blocks/table',
 				{
 					preset,
 					columns,
@@ -315,7 +315,7 @@ function buildSamples() {
 
 	[ 'preset-3', 'preset-4' ].forEach( ( preset ) => {
 		samples[ `table, ${ preset } with fields` ] = createBlock(
-			'moon-blocks/table',
+			'lunar-blocks/table',
 			{ preset, columns: recipeColumns, rows: recipeRows }
 		);
 	} );
@@ -324,13 +324,13 @@ function buildSamples() {
 	// reached the card layouts.
 	[ 'preset-2', 'preset-3' ].forEach( ( preset ) => {
 		samples[ `table, ${ preset }, sort off` ] = createBlock(
-			'moon-blocks/table',
+			'lunar-blocks/table',
 			{ preset, columns, rows, enableSort: false }
 		);
 	} );
 
 	samples[ 'table, sort and filter off' ] = createBlock(
-		'moon-blocks/table',
+		'lunar-blocks/table',
 		{
 			preset: 'default',
 			columns,
