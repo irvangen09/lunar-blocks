@@ -1,4 +1,4 @@
-# Contributing to Moon Blocks
+# Contributing to Lunar Blocks
 
 Thank you for taking the time to help. Bug reports, ideas, translations, and pull requests are all welcome.
 
@@ -6,11 +6,11 @@ By taking part, you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md). T
 
 ## Reporting a bug
 
-Open an [issue](https://github.com/irvangen09/moon-blocks/issues) and include:
+Open an [issue](https://github.com/irvangen09/lunar-blocks/issues) and include:
 
 - What you expected, and what happened instead.
 - The steps to reproduce it, ideally starting from a new post with a single block.
-- Your versions of Moon Blocks, WordPress, and PHP, and the theme you use.
+- Your versions of Lunar Blocks, WordPress, and PHP, and the theme you use.
 - A screenshot or a short screen recording for visual problems.
 - Any message from the browser console or from `debug.log`.
 
@@ -18,7 +18,7 @@ If a block shows "This block contains unexpected or invalid content", please inc
 
 ## Suggesting a change
 
-Open an issue before you start on anything larger than a small fix, so the idea can be discussed first. Moon Blocks is deliberately small: it targets documentation, wiki, and knowledge base sites, so a new feature is accepted when it serves that purpose and works in any theme.
+Open an issue before you start on anything larger than a small fix, so the idea can be discussed first. Lunar Blocks is deliberately small: it targets documentation, wiki, and knowledge base sites, so a new feature is accepted when it serves that purpose and works in any theme.
 
 ## Setting up
 
@@ -48,12 +48,12 @@ Then check your change in the editor and on the front end, with at least one blo
 
 - PHP follows the WordPress Coding Standards (`phpcs.xml`). JavaScript and Sass follow the `@wordpress/scripts` lint rules. Files end with a single line break and use LF line endings (see `.editorconfig`).
 - Code comments are in English, short, and explain only what is not obvious from the code.
-- Every user-facing string goes through `__()`, `_n()`, or a related function with the text domain `moon-blocks`.
+- Every user-facing string goes through `__()`, `_n()`, or a related function with the text domain `lunar-blocks`.
 - The plugin has no Composer packages at runtime. Composer is used for development tools only.
 
 **Design**
 
-- Use the design tokens from `assets/css/tokens.css` (`--moon-*`) instead of fixed colors, radii, and spacing. Lengths outside the spacing scale are written as `calc(var(--moon-unit) * N)`, and font sizes use `em`.
+- Use the design tokens from `assets/css/tokens.css` (`--lunar-*`) instead of fixed colors, radii, and spacing. Lengths outside the spacing scale are written as `calc(var(--lunar-unit) * N)`, and font sizes use `em`.
 - Do not hard-code colors and do not add a dark mode. Blocks inherit fonts and text color from the theme.
 - Show a keyboard focus ring only for keyboard users, with the shared `focus-ring` mixin in `src/shared/_focus.scss`.
 - Blocks must stay readable without JavaScript where that is possible, and must work with the keyboard and with assistive technology.
@@ -70,13 +70,13 @@ The markup a block saves, its attribute names and defaults, and the Table preset
 
 ## Translations
 
-Translations are bundled in the `languages/` folder. `moon-blocks.pot` is the template, and each language has a `.po` file, a compiled `.mo` file, and `.json` files that translate the editor and front-end scripts.
+Translations are bundled in the `languages/` folder. `lunar-blocks.pot` is the template, and each language has a `.po` file, a compiled `.mo` file, and `.json` files that translate the editor and front-end scripts.
 
 To improve a translation or add a language, open an issue or a pull request with the `.po` file for your language. The other files can be generated from it with [WP-CLI](https://wp-cli.org/):
 
 ```bash
 npm run build
-wp i18n make-pot . languages/moon-blocks.pot --slug=moon-blocks --exclude=node_modules,vendor,tests,src
+wp i18n make-pot . languages/lunar-blocks.pot --slug=lunar-blocks --exclude=node_modules,vendor,tests,src
 wp i18n make-mo languages
 wp i18n make-json languages --no-purge
 ```
