@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "moon-blocks/infobox-item",
-  "title": "Moon Infobox Item",
-  "category": "moon-blocks",
+  "name": "lunar-blocks/infobox-item",
+  "title": "Lunar Infobox Item",
+  "category": "lunar-blocks",
   "description": "One row of an infobox: an optional icon, a label, and a value.",
-  "parent": [ "moon-blocks/infobox" ],
-  "textdomain": "moon-blocks",
+  "parent": [ "lunar-blocks/infobox" ],
+  "textdomain": "lunar-blocks",
   "attributes": {
     "icon": {
       "type": "string",
@@ -15,12 +15,12 @@
     "label": {
       "type": "rich-text",
       "source": "rich-text",
-      "selector": ".moon-infobox-item__label-text"
+      "selector": ".lunar-infobox-item__label-text"
     },
     "value": {
       "type": "rich-text",
       "source": "rich-text",
-      "selector": ".moon-infobox-item__value"
+      "selector": ".lunar-infobox-item__value"
     }
   },
   "supports": {

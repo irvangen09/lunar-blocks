@@ -11,12 +11,12 @@ export default function save( { attributes } ) {
 
 	const blockProps = useBlockProps.save( {
 		className: hasImage
-			? 'moon-infobox'
-			: 'moon-infobox moon-infobox--no-image',
+			? 'lunar-infobox'
+			: 'lunar-infobox lunar-infobox--no-image',
 	} );
 
 	const rowsProps = useInnerBlocksProps.save( {
-		className: 'moon-infobox__rows',
+		className: 'lunar-infobox__rows',
 	} );
 
 	// A paragraph keeps the title out of the page outline unless a level is chosen.
@@ -25,13 +25,13 @@ export default function save( { attributes } ) {
 	// The wp-image class lets WordPress add srcset and dimensions when rendering.
 	const imageClassName =
 		imageId > 0
-			? `moon-infobox__image wp-image-${ imageId }`
-			: 'moon-infobox__image';
+			? `lunar-infobox__image wp-image-${ imageId }`
+			: 'lunar-infobox__image';
 
 	return (
 		<div { ...blockProps }>
 			{ hasImage && (
-				<figure className="moon-infobox__media">
+				<figure className="lunar-infobox__media">
 					<img
 						className={ imageClassName }
 						src={ imageUrl }
@@ -39,11 +39,11 @@ export default function save( { attributes } ) {
 					/>
 				</figure>
 			) }
-			<div className="moon-infobox__body">
+			<div className="lunar-infobox__body">
 				{ ! RichText.isEmpty( title ) && (
 					<RichText.Content
 						tagName={ titleTagName }
-						className="moon-infobox__title"
+						className="lunar-infobox__title"
 						value={ title }
 					/>
 				) }
