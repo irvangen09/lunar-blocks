@@ -18,14 +18,14 @@ export default function Edit( { attributes, setAttributes } ) {
 	const { icon, text } = attributes;
 
 	const blockProps = useBlockProps( {
-		className: 'moon-info-list-requirement',
+		className: 'lunar-info-list-requirement',
 	} );
 
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody
-					title={ __( 'Requirement Settings', 'moon-blocks' ) }
+					title={ __( 'Requirement Settings', 'lunar-blocks' ) }
 				>
 					<IconControl
 						value={ icon }
@@ -35,7 +35,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						}
 						help={ __(
 							'Dashicons class name. Leave empty if this item does not need an icon.',
-							'moon-blocks'
+							'lunar-blocks'
 						) }
 					/>
 				</PanelBody>
@@ -44,14 +44,14 @@ export default function Edit( { attributes, setAttributes } ) {
 			<div { ...blockProps }>
 				{ ICON_PATTERN.test( icon ) && (
 					<span
-						className={ `moon-info-list-requirement__icon dashicons ${ icon }` }
+						className={ `lunar-info-list-requirement__icon dashicons ${ icon }` }
 						aria-hidden="true"
 					/>
 				) }
 				<RichText
 					tagName="span"
-					className="moon-info-list-requirement__text"
-					placeholder={ __( 'Requirement…', 'moon-blocks' ) }
+					className="lunar-info-list-requirement__text"
+					placeholder={ __( 'Requirement…', 'lunar-blocks' ) }
 					value={ text }
 					onChange={ ( newText ) =>
 						setAttributes( { text: newText } )

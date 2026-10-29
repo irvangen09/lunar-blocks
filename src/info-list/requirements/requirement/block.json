@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "moon-blocks/info-list-requirement",
-  "title": "Moon Info List Requirement",
-  "category": "moon-blocks",
+  "name": "lunar-blocks/info-list-requirement",
+  "title": "Lunar Info List Requirement",
+  "category": "lunar-blocks",
   "description": "One item of an info list requirements section, with an icon marker that defaults to a check mark.",
-  "parent": [ "moon-blocks/info-list-requirements" ],
-  "textdomain": "moon-blocks",
+  "parent": [ "lunar-blocks/info-list-requirements" ],
+  "textdomain": "lunar-blocks",
   "attributes": {
     "icon": {
       "type": "string",
@@ -15,7 +15,7 @@
     "text": {
       "type": "rich-text",
       "source": "rich-text",
-      "selector": ".moon-info-list-requirement__text"
+      "selector": ".lunar-info-list-requirement__text"
     }
   },
   "supports": {
