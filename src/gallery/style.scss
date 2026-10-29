@@ -34,7 +34,7 @@
 }
 
 /* Small screens keep a grid of two columns instead of a carousel. */
-@media (max-width: $moon-breakpoint-mobile) {
+@media (max-width: $lunar-breakpoint-mobile) {
 
 	.moon-gallery {
 		grid-template-columns: repeat(2, minmax(0, 1fr));

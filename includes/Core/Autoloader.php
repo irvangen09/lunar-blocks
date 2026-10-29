@@ -1,6 +1,6 @@
 <?php
 
-namespace MoonBlocks\Core;
+namespace LunarBlocks\Core;
 
 class Autoloader {
 
@@ -18,7 +18,7 @@ class Autoloader {
 	}
 
 	/**
-	 * Maps MoonBlocks\Core\Plugin to {base_dir}/Core/Plugin.php.
+	 * Maps LunarBlocks\Core\Plugin to {base_dir}/Core/Plugin.php.
 	 */
 	public function load( string $class_name ): void {
 		if ( ! str_starts_with( $class_name, $this->prefix ) ) {

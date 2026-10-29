@@ -1,7 +1,7 @@
 @use "../shared/breakpoints" as *;
 @use "../shared/focus" as *;
 
-$moon-accordion-desktop: $moon-breakpoint-mobile + 1;
+$lunar-accordion-desktop: $lunar-breakpoint-mobile + 1;
 
 .moon-accordion {
 
@@ -71,7 +71,7 @@ $moon-accordion-desktop: $moon-breakpoint-mobile + 1;
 
 /* view.js opens these items on wide screens. Until it has run, they are
    shown open so the page does not jump when it does. */
-@media (scripting: enabled) and (min-width: $moon-accordion-desktop) {
+@media (scripting: enabled) and (min-width: $lunar-accordion-desktop) {
 
 	.moon-accordion--open-desktop:not(.moon-accordion--ready) > .moon-accordion-item:not([open]) {
 

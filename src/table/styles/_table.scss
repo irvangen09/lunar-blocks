@@ -2,7 +2,7 @@
 @use "../../shared/focus" as *;
 
 // The first width above the mobile layouts.
-$moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
+$lunar-table-breakpoint-desktop: $lunar-breakpoint-mobile + 1;
 
 /* Default and Preset 1: a real table with a header row. */
 .moon-table.moon-table {
@@ -138,7 +138,7 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 }
 
 /* Preset 1, desktop: flat header, hairline rows, no vertical lines. */
-@media (min-width: $moon-table-breakpoint-desktop) {
+@media (min-width: $lunar-table-breakpoint-desktop) {
 
 	.moon-table.moon-table[data-preset="preset-1"] {
 
@@ -203,7 +203,7 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 }
 
 /* Preset 1, mobile: every row becomes a card of label and value rows. */
-@media (max-width: $moon-breakpoint-mobile) {
+@media (max-width: $lunar-breakpoint-mobile) {
 
 	.moon-table.moon-table[data-preset="preset-1"] {
 

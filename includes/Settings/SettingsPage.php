@@ -1,13 +1,13 @@
 <?php
 
-namespace MoonBlocks\Settings;
+namespace LunarBlocks\Settings;
 
-use MoonBlocks\Blocks\BlockRegistry;
+use LunarBlocks\Blocks\BlockRegistry;
 
 class SettingsPage {
 
-	private const SLUG   = 'moon-blocks';
-	private const HANDLE = 'moon-blocks-admin';
+	private const SLUG   = 'lunar-blocks';
+	private const HANDLE = 'lunar-blocks-admin';
 
 	private BlockRegistry $blocks;
 
@@ -24,8 +24,8 @@ class SettingsPage {
 
 	public function add_page(): void {
 		$this->hook_suffix = (string) add_options_page(
-			__( 'Moon Blocks', 'moon-blocks' ),
-			__( 'Moon Blocks', 'moon-blocks' ),
+			__( 'Lunar Blocks', 'lunar-blocks' ),
+			__( 'Lunar Blocks', 'lunar-blocks' ),
 			'manage_options',
 			self::SLUG,
 			array( $this, 'render' )
@@ -36,14 +36,14 @@ class SettingsPage {
 		if ( ! is_readable( $this->asset_file() ) ) {
 			printf(
 				'<div class="notice notice-error"><p>%s</p></div>',
-				esc_html__( 'The Moon Blocks settings interface could not be loaded. Please reinstall the plugin.', 'moon-blocks' )
+				esc_html__( 'The Lunar Blocks settings interface could not be loaded. Please reinstall the plugin.', 'lunar-blocks' )
 			);
 			return;
 		}
 		?>
 		<div class="wrap">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-			<div id="moon-blocks-settings"></div>
+			<div id="lunar-blocks-settings"></div>
 		</div>
 		<?php
 	}
@@ -57,7 +57,7 @@ class SettingsPage {
 
 		wp_enqueue_style(
 			self::HANDLE,
-			MOON_BLOCKS_URL . 'build/admin/style-index.css',
+			LUNAR_BLOCKS_URL . 'build/admin/style-index.css',
 			array( 'wp-components' ),
 			$asset['version']
 		);
@@ -65,12 +65,12 @@ class SettingsPage {
 
 		wp_enqueue_script(
 			self::HANDLE,
-			MOON_BLOCKS_URL . 'build/admin/index.js',
+			LUNAR_BLOCKS_URL . 'build/admin/index.js',
 			$asset['dependencies'],
 			$asset['version'],
 			true
 		);
-		wp_set_script_translations( self::HANDLE, 'moon-blocks', MOON_BLOCKS_DIR . 'languages' );
+		wp_set_script_translations( self::HANDLE, 'lunar-blocks', LUNAR_BLOCKS_DIR . 'languages' );
 
 		$data = array(
 			'option' => SettingsRegistry::OPTION,
@@ -79,12 +79,12 @@ class SettingsPage {
 
 		wp_add_inline_script(
 			self::HANDLE,
-			'window.moonBlocksSettings = ' . wp_json_encode( $data, JSON_HEX_TAG | JSON_HEX_AMP ) . ';',
+			'window.lunarBlocksSettings = ' . wp_json_encode( $data, JSON_HEX_TAG | JSON_HEX_AMP ) . ';',
 			'before'
 		);
 	}
 
 	private function asset_file(): string {
-		return MOON_BLOCKS_DIR . 'build/admin/index.asset.php';
+		return LUNAR_BLOCKS_DIR . 'build/admin/index.asset.php';
 	}
 }

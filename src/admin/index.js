@@ -54,7 +54,7 @@ function SettingsApp( { option, blocks } ) {
 				applyResponse( response );
 				setNotice( {
 					status: 'success',
-					message: __( 'Settings saved.', 'moon-blocks' ),
+					message: __( 'Settings saved.', 'lunar-blocks' ),
 				} );
 			} )
 			.catch( showError )
@@ -77,7 +77,7 @@ function SettingsApp( { option, blocks } ) {
 	}, [ isDirty ] );
 
 	return (
-		<div className="moon-settings">
+		<div className="lunar-settings">
 			{ notice && (
 				<Notice
 					status={ notice.status }
@@ -95,11 +95,11 @@ function SettingsApp( { option, blocks } ) {
 						tabs={ [
 							{
 								name: 'blocks',
-								title: __( 'Blocks', 'moon-blocks' ),
+								title: __( 'Blocks', 'lunar-blocks' ),
 							},
 							{
 								name: 'appearance',
-								title: __( 'Appearance', 'moon-blocks' ),
+								title: __( 'Appearance', 'lunar-blocks' ),
 							},
 						] }
 					>
@@ -119,14 +119,14 @@ function SettingsApp( { option, blocks } ) {
 						}
 					</TabPanel>
 
-					<div className="moon-settings__footer">
+					<div className="lunar-settings__footer">
 						<Button
 							variant="primary"
 							isBusy={ isSaving }
 							disabled={ ! isDirty || isSaving }
 							onClick={ save }
 						>
-							{ __( 'Save Changes', 'moon-blocks' ) }
+							{ __( 'Save Changes', 'lunar-blocks' ) }
 						</Button>
 					</div>
 				</>
@@ -135,8 +135,8 @@ function SettingsApp( { option, blocks } ) {
 	);
 }
 
-const root = document.getElementById( 'moon-blocks-settings' );
-const data = window.moonBlocksSettings;
+const root = document.getElementById( 'lunar-blocks-settings' );
+const data = window.lunarBlocksSettings;
 
 if ( root && data ) {
 	createRoot( root ).render(

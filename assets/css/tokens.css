@@ -5,45 +5,45 @@
 :root {
 
 	/* Color */
-	--moon-color-text: currentcolor;
-	--moon-color-text-muted: color-mix(in srgb, var(--moon-color-text) 80%, transparent);
-	--moon-color-primary: currentcolor;
-	--moon-color-primary-subtle: color-mix(in srgb, var(--moon-color-primary) 10%, transparent);
-	--moon-color-surface: color-mix(in srgb, var(--moon-color-text) 4%, transparent);
-	--moon-color-border: color-mix(in srgb, var(--moon-color-text) 20%, transparent);
-	--moon-color-overlay: rgb(0 0 0 / 85%);
-	--moon-color-on-overlay: #f5f5f5;
-	--moon-color-success: #059669;
+	--lunar-color-text: currentcolor;
+	--lunar-color-text-muted: color-mix(in srgb, var(--lunar-color-text) 80%, transparent);
+	--lunar-color-primary: currentcolor;
+	--lunar-color-primary-subtle: color-mix(in srgb, var(--lunar-color-primary) 10%, transparent);
+	--lunar-color-surface: color-mix(in srgb, var(--lunar-color-text) 4%, transparent);
+	--lunar-color-border: color-mix(in srgb, var(--lunar-color-text) 20%, transparent);
+	--lunar-color-overlay: rgb(0 0 0 / 85%);
+	--lunar-color-on-overlay: #f5f5f5;
+	--lunar-color-success: #059669;
 
 	/* Typography */
-	--moon-font-size-sm: 0.875em;
-	--moon-font-size-md: 1em;
-	--moon-font-size-lg: 1.125em;
-	--moon-font-weight-strong: 600;
-	--moon-line-height-tight: 1.35;
+	--lunar-font-size-sm: 0.875em;
+	--lunar-font-size-md: 1em;
+	--lunar-font-size-lg: 1.125em;
+	--lunar-font-weight-strong: 600;
+	--lunar-line-height-tight: 1.35;
 
 	/* Border, radius, focus, motion */
-	--moon-radius: 6px;
-	--moon-border-width: 1px;
-	--moon-border-width-strong: 2px;
-	--moon-border: var(--moon-border-width) solid var(--moon-color-border);
-	--moon-focus-ring-width: 2px;
-	--moon-focus-ring-offset: 2px;
-	--moon-duration-fast: 150ms;
+	--lunar-radius: 6px;
+	--lunar-border-width: 1px;
+	--lunar-border-width-strong: 2px;
+	--lunar-border: var(--lunar-border-width) solid var(--lunar-color-border);
+	--lunar-focus-ring-width: 2px;
+	--lunar-focus-ring-offset: 2px;
+	--lunar-duration-fast: 150ms;
 
 	/* Spacing */
-	--moon-unit: max(1rem, 16px);
-	--moon-space-1: calc(var(--moon-unit) * 0.25);
-	--moon-space-2: calc(var(--moon-unit) * 0.5);
-	--moon-space-3: calc(var(--moon-unit) * 0.75);
-	--moon-space-4: var(--moon-unit);
-	--moon-space-5: calc(var(--moon-unit) * 1.5);
-	--moon-space-6: calc(var(--moon-unit) * 2);
+	--lunar-unit: max(1rem, 16px);
+	--lunar-space-1: calc(var(--lunar-unit) * 0.25);
+	--lunar-space-2: calc(var(--lunar-unit) * 0.5);
+	--lunar-space-3: calc(var(--lunar-unit) * 0.75);
+	--lunar-space-4: var(--lunar-unit);
+	--lunar-space-5: calc(var(--lunar-unit) * 1.5);
+	--lunar-space-6: calc(var(--lunar-unit) * 2);
 }
 
 @media (prefers-reduced-motion: reduce) {
 
 	:root {
-		--moon-duration-fast: 0ms;
+		--lunar-duration-fast: 0ms;
 	}
 }

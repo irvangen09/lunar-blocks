@@ -30,7 +30,7 @@ export default function IconControl( { value, onChange, placeholder, help } ) {
 			<TextControl
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
-				label={ __( 'Icon', 'moon-blocks' ) }
+				label={ __( 'Icon', 'lunar-blocks' ) }
 				value={ draft }
 				placeholder={ placeholder }
 				onChange={ handleChange }
@@ -38,7 +38,7 @@ export default function IconControl( { value, onChange, placeholder, help } ) {
 					<>
 						{ help }{ ' ' }
 						<ExternalLink href="https://developer.wordpress.org/resource/dashicons/">
-							{ __( 'Browse Dashicons', 'moon-blocks' ) }
+							{ __( 'Browse Dashicons', 'lunar-blocks' ) }
 						</ExternalLink>
 					</>
 				}
@@ -47,7 +47,7 @@ export default function IconControl( { value, onChange, placeholder, help } ) {
 				<Notice status="error" isDismissible={ false }>
 					{ __(
 						'This icon name is not saved. Use a name that starts with "dashicons-", such as dashicons-calendar-alt.',
-						'moon-blocks'
+						'lunar-blocks'
 					) }
 				</Notice>
 			) }
