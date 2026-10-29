@@ -1,5 +1,5 @@
-const TOC = '.moon-toc';
-const LINK = '.moon-toc__link';
+const TOC = '.lunar-toc';
+const LINK = '.lunar-toc__link';
 
 // A heading counts as "current" once it has passed this fraction of the
 // viewport height, measured from the top.
