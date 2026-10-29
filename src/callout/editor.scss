@@ -1,13 +1,13 @@
-.moon-callout {
+.lunar-callout {
 
-	.moon-callout__label {
+	.lunar-callout__label {
 		background: transparent;
 	}
 
 	/* Muted token already fades the text; reset core's extra opacity. */
-	.moon-callout__label::placeholder,
-	.moon-callout__text [data-rich-text-placeholder]::after {
-		color: var(--moon-color-text-muted);
+	.lunar-callout__label::placeholder,
+	.lunar-callout__text [data-rich-text-placeholder]::after {
+		color: var(--lunar-color-text-muted);
 		opacity: 1;
 	}
 }

@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "moon-blocks/callout",
-  "title": "Moon Callout",
-  "category": "moon-blocks",
+  "name": "lunar-blocks/callout",
+  "title": "Lunar Callout",
+  "category": "lunar-blocks",
   "description": "Highlights a note, tip, or warning within an article.",
   "keywords": [ "callout", "note", "tip", "warning" ],
-  "textdomain": "moon-blocks",
+  "textdomain": "lunar-blocks",
   "attributes": {
     "variant": {
       "type": "string",
@@ -16,12 +16,12 @@
     "content": {
       "type": "rich-text",
       "source": "rich-text",
-      "selector": ".moon-callout__text"
+      "selector": ".lunar-callout__text"
     },
     "label": {
       "type": "string",
       "source": "text",
-      "selector": ".moon-callout__label"
+      "selector": ".lunar-callout__label"
     },
     "variantName": {
       "type": "string"
@@ -33,5 +33,5 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": [ "moon-blocks-tokens", "file:./style-index.css" ]
+  "style": [ "lunar-blocks-tokens", "file:./style-index.css" ]
 }

@@ -11,10 +11,10 @@ import { useEffect } from '@wordpress/element';
 // Called at render time so translations are loaded.
 function getVariants() {
 	return [
-		{ value: 'info', label: __( 'Info', 'moon-blocks' ) },
-		{ value: 'tips', label: __( 'Tips', 'moon-blocks' ) },
-		{ value: 'warning', label: __( 'Warning', 'moon-blocks' ) },
-		{ value: 'important', label: __( 'Important', 'moon-blocks' ) },
+		{ value: 'info', label: __( 'Info', 'lunar-blocks' ) },
+		{ value: 'tips', label: __( 'Tips', 'lunar-blocks' ) },
+		{ value: 'warning', label: __( 'Warning', 'lunar-blocks' ) },
+		{ value: 'important', label: __( 'Important', 'lunar-blocks' ) },
 	];
 }
 
@@ -27,7 +27,7 @@ function getVariantName( value ) {
 export default function Edit( { attributes, setAttributes } ) {
 	const { variant, content, label, variantName } = attributes;
 	const blockProps = useBlockProps( {
-		className: `moon-callout moon-callout--${ variant }`,
+		className: `lunar-callout lunar-callout--${ variant }`,
 	} );
 
 	// New blocks have no label and empty content (an empty RichTextData, not
@@ -58,9 +58,9 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings', 'moon-blocks' ) }>
+				<PanelBody title={ __( 'Settings', 'lunar-blocks' ) }>
 					<SelectControl
-						label={ __( 'Variant', 'moon-blocks' ) }
+						label={ __( 'Variant', 'lunar-blocks' ) }
 						value={ variant }
 						options={ getVariants() }
 						onChange={ onVariantChange }
@@ -70,10 +70,10 @@ export default function Edit( { attributes, setAttributes } ) {
 				</PanelBody>
 			</InspectorControls>
 			<div { ...blockProps }>
-				<span className="moon-callout__icon" aria-hidden="true" />
-				<div className="moon-callout__body">
+				<span className="lunar-callout__icon" aria-hidden="true" />
+				<div className="lunar-callout__body">
 					<PlainText
-						className="moon-callout__label"
+						className="lunar-callout__label"
 						value={ label || '' }
 						onChange={ ( value ) =>
 							setAttributes( { label: value } )
@@ -83,17 +83,17 @@ export default function Edit( { attributes, setAttributes } ) {
 								event.preventDefault();
 							}
 						} }
-						placeholder={ __( 'Label (optional)', 'moon-blocks' ) }
-						aria-label={ __( 'Label', 'moon-blocks' ) }
+						placeholder={ __( 'Label (optional)', 'lunar-blocks' ) }
+						aria-label={ __( 'Label', 'lunar-blocks' ) }
 					/>
 					<RichText
 						tagName="div"
-						className="moon-callout__text"
+						className="lunar-callout__text"
 						value={ content }
 						onChange={ ( value ) =>
 							setAttributes( { content: value } )
 						}
-						placeholder={ __( 'Write your note…', 'moon-blocks' ) }
+						placeholder={ __( 'Write your note…', 'lunar-blocks' ) }
 					/>
 				</div>
 			</div>
