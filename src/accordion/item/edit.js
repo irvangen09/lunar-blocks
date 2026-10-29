@@ -14,22 +14,22 @@ export default function Edit( { attributes, setAttributes } ) {
 	const { title, headingLevel } = attributes;
 
 	const blockProps = useBlockProps( {
-		className: 'moon-accordion-item',
+		className: 'lunar-accordion-item',
 	} );
 
 	// Content stays expanded in the editor so writing is not interrupted.
 	const innerBlocksProps = useInnerBlocksProps(
-		{ className: 'moon-accordion-item__content' },
+		{ className: 'lunar-accordion-item__content' },
 		{ template: CONTENT_TEMPLATE }
 	);
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Title Settings', 'moon-blocks' ) }>
+				<PanelBody title={ __( 'Title Settings', 'lunar-blocks' ) }>
 					<SelectControl
 						__nextHasNoMarginBottom
-						label={ __( 'Heading Level', 'moon-blocks' ) }
+						label={ __( 'Heading Level', 'lunar-blocks' ) }
 						value={ headingLevel }
 						options={ getHeadingOptions() }
 						onChange={ ( value ) =>
@@ -37,18 +37,18 @@ export default function Edit( { attributes, setAttributes } ) {
 						}
 						help={ __(
 							'The heading level shapes the heading structure of the page. Choose a level that fits the surrounding content.',
-							'moon-blocks'
+							'lunar-blocks'
 						) }
 					/>
 				</PanelBody>
 			</InspectorControls>
 
 			<div { ...blockProps }>
-				<div className="moon-accordion-item__header">
+				<div className="lunar-accordion-item__header">
 					<RichText
 						tagName={ 'none' === headingLevel ? 'p' : headingLevel }
-						className="moon-accordion-item__title"
-						placeholder={ __( 'Section title…', 'moon-blocks' ) }
+						className="lunar-accordion-item__title"
+						placeholder={ __( 'Section title…', 'lunar-blocks' ) }
 						value={ title }
 						onChange={ ( value ) =>
 							setAttributes( { title: value } )

@@ -1,8 +1,8 @@
 import { __, sprintf } from '@wordpress/i18n';
 import { MOBILE_BREAKPOINT } from '../shared/breakpoint';
 
-const ACCORDION = '.moon-accordion--open-desktop';
-const ITEM = '.moon-accordion-item';
+const ACCORDION = '.lunar-accordion--open-desktop';
+const ITEM = '.lunar-accordion-item';
 
 function syncItems( isDesktop ) {
 	document
@@ -47,7 +47,7 @@ function openFromHash() {
 
 // An item without a title would be announced as an empty button.
 function nameEmptySummaries() {
-	document.querySelectorAll( '.moon-accordion' ).forEach( ( accordion ) => {
+	document.querySelectorAll( '.lunar-accordion' ).forEach( ( accordion ) => {
 		accordion
 			.querySelectorAll( `:scope > ${ ITEM } > summary` )
 			.forEach( ( summary, position ) => {
@@ -57,13 +57,13 @@ function nameEmptySummaries() {
 
 				const name = sprintf(
 					/* translators: %d: item number. */
-					__( 'Section %d', 'moon-blocks' ),
+					__( 'Section %d', 'lunar-blocks' ),
 					position + 1
 				);
 
 				// The title may be a heading, which needs the name itself.
 				const title =
-					summary.querySelector( '.moon-accordion-item__title' ) ||
+					summary.querySelector( '.lunar-accordion-item__title' ) ||
 					summary;
 
 				title.setAttribute( 'aria-label', name );
@@ -84,7 +84,7 @@ function init() {
 	document
 		.querySelectorAll( ACCORDION )
 		.forEach( ( accordion ) =>
-			accordion.classList.add( 'moon-accordion--ready' )
+			accordion.classList.add( 'lunar-accordion--ready' )
 		);
 
 	// Sync only when crossing the breakpoint, so a visitor's own

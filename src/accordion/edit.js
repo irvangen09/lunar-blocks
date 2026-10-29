@@ -7,11 +7,11 @@ import {
 } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl } from '@wordpress/components';
 
-const ALLOWED_BLOCKS = [ 'moon-blocks/accordion-item' ];
+const ALLOWED_BLOCKS = [ 'lunar-blocks/accordion-item' ];
 
 const TEMPLATE = [
-	[ 'moon-blocks/accordion-item' ],
-	[ 'moon-blocks/accordion-item' ],
+	[ 'lunar-blocks/accordion-item' ],
+	[ 'lunar-blocks/accordion-item' ],
 ];
 
 export default function Edit( { attributes, setAttributes } ) {
@@ -19,8 +19,8 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	const blockProps = useBlockProps( {
 		className: openOnDesktop
-			? 'moon-accordion moon-accordion--open-desktop'
-			: 'moon-accordion',
+			? 'lunar-accordion lunar-accordion--open-desktop'
+			: 'lunar-accordion',
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
@@ -32,13 +32,13 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings', 'moon-blocks' ) }>
+				<PanelBody title={ __( 'Settings', 'lunar-blocks' ) }>
 					<ToggleControl
 						__nextHasNoMarginBottom
-						label={ __( 'Open items on desktop', 'moon-blocks' ) }
+						label={ __( 'Open items on desktop', 'lunar-blocks' ) }
 						help={ __(
 							'Items start open on wide screens and collapsed on mobile. Visitors can still open and close each item.',
-							'moon-blocks'
+							'lunar-blocks'
 						) }
 						checked={ openOnDesktop }
 						onChange={ ( value ) =>

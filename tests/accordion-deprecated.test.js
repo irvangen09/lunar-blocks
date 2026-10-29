@@ -34,7 +34,7 @@ function registerItem() {
 // The markup the plugin wrote before the default changed: the legacy block
 // with its old default of true.
 function legacyMarkup( openOnDesktop ) {
-	setCategories( [ { slug: 'moon-blocks', title: 'Moon Blocks' } ] );
+	setCategories( [ { slug: 'lunar-blocks', title: 'Lunar Blocks' } ] );
 	registerItem();
 	register(
 		metadata.name,
@@ -69,7 +69,7 @@ describe( 'accordion saved before the default changed', () => {
 	test( 'an accordion saved with the old default is valid and stays open on desktop', () => {
 		const markup = legacyMarkup( true );
 
-		expect( markup ).toContain( 'moon-accordion--open-desktop' );
+		expect( markup ).toContain( 'lunar-accordion--open-desktop' );
 		expect( markup ).not.toContain( '"openOnDesktop"' );
 
 		registerCurrent();
@@ -88,7 +88,7 @@ describe( 'accordion saved before the default changed', () => {
 		const saved = serialize( block );
 
 		expect( saved ).toContain( '"openOnDesktop":true' );
-		expect( saved ).toContain( 'moon-accordion--open-desktop' );
+		expect( saved ).toContain( 'lunar-accordion--open-desktop' );
 		expect( saved ).not.toContain( '"className"' );
 	} );
 
@@ -96,7 +96,7 @@ describe( 'accordion saved before the default changed', () => {
 		const markup = legacyMarkup( false );
 
 		expect( markup ).toContain( '"openOnDesktop":false' );
-		expect( markup ).not.toContain( 'moon-accordion--open-desktop' );
+		expect( markup ).not.toContain( 'lunar-accordion--open-desktop' );
 
 		registerCurrent();
 
@@ -112,7 +112,7 @@ describe( 'accordion saved before the default changed', () => {
 
 describe( 'new accordion', () => {
 	test( 'starts collapsed and writes no attribute', () => {
-		setCategories( [ { slug: 'moon-blocks', title: 'Moon Blocks' } ] );
+		setCategories( [ { slug: 'lunar-blocks', title: 'Lunar Blocks' } ] );
 		registerItem();
 		registerCurrent();
 
@@ -124,7 +124,7 @@ describe( 'new accordion', () => {
 
 		const markup = serialize( block );
 
-		expect( markup ).not.toContain( 'moon-accordion--open-desktop' );
+		expect( markup ).not.toContain( 'lunar-accordion--open-desktop' );
 		expect( markup ).not.toContain( '"openOnDesktop"' );
 	} );
 } );
