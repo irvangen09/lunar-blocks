@@ -1,9 +1,9 @@
 import { __, sprintf } from '@wordpress/i18n';
 
-const TABS = '.moon-tabs';
-const ITEM = '.moon-tabs-item';
-const LABEL = '.moon-tabs-item__label';
-const CONTENT = '.moon-tabs-item__content';
+const TABS = '.lunar-tabs';
+const ITEM = '.lunar-tabs-item';
+const LABEL = '.lunar-tabs-item__label';
+const CONTENT = '.lunar-tabs-item__content';
 
 // Item element -> function that shows the item's tab and reports whether
 // that changed the selection.
@@ -35,22 +35,22 @@ function collectEntries( tabsEl, index ) {
 			const tab = document.createElement( 'button' );
 
 			tab.type = 'button';
-			tab.className = 'moon-tabs__tab';
-			tab.id = `moon-tabs-${ index }-tab-${ n }`;
+			tab.className = 'lunar-tabs__tab';
+			tab.id = `lunar-tabs-${ index }-tab-${ n }`;
 			tab.textContent =
 				label.textContent.trim() ||
 				/* translators: %d: tab number. */
-				sprintf( __( 'Tab %d', 'moon-blocks' ), n + 1 );
+				sprintf( __( 'Tab %d', 'lunar-blocks' ), n + 1 );
 			tab.setAttribute( 'role', 'tab' );
 			tab.setAttribute(
 				'aria-controls',
-				`moon-tabs-${ index }-panel-${ n }`
+				`lunar-tabs-${ index }-panel-${ n }`
 			);
 
 			label.remove();
 
-			panel.classList.add( 'moon-tabs__panel' );
-			panel.id = `moon-tabs-${ index }-panel-${ n }`;
+			panel.classList.add( 'lunar-tabs__panel' );
+			panel.id = `lunar-tabs-${ index }-panel-${ n }`;
 			panel.tabIndex = 0;
 			panel.setAttribute( 'role', 'tabpanel' );
 			panel.setAttribute( 'aria-labelledby', tab.id );
@@ -158,11 +158,11 @@ function enhance( tabsEl ) {
 
 	const list = document.createElement( 'div' );
 
-	list.className = 'moon-tabs__list';
+	list.className = 'lunar-tabs__list';
 	list.setAttribute( 'role', 'tablist' );
 	entries.forEach( ( { tab } ) => list.appendChild( tab ) );
 	tabsEl.insertBefore( list, tabsEl.firstChild );
-	tabsEl.classList.add( 'moon-tabs--enhanced' );
+	tabsEl.classList.add( 'lunar-tabs--enhanced' );
 
 	const context = { entries, list, select: createSelect( entries ) };
 
