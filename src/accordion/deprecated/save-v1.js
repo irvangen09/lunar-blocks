@@ -5,8 +5,8 @@ export default function save( { attributes } ) {
 
 	const blockProps = useBlockProps.save( {
 		className: openOnDesktop
-			? 'moon-accordion moon-accordion--open-desktop'
-			: 'moon-accordion',
+			? 'lunar-accordion lunar-accordion--open-desktop'
+			: 'lunar-accordion',
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps.save( blockProps );

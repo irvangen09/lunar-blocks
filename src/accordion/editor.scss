@@ -1,14 +1,14 @@
-.moon-accordion {
+.lunar-accordion {
 
-	.moon-accordion-item__header {
+	.lunar-accordion-item__header {
 		display: flex;
 		align-items: center;
-		padding: var(--moon-space-3) var(--moon-space-1);
+		padding: var(--lunar-space-3) var(--lunar-space-1);
 	}
 
 	/* Muted token already fades the text; reset core's extra opacity. */
-	.moon-accordion-item__title [data-rich-text-placeholder]::after {
-		color: var(--moon-color-text-muted);
+	.lunar-accordion-item__title [data-rich-text-placeholder]::after {
+		color: var(--lunar-color-text-muted);
 		opacity: 1;
 	}
 }
