@@ -38,8 +38,8 @@ This Code of Conduct applies within all community spaces, and also applies when 
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement through GitHub.
 
-* To report privately, open the [private report form](https://github.com/irvangen09/moon-blocks/security/advisories/new) of this repository and start the title with "Code of Conduct". Only the maintainers can read it.
-* For something that is not sensitive, you can open an [issue](https://github.com/irvangen09/moon-blocks/issues) or comment on the discussion where it happened.
+* To report privately, open the [private report form](https://github.com/irvangen09/lunar-blocks/security/advisories/new) of this repository and start the title with "Code of Conduct". Only the maintainers can read it.
+* For something that is not sensitive, you can open an [issue](https://github.com/irvangen09/lunar-blocks/issues) or comment on the discussion where it happened.
 * You can also use GitHub's own "Report content" option on a comment, issue, or pull request.
 
 All complaints will be reviewed and investigated promptly and fairly.
