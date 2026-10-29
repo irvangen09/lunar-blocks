@@ -1,10 +1,10 @@
 import { __, sprintf } from '@wordpress/i18n';
 
-const LINK = '.moon-gallery-item__link';
-const GALLERY = '.moon-gallery';
-const ITEM = '.moon-gallery-item';
-const CAPTION = '.moon-gallery-item__caption';
-const BODY_CLASS = 'moon-gallery-lightbox-open';
+const LINK = '.lunar-gallery-item__link';
+const GALLERY = '.lunar-gallery';
+const ITEM = '.lunar-gallery-item';
+const CAPTION = '.lunar-gallery-item__caption';
+const BODY_CLASS = 'lunar-gallery-lightbox-open';
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
 let dialog;
@@ -18,7 +18,7 @@ let index = 0;
 function createButton( name, label, path ) {
 	const button = document.createElement( 'button' );
 	button.type = 'button';
-	button.className = `moon-gallery-lightbox__${ name }`;
+	button.className = `lunar-gallery-lightbox__${ name }`;
 	button.setAttribute( 'aria-label', label );
 
 	const svg = document.createElementNS( SVG_NS, 'svg' );
@@ -79,34 +79,34 @@ function build() {
 	}
 
 	dialog = document.createElement( 'dialog' );
-	dialog.className = 'moon-gallery-lightbox';
-	dialog.setAttribute( 'aria-label', __( 'Image preview', 'moon-blocks' ) );
+	dialog.className = 'lunar-gallery-lightbox';
+	dialog.setAttribute( 'aria-label', __( 'Image preview', 'lunar-blocks' ) );
 
 	const closeButton = createButton(
 		'close',
-		__( 'Close', 'moon-blocks' ),
+		__( 'Close', 'lunar-blocks' ),
 		'M6 6l12 12M18 6L6 18'
 	);
 	prevButton = createButton(
 		'prev',
-		__( 'Previous', 'moon-blocks' ),
+		__( 'Previous', 'lunar-blocks' ),
 		'M15 5l-7 7 7 7'
 	);
 	nextButton = createButton(
 		'next',
-		__( 'Next', 'moon-blocks' ),
+		__( 'Next', 'lunar-blocks' ),
 		'M9 5l7 7-7 7'
 	);
 
 	const figure = document.createElement( 'figure' );
-	figure.className = 'moon-gallery-lightbox__figure';
+	figure.className = 'lunar-gallery-lightbox__figure';
 
 	image = document.createElement( 'img' );
-	image.className = 'moon-gallery-lightbox__image';
+	image.className = 'lunar-gallery-lightbox__image';
 	image.alt = '';
 
 	caption = document.createElement( 'figcaption' );
-	caption.className = 'moon-gallery-lightbox__caption';
+	caption.className = 'lunar-gallery-lightbox__caption';
 	caption.hidden = true;
 
 	figure.append( image, caption );
@@ -168,7 +168,7 @@ function nameLinks() {
 				text ||
 					sprintf(
 						/* translators: 1: image number, 2: number of images. */
-						__( 'Image %1$d of %2$d', 'moon-blocks' ),
+						__( 'Image %1$d of %2$d', 'lunar-blocks' ),
 						position + 1,
 						links.length
 					)
