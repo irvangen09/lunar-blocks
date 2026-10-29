@@ -11,19 +11,19 @@ import { PanelBody, ToggleControl } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect, useRef } from '@wordpress/element';
 
-const ALLOWED_BLOCKS = [ 'moon-blocks/info-list-requirement' ];
+const ALLOWED_BLOCKS = [ 'lunar-blocks/info-list-requirement' ];
 
-const TEMPLATE = [ [ 'moon-blocks/info-list-requirement' ] ];
+const TEMPLATE = [ [ 'lunar-blocks/info-list-requirement' ] ];
 
 // Called at render time so translations are loaded.
 function getDefaultTitle() {
-	return __( 'Requirements', 'moon-blocks' );
+	return __( 'Requirements', 'lunar-blocks' );
 }
 
 function getCountText( count ) {
 	return sprintf(
 		/* translators: %d: number of requirement items. */
-		_n( '%d requirement', '%d requirements', count, 'moon-blocks' ),
+		_n( '%d requirement', '%d requirements', count, 'lunar-blocks' ),
 		count
 	);
 }
@@ -32,11 +32,11 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 	const { title, showCount, countText } = attributes;
 
 	const blockProps = useBlockProps( {
-		className: 'moon-info-list-requirements',
+		className: 'lunar-info-list-requirements',
 	} );
 
 	const listProps = useInnerBlocksProps(
-		{ className: 'moon-info-list-requirements__list' },
+		{ className: 'lunar-info-list-requirements__list' },
 		{
 			allowedBlocks: ALLOWED_BLOCKS,
 			template: TEMPLATE,
@@ -94,13 +94,13 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 		<>
 			<InspectorControls>
 				<PanelBody
-					title={ __( 'Requirements Settings', 'moon-blocks' ) }
+					title={ __( 'Requirements Settings', 'lunar-blocks' ) }
 				>
 					<ToggleControl
-						label={ __( 'Show count', 'moon-blocks' ) }
+						label={ __( 'Show count', 'lunar-blocks' ) }
 						help={ __(
 							'Shows the number of items next to the title.',
-							'moon-blocks'
+							'lunar-blocks'
 						) }
 						checked={ showCount }
 						onChange={ ( value ) =>
@@ -111,10 +111,10 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 				</PanelBody>
 			</InspectorControls>
 			<div { ...blockProps }>
-				<div className="moon-info-list-requirements__header">
+				<div className="lunar-info-list-requirements__header">
 					<RichText
 						tagName="span"
-						className="moon-info-list-requirements__title"
+						className="lunar-info-list-requirements__title"
 						value={ title }
 						onChange={ ( value ) =>
 							setAttributes( { title: value } )
@@ -122,15 +122,18 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 						allowedFormats={ [] }
 						disableLineBreaks
 						placeholder={ getDefaultTitle() }
-						aria-label={ __( 'Requirements title', 'moon-blocks' ) }
+						aria-label={ __(
+							'Requirements title',
+							'lunar-blocks'
+						) }
 					/>
 					{ showCount && (
-						<span className="moon-info-list-requirements__count">
+						<span className="lunar-info-list-requirements__count">
 							{ getCountText( itemCount ) }
 						</span>
 					) }
 				</div>
-				<div className="moon-info-list-requirements__body">
+				<div className="lunar-info-list-requirements__body">
 					<div { ...listProps } />
 				</div>
 			</div>
