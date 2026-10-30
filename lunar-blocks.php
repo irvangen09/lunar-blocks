@@ -3,7 +3,7 @@
  * Plugin Name:       Lunar Blocks
  * Plugin URI:        https://github.com/irvangen09/lunar-blocks
  * Description:       Lightweight Gutenberg blocks for documentation, wiki, and knowledge base websites.
- * Version:           1.1.0
+ * Version:           2.0.0
  * Requires at least: 6.9
  * Requires PHP:      8.0
  * Author:            Irvan Noerfazri
@@ -34,7 +34,7 @@ if ( version_compare( PHP_VERSION, '8.0', '<' ) || version_compare( $lunar_block
 	return;
 }
 
-define( 'LUNAR_BLOCKS_VERSION', '1.1.0' );
+define( 'LUNAR_BLOCKS_VERSION', '2.0.0' );
 define( 'LUNAR_BLOCKS_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LUNAR_BLOCKS_URL', plugin_dir_url( __FILE__ ) );
 

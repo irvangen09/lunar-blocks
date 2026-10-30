@@ -3,7 +3,7 @@ Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 1.1.0
+Stable tag: 2.0.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,12 @@ Yes. Open Settings > Lunar Blocks > Blocks and switch off any block. Turning off
 Yes. Open Settings > Lunar Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme. The tick of the Table checklist stays green.
 
 == Changelog ==
+
+= 2.0.0 =
+
+* Moon Blocks is now Lunar Blocks. The plugin folder is `lunar-blocks` and the main file is `lunar-blocks.php`. No block was added or removed.
+* Breaking: everything that carried the old name was renamed, so the content you saved with Moon Blocks does not show up in Lunar Blocks until it is migrated. This covers block names (`moon-blocks/...` is now `lunar-blocks/...`), CSS classes (`moon-...` is now `lunar-...`), the Appearance settings, and the translation files.
+* To upgrade from Moon Blocks: back up your site, move your content and settings over, then deactivate and delete Moon Blocks.
 
 = 1.1.0 =
 
