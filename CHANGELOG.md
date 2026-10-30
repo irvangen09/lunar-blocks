@@ -1,10 +1,24 @@
 # Changelog
 
-All notable changes to Moon Blocks are documented in this file.
+All notable changes to Lunar Blocks are documented in this file. Versions before 2.0.0 were released under the name Moon Blocks.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [2.0.0] - 2026-10-30
+
+### Changed
+
+- **Breaking:** Moon Blocks is now Lunar Blocks. The plugin folder is `lunar-blocks`, the main file is `lunar-blocks.php`, and the Composer package is `irvannoerfazri/lunar-blocks`. No block was added or removed.
+- **Breaking:** everything that carried the old name was renamed:
+  - block names: `moon-blocks/*` is now `lunar-blocks/*`, and the block category is now "Lunar Blocks";
+  - CSS classes: `wp-block-moon-blocks-*` is now `wp-block-lunar-blocks-*`, and the `moon-*` classes of the blocks are now `lunar-*`;
+  - CSS variables: `--moon-table-*` is now `--lunar-table-*`;
+  - the Appearance settings, stored as the option `moon_blocks_settings`, are now stored as `lunar_blocks_settings`;
+  - the Indonesian (id_ID) translation files.
+- Content saved with Moon Blocks does not show up in Lunar Blocks until it is migrated, because the stored block names changed. Back up the site, copy the settings option, and replace the old block names and class names in the saved post content.
+- After the migration, deactivate and delete Moon Blocks; it is no longer needed.
 
 ## [1.1.0] - 2026-10-25
 
