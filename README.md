@@ -1,11 +1,11 @@
-# Moon Blocks
+# Lunar Blocks
 
-[![CI](https://github.com/irvangen09/moon-blocks/actions/workflows/ci.yml/badge.svg)](https://github.com/irvangen09/moon-blocks/actions/workflows/ci.yml)
+[![CI](https://github.com/irvangen09/lunar-blocks/actions/workflows/ci.yml/badge.svg)](https://github.com/irvangen09/lunar-blocks/actions/workflows/ci.yml)
 [![License: GPL v2 or later](https://img.shields.io/badge/license-GPL--2.0--or--later-blue.svg)](LICENSE)
 
 Lightweight Gutenberg blocks for documentation, wiki, and knowledge base websites.
 
-Moon Blocks is made to blend into your site. Fonts come from your theme, colors are derived from your theme's text color, and there is no separate dark mode to maintain. Block styles and scripts are loaded only on pages that use the block.
+Lunar Blocks is made to blend into your site. Fonts come from your theme, colors are derived from your theme's text color, and there is no separate dark mode to maintain. Block styles and scripts are loaded only on pages that use the block.
 
 ## Blocks
 
@@ -27,12 +27,12 @@ Moon Blocks is made to blend into your site. Fonts come from your theme, colors 
 
 ## Installation
 
-1. Download the latest `moon-blocks.zip` from the [Releases](https://github.com/irvangen09/moon-blocks/releases) page.
+1. Download the latest `lunar-blocks.zip` from the [Releases](https://github.com/irvangen09/lunar-blocks/releases) page.
 2. In WordPress, go to **Plugins → Add New Plugin → Upload Plugin**, choose the zip file, and install it.
 3. Activate the plugin.
-4. Go to **Settings → Moon Blocks** to choose which blocks are available and to adjust colors.
+4. Go to **Settings → Lunar Blocks** to choose which blocks are available and to adjust colors.
 
-The blocks appear in the block inserter under the **Moon Blocks** category.
+The blocks appear in the block inserter under the **Lunar Blocks** category.
 
 ## Settings
 
@@ -41,7 +41,7 @@ The blocks appear in the block inserter under the **Moon Blocks** category.
 
 ## Compatibility
 
-Moon Blocks works with block themes and classic themes. It does not add global styles outside its own blocks.
+Lunar Blocks works with block themes and classic themes. It does not add global styles outside its own blocks.
 
 Known limit:
 
@@ -52,8 +52,8 @@ Known limit:
 You need Node.js (`^22.22.2`, `^24.15.0`, or `>=26`) with npm 11. PHP linting also needs PHP 8.0 or later and Composer.
 
 ```bash
-git clone https://github.com/irvangen09/moon-blocks.git
-cd moon-blocks
+git clone https://github.com/irvangen09/lunar-blocks.git
+cd lunar-blocks
 npm ci
 npm run build
 composer install   # only needed for PHP linting
@@ -74,10 +74,10 @@ Copy or symlink the folder into `wp-content/plugins/` of a local WordPress site 
 ### Structure
 
 ```text
-moon-blocks.php   Plugin header and bootstrap
-includes/         PHP classes (PSR-4 namespace MoonBlocks\)
+lunar-blocks.php   Plugin header and bootstrap
+includes/         PHP classes (PSR-4 namespace LunarBlocks\)
 src/              Block sources (one folder per block), shared code, settings page
-assets/css/       Design tokens (--moon-* custom properties)
+assets/css/       Design tokens (--lunar-* custom properties)
 build/            Compiled output (generated, not committed)
 languages/        Translation files
 tests/            Unit tests
@@ -93,4 +93,4 @@ See [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
-Moon Blocks is free software, released under the [GNU General Public License v2.0 or later](LICENSE).
+Lunar Blocks is free software, released under the [GNU General Public License v2.0 or later](LICENSE).

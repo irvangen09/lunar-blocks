@@ -1,6 +1,6 @@
 <?php
 
-namespace MoonBlocks\Blocks\Toc;
+namespace LunarBlocks\Blocks\Toc;
 
 use WP_HTML_Tag_Processor;
 
@@ -14,7 +14,7 @@ use WP_HTML_Tag_Processor;
  */
 class HeadingAnchorInjector {
 
-	private const ID_KEY = 'moonTocId';
+	private const ID_KEY = 'lunarTocId';
 
 	private HeadingCollector $collector;
 
@@ -35,7 +35,7 @@ class HeadingAnchorInjector {
 		add_filter( 'the_content', array( $this, 'end' ), 99999 );
 		add_filter( 'render_block_data', array( $this, 'claim' ), 10, 1 );
 		add_filter( 'render_block_core/heading', array( $this, 'write' ), 10, 2 );
-		add_filter( 'render_block_moon-blocks/accordion-item', array( $this, 'write' ), 10, 2 );
+		add_filter( 'render_block_lunar-blocks/accordion-item', array( $this, 'write' ), 10, 2 );
 	}
 
 	/**

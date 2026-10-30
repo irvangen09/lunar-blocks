@@ -1,14 +1,14 @@
 @use "../../shared/breakpoints" as *;
 
 /* Preset 2: a grid of cards whose rows line up from card to card. */
-.moon-table.moon-table {
+.lunar-table.lunar-table {
 
-	.moon-table__cards {
+	.lunar-table__cards {
 		display: grid;
 
 		/* A card is never narrower than 17.5 units, unless the block is. */
-		grid-template-columns: repeat(auto-fill, minmax(min(calc(var(--moon-unit) * 17.5), 100%), 1fr));
-		column-gap: var(--moon-space-3);
+		grid-template-columns: repeat(auto-fill, minmax(min(calc(var(--lunar-unit) * 17.5), 100%), 1fr));
+		column-gap: var(--lunar-space-3);
 		width: 100%;
 		margin: 0;
 		border: 0;
@@ -32,85 +32,85 @@
 			color: inherit;
 
 			/* 1em: keeps a theme's own cell font size out of the card. */
-			font-size: var(--moon-font-size-md);
+			font-size: var(--lunar-font-size-md);
 			text-align: start;
 		}
 
-		tr.moon-table__row--divider {
+		tr.lunar-table__row--divider {
 			grid-column: 1 / -1;
-			margin-block-end: var(--moon-space-3);
+			margin-block-end: var(--lunar-space-3);
 		}
 
-		td.moon-table__cards-divider-cell {
-			padding: var(--moon-space-2) var(--moon-space-4);
-			border-block: var(--moon-border);
-			background: var(--moon-color-surface);
-			font-weight: var(--moon-font-weight-strong);
+		td.lunar-table__cards-divider-cell {
+			padding: var(--lunar-space-2) var(--lunar-space-4);
+			border-block: var(--lunar-border);
+			background: var(--lunar-color-surface);
+			font-weight: var(--lunar-font-weight-strong);
 			text-align: center;
 		}
 
-		tr.moon-table__card {
+		tr.lunar-table__card {
 			display: block;
-			margin-block-end: var(--moon-space-3);
+			margin-block-end: var(--lunar-space-3);
 			overflow: hidden;
-			border: var(--moon-border);
-			border-radius: var(--moon-radius);
+			border: var(--lunar-border);
+			border-radius: var(--lunar-radius);
 		}
 
-		td.moon-table__card-head {
+		td.lunar-table__card-head {
 			display: flex;
 			align-items: center;
-			gap: var(--moon-space-3);
-			padding: var(--moon-space-3) var(--moon-space-4) var(--moon-space-2);
+			gap: var(--lunar-space-3);
+			padding: var(--lunar-space-3) var(--lunar-space-4) var(--lunar-space-2);
 		}
 
-		.moon-table__card-title {
+		.lunar-table__card-title {
 			flex: 1;
 			min-width: 0;
-			font-size: var(--moon-font-size-md);
-			font-weight: var(--moon-font-weight-strong);
-			line-height: var(--moon-line-height-tight);
+			font-size: var(--lunar-font-size-md);
+			font-weight: var(--lunar-font-weight-strong);
+			line-height: var(--lunar-line-height-tight);
 			overflow-wrap: anywhere;
 		}
 
-		.moon-table__card-note {
+		.lunar-table__card-note {
 			flex: none;
-			color: var(--moon-color-text-muted);
-			font-size: var(--moon-font-size-sm);
+			color: var(--lunar-color-text-muted);
+			font-size: var(--lunar-font-size-sm);
 			white-space: nowrap;
 		}
 
-		td.moon-table__card-detail,
-		td.moon-table__card-highlight {
+		td.lunar-table__card-detail,
+		td.lunar-table__card-highlight {
 			display: grid;
-			grid-template-columns: var(--moon-table-label-width) minmax(0, 1fr);
+			grid-template-columns: var(--lunar-table-label-width) minmax(0, 1fr);
 
 			/* The label and the value center on each other, whichever is taller. */
 			align-items: center;
-			gap: var(--moon-space-3);
-			padding: var(--moon-space-2) var(--moon-space-4);
-			font-size: var(--moon-font-size-sm);
+			gap: var(--lunar-space-3);
+			padding: var(--lunar-space-2) var(--lunar-space-4);
+			font-size: var(--lunar-font-size-sm);
 		}
 
-		.moon-table__card-label {
-			color: var(--moon-color-text-muted);
+		.lunar-table__card-label {
+			color: var(--lunar-color-text-muted);
 		}
 
-		.moon-table__card-value {
+		.lunar-table__card-value {
 			overflow-wrap: anywhere;
 		}
 
-		.moon-table__card-value--muted {
-			color: var(--moon-color-text-muted);
+		.lunar-table__card-value--muted {
+			color: var(--lunar-color-text-muted);
 		}
 
-		td.moon-table__card-highlight {
-			margin-block-start: var(--moon-space-2);
-			padding-block: var(--moon-space-3);
-			background: var(--moon-color-surface);
+		td.lunar-table__card-highlight {
+			margin-block-start: var(--lunar-space-2);
+			padding-block: var(--lunar-space-3);
+			background: var(--lunar-color-surface);
 
-			.moon-table__card-value {
-				font-weight: var(--moon-font-weight-strong);
+			.lunar-table__card-value {
+				font-weight: var(--lunar-font-weight-strong);
 			}
 		}
 	}
@@ -119,19 +119,19 @@
 	   still stack and only their rows stay unaligned. */
 	@supports (grid-template-rows: subgrid) {
 
-		.moon-table__cards tr.moon-table__card {
+		.lunar-table__cards tr.lunar-table__card {
 			display: grid;
 			grid-template-columns: minmax(0, 1fr);
 			grid-template-rows: subgrid;
-			grid-row: span var(--moon-table-card-rows, 1);
+			grid-row: span var(--lunar-table-card-rows, 1);
 		}
 	}
 }
 
-@media (max-width: $moon-breakpoint-mobile) {
+@media (max-width: $lunar-breakpoint-mobile) {
 
 	/* A single column, as a vertical list. */
-	.moon-table.moon-table .moon-table__cards {
+	.lunar-table.lunar-table .lunar-table__cards {
 		grid-template-columns: minmax(0, 1fr);
 	}
 }

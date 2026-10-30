@@ -4,7 +4,7 @@ export default function save( { attributes } ) {
 	const { columns } = attributes;
 
 	const blockProps = useBlockProps.save( {
-		className: `moon-gallery moon-gallery--columns-${ columns }`,
+		className: `lunar-gallery lunar-gallery--columns-${ columns }`,
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps.save( blockProps );

@@ -2,12 +2,12 @@
 @use "../../shared/focus" as *;
 
 // The first width above the mobile layouts.
-$moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
+$lunar-table-breakpoint-desktop: $lunar-breakpoint-mobile + 1;
 
 /* Default and Preset 1: a real table with a header row. */
-.moon-table.moon-table {
+.lunar-table.lunar-table {
 
-	.moon-table__table {
+	.lunar-table__table {
 		box-sizing: border-box;
 		width: 100%;
 		margin: 0;
@@ -15,7 +15,7 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 		border-spacing: 0;
 		background: none;
 		color: inherit;
-		font-size: var(--moon-font-size-sm);
+		font-size: var(--lunar-font-size-sm);
 
 		tr {
 			background: none;
@@ -24,8 +24,8 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 		th,
 		td {
 			box-sizing: border-box;
-			padding: var(--moon-space-2) var(--moon-space-3);
-			border: var(--moon-border);
+			padding: var(--lunar-space-2) var(--lunar-space-3);
+			border: var(--lunar-border);
 			background: none;
 			color: inherit;
 			font-size: inherit;
@@ -35,30 +35,30 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 		}
 
 		th {
-			border-bottom: var(--moon-border-width-strong) solid var(--moon-color-primary);
-			background: var(--moon-color-primary-subtle);
-			font-weight: var(--moon-font-weight-strong);
+			border-bottom: var(--lunar-border-width-strong) solid var(--lunar-color-primary);
+			background: var(--lunar-color-primary-subtle);
+			font-weight: var(--lunar-font-weight-strong);
 		}
 
 		/* The column being sorted. */
-		td.moon-table__cell--sorted {
-			background: var(--moon-color-primary-subtle);
+		td.lunar-table__cell--sorted {
+			background: var(--lunar-color-primary-subtle);
 		}
 
 		/* A divider heads the rows after it. */
-		td.moon-table__divider-cell {
-			padding: var(--moon-space-2) var(--moon-space-3);
-			border-width: var(--moon-border-width) 0;
-			background: var(--moon-color-surface);
-			font-weight: var(--moon-font-weight-strong);
+		td.lunar-table__divider-cell {
+			padding: var(--lunar-space-2) var(--lunar-space-3);
+			border-width: var(--lunar-border-width) 0;
+			background: var(--lunar-color-surface);
+			font-weight: var(--lunar-font-weight-strong);
 			text-align: center;
 		}
 	}
 
-	.moon-table__sort {
+	.lunar-table__sort {
 		display: inline-flex;
 		align-items: center;
-		gap: var(--moon-space-1);
+		gap: var(--lunar-space-1);
 		margin: 0;
 		padding: 0;
 		border: 0;
@@ -85,32 +85,32 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 
 		svg {
 			flex: none;
-			width: var(--moon-font-size-md);
-			height: var(--moon-font-size-md);
-			color: var(--moon-color-text-muted);
+			width: var(--lunar-font-size-md);
+			height: var(--lunar-font-size-md);
+			color: var(--lunar-color-text-muted);
 		}
 	}
 
 	/* Neutral shows both chevrons; a sorted column shows only its direction. */
 	th[aria-sort="ascending"] {
 
-		.moon-table__sort-down {
+		.lunar-table__sort-down {
 			display: none;
 		}
 
-		.moon-table__sort-up {
-			stroke: var(--moon-color-primary);
+		.lunar-table__sort-up {
+			stroke: var(--lunar-color-primary);
 		}
 	}
 
 	th[aria-sort="descending"] {
 
-		.moon-table__sort-up {
+		.lunar-table__sort-up {
 			display: none;
 		}
 
-		.moon-table__sort-down {
-			stroke: var(--moon-color-primary);
+		.lunar-table__sort-down {
+			stroke: var(--lunar-color-primary);
 		}
 	}
 
@@ -118,96 +118,96 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 	&[data-preset="default"] {
 		overflow-x: auto;
 
-		.moon-table__table {
+		.lunar-table__table {
 			table-layout: fixed;
 			border-collapse: collapse;
 
 			/* Fixed columns share the width equally, so give each one room
 			   and let the block scroll instead of squeezing them. */
-			min-width: calc(var(--moon-table-columns, 1) * var(--moon-table-min-column));
+			min-width: calc(var(--lunar-table-columns, 1) * var(--lunar-table-min-column));
 		}
 	}
 
 	&[data-preset="preset-1"] {
 		overflow-x: auto;
 
-		.moon-table__table {
+		.lunar-table__table {
 			border-collapse: separate;
 		}
 	}
 }
 
 /* Preset 1, desktop: flat header, hairline rows, no vertical lines. */
-@media (min-width: $moon-table-breakpoint-desktop) {
+@media (min-width: $lunar-table-breakpoint-desktop) {
 
-	.moon-table.moon-table[data-preset="preset-1"] {
+	.lunar-table.lunar-table[data-preset="preset-1"] {
 
 		/* The header row sorts here. */
-		.moon-table__sort-bar {
+		.lunar-table__sort-bar {
 			display: none;
 		}
 
-		.moon-table__table {
-			border: var(--moon-border);
-			border-radius: var(--moon-radius);
+		.lunar-table__table {
+			border: var(--lunar-border);
+			border-radius: var(--lunar-radius);
 
 			th {
-				padding: var(--moon-space-3);
-				border-width: 0 0 var(--moon-border-width-strong);
+				padding: var(--lunar-space-3);
+				border-width: 0 0 var(--lunar-border-width-strong);
 				text-align: center;
 				white-space: nowrap;
 			}
 
 			/* Corners follow the rounded border of the table. */
 			thead tr:first-child th:first-child {
-				border-top-left-radius: var(--moon-radius);
+				border-top-left-radius: var(--lunar-radius);
 			}
 
 			thead tr:first-child th:last-child {
-				border-top-right-radius: var(--moon-radius);
+				border-top-right-radius: var(--lunar-radius);
 			}
 
 			td {
-				border-width: 0 0 var(--moon-border-width);
+				border-width: 0 0 var(--lunar-border-width);
 			}
 
-			td.moon-table__divider-cell {
-				border-width: var(--moon-border-width) 0;
+			td.lunar-table__divider-cell {
+				border-width: var(--lunar-border-width) 0;
 			}
 
 			tbody tr:last-child td {
 				border-bottom-width: 0;
 			}
 
-			td.moon-table__cell--title {
-				font-weight: var(--moon-font-weight-strong);
+			td.lunar-table__cell--title {
+				font-weight: var(--lunar-font-weight-strong);
 			}
 
-			td.moon-table__cell--image {
+			td.lunar-table__cell--image {
 				text-align: center;
 			}
 
 			tbody tr:hover td {
-				background: var(--moon-color-surface);
+				background: var(--lunar-color-surface);
 			}
 
-			tbody tr td.moon-table__cell--sorted {
-				background: var(--moon-color-primary-subtle);
+			tbody tr td.lunar-table__cell--sorted {
+				background: var(--lunar-color-primary-subtle);
 			}
 
-			tbody tr:hover td.moon-table__cell--sorted {
-				background: var(--moon-color-surface);
+			tbody tr:hover td.lunar-table__cell--sorted {
+				background: var(--lunar-color-surface);
 			}
 		}
 	}
 }
 
 /* Preset 1, mobile: every row becomes a card of label and value rows. */
-@media (max-width: $moon-breakpoint-mobile) {
+@media (max-width: $lunar-breakpoint-mobile) {
 
-	.moon-table.moon-table[data-preset="preset-1"] {
+	.lunar-table.lunar-table[data-preset="preset-1"] {
 
-		.moon-table__table {
+		.lunar-table__table {
 			display: block;
 
 			/* Header row stays available to screen readers only, so it is
@@ -228,10 +228,10 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 			tbody tr {
 				display: grid;
 				grid-template-columns: auto minmax(0, 1fr);
-				margin: 0 0 var(--moon-space-3);
+				margin: 0 0 var(--lunar-space-3);
 				overflow: hidden;
-				border: var(--moon-border);
-				border-radius: var(--moon-radius);
+				border: var(--lunar-border);
+				border-radius: var(--lunar-radius);
 				background: none;
 			}
 
@@ -246,68 +246,68 @@ $moon-table-breakpoint-desktop: $moon-breakpoint-mobile + 1;
 				text-align: start !important; /* stylelint-disable-line declaration-no-important */
 			}
 
-			td.moon-table__cell--lead {
+			td.lunar-table__cell--lead {
 				grid-column: 1;
 				grid-row: 1;
 				align-self: center;
-				padding-block: var(--moon-space-3);
-				padding-inline: var(--moon-space-4) 0;
+				padding-block: var(--lunar-space-3);
+				padding-inline: var(--lunar-space-4) 0;
 			}
 
-			td.moon-table__cell--title {
+			td.lunar-table__cell--title {
 				align-self: center;
-				padding: var(--moon-space-3) var(--moon-space-4);
-				font-size: var(--moon-font-size-md);
-				font-weight: var(--moon-font-weight-strong);
-				line-height: var(--moon-line-height-tight);
+				padding: var(--lunar-space-3) var(--lunar-space-4);
+				font-size: var(--lunar-font-size-md);
+				font-weight: var(--lunar-font-weight-strong);
+				line-height: var(--lunar-line-height-tight);
 			}
 
-			td.moon-table__cell--lead + td.moon-table__cell--title {
+			td.lunar-table__cell--lead + td.lunar-table__cell--title {
 				grid-column: 2;
 				grid-row: 1;
 			}
 
 			/* A table inside the cell lets the label and the value sit side
 			   by side even when the value holds bold text or a link. */
-			td[data-label]:not(.moon-table__cell--lead):not(.moon-table__cell--title) {
+			td[data-label]:not(.lunar-table__cell--lead):not(.lunar-table__cell--title) {
 				display: table;
 				box-sizing: border-box;
 				width: 100%;
-				padding: var(--moon-space-2) var(--moon-space-4);
-				border-top: var(--moon-border);
+				padding: var(--lunar-space-2) var(--lunar-space-4);
+				border-top: var(--lunar-border);
 
 				&::before {
 					content: attr(data-label);
 					display: table-cell;
-					width: var(--moon-table-label-width);
-					padding-inline-end: var(--moon-space-3);
-					color: var(--moon-color-text-muted);
+					width: var(--lunar-table-label-width);
+					padding-inline-end: var(--lunar-space-3);
+					color: var(--lunar-color-text-muted);
 					vertical-align: top;
 				}
 
 				/* The script wraps the value, so the label and the value can
 				   center on each other, whichever is taller. Without the
 				   script both stay at the top. */
-				&:has(> .moon-table__cell-value)::before {
+				&:has(> .lunar-table__cell-value)::before {
 					vertical-align: middle;
 				}
 
-				> .moon-table__cell-value {
+				> .lunar-table__cell-value {
 					display: table-cell;
 					vertical-align: middle;
 				}
 			}
 
-			tr.moon-table__row--divider {
+			tr.lunar-table__row--divider {
 				display: block;
-				margin-block-start: var(--moon-space-4);
+				margin-block-start: var(--lunar-space-4);
 				border-radius: 0;
 			}
 
-			td.moon-table__divider-cell {
-				padding: var(--moon-space-2) var(--moon-space-4);
-				border-block: var(--moon-border);
-				background: var(--moon-color-surface);
+			td.lunar-table__divider-cell {
+				padding: var(--lunar-space-2) var(--lunar-space-4);
+				border-block: var(--lunar-border);
+				background: var(--lunar-color-surface);
 			}
 		}
 	}

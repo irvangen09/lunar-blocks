@@ -5,19 +5,19 @@ import {
 } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [
-	'moon-blocks/info-list-item',
-	'moon-blocks/info-list-requirements',
+	'lunar-blocks/info-list-item',
+	'lunar-blocks/info-list-requirements',
 ];
 
 const TEMPLATE = [
-	[ 'moon-blocks/info-list-item' ],
-	[ 'moon-blocks/info-list-item' ],
-	[ 'moon-blocks/info-list-item' ],
+	[ 'lunar-blocks/info-list-item' ],
+	[ 'lunar-blocks/info-list-item' ],
+	[ 'lunar-blocks/info-list-item' ],
 ];
 
 export default function Edit() {
 	const blockProps = useBlockProps( {
-		className: 'moon-info-list',
+		className: 'lunar-info-list',
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {

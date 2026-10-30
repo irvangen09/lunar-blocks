@@ -1,9 +1,9 @@
-=== Moon Blocks ===
+=== Lunar Blocks ===
 Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 1.1.0
+Stable tag: 2.0.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,7 +11,7 @@ Lightweight Gutenberg blocks for documentation, wiki, and knowledge base website
 
 == Description ==
 
-Moon Blocks is a collection of Gutenberg blocks made for documentation, wiki, and knowledge base websites.
+Lunar Blocks is a collection of Gutenberg blocks made for documentation, wiki, and knowledge base websites.
 
 It is designed to blend into your site. Typography and colors come from your theme, and there is no separate dark mode to maintain. Block styles and scripts are loaded only on pages that use the block.
 
@@ -33,9 +33,9 @@ It is designed to blend into your site. Typography and colors come from your the
 
 == Installation ==
 
-1. Upload the `moon-blocks` folder to the `/wp-content/plugins/` directory, or install the plugin from the Plugins screen.
+1. Upload the `lunar-blocks` folder to the `/wp-content/plugins/` directory, or install the plugin from the Plugins screen.
 2. Activate the plugin through the Plugins screen.
-3. Go to Settings > Moon Blocks to choose which blocks are available and to adjust colors.
+3. Go to Settings > Lunar Blocks to choose which blocks are available and to adjust colors.
 
 == Frequently Asked Questions ==
 
@@ -45,13 +45,19 @@ Yes. Fonts and text colors are inherited from your theme, and the default accent
 
 = Can I turn off blocks I do not use? =
 
-Yes. Open Settings > Moon Blocks > Blocks and switch off any block. Turning off a block also turns off the blocks that belong to it.
+Yes. Open Settings > Lunar Blocks > Blocks and switch off any block. Turning off a block also turns off the blocks that belong to it.
 
 = Can I change the colors? =
 
-Yes. Open Settings > Moon Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme. The tick of the Table checklist stays green.
+Yes. Open Settings > Lunar Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme. The tick of the Table checklist stays green.
 
 == Changelog ==
+
+= 2.0.0 =
+
+* Moon Blocks is now Lunar Blocks. The plugin folder is `lunar-blocks` and the main file is `lunar-blocks.php`. No block was added or removed.
+* Breaking: everything that carried the old name was renamed, so the content you saved with Moon Blocks does not show up in Lunar Blocks until it is migrated. This covers block names (`moon-blocks/...` is now `lunar-blocks/...`), CSS classes (`moon-...` is now `lunar-...`), the Appearance settings, and the translation files.
+* To upgrade from Moon Blocks: back up your site, move your content and settings over, then deactivate and delete Moon Blocks.
 
 = 1.1.0 =
 
@@ -157,8 +163,8 @@ Yes. Open Settings > Moon Blocks > Appearance to set Primary, Surface, and Borde
 = 0.2.0 =
 
 * Added the Callout block with four variants: Info, Tips, Warning, and Important. Each variant shows its own icon and an editable label.
-* Added a "Moon Blocks" category to the block inserter.
+* Added a "Lunar Blocks" category to the block inserter.
 
 = 0.1.0 =
 
-* Initial foundation: the Moon Blocks settings screen with per-block switches and optional Primary, Surface, and Border colors.
+* Initial foundation: the Lunar Blocks settings screen with per-block switches and optional Primary, Surface, and Border colors.

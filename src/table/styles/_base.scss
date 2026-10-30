@@ -3,49 +3,49 @@
 /* The block class is doubled in every rule below. That lets these rules
    out-rank theme rules for tables, inputs and images, such as zebra rows,
    without relying on !important. */
-.moon-table.moon-table {
+.lunar-table.lunar-table {
 
 	/* No token for these widths; they only set how wide a label column is. */
-	--moon-table-label-width: calc(var(--moon-unit) * 6);
-	--moon-table-recipe-label-width: calc(var(--moon-unit) * 4);
-	--moon-table-min-column: calc(var(--moon-unit) * 6);
+	--lunar-table-label-width: calc(var(--lunar-unit) * 6);
+	--lunar-table-recipe-label-width: calc(var(--lunar-unit) * 4);
+	--lunar-table-min-column: calc(var(--lunar-unit) * 6);
 
 	/* Checkbox box and tick proportions; the tick is drawn with borders. */
-	--moon-table-check-size: calc(var(--moon-unit) * 1.25);
+	--lunar-table-check-size: calc(var(--lunar-unit) * 1.25);
 
 	/* Vertical only: constrained layouts center blocks with inline margins. */
-	margin-block: var(--moon-space-5);
+	margin-block: var(--lunar-space-5);
 	color: inherit;
 	font-family: inherit;
 
 	/* Search and sort controls added by view.js. */
-	.moon-table__controls {
+	.lunar-table__controls {
 		display: flex;
 		flex-direction: column;
-		gap: var(--moon-space-2);
-		margin-block-end: var(--moon-space-3);
+		gap: var(--lunar-space-2);
+		margin-block-end: var(--lunar-space-3);
 	}
 
-	.moon-table__filter-input,
-	.moon-table__sort-select,
-	.moon-table__sort-direction {
+	.lunar-table__filter-input,
+	.lunar-table__sort-select,
+	.lunar-table__sort-direction {
 		box-sizing: border-box;
 		margin: 0;
-		padding: var(--moon-space-2) var(--moon-space-3);
-		border: var(--moon-border);
-		border-radius: var(--moon-radius);
-		background: var(--moon-color-surface);
+		padding: var(--lunar-space-2) var(--lunar-space-3);
+		border: var(--lunar-border);
+		border-radius: var(--lunar-radius);
+		background: var(--lunar-color-surface);
 		box-shadow: none;
 		color: inherit;
 		font-family: inherit;
-		font-size: var(--moon-font-size-sm);
-		line-height: var(--moon-line-height-tight);
+		font-size: var(--lunar-font-size-sm);
+		line-height: var(--lunar-line-height-tight);
 
 		/* Inset: the block can scroll sideways and would clip a ring outside. */
 		@include focus-ring(inset);
 	}
 
-	.moon-table__filter-input {
+	.lunar-table__filter-input {
 		display: block;
 		width: 100%;
 		appearance: none;
@@ -53,17 +53,17 @@
 
 	/* The sort select and direction button. A table with a header row sorts
 	   there instead, so Preset 1 shows the bar on small screens only. */
-	.moon-table__sort-bar {
+	.lunar-table__sort-bar {
 		display: flex;
-		gap: var(--moon-space-2);
+		gap: var(--lunar-space-2);
 	}
 
-	.moon-table__sort-select {
+	.lunar-table__sort-select {
 		flex: 1;
 		min-width: 0;
 	}
 
-	.moon-table__sort-direction {
+	.lunar-table__sort-direction {
 		display: inline-flex;
 		flex: none;
 		align-items: center;
@@ -77,9 +77,9 @@
 		}
 
 		svg {
-			width: var(--moon-font-size-lg);
-			height: var(--moon-font-size-lg);
-			transition: transform var(--moon-duration-fast) ease;
+			width: var(--lunar-font-size-lg);
+			height: var(--lunar-font-size-lg);
+			transition: transform var(--lunar-duration-fast) ease;
 		}
 
 		/* The arrow points up for ascending and turns for descending. */
@@ -99,10 +99,10 @@
 	   force an image size on all content images; the width comes from the
 	   custom property save() puts on the image, and max-width still lets an
 	   image shrink inside a cell that is narrower than that. */
-	.moon-table__image {
+	.lunar-table__image {
 		display: inline-block;
 		flex: none;
-		width: var(--moon-table-image-width, auto) !important; /* stylelint-disable-line declaration-no-important */
+		width: var(--lunar-table-image-width, auto) !important; /* stylelint-disable-line declaration-no-important */
 		max-width: 100% !important; /* stylelint-disable-line declaration-no-important */
 		height: auto !important; /* stylelint-disable-line declaration-no-important */
 		margin: 0;

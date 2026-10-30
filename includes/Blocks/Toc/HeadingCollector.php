@@ -1,6 +1,6 @@
 <?php
 
-namespace MoonBlocks\Blocks\Toc;
+namespace LunarBlocks\Blocks\Toc;
 
 use WP_HTML_Tag_Processor;
 
@@ -16,14 +16,14 @@ class HeadingCollector {
 	public const TYPE_HEADING   = 'heading';
 	public const TYPE_ACCORDION = 'accordion';
 
-	private const TRANSIENT_PREFIX = 'moon_blocks_toc_';
+	private const TRANSIENT_PREFIX = 'lunar_blocks_toc_';
 
 	private const CACHE_LIFETIME = DAY_IN_SECONDS;
 
 	/**
 	 * Blocks whose contents never reach the TOC.
 	 */
-	private const SKIPPED_BLOCKS = array( 'moon-blocks/infobox' );
+	private const SKIPPED_BLOCKS = array( 'lunar-blocks/infobox' );
 
 	/**
 	 * Returns the entries of a post, from cache when the content has not changed.
@@ -84,7 +84,7 @@ class HeadingCollector {
 			$level = (int) ( $block['attrs']['level'] ?? 2 );
 			$text  = AnchorSlugger::plain_text( (string) ( $block['innerHTML'] ?? '' ) );
 			$type  = self::TYPE_HEADING;
-		} elseif ( 'moon-blocks/accordion-item' === $name ) {
+		} elseif ( 'lunar-blocks/accordion-item' === $name ) {
 			$tag = (string) ( $block['attrs']['headingLevel'] ?? 'h3' );
 
 			// "none" renders the title as a span, which is not a heading.
@@ -97,7 +97,7 @@ class HeadingCollector {
 			$text  = '';
 			$type  = self::TYPE_ACCORDION;
 
-			if ( 1 === preg_match( '~<(h[2-6])\b[^>]*\bmoon-accordion-item__title\b[^>]*>(.*?)</\1>~is', $head, $title_match ) ) {
+			if ( 1 === preg_match( '~<(h[2-6])\b[^>]*\blunar-accordion-item__title\b[^>]*>(.*?)</\1>~is', $head, $title_match ) ) {
 				$text = AnchorSlugger::plain_text( $title_match[2] );
 			}
 		} else {
@@ -237,6 +237,6 @@ class HeadingCollector {
 	}
 
 	private function cache_key( int $post_id ): string {
-		return self::TRANSIENT_PREFIX . $post_id . '_' . preg_replace( '/[^0-9a-z]/i', '', MOON_BLOCKS_VERSION );
+		return self::TRANSIENT_PREFIX . $post_id . '_' . preg_replace( '/[^0-9a-z]/i', '', LUNAR_BLOCKS_VERSION );
 	}
 }

@@ -1,7 +1,7 @@
 import metadata from './block.json';
 import save from './deprecated/save-v1';
 
-const OPEN_CLASS = 'moon-accordion--open-desktop';
+const OPEN_CLASS = 'lunar-accordion--open-desktop';
 
 const v1 = {
 	attributes: {

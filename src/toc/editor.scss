@@ -1,6 +1,6 @@
-.moon-toc {
+.lunar-toc {
 
-	.moon-toc__title {
+	.lunar-toc__title {
 		flex: 0 1 auto;
 		inline-size: auto;
 		min-inline-size: 10ch;
@@ -11,15 +11,15 @@
 	}
 
 	/* Muted token already fades the text; reset core's extra opacity. */
-	.moon-toc__title::placeholder {
-		color: var(--moon-color-text-muted);
+	.lunar-toc__title::placeholder {
+		color: var(--lunar-color-text-muted);
 		opacity: 1;
 	}
 
-	.moon-toc__notice {
+	.lunar-toc__notice {
 		margin: 0;
-		padding: var(--moon-space-3) var(--moon-space-4);
-		color: var(--moon-color-text-muted);
-		font-size: var(--moon-font-size-sm);
+		padding: var(--lunar-space-3) var(--lunar-space-4);
+		color: var(--lunar-color-text-muted);
+		font-size: var(--lunar-font-size-sm);
 	}
 }

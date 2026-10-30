@@ -1,6 +1,6 @@
 <?php
 
-namespace MoonBlocks\Blocks;
+namespace LunarBlocks\Blocks;
 
 use WP_Block;
 use WP_HTML_Tag_Processor;
@@ -16,13 +16,13 @@ class ImageSizes {
 
 	private const INFOBOX_IMAGE_WIDTH = 192;
 
-	// Matches $moon-breakpoint-mobile in the stylesheets.
+	// Matches $lunar-breakpoint-mobile in the stylesheets.
 	private const MOBILE_BREAKPOINT = 781;
 
 	public function register(): void {
-		add_filter( 'render_block_moon-blocks/gallery', array( $this, 'size_gallery' ), 10, 3 );
-		add_filter( 'render_block_moon-blocks/infobox', array( $this, 'size_infobox' ) );
-		add_filter( 'render_block_moon-blocks/table', array( $this, 'size_table' ) );
+		add_filter( 'render_block_lunar-blocks/gallery', array( $this, 'size_gallery' ), 10, 3 );
+		add_filter( 'render_block_lunar-blocks/infobox', array( $this, 'size_infobox' ) );
+		add_filter( 'render_block_lunar-blocks/table', array( $this, 'size_table' ) );
 	}
 
 	/**
@@ -37,7 +37,7 @@ class ImageSizes {
 		$columns = max( 2, min( 4, $columns ) );
 		$sizes   = sprintf( '(max-width: %dpx) 50vw, %dvw', self::MOBILE_BREAKPOINT, (int) floor( 100 / $columns ) );
 
-		return $this->apply( (string) $content, 'moon-gallery-item__image', static fn() => $sizes );
+		return $this->apply( (string) $content, 'lunar-gallery-item__image', static fn() => $sizes );
 	}
 
 	/**
@@ -48,7 +48,7 @@ class ImageSizes {
 	public function size_infobox( $content ) {
 		$sizes = self::INFOBOX_IMAGE_WIDTH . 'px';
 
-		return $this->apply( (string) $content, 'moon-infobox__image', static fn() => $sizes );
+		return $this->apply( (string) $content, 'lunar-infobox__image', static fn() => $sizes );
 	}
 
 	/**
@@ -59,9 +59,9 @@ class ImageSizes {
 	public function size_table( $content ) {
 		return $this->apply(
 			(string) $content,
-			'moon-table__image',
+			'lunar-table__image',
 			static function ( string $style ): string {
-				return 1 === preg_match( '/--moon-table-image-width:\s*(\d+)px/', $style, $match ) ? $match[1] . 'px' : '';
+				return 1 === preg_match( '/--lunar-table-image-width:\s*(\d+)px/', $style, $match ) ? $match[1] . 'px' : '';
 			}
 		);
 	}

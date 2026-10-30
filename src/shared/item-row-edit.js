@@ -26,7 +26,7 @@ export default function ItemRowEdit( {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Field Settings', 'moon-blocks' ) }>
+				<PanelBody title={ __( 'Field Settings', 'lunar-blocks' ) }>
 					<IconControl
 						value={ icon }
 						placeholder="dashicons-calendar-alt"
@@ -35,7 +35,7 @@ export default function ItemRowEdit( {
 						}
 						help={ __(
 							'Dashicons class name. Leave empty if this field does not need an icon. Icons show on desktop only.',
-							'moon-blocks'
+							'lunar-blocks'
 						) }
 					/>
 				</PanelBody>
@@ -52,7 +52,7 @@ export default function ItemRowEdit( {
 					<RichText
 						tagName="span"
 						className={ `${ blockClass }__label-text` }
-						placeholder={ __( 'Label', 'moon-blocks' ) }
+						placeholder={ __( 'Label', 'lunar-blocks' ) }
 						value={ label }
 						onChange={ ( newLabel ) =>
 							setAttributes( { label: newLabel } )
@@ -65,7 +65,7 @@ export default function ItemRowEdit( {
 				<RichText
 					tagName="div"
 					className={ `${ blockClass }__value` }
-					placeholder={ __( 'Value', 'moon-blocks' ) }
+					placeholder={ __( 'Value', 'lunar-blocks' ) }
 					value={ value }
 					onChange={ ( newValue ) =>
 						setAttributes( { value: newValue } )

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="Moon Blocks">
-	<description>Coding standard ruleset for the Moon Blocks plugin.</description>
+<ruleset name="Lunar Blocks">
+	<description>Coding standard ruleset for the Lunar Blocks plugin.</description>
 
 	<file>.</file>
 
@@ -23,7 +23,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="moon-blocks"/>
+				<element value="lunar-blocks"/>
 			</property>
 		</properties>
 	</rule>
@@ -31,9 +31,9 @@
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="moon_blocks"/>
-				<element value="MoonBlocks"/>
-				<element value="MOON_BLOCKS"/>
+				<element value="lunar_blocks"/>
+				<element value="LunarBlocks"/>
+				<element value="LUNAR_BLOCKS"/>
 			</property>
 		</properties>
 		<!-- WordPress includes render.php from inside a method, so its variables are not global. -->

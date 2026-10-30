@@ -1,6 +1,6 @@
 <?php
 
-namespace MoonBlocks\Blocks\Toc;
+namespace LunarBlocks\Blocks\Toc;
 
 /**
  * Builds the TOC markup from the collected entries. Every value is escaped here.
@@ -19,14 +19,14 @@ class TocRenderer {
 			return '';
 		}
 
-		$title = '' !== trim( $title ) ? trim( $title ) : __( 'Table of contents', 'moon-blocks' );
+		$title = '' !== trim( $title ) ? trim( $title ) : __( 'Table of contents', 'lunar-blocks' );
 
 		$html  = '<details ' . $wrapper_attributes . '>';
-		$html .= '<summary class="moon-toc__header">';
-		$html .= '<span class="moon-toc__title">' . esc_html( $title ) . '</span>';
-		$html .= '<span class="moon-toc__toggle" aria-hidden="true"></span>';
+		$html .= '<summary class="lunar-toc__header">';
+		$html .= '<span class="lunar-toc__title">' . esc_html( $title ) . '</span>';
+		$html .= '<span class="lunar-toc__toggle" aria-hidden="true"></span>';
 		$html .= '</summary>';
-		$html .= '<nav class="moon-toc__nav" aria-label="' . esc_attr( $title ) . '">';
+		$html .= '<nav class="lunar-toc__nav" aria-label="' . esc_attr( $title ) . '">';
 		$html .= self::render_list( self::build_tree( $entries ), 0 );
 		$html .= '</nav>';
 		$html .= '</details>';
@@ -69,14 +69,14 @@ class TocRenderer {
 	}
 
 	private static function render_list( array $nodes, int $depth ): string {
-		$class = 'moon-toc__list' . ( $depth > 0 ? ' moon-toc__list--sub' : '' );
+		$class = 'lunar-toc__list' . ( $depth > 0 ? ' lunar-toc__list--sub' : '' );
 		$html  = '<ul class="' . esc_attr( $class ) . '" role="list">';
 
 		foreach ( $nodes as $node ) {
-			$html .= '<li class="moon-toc__item">';
-			$html .= '<a class="moon-toc__link" href="#' . esc_attr( $node->entry['id'] ) . '">';
-			$html .= '<span class="moon-toc__marker" aria-hidden="true"></span>';
-			$html .= '<span class="moon-toc__text">' . esc_html( $node->entry['text'] ) . '</span>';
+			$html .= '<li class="lunar-toc__item">';
+			$html .= '<a class="lunar-toc__link" href="#' . esc_attr( $node->entry['id'] ) . '">';
+			$html .= '<span class="lunar-toc__marker" aria-hidden="true"></span>';
+			$html .= '<span class="lunar-toc__text">' . esc_html( $node->entry['text'] ) . '</span>';
 			$html .= '</a>';
 
 			if ( ! empty( $node->children ) ) {

@@ -1,69 +1,69 @@
 @use "../shared/breakpoints" as *;
 @use "../shared/focus" as *;
 
-.moon-infobox {
+.lunar-infobox {
 
 	/* Dividers between rows and next to the image are lighter than the frame. */
-	--moon-infobox-line: var(--moon-border-width) solid color-mix(in srgb, var(--moon-color-border) 50%, transparent);
+	--lunar-infobox-line: var(--lunar-border-width) solid color-mix(in srgb, var(--lunar-color-border) 50%, transparent);
 
 	box-sizing: border-box;
 	display: grid;
 	grid-template-columns: minmax(0, 36%) minmax(0, 1fr);
 
 	/* Vertical only: constrained layouts center blocks with inline margins. */
-	margin-block: var(--moon-space-5);
-	border: var(--moon-border);
-	border-radius: var(--moon-radius);
+	margin-block: var(--lunar-space-5);
+	border: var(--lunar-border);
+	border-radius: var(--lunar-radius);
 	overflow: hidden;
 	color: inherit;
 	font-family: inherit;
 
-	&.moon-infobox--no-image {
+	&.lunar-infobox--no-image {
 		grid-template-columns: minmax(0, 1fr);
 	}
 
 	/* Themes often style figures, images, headings, and lists; reset them. */
-	.moon-infobox__media {
+	.lunar-infobox__media {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		margin: 0;
-		padding: var(--moon-space-4);
-		background: var(--moon-color-surface);
-		border-inline-end: var(--moon-infobox-line);
+		padding: var(--lunar-space-4);
+		background: var(--lunar-color-surface);
+		border-inline-end: var(--lunar-infobox-line);
 	}
 
-	.moon-infobox__image {
+	.lunar-infobox__image {
 		display: block;
 		box-sizing: border-box;
 		inline-size: 100%;
 
 		/* 192px; no token for a frame width. */
-		max-inline-size: calc(var(--moon-unit) * 12);
+		max-inline-size: calc(var(--lunar-unit) * 12);
 		block-size: auto;
 		margin: 0;
 		aspect-ratio: 3 / 4;
 		object-fit: contain;
-		border-radius: var(--moon-radius);
+		border-radius: var(--lunar-radius);
 	}
 
-	.moon-infobox__body {
+	.lunar-infobox__body {
 		display: flex;
 		flex-direction: column;
 		min-width: 0;
 	}
 
-	.moon-infobox__title {
+	.lunar-infobox__title {
 		margin: 0;
-		padding: var(--moon-space-3) var(--moon-space-4);
+		padding: var(--lunar-space-3) var(--lunar-space-4);
 		border: 0;
-		border-block-end: var(--moon-border);
+		border-block-end: var(--lunar-border);
 		background: none;
 		color: inherit;
 		font-family: inherit;
-		font-size: var(--moon-font-size-lg);
-		font-weight: var(--moon-font-weight-strong);
-		line-height: var(--moon-line-height-tight);
+		font-size: var(--lunar-font-size-lg);
+		font-weight: var(--lunar-font-weight-strong);
+		line-height: var(--lunar-line-height-tight);
 
 		/* Heading styles from themes, such as capitals, must not reach the title. */
 		letter-spacing: normal;
@@ -71,10 +71,10 @@
 	}
 
 	/* Rows share the height left over, so the box never has empty space. */
-	.moon-infobox__rows {
+	.lunar-infobox__rows {
 
 		/* No token fits a column width; the wider value leaves room for an icon. */
-		--moon-infobox-label-width: calc(var(--moon-unit) * 9);
+		--lunar-infobox-label-width: calc(var(--lunar-unit) * 9);
 
 		display: flex;
 		flex: 1 1 auto;
@@ -82,56 +82,56 @@
 		margin: 0;
 		padding: 0;
 
-		&:has(.moon-infobox-item__icon) {
-			--moon-infobox-label-width: calc(var(--moon-unit) * 11);
+		&:has(.lunar-infobox-item__icon) {
+			--lunar-infobox-label-width: calc(var(--lunar-unit) * 11);
 		}
 	}
 
-	.moon-infobox-item {
+	.lunar-infobox-item {
 		display: grid;
 		flex: 1 1 auto;
-		grid-template-columns: var(--moon-infobox-label-width) minmax(0, 1fr);
+		grid-template-columns: var(--lunar-infobox-label-width) minmax(0, 1fr);
 		align-items: center;
 		margin: 0;
 		padding: 0;
 	}
 
-	.moon-infobox-item + .moon-infobox-item {
-		border-block-start: var(--moon-infobox-line);
+	.lunar-infobox-item + .lunar-infobox-item {
+		border-block-start: var(--lunar-infobox-line);
 	}
 
-	.moon-infobox-item__label {
+	.lunar-infobox-item__label {
 		display: flex;
 		align-items: center;
-		gap: var(--moon-space-2);
+		gap: var(--lunar-space-2);
 		margin: 0;
-		padding: var(--moon-space-3) var(--moon-space-4);
-		color: var(--moon-color-text-muted);
-		font-size: var(--moon-font-size-sm);
-		font-weight: var(--moon-font-weight-strong);
-		line-height: var(--moon-line-height-tight);
+		padding: var(--lunar-space-3) var(--lunar-space-4);
+		color: var(--lunar-color-text-muted);
+		font-size: var(--lunar-font-size-sm);
+		font-weight: var(--lunar-font-weight-strong);
+		line-height: var(--lunar-line-height-tight);
 	}
 
-	.moon-infobox-item__icon {
+	.lunar-infobox-item__icon {
 		flex: none;
 
 		/* Scales with the label text; no token sizes an icon against text. */
 		inline-size: 1em;
 		block-size: 1em;
 		font-size: 1.25em;
-		color: var(--moon-color-primary);
+		color: var(--lunar-color-primary);
 	}
 
-	.moon-infobox-item__value {
+	.lunar-infobox-item__value {
 		margin: 0;
-		padding-block: var(--moon-space-3);
-		padding-inline: 0 var(--moon-space-4);
-		font-size: var(--moon-font-size-md);
+		padding-block: var(--lunar-space-3);
+		padding-inline: 0 var(--lunar-space-4);
+		font-size: var(--lunar-font-size-md);
 		overflow-wrap: anywhere;
 	}
 
-	.moon-infobox-item__value a {
-		color: var(--moon-color-primary);
+	.lunar-infobox-item__value a {
+		color: var(--lunar-color-primary);
 		text-decoration: underline;
 
 		/* Keeps the underline clear of descenders; no token for it. */
@@ -141,23 +141,23 @@
 	}
 }
 
-@media (max-width: $moon-breakpoint-mobile) {
+@media (max-width: $lunar-breakpoint-mobile) {
 
-	.moon-infobox {
+	.lunar-infobox {
 		grid-template-columns: minmax(0, 1fr);
 
-		.moon-infobox__media {
+		.lunar-infobox__media {
 			border-inline-end: 0;
-			border-block-end: var(--moon-infobox-line);
+			border-block-end: var(--lunar-infobox-line);
 		}
 
-		.moon-infobox__rows,
-		.moon-infobox__rows:has(.moon-infobox-item__icon) {
-			--moon-infobox-label-width: calc(var(--moon-unit) * 8);
+		.lunar-infobox__rows,
+		.lunar-infobox__rows:has(.lunar-infobox-item__icon) {
+			--lunar-infobox-label-width: calc(var(--lunar-unit) * 8);
 		}
 
 		/* Icons show on desktop only. */
-		.moon-infobox-item__icon {
+		.lunar-infobox-item__icon {
 			display: none;
 		}
 	}

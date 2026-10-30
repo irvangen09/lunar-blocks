@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "moon-blocks/toc",
-  "title": "Moon TOC",
-  "category": "moon-blocks",
+  "name": "lunar-blocks/toc",
+  "title": "Lunar TOC",
+  "category": "lunar-blocks",
   "description": "A table of contents built from the headings of the post, with links to each section.",
   "keywords": [ "toc", "table of contents", "contents", "daftar isi" ],
-  "textdomain": "moon-blocks",
+  "textdomain": "lunar-blocks",
   "attributes": {
     "title": {
       "type": "string",
@@ -20,7 +20,7 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": [ "moon-blocks-tokens", "file:./style-index.css" ],
+  "style": [ "lunar-blocks-tokens", "file:./style-index.css" ],
   "viewScript": "file:./view.js",
   "render": "file:./render.php"
 }

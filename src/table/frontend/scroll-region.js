@@ -21,7 +21,7 @@ export function initScrollRegion( blockEl ) {
 			blockEl.setAttribute( 'role', 'region' );
 			blockEl.setAttribute(
 				'aria-label',
-				__( 'Scrollable table', 'moon-blocks' )
+				__( 'Scrollable table', 'lunar-blocks' )
 			);
 		} else {
 			blockEl.removeAttribute( 'tabindex' );

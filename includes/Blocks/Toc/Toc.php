@@ -1,6 +1,6 @@
 <?php
 
-namespace MoonBlocks\Blocks\Toc;
+namespace LunarBlocks\Blocks\Toc;
 
 use WP_Block_Type_Registry;
 
@@ -10,7 +10,7 @@ use WP_Block_Type_Registry;
  */
 class Toc {
 
-	public const BLOCK_NAME = 'moon-blocks/toc';
+	public const BLOCK_NAME = 'lunar-blocks/toc';
 
 	/**
 	 * Fewer headings than this and the TOC shows nothing.

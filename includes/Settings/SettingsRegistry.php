@@ -1,10 +1,10 @@
 <?php
 
-namespace MoonBlocks\Settings;
+namespace LunarBlocks\Settings;
 
 class SettingsRegistry {
 
-	public const OPTION = 'moon_blocks_settings';
+	public const OPTION = 'lunar_blocks_settings';
 
 	public function register(): void {
 		add_action( 'init', array( $this, 'register_option' ) );
@@ -24,7 +24,7 @@ class SettingsRegistry {
 		}
 
 		register_setting(
-			'moon_blocks',
+			'lunar_blocks',
 			self::OPTION,
 			array(
 				'type'              => 'object',
@@ -63,7 +63,7 @@ class SettingsRegistry {
 		if ( isset( $value['disabled_blocks'] ) && is_array( $value['disabled_blocks'] ) ) {
 			$names = array_filter(
 				$value['disabled_blocks'],
-				static fn( $name ) => is_string( $name ) && 1 === preg_match( '/^moon-blocks\/[a-z][a-z0-9-]*$/', $name )
+				static fn( $name ) => is_string( $name ) && 1 === preg_match( '/^lunar-blocks\/[a-z][a-z0-9-]*$/', $name )
 			);
 			$names = array_unique( $names );
 			sort( $names );

@@ -1,70 +1,70 @@
 @use "../shared/breakpoints" as *;
 @use "../shared/focus" as *;
 
-.moon-info-list {
+.lunar-info-list {
 
 	/* Dividers between rows are lighter than the line under a section title. */
-	--moon-info-list-line: var(--moon-border-width) solid color-mix(in srgb, var(--moon-color-border) 50%, transparent);
+	--lunar-info-list-line: var(--lunar-border-width) solid color-mix(in srgb, var(--lunar-color-border) 50%, transparent);
 
 	/* No token fits a column width; the wider value leaves room for an icon. */
-	--moon-info-list-label-width: calc(var(--moon-unit) * 9.5);
+	--lunar-info-list-label-width: calc(var(--lunar-unit) * 9.5);
 
 	box-sizing: border-box;
 
 	/* Vertical only: constrained layouts center blocks with inline margins. */
-	margin-block: var(--moon-space-5);
+	margin-block: var(--lunar-space-5);
 	padding: 0;
 	border: 0;
-	border-block-start: var(--moon-border-width-strong) solid var(--moon-color-primary);
+	border-block-start: var(--lunar-border-width-strong) solid var(--lunar-color-primary);
 	color: inherit;
 	font-family: inherit;
 
-	&:has(.moon-info-list-item__icon) {
-		--moon-info-list-label-width: calc(var(--moon-unit) * 11.5);
+	&:has(.lunar-info-list-item__icon) {
+		--lunar-info-list-label-width: calc(var(--lunar-unit) * 11.5);
 	}
 
 	/* Themes often style definition and list elements; reset them. */
-	.moon-info-list-item,
-	.moon-info-list-requirements {
+	.lunar-info-list-item,
+	.lunar-info-list-requirements {
 		margin: 0;
 		padding: 0;
 	}
 
-	.moon-info-list-item {
+	.lunar-info-list-item {
 		display: grid;
-		grid-template-columns: var(--moon-info-list-label-width) minmax(0, 1fr);
-		border-block-end: var(--moon-info-list-line);
+		grid-template-columns: var(--lunar-info-list-label-width) minmax(0, 1fr);
+		border-block-end: var(--lunar-info-list-line);
 	}
 
-	.moon-info-list-item__label {
+	.lunar-info-list-item__label {
 		display: flex;
 
 		/* The label and the value center on each other, whichever is taller. */
 		align-items: center;
-		gap: var(--moon-space-2);
+		gap: var(--lunar-space-2);
 		margin: 0;
-		padding: var(--moon-space-3) var(--moon-space-4);
-		background: var(--moon-color-surface);
-		color: var(--moon-color-text-muted);
-		font-size: var(--moon-font-size-sm);
-		font-weight: var(--moon-font-weight-strong);
-		line-height: var(--moon-line-height-tight);
+		padding: var(--lunar-space-3) var(--lunar-space-4);
+		background: var(--lunar-color-surface);
+		color: var(--lunar-color-text-muted);
+		font-size: var(--lunar-font-size-sm);
+		font-weight: var(--lunar-font-weight-strong);
+		line-height: var(--lunar-line-height-tight);
 	}
 
-	.moon-info-list-item__label-text {
+	.lunar-info-list-item__label-text {
 		min-width: 0;
 		overflow-wrap: anywhere;
 	}
 
-	.moon-info-list-item__value {
+	.lunar-info-list-item__value {
 
 		/* A block box, so the value keeps its inline flow; align-content
 		   centers it in the row without splitting its text into items. */
 		display: flow-root;
 		align-content: center;
 		margin: 0;
-		padding: var(--moon-space-3) var(--moon-space-4);
-		font-size: var(--moon-font-size-md);
+		padding: var(--lunar-space-3) var(--lunar-space-4);
+		font-size: var(--lunar-font-size-md);
 		overflow-wrap: anywhere;
 	}
 
@@ -73,8 +73,8 @@
 	 * text line instead, so the glyph sits on the first line of text, and
 	 * the glyph is enlarged inside it; no token sizes an icon against text.
 	 */
-	.moon-info-list-item__icon,
-	.moon-info-list-requirement__icon {
+	.lunar-info-list-item__icon,
+	.lunar-info-list-requirement__icon {
 		display: flex;
 		flex: none;
 		align-items: center;
@@ -84,7 +84,7 @@
 		block-size: 1lh;
 		font-size: inherit;
 		line-height: inherit;
-		color: var(--moon-color-primary);
+		color: var(--lunar-color-primary);
 
 		&::before {
 			inline-size: auto;
@@ -94,60 +94,60 @@
 		}
 	}
 
-	.moon-info-list-requirements__header {
+	.lunar-info-list-requirements__header {
 		display: flex;
 		align-items: baseline;
 		justify-content: space-between;
-		gap: var(--moon-space-3);
+		gap: var(--lunar-space-3);
 		margin: 0;
-		padding: var(--moon-space-4) var(--moon-space-4) var(--moon-space-2);
-		border-block-end: var(--moon-border);
+		padding: var(--lunar-space-4) var(--lunar-space-4) var(--lunar-space-2);
+		border-block-end: var(--lunar-border);
 		font-weight: 400;
 	}
 
-	.moon-info-list-requirements__title {
-		font-size: var(--moon-font-size-md);
-		font-weight: var(--moon-font-weight-strong);
+	.lunar-info-list-requirements__title {
+		font-size: var(--lunar-font-size-md);
+		font-weight: var(--lunar-font-weight-strong);
 		letter-spacing: normal;
 		text-transform: none;
 	}
 
-	.moon-info-list-requirements__count {
+	.lunar-info-list-requirements__count {
 		margin-inline-start: auto;
-		color: var(--moon-color-text-muted);
-		font-size: var(--moon-font-size-sm);
+		color: var(--lunar-color-text-muted);
+		font-size: var(--lunar-font-size-sm);
 		font-weight: 400;
 	}
 
-	.moon-info-list-requirements__body {
+	.lunar-info-list-requirements__body {
 		margin: 0;
 		padding: 0;
 	}
 
-	.moon-info-list-requirements__list {
+	.lunar-info-list-requirements__list {
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 
-	.moon-info-list-requirement {
+	.lunar-info-list-requirement {
 		display: flex;
 		align-items: flex-start;
-		gap: var(--moon-space-3);
+		gap: var(--lunar-space-3);
 		margin: 0;
-		padding: var(--moon-space-2) var(--moon-space-4);
-		border-block-end: var(--moon-info-list-line);
-		font-size: var(--moon-font-size-md);
+		padding: var(--lunar-space-2) var(--lunar-space-4);
+		border-block-end: var(--lunar-info-list-line);
+		font-size: var(--lunar-font-size-md);
 	}
 
-	.moon-info-list-requirement__text {
+	.lunar-info-list-requirement__text {
 		min-width: 0;
 		overflow-wrap: anywhere;
 	}
 
-	.moon-info-list-item__value a,
-	.moon-info-list-requirement__text a {
-		color: var(--moon-color-primary);
+	.lunar-info-list-item__value a,
+	.lunar-info-list-requirement__text a {
+		color: var(--lunar-color-primary);
 		text-decoration: underline;
 
 		/* Keeps the underline clear of descenders; no token for it. */
@@ -157,15 +157,15 @@
 	}
 }
 
-@media (max-width: $moon-breakpoint-mobile) {
+@media (max-width: $lunar-breakpoint-mobile) {
 
-	.moon-info-list,
-	.moon-info-list:has(.moon-info-list-item__icon) {
-		--moon-info-list-label-width: calc(var(--moon-unit) * 8);
+	.lunar-info-list,
+	.lunar-info-list:has(.lunar-info-list-item__icon) {
+		--lunar-info-list-label-width: calc(var(--lunar-unit) * 8);
 	}
 
 	/* Row icons show on desktop only; item markers stay. */
-	.moon-info-list .moon-info-list-item__icon {
+	.lunar-info-list .lunar-info-list-item__icon {
 		display: none;
 	}
 }

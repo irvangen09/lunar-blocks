@@ -1,16 +1,16 @@
 <?php
 
-namespace MoonBlocks\Blocks;
+namespace LunarBlocks\Blocks;
 
-use MoonBlocks\Settings\SettingsRegistry;
+use LunarBlocks\Settings\SettingsRegistry;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
 class BlockRegistry {
 
-	private const NAMESPACE_PREFIX = 'moon-blocks/';
+	private const NAMESPACE_PREFIX = 'lunar-blocks/';
 
-	private const CATEGORY = 'moon-blocks';
+	private const CATEGORY = 'lunar-blocks';
 
 	private SettingsRegistry $settings;
 
@@ -38,7 +38,7 @@ class BlockRegistry {
 		$name = $metadata['name'] ?? '';
 
 		if ( is_string( $name ) && str_starts_with( $name, self::NAMESPACE_PREFIX ) ) {
-			$metadata['version'] = MOON_BLOCKS_VERSION;
+			$metadata['version'] = LUNAR_BLOCKS_VERSION;
 		}
 
 		return $metadata;
@@ -55,7 +55,7 @@ class BlockRegistry {
 	public function add_category( array $categories ): array {
 		$categories[] = array(
 			'slug'  => self::CATEGORY,
-			'title' => __( 'Moon Blocks', 'moon-blocks' ),
+			'title' => __( 'Lunar Blocks', 'lunar-blocks' ),
 		);
 
 		return $categories;
@@ -70,7 +70,7 @@ class BlockRegistry {
 		$schema = get_block_metadata_i18n_schema();
 
 		foreach ( $this->discover() as $name => $block ) {
-			if ( $this->has_moon_parent( $block ) ) {
+			if ( $this->has_lunar_parent( $block ) ) {
 				continue;
 			}
 
@@ -95,7 +95,7 @@ class BlockRegistry {
 	}
 
 	/**
-	 * A block is enabled unless it is switched off, or every Moon Blocks parent
+	 * A block is enabled unless it is switched off, or every Lunar Blocks parent
 	 * it can be placed in is disabled.
 	 */
 	private function is_enabled( string $name, array $visited = array() ): bool {
@@ -126,7 +126,7 @@ class BlockRegistry {
 		return false;
 	}
 
-	private function has_moon_parent( array $block ): bool {
+	private function has_lunar_parent( array $block ): bool {
 		$blocks = $this->discover();
 
 		foreach ( $block['parent'] as $parent_name ) {
@@ -148,7 +148,7 @@ class BlockRegistry {
 		}
 
 		$this->blocks = array();
-		$build_dir    = MOON_BLOCKS_DIR . 'build';
+		$build_dir    = LUNAR_BLOCKS_DIR . 'build';
 
 		if ( ! is_dir( $build_dir ) ) {
 			return $this->blocks;

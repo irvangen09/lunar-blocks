@@ -5,7 +5,7 @@ export function getHeadingOptions() {
 	return [
 		{
 			value: 'none',
-			label: __( 'No heading (plain text)', 'moon-blocks' ),
+			label: __( 'No heading (plain text)', 'lunar-blocks' ),
 		},
 		{ value: 'h2', label: 'H2' },
 		{ value: 'h3', label: 'H3' },

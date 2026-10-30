@@ -1,7 +1,7 @@
 // This screen follows the WordPress admin design and does not load the
 // front-end design tokens, so spacing uses plain values.
 
-.moon-settings {
+.lunar-settings {
 	max-width: 720px;
 	margin-top: 16px;
 
@@ -13,14 +13,14 @@
 		padding-top: 16px;
 	}
 
-	.moon-settings__blocks,
-	.moon-settings__colors {
+	.lunar-settings__blocks,
+	.lunar-settings__colors {
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
 	}
 
-	.moon-settings__color {
+	.lunar-settings__color {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -31,7 +31,7 @@
 		}
 	}
 
-	.moon-settings__color-label {
+	.lunar-settings__color-label {
 		display: flex;
 		flex: 1 1 200px;
 		flex-direction: column;
@@ -42,7 +42,7 @@
 		}
 	}
 
-	.moon-settings__footer {
+	.lunar-settings__footer {
 		margin-top: 24px;
 	}
 }

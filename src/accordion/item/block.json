@@ -1,17 +1,17 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "moon-blocks/accordion-item",
-  "title": "Moon Accordion Item",
-  "category": "moon-blocks",
+  "name": "lunar-blocks/accordion-item",
+  "title": "Lunar Accordion Item",
+  "category": "lunar-blocks",
   "description": "One section of an accordion: a title and free-form content.",
-  "parent": [ "moon-blocks/accordion" ],
-  "textdomain": "moon-blocks",
+  "parent": [ "lunar-blocks/accordion" ],
+  "textdomain": "lunar-blocks",
   "attributes": {
     "title": {
       "type": "rich-text",
       "source": "rich-text",
-      "selector": ".moon-accordion-item__title"
+      "selector": ".lunar-accordion-item__title"
     },
     "headingLevel": {
       "type": "string",

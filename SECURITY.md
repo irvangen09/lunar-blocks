@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Security fixes are made for the latest release of Moon Blocks only. Please update to the latest version before reporting a problem, and check that it still happens.
+Security fixes are made for the latest release of Lunar Blocks only. Please update to the latest version before reporting a problem, and check that it still happens.
 
 | Version | Supported |
 | --- | --- |
@@ -15,13 +15,13 @@ Please do not report a security problem in a public issue, a pull request, or a 
 
 Report it privately through GitHub:
 
-1. Open the [Security tab](https://github.com/irvangen09/moon-blocks/security) of the repository.
-2. Choose **Report a vulnerability**, or go directly to the [report form](https://github.com/irvangen09/moon-blocks/security/advisories/new).
+1. Open the [Security tab](https://github.com/irvangen09/lunar-blocks/security) of the repository.
+2. Choose **Report a vulnerability**, or go directly to the [report form](https://github.com/irvangen09/lunar-blocks/security/advisories/new).
 3. Describe the problem.
 
 Please include:
 
-- The affected version of Moon Blocks, and your WordPress and PHP versions.
+- The affected version of Lunar Blocks, and your WordPress and PHP versions.
 - What the problem is and what an attacker could do with it.
 - The steps to reproduce it, or a proof of concept.
 - Any fix you suggest.

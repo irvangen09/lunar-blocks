@@ -7,7 +7,7 @@ import { useSelect } from '@wordpress/data';
 const MIN_ENTRIES = 2;
 
 // Blocks whose headings never reach the TOC.
-const SKIPPED_BLOCKS = [ 'moon-blocks/infobox' ];
+const SKIPPED_BLOCKS = [ 'lunar-blocks/infobox' ];
 
 function toPlainText( html ) {
 	const doc = new window.DOMParser().parseFromString(
@@ -26,7 +26,7 @@ function describe( block ) {
 	if ( 'core/heading' === block.name ) {
 		level = Number( block.attributes.level ?? 2 );
 		text = toPlainText( block.attributes.content );
-	} else if ( 'moon-blocks/accordion-item' === block.name ) {
+	} else if ( 'lunar-blocks/accordion-item' === block.name ) {
 		const match = /^h([2-6])$/.exec(
 			block.attributes.headingLevel ?? 'h3'
 		);
@@ -93,14 +93,17 @@ function List( { nodes, depth = 0 } ) {
 	return (
 		<ul
 			className={
-				'moon-toc__list' + ( depth > 0 ? ' moon-toc__list--sub' : '' )
+				'lunar-toc__list' + ( depth > 0 ? ' lunar-toc__list--sub' : '' )
 			}
 		>
 			{ nodes.map( ( node, index ) => (
-				<li className="moon-toc__item" key={ index }>
-					<span className="moon-toc__link">
-						<span className="moon-toc__marker" aria-hidden="true" />
-						<span className="moon-toc__text">
+				<li className="lunar-toc__item" key={ index }>
+					<span className="lunar-toc__link">
+						<span
+							className="lunar-toc__marker"
+							aria-hidden="true"
+						/>
+						<span className="lunar-toc__text">
 							{ node.entry.text }
 						</span>
 					</span>
@@ -115,7 +118,7 @@ function List( { nodes, depth = 0 } ) {
 
 export default function Edit( { attributes, setAttributes } ) {
 	const { title } = attributes;
-	const blockProps = useBlockProps( { className: 'moon-toc' } );
+	const blockProps = useBlockProps( { className: 'lunar-toc' } );
 
 	const blocks = useSelect(
 		( select ) => select( 'core/block-editor' ).getBlocks(),
@@ -125,9 +128,9 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	return (
 		<div { ...blockProps }>
-			<div className="moon-toc__header">
+			<div className="lunar-toc__header">
 				<PlainText
-					className="moon-toc__title"
+					className="lunar-toc__title"
 					value={ title }
 					onChange={ ( value ) => setAttributes( { title: value } ) }
 					onKeyDown={ ( event ) => {
@@ -135,19 +138,19 @@ export default function Edit( { attributes, setAttributes } ) {
 							event.preventDefault();
 						}
 					} }
-					placeholder={ __( 'Table of contents', 'moon-blocks' ) }
-					aria-label={ __( 'Title', 'moon-blocks' ) }
+					placeholder={ __( 'Table of contents', 'lunar-blocks' ) }
+					aria-label={ __( 'Title', 'lunar-blocks' ) }
 				/>
 			</div>
 			{ entries.length >= MIN_ENTRIES ? (
-				<nav className="moon-toc__nav">
+				<nav className="lunar-toc__nav">
 					<List nodes={ buildTree( entries ) } />
 				</nav>
 			) : (
-				<p className="moon-toc__notice">
+				<p className="lunar-toc__notice">
 					{ __(
 						'The table of contents appears on the page once it has at least two headings.',
-						'moon-blocks'
+						'lunar-blocks'
 					) }
 				</p>
 			) }

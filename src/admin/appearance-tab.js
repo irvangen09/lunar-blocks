@@ -15,21 +15,21 @@ export default function AppearanceTab( { colors, onChange } ) {
 	const fields = [
 		{
 			key: 'primary',
-			label: __( 'Primary', 'moon-blocks' ),
+			label: __( 'Primary', 'lunar-blocks' ),
 			help: __(
 				'Accent for active items, indicators and icons.',
-				'moon-blocks'
+				'lunar-blocks'
 			),
 		},
 		{
 			key: 'surface',
-			label: __( 'Surface', 'moon-blocks' ),
-			help: __( 'Background of panels, cards and code.', 'moon-blocks' ),
+			label: __( 'Surface', 'lunar-blocks' ),
+			help: __( 'Background of panels, cards and code.', 'lunar-blocks' ),
 		},
 		{
 			key: 'border',
-			label: __( 'Border', 'moon-blocks' ),
-			help: __( 'Lines and dividers.', 'moon-blocks' ),
+			label: __( 'Border', 'lunar-blocks' ),
+			help: __( 'Lines and dividers.', 'lunar-blocks' ),
 		},
 	];
 
@@ -41,14 +41,14 @@ export default function AppearanceTab( { colors, onChange } ) {
 			<p>
 				{ __(
 					'Colors you leave unset follow your theme. Make sure a color you choose has enough contrast with your theme.',
-					'moon-blocks'
+					'lunar-blocks'
 				) }
 			</p>
 			<Card>
-				<CardBody className="moon-settings__colors">
+				<CardBody className="lunar-settings__colors">
 					{ fields.map( ( { key, label, help } ) => (
-						<div className="moon-settings__color" key={ key }>
-							<div className="moon-settings__color-label">
+						<div className="lunar-settings__color" key={ key }>
+							<div className="lunar-settings__color-label">
 								<strong>{ label }</strong>
 								<span>{ help }</span>
 							</div>
@@ -67,7 +67,7 @@ export default function AppearanceTab( { colors, onChange } ) {
 											{ colors[ key ] ||
 												__(
 													'Theme default',
-													'moon-blocks'
+													'lunar-blocks'
 												) }
 										</span>
 									</Button>
@@ -88,7 +88,7 @@ export default function AppearanceTab( { colors, onChange } ) {
 								disabled={ ! colors[ key ] }
 								onClick={ () => setColor( key, '' ) }
 							>
-								{ __( 'Reset', 'moon-blocks' ) }
+								{ __( 'Reset', 'lunar-blocks' ) }
 							</Button>
 						</div>
 					) ) }

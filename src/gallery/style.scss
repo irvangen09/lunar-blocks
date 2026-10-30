@@ -1,67 +1,67 @@
 @use "../shared/breakpoints" as *;
 @use "../shared/focus" as *;
 
-.moon-gallery {
+.lunar-gallery {
 
 	/* Number of columns on wide screens; the column modifiers below set it. */
-	--moon-gallery-columns: 3;
+	--lunar-gallery-columns: 3;
 
 	box-sizing: border-box;
 	display: grid;
-	grid-template-columns: repeat(var(--moon-gallery-columns), minmax(0, 1fr));
-	gap: var(--moon-space-4);
-	padding: var(--moon-space-4);
-	border: var(--moon-border);
-	border-radius: var(--moon-radius);
-	background: var(--moon-color-surface);
+	grid-template-columns: repeat(var(--lunar-gallery-columns), minmax(0, 1fr));
+	gap: var(--lunar-space-4);
+	padding: var(--lunar-space-4);
+	border: var(--lunar-border);
+	border-radius: var(--lunar-radius);
+	background: var(--lunar-color-surface);
 
-	&.moon-gallery--columns-2 {
-		--moon-gallery-columns: 2;
+	&.lunar-gallery--columns-2 {
+		--lunar-gallery-columns: 2;
 	}
 
-	&.moon-gallery--columns-3 {
-		--moon-gallery-columns: 3;
+	&.lunar-gallery--columns-3 {
+		--lunar-gallery-columns: 3;
 	}
 
-	&.moon-gallery--columns-4 {
-		--moon-gallery-columns: 4;
+	&.lunar-gallery--columns-4 {
+		--lunar-gallery-columns: 4;
 	}
 
 	/* Front end only: the editor keeps an empty gallery so items can be added. */
-	&:not(.wp-block):not(:has(.moon-gallery-item)) {
+	&:not(.wp-block):not(:has(.lunar-gallery-item)) {
 		display: none;
 	}
 }
 
 /* Small screens keep a grid of two columns instead of a carousel. */
-@media (max-width: $moon-breakpoint-mobile) {
+@media (max-width: $lunar-breakpoint-mobile) {
 
-	.moon-gallery {
+	.lunar-gallery {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: var(--moon-space-3);
+		gap: var(--lunar-space-3);
 	}
 }
 
 /* Themes often style figures, links and images, so reset them explicitly. */
-.moon-gallery-item {
+.lunar-gallery-item {
 	display: flex;
 	flex-direction: column;
 	margin: 0;
 	padding: 0;
 }
 
-.moon-gallery-item__link {
+.lunar-gallery-item__link {
 	display: block;
 	overflow: hidden;
-	border: var(--moon-border);
-	border-radius: var(--moon-radius);
-	background: var(--moon-color-surface);
+	border: var(--lunar-border);
+	border-radius: var(--lunar-radius);
+	background: var(--lunar-color-surface);
 	text-decoration: none;
 
 	@include focus-ring;
 }
 
-.moon-gallery-item__image {
+.lunar-gallery-item__image {
 	display: block;
 	box-sizing: border-box;
 	inline-size: 100%;
@@ -77,33 +77,33 @@
 	object-fit: cover;
 }
 
-.moon-gallery-item__caption {
-	margin: var(--moon-space-2) 0 0;
+.lunar-gallery-item__caption {
+	margin: var(--lunar-space-2) 0 0;
 	padding: 0;
-	color: var(--moon-color-text-muted);
+	color: var(--lunar-color-text-muted);
 	font-family: inherit;
-	font-size: var(--moon-font-size-sm);
+	font-size: var(--lunar-font-size-sm);
 	text-align: center;
 }
 
 /* Lightbox: built by view.js and added to the page, outside the gallery. */
-body.moon-gallery-lightbox-open {
+body.lunar-gallery-lightbox-open {
 	overflow: hidden;
 }
 
-.moon-gallery-lightbox {
+.lunar-gallery-lightbox {
 	box-sizing: border-box;
 	inline-size: 100%;
 	block-size: 100%;
 	max-inline-size: none;
 	max-block-size: none;
 	margin: 0;
-	padding: var(--moon-space-6);
+	padding: var(--lunar-space-6);
 	border: 0;
-	background: var(--moon-color-overlay);
-	color: var(--moon-color-on-overlay);
+	background: var(--lunar-color-overlay);
+	color: var(--lunar-color-on-overlay);
 	font-family: inherit;
-	font-size: var(--moon-font-size-md);
+	font-size: var(--lunar-font-size-md);
 
 	/* The dialog covers the screen itself; the browser backdrop adds nothing. */
 	&::backdrop {
@@ -118,19 +118,19 @@ body.moon-gallery-lightbox-open {
 	}
 }
 
-.moon-gallery-lightbox__figure {
+.lunar-gallery-lightbox__figure {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
 	/* Viewport limits keep the picture and caption on screen; no token fits. */
-	max-inline-size: min(90vw, calc(var(--moon-unit) * 69));
+	max-inline-size: min(90vw, calc(var(--lunar-unit) * 69));
 	max-block-size: 90vh;
 	margin: 0;
 	padding: 0;
 }
 
-.moon-gallery-lightbox__image {
+.lunar-gallery-lightbox__image {
 	display: block;
 	inline-size: auto;
 	max-inline-size: 100%;
@@ -139,15 +139,15 @@ body.moon-gallery-lightbox-open {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	border-radius: var(--moon-radius);
+	border-radius: var(--lunar-radius);
 	object-fit: contain;
 }
 
-.moon-gallery-lightbox__caption {
-	margin: var(--moon-space-3) 0 0;
+.lunar-gallery-lightbox__caption {
+	margin: var(--lunar-space-3) 0 0;
 	padding: 0;
 	font-family: inherit;
-	font-size: var(--moon-font-size-md);
+	font-size: var(--lunar-font-size-md);
 	text-align: center;
 
 	&[hidden] {
@@ -156,18 +156,18 @@ body.moon-gallery-lightbox-open {
 }
 
 /* Themes often style buttons, so reset them explicitly. */
-.moon-gallery-lightbox__close,
-.moon-gallery-lightbox__prev,
-.moon-gallery-lightbox__next {
+.lunar-gallery-lightbox__close,
+.lunar-gallery-lightbox__prev,
+.lunar-gallery-lightbox__next {
 	position: absolute;
 	box-sizing: content-box;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin: 0;
-	padding: var(--moon-space-2);
+	padding: var(--lunar-space-2);
 	border: 0;
-	border-radius: var(--moon-radius);
+	border-radius: var(--lunar-radius);
 	background: none;
 	box-shadow: none;
 	color: inherit;
@@ -182,12 +182,12 @@ body.moon-gallery-lightbox-open {
 		color: inherit;
 	}
 
-	@include focus-ring($color: var(--moon-color-on-overlay));
+	@include focus-ring($color: var(--lunar-color-on-overlay));
 
 	svg {
 		display: block;
-		inline-size: var(--moon-space-6);
-		block-size: var(--moon-space-6);
+		inline-size: var(--lunar-space-6);
+		block-size: var(--lunar-space-6);
 		fill: none;
 		stroke: currentcolor;
 		stroke-width: 2;
@@ -196,14 +196,14 @@ body.moon-gallery-lightbox-open {
 	}
 }
 
-.moon-gallery-lightbox__close {
-	inset-block-start: var(--moon-space-4);
-	inset-inline-end: var(--moon-space-4);
+.lunar-gallery-lightbox__close {
+	inset-block-start: var(--lunar-space-4);
+	inset-inline-end: var(--lunar-space-4);
 }
 
 /* Left and right stay physical: the arrows point that way in any direction. */
-.moon-gallery-lightbox__prev,
-.moon-gallery-lightbox__next {
+.lunar-gallery-lightbox__prev,
+.lunar-gallery-lightbox__next {
 	top: 50%;
 	transform: translateY(-50%);
 
@@ -212,19 +212,19 @@ body.moon-gallery-lightbox-open {
 	}
 }
 
-.moon-gallery-lightbox__prev {
-	left: var(--moon-space-4);
+.lunar-gallery-lightbox__prev {
+	left: var(--lunar-space-4);
 }
 
-.moon-gallery-lightbox__next {
-	right: var(--moon-space-4);
+.lunar-gallery-lightbox__next {
+	right: var(--lunar-space-4);
 }
 
 /* The overlay is translucent, so with system colors the page would show
    through; a solid system background keeps the lightbox readable. */
 @media (forced-colors: active) {
 
-	.moon-gallery-lightbox {
+	.lunar-gallery-lightbox {
 		background: Canvas;
 		color: CanvasText;
 	}
