@@ -1,7 +1,7 @@
 === Lunar Blocks ===
 Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 8.0
 Stable tag: 2.0.0
 License: GPL-2.0-or-later
