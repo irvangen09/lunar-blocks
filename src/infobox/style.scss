@@ -1,10 +1,11 @@
 @use "../shared/breakpoints" as *;
-@use "../shared/focus" as *;
+@use "../shared/divider" as *;
+@use "../shared/link" as *;
 
 .lunar-infobox {
 
 	/* Dividers between rows and next to the image are lighter than the frame. */
-	--lunar-infobox-line: var(--lunar-border-width) solid color-mix(in srgb, var(--lunar-color-border) 50%, transparent);
+	@include row-line(--lunar-infobox-line);
 
 	box-sizing: border-box;
 	display: grid;
@@ -131,13 +132,8 @@
 	}
 
 	.lunar-infobox-item__value a {
-		color: var(--lunar-color-primary);
-		text-decoration: underline;
 
-		/* Keeps the underline clear of descenders; no token for it. */
-		text-underline-offset: 0.2em;
-
-		@include focus-ring;
+		@include inline-link;
 	}
 }
 

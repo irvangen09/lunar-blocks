@@ -14,3 +14,8 @@ export function getHeadingOptions() {
 		{ value: 'h6', label: 'H6' },
 	];
 }
+
+// The tag a title is written in. With no heading level, the title uses the
+export function getTitleTagName( headingLevel, plainTagName ) {
+	return 'none' === headingLevel ? plainTagName : headingLevel;
+}

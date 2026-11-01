@@ -3,6 +3,7 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
+import { getTitleTagName } from '../shared/heading-options';
 
 export default function save( { attributes } ) {
 	const { title, headingLevel, imageId, imageUrl, imageAlt } = attributes;
@@ -20,7 +21,7 @@ export default function save( { attributes } ) {
 	} );
 
 	// A paragraph keeps the title out of the page outline unless a level is chosen.
-	const titleTagName = 'none' === headingLevel ? 'p' : headingLevel;
+	const titleTagName = getTitleTagName( headingLevel, 'p' );
 
 	// The wp-image class lets WordPress add srcset and dimensions when rendering.
 	const imageClassName =

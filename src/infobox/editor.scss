@@ -1,3 +1,5 @@
+@use "../shared/placeholder" as *;
+
 .lunar-infobox {
 
 	/* A dashed frame marks the empty image slot, in the same 3:4 ratio. */
@@ -35,11 +37,10 @@
 		border-block-start: var(--lunar-infobox-line);
 	}
 
-	/* Muted token already fades the text; reset core's extra opacity. */
 	.lunar-infobox__title [data-rich-text-placeholder]::after,
 	.lunar-infobox-item__label [data-rich-text-placeholder]::after,
 	.lunar-infobox-item__value [data-rich-text-placeholder]::after {
-		color: var(--lunar-color-text-muted);
-		opacity: 1;
+
+		@include muted-placeholder;
 	}
 }
