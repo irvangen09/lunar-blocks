@@ -1,3 +1,5 @@
+@use "../shared/placeholder" as *;
+
 .lunar-accordion {
 
 	.lunar-accordion-item__header {
@@ -6,9 +8,8 @@
 		padding: var(--lunar-space-3) var(--lunar-space-1);
 	}
 
-	/* Muted token already fades the text; reset core's extra opacity. */
 	.lunar-accordion-item__title [data-rich-text-placeholder]::after {
-		color: var(--lunar-color-text-muted);
-		opacity: 1;
+
+		@include muted-placeholder;
 	}
 }

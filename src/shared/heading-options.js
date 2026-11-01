@@ -16,6 +16,7 @@ export function getHeadingOptions() {
 }
 
 // The tag a title is written in. With no heading level, the title uses the
+// given plain tag and stays out of the page outline.
 export function getTitleTagName( headingLevel, plainTagName ) {
 	return 'none' === headingLevel ? plainTagName : headingLevel;
 }
