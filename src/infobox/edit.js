@@ -4,83 +4,23 @@ import {
 	InnerBlocks,
 	InspectorControls,
 	MediaReplaceFlow,
-	MediaUpload,
-	MediaUploadCheck,
 	RichText,
 	useBlockProps,
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
-import {
-	Button,
-	PanelBody,
-	SelectControl,
-	TextControl,
-} from '@wordpress/components';
-import { getHeadingOptions } from '../shared/heading-options';
+import { PanelBody, SelectControl } from '@wordpress/components';
+import { getHeadingOptions, getTitleTagName } from '../shared/heading-options';
+import ImagePanel from './image-panel';
+import Media from './media';
+import itemMetadata from './item/block.json';
 
-const ALLOWED_BLOCKS = [ 'lunar-blocks/infobox-item' ];
+const ALLOWED_BLOCKS = [ itemMetadata.name ];
 
 const TEMPLATE = [
-	[ 'lunar-blocks/infobox-item' ],
-	[ 'lunar-blocks/infobox-item' ],
-	[ 'lunar-blocks/infobox-item' ],
+	[ itemMetadata.name ],
+	[ itemMetadata.name ],
+	[ itemMetadata.name ],
 ];
-
-function ImagePanel( { imageAlt, setAttributes, onRemoveImage } ) {
-	return (
-		<PanelBody title={ __( 'Image', 'lunar-blocks' ) }>
-			<TextControl
-				__next40pxDefaultSize
-				__nextHasNoMarginBottom
-				label={ __( 'Alternative text', 'lunar-blocks' ) }
-				value={ imageAlt }
-				onChange={ ( value ) => setAttributes( { imageAlt: value } ) }
-				help={ __(
-					'Describe the image for people who cannot see it. Leave empty if the image is only decoration.',
-					'lunar-blocks'
-				) }
-			/>
-			<Button variant="secondary" isDestructive onClick={ onRemoveImage }>
-				{ __( 'Remove image', 'lunar-blocks' ) }
-			</Button>
-		</PanelBody>
-	);
-}
-
-function Media( { imageId, imageUrl, imageAlt, onSelectImage } ) {
-	return (
-		<figure className="lunar-infobox__media">
-			{ '' !== imageUrl ? (
-				<img
-					className="lunar-infobox__image"
-					src={ imageUrl }
-					alt={ imageAlt }
-				/>
-			) : (
-				<div className="lunar-infobox__image-empty">
-					<MediaUploadCheck>
-						<MediaUpload
-							allowedTypes={ [ 'image' ] }
-							value={ imageId }
-							onSelect={ onSelectImage }
-							render={ ( { open } ) => (
-								<Button variant="secondary" onClick={ open }>
-									{ __( 'Select image', 'lunar-blocks' ) }
-								</Button>
-							) }
-						/>
-					</MediaUploadCheck>
-					<p className="lunar-infobox__image-hint">
-						{ __(
-							'Optional. Without an image, the table uses the full width.',
-							'lunar-blocks'
-						) }
-					</p>
-				</div>
-			) }
-		</figure>
-	);
-}
 
 export default function Edit( { attributes, setAttributes } ) {
 	const { title, headingLevel, imageId, imageUrl, imageAlt } = attributes;
@@ -168,7 +108,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 				<div className="lunar-infobox__body">
 					<RichText
-						tagName={ 'none' === headingLevel ? 'p' : headingLevel }
+						tagName={ getTitleTagName( headingLevel, 'p' ) }
 						className="lunar-infobox__title"
 						placeholder={ __( 'Infobox title…', 'lunar-blocks' ) }
 						value={ title }
