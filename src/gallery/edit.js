@@ -6,13 +6,14 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 import { PanelBody, RangeControl } from '@wordpress/components';
+import itemMetadata from './item/block.json';
 
-const ALLOWED_BLOCKS = [ 'lunar-blocks/gallery-item' ];
+const ALLOWED_BLOCKS = [ itemMetadata.name ];
 
 const TEMPLATE = [
-	[ 'lunar-blocks/gallery-item' ],
-	[ 'lunar-blocks/gallery-item' ],
-	[ 'lunar-blocks/gallery-item' ],
+	[ itemMetadata.name ],
+	[ itemMetadata.name ],
+	[ itemMetadata.name ],
 ];
 
 export default function Edit( { attributes, setAttributes } ) {
