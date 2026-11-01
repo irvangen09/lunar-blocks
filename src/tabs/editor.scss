@@ -1,3 +1,5 @@
+@use "../shared/placeholder" as *;
+
 .lunar-tabs {
 
 	/* Items are stacked in the editor; a dashed border shows where each ends. */
@@ -8,9 +10,8 @@
 		border-radius: var(--lunar-radius);
 	}
 
-	/* Muted token already fades the text; reset core's extra opacity. */
 	.lunar-tabs-item__label [data-rich-text-placeholder]::after {
-		color: var(--lunar-color-text-muted);
-		opacity: 1;
+
+		@include muted-placeholder;
 	}
 }

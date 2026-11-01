@@ -3,10 +3,11 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
+import itemMetadata from './item/block.json';
 
-const ALLOWED_BLOCKS = [ 'lunar-blocks/tabs-item' ];
+const ALLOWED_BLOCKS = [ itemMetadata.name ];
 
-const TEMPLATE = [ [ 'lunar-blocks/tabs-item' ], [ 'lunar-blocks/tabs-item' ] ];
+const TEMPLATE = [ [ itemMetadata.name ], [ itemMetadata.name ] ];
 
 // The editor stacks every item instead of switching tabs, so the default
 // vertical orientation matches what the writer sees.
