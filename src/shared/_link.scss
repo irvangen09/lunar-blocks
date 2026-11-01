@@ -1,0 +1,12 @@
+@use "focus" as *;
+
+// A link inside body text: primary color, underlined, keyboard focus ring.
+@mixin inline-link {
+	color: var(--lunar-color-primary);
+	text-decoration: underline;
+
+	/* Keeps the underline clear of descenders; no token for it. */
+	text-underline-offset: 0.2em;
+
+	@include focus-ring;
+}

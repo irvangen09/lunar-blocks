@@ -1,10 +1,11 @@
 @use "../shared/breakpoints" as *;
-@use "../shared/focus" as *;
+@use "../shared/divider" as *;
+@use "../shared/link" as *;
 
 .lunar-info-list {
 
 	/* Dividers between rows are lighter than the line under a section title. */
-	--lunar-info-list-line: var(--lunar-border-width) solid color-mix(in srgb, var(--lunar-color-border) 50%, transparent);
+	@include row-line(--lunar-info-list-line);
 
 	/* No token fits a column width; the wider value leaves room for an icon. */
 	--lunar-info-list-label-width: calc(var(--lunar-unit) * 9.5);
@@ -147,13 +148,8 @@
 
 	.lunar-info-list-item__value a,
 	.lunar-info-list-requirement__text a {
-		color: var(--lunar-color-primary);
-		text-decoration: underline;
 
-		/* Keeps the underline clear of descenders; no token for it. */
-		text-underline-offset: 0.2em;
-
-		@include focus-ring;
+		@include inline-link;
 	}
 }
 

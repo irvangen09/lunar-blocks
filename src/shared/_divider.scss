@@ -1,0 +1,5 @@
+// A divider between rows, lighter than the frame. The block names the custom
+// property, so each block keeps its own local token.
+@mixin row-line($property) {
+	#{$property}: var(--lunar-border-width) solid color-mix(in srgb, var(--lunar-color-border) 50%, transparent);
+}
