@@ -1,3 +1,5 @@
+@use "../shared/placeholder" as *;
+
 .lunar-gallery {
 
 	/* Core places the appender over the last cell; give it its own row. */
@@ -21,9 +23,8 @@
 		fill: none;
 	}
 
-	/* Muted token already fades the text; reset core's extra opacity. */
 	.lunar-gallery-item__caption [data-rich-text-placeholder]::after {
-		color: var(--lunar-color-text-muted);
-		opacity: 1;
+
+		@include muted-placeholder;
 	}
 }
