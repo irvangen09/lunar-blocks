@@ -6,7 +6,10 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 import { PanelBody, SelectControl } from '@wordpress/components';
-import { getHeadingOptions } from '../../shared/heading-options';
+import {
+	getHeadingOptions,
+	getTitleTagName,
+} from '../../shared/heading-options';
 
 const CONTENT_TEMPLATE = [ [ 'core/paragraph' ] ];
 
@@ -46,7 +49,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			<div { ...blockProps }>
 				<div className="lunar-accordion-item__header">
 					<RichText
-						tagName={ 'none' === headingLevel ? 'p' : headingLevel }
+						tagName={ getTitleTagName( headingLevel, 'p' ) }
 						className="lunar-accordion-item__title"
 						placeholder={ __( 'Section title…', 'lunar-blocks' ) }
 						value={ title }

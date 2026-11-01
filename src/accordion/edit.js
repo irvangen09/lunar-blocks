@@ -6,13 +6,11 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl } from '@wordpress/components';
+import itemMetadata from './item/block.json';
 
-const ALLOWED_BLOCKS = [ 'lunar-blocks/accordion-item' ];
+const ALLOWED_BLOCKS = [ itemMetadata.name ];
 
-const TEMPLATE = [
-	[ 'lunar-blocks/accordion-item' ],
-	[ 'lunar-blocks/accordion-item' ],
-];
+const TEMPLATE = [ [ itemMetadata.name ], [ itemMetadata.name ] ];
 
 export default function Edit( { attributes, setAttributes } ) {
 	const { openOnDesktop } = attributes;

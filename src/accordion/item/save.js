@@ -3,6 +3,7 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
+import { getTitleTagName } from '../../shared/heading-options';
 
 export default function save( { attributes } ) {
 	const { title, headingLevel } = attributes;
@@ -16,7 +17,7 @@ export default function save( { attributes } ) {
 	} );
 
 	// <summary> only allows phrasing content or one heading, so no <p> here.
-	const titleTagName = 'none' === headingLevel ? 'span' : headingLevel;
+	const titleTagName = getTitleTagName( headingLevel, 'span' );
 
 	return (
 		<details { ...blockProps }>
