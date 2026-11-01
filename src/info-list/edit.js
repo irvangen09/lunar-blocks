@@ -4,15 +4,15 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-const ALLOWED_BLOCKS = [
-	'lunar-blocks/info-list-item',
-	'lunar-blocks/info-list-requirements',
-];
+import itemMetadata from './item/block.json';
+import requirementsMetadata from './requirements/block.json';
+
+const ALLOWED_BLOCKS = [ itemMetadata.name, requirementsMetadata.name ];
 
 const TEMPLATE = [
-	[ 'lunar-blocks/info-list-item' ],
-	[ 'lunar-blocks/info-list-item' ],
-	[ 'lunar-blocks/info-list-item' ],
+	[ itemMetadata.name ],
+	[ itemMetadata.name ],
+	[ itemMetadata.name ],
 ];
 
 export default function Edit() {

@@ -1,0 +1,6 @@
+// Placeholder text in the editor. The muted token already fades the text, so
+// core's extra opacity is reset.
+@mixin muted-placeholder {
+	color: var(--lunar-color-text-muted);
+	opacity: 1;
+}

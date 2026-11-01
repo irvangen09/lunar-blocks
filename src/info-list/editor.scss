@@ -1,3 +1,5 @@
+@use "../shared/placeholder" as *;
+
 .lunar-info-list {
 
 	/* Core places the appender over the last row; keep it in the flow instead. */
@@ -13,12 +15,11 @@
 		border-block-end: var(--lunar-info-list-line);
 	}
 
-	/* Muted token already fades the text; reset core's extra opacity. */
 	.lunar-info-list-requirements__title [data-rich-text-placeholder]::after,
 	.lunar-info-list-item__label [data-rich-text-placeholder]::after,
 	.lunar-info-list-item__value [data-rich-text-placeholder]::after,
 	.lunar-info-list-requirement__text [data-rich-text-placeholder]::after {
-		color: var(--lunar-color-text-muted);
-		opacity: 1;
+
+		@include muted-placeholder;
 	}
 }
