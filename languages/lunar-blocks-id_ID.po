@@ -294,12 +294,12 @@ msgstr "Nilai"
 msgid "Requirements"
 msgstr "Syarat"
 
-#. translators: %d: number of requirement items.
+#. translators: %d: number of items in the list.
 #: build/info-list/index.js:2
 #, js-format
-msgid "%d requirement"
-msgid_plural "%d requirements"
-msgstr[0] "%d syarat"
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "%d item"
 
 #: build/info-list/index.js:2
 msgid "Requirements Settings"

@@ -10,8 +10,8 @@ export function getDefaultTitle() {
 
 export function getCountText( count ) {
 	return sprintf(
-		/* translators: %d: number of requirement items. */
-		_n( '%d requirement', '%d requirements', count, 'lunar-blocks' ),
+		/* translators: %d: number of items in the list. */
+		_n( '%d item', '%d items', count, 'lunar-blocks' ),
 		count
 	);
 }

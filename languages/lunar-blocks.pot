@@ -292,11 +292,11 @@ msgstr ""
 msgid "Requirements"
 msgstr ""
 
-#. translators: %d: number of requirement items.
+#. translators: %d: number of items in the list.
 #: build/info-list/index.js:2
 #, js-format
-msgid "%d requirement"
-msgid_plural "%d requirements"
+msgid "%d item"
+msgid_plural "%d items"
 msgstr[0] ""
 msgstr[1] ""
 
