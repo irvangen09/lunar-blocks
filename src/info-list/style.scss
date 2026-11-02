@@ -16,7 +16,7 @@
 	margin-block: var(--lunar-space-5);
 	padding: 0;
 	border: 0;
-	border-block-start: var(--lunar-border-width-strong) solid var(--lunar-color-primary);
+	border-block: var(--lunar-border-width-strong) solid var(--lunar-color-primary);
 	color: inherit;
 	font-family: inherit;
 
@@ -34,7 +34,14 @@
 	.lunar-info-list-item {
 		display: grid;
 		grid-template-columns: var(--lunar-info-list-label-width) minmax(0, 1fr);
-		border-block-end: var(--lunar-info-list-line);
+	}
+
+	/* Dividers sit on top of each row but the first; the editor appender
+	   after the last row would break a :last-child rule. */
+	.lunar-info-list-item:not(:first-child),
+	.lunar-info-list-requirements:not(:first-child),
+	.lunar-info-list-requirement:not(:first-child) {
+		border-block-start: var(--lunar-info-list-line);
 	}
 
 	.lunar-info-list-item__label {
@@ -137,7 +144,6 @@
 		gap: var(--lunar-space-3);
 		margin: 0;
 		padding: var(--lunar-space-2) var(--lunar-space-4);
-		border-block-end: var(--lunar-info-list-line);
 		font-size: var(--lunar-font-size-md);
 	}
 
