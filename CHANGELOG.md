@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-11-03
+
+### Changed
+
+- Info List: the count at the top now reads "3 items" instead of repeating the section title. The Indonesian translation follows.
+- Info List: the block is closed with a line at the bottom, like it is at the top. The line between rows stays as it was.
+- Infobox: the title is centered.
+- Infobox: the row icons now show on small screens too, and the label column is a little wider to make room for them. Info List still shows its icons on wide screens only.
+
 ## [2.0.0] - 2026-10-30
 
 ### Changed
