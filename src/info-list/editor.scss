@@ -11,8 +11,9 @@
 	}
 
 	/* Rows and items keep their own dividers; the appender gets one too. */
-	.lunar-info-list-requirements__list > .block-list-appender {
-		border-block-end: var(--lunar-info-list-line);
+	> .block-list-appender:not(:first-child),
+	.lunar-info-list-requirements__list > .block-list-appender:not(:first-child) {
+		border-block-start: var(--lunar-info-list-line);
 	}
 
 	.lunar-info-list-requirements__title [data-rich-text-placeholder]::after,

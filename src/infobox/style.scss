@@ -65,6 +65,7 @@
 		font-size: var(--lunar-font-size-lg);
 		font-weight: var(--lunar-font-weight-strong);
 		line-height: var(--lunar-line-height-tight);
+		text-align: center;
 
 		/* Heading styles from themes, such as capitals, must not reach the title. */
 		letter-spacing: normal;
@@ -147,14 +148,13 @@
 			border-block-end: var(--lunar-infobox-line);
 		}
 
-		.lunar-infobox__rows,
-		.lunar-infobox__rows:has(.lunar-infobox-item__icon) {
+		.lunar-infobox__rows {
 			--lunar-infobox-label-width: calc(var(--lunar-unit) * 8);
-		}
 
-		/* Icons show on desktop only. */
-		.lunar-infobox-item__icon {
-			display: none;
+			/* The icon takes room from the label text, so the column widens. */
+			&:has(.lunar-infobox-item__icon) {
+				--lunar-infobox-label-width: calc(var(--lunar-unit) * 10);
+			}
 		}
 	}
 }

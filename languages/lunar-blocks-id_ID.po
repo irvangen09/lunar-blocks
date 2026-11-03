@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Lunar Blocks 2.0.0\n"
+"Project-Id-Version: Lunar Blocks 2.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/irvangen09/lunar-blocks/issues\n"
 "Last-Translator: Irvan Noerfazri\n"
 "Language-Team: Indonesian\n"
@@ -281,9 +281,12 @@ msgid "Field Settings"
 msgstr "Pengaturan Baris"
 
 #: build/info-list/index.js:1
-#: build/infobox/index.js:1
 msgid "Dashicons class name. Leave empty if this field does not need an icon. Icons show on desktop only."
 msgstr "Nama class Dashicons. Biarkan kosong jika baris ini tidak memerlukan ikon. Ikon hanya tampil di desktop."
+
+#: build/infobox/index.js:1
+msgid "Dashicons class name. Leave empty if this field does not need an icon."
+msgstr "Nama class Dashicons. Biarkan kosong jika baris ini tidak memerlukan ikon."
 
 #: build/info-list/index.js:1
 #: build/infobox/index.js:1
@@ -294,12 +297,12 @@ msgstr "Nilai"
 msgid "Requirements"
 msgstr "Syarat"
 
-#. translators: %d: number of requirement items.
+#. translators: %d: number of items in the list.
 #: build/info-list/index.js:2
 #, js-format
-msgid "%d requirement"
-msgid_plural "%d requirements"
-msgstr[0] "%d syarat"
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "%d item"
 
 #: build/info-list/index.js:2
 msgid "Requirements Settings"
