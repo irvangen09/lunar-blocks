@@ -279,8 +279,11 @@ msgid "Field Settings"
 msgstr ""
 
 #: build/info-list/index.js:1
-#: build/infobox/index.js:1
 msgid "Dashicons class name. Leave empty if this field does not need an icon. Icons show on desktop only."
+msgstr ""
+
+#: build/infobox/index.js:1
+msgid "Dashicons class name. Leave empty if this field does not need an icon."
 msgstr ""
 
 #: build/info-list/index.js:1

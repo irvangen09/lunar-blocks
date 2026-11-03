@@ -281,9 +281,12 @@ msgid "Field Settings"
 msgstr "Pengaturan Baris"
 
 #: build/info-list/index.js:1
-#: build/infobox/index.js:1
 msgid "Dashicons class name. Leave empty if this field does not need an icon. Icons show on desktop only."
 msgstr "Nama class Dashicons. Biarkan kosong jika baris ini tidak memerlukan ikon. Ikon hanya tampil di desktop."
+
+#: build/infobox/index.js:1
+msgid "Dashicons class name. Leave empty if this field does not need an icon."
+msgstr "Nama class Dashicons. Biarkan kosong jika baris ini tidak memerlukan ikon."
 
 #: build/info-list/index.js:1
 #: build/infobox/index.js:1

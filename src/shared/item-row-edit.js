@@ -11,11 +11,13 @@ import { ICON_PATTERN } from './icon';
 const VALUE_FORMATS = [ 'core/bold', 'core/italic', 'core/link' ];
 
 // Editor for a row made of an optional icon, a label and a value. The class
-// names are built from the block's own class.
+// names are built from the block's own class. The block passes its own icon
+// help text, because where the icon shows differs from block to block.
 export default function ItemRowEdit( {
 	attributes,
 	setAttributes,
 	blockClass,
+	iconHelp,
 } ) {
 	const { icon, label, value } = attributes;
 
@@ -33,10 +35,7 @@ export default function ItemRowEdit( {
 						onChange={ ( newIcon ) =>
 							setAttributes( { icon: newIcon } )
 						}
-						help={ __(
-							'Dashicons class name. Leave empty if this field does not need an icon. Icons show on desktop only.',
-							'lunar-blocks'
-						) }
+						help={ iconHelp }
 					/>
 				</PanelBody>
 			</InspectorControls>
