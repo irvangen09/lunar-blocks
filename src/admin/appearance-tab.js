@@ -1,4 +1,4 @@
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import {
 	Button,
 	Card,
@@ -36,6 +36,9 @@ export default function AppearanceTab( { colors, onChange } ) {
 	const setColor = ( key, value ) =>
 		onChange( { ...colors, [ key ]: value } );
 
+	const shown = ( key ) =>
+		colors[ key ] || __( 'Theme default', 'lunar-blocks' );
+
 	return (
 		<>
 			<p>
@@ -58,18 +61,21 @@ export default function AppearanceTab( { colors, onChange } ) {
 									<Button
 										variant="secondary"
 										aria-expanded={ isOpen }
+										aria-label={ sprintf(
+											/* translators: 1: color name, such as Primary. 2: the color that is set, or "Theme default". */
+											__(
+												'%1$s color: %2$s',
+												'lunar-blocks'
+											),
+											label,
+											shown( key )
+										) }
 										onClick={ onToggle }
 									>
 										<ColorIndicator
 											colorValue={ colors[ key ] }
 										/>
-										<span>
-											{ colors[ key ] ||
-												__(
-													'Theme default',
-													'lunar-blocks'
-												) }
-										</span>
+										<span>{ shown( key ) }</span>
 									</Button>
 								) }
 								renderContent={ () => (
@@ -86,6 +92,11 @@ export default function AppearanceTab( { colors, onChange } ) {
 							<Button
 								variant="tertiary"
 								disabled={ ! colors[ key ] }
+								aria-label={ sprintf(
+									/* translators: %s: color name, such as Primary. */
+									__( 'Reset %s', 'lunar-blocks' ),
+									label
+								) }
 								onClick={ () => setColor( key, '' ) }
 							>
 								{ __( 'Reset', 'lunar-blocks' ) }

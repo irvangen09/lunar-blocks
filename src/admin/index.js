@@ -18,10 +18,17 @@ function SettingsApp( { option, blocks } ) {
 	const [ isSaving, setIsSaving ] = useState( false );
 	const [ notice, setNotice ] = useState( null );
 
+	// `submitted` is the copy a save sent. If the form changed while the save
+	// ran, those newer edits stay on screen and can be saved next; only an
+	// untouched form takes the copy the server sent back.
 	const applyResponse = useCallback(
-		( response ) => {
-			setSettings( response[ option ] );
-			setSaved( response[ option ] );
+		( response, submitted = null ) => {
+			const next = response[ option ];
+
+			setSaved( next );
+			setSettings( ( current ) =>
+				null !== submitted && current !== submitted ? current : next
+			);
 		},
 		[ option ]
 	);
@@ -41,6 +48,8 @@ function SettingsApp( { option, blocks } ) {
 		setSettings( ( current ) => ( { ...current, [ key ]: value } ) );
 
 	const save = () => {
+		const submitted = settings;
+
 		setIsSaving( true );
 		setNotice( null );
 
@@ -51,7 +60,7 @@ function SettingsApp( { option, blocks } ) {
 			data: { [ option ]: settings },
 		} )
 			.then( ( response ) => {
-				applyResponse( response );
+				applyResponse( response, submitted );
 				setNotice( {
 					status: 'success',
 					message: __( 'Settings saved.', 'lunar-blocks' ),
@@ -124,6 +133,9 @@ function SettingsApp( { option, blocks } ) {
 							variant="primary"
 							isBusy={ isSaving }
 							disabled={ ! isDirty || isSaving }
+							// A disabled button would drop the keyboard focus
+							// after a save; this only marks it unavailable.
+							accessibleWhenDisabled
 							onClick={ save }
 						>
 							{ __( 'Save Changes', 'lunar-blocks' ) }

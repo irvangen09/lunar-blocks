@@ -128,6 +128,18 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
+#. translators: 1: color name, such as Primary. 2: the color that is set, or "Theme default".
+#: build/admin/index.js:1
+#, js-format
+msgid "%1$s color: %2$s"
+msgstr ""
+
+#. translators: %s: color name, such as Primary.
+#: build/admin/index.js:1
+#, js-format
+msgid "Reset %s"
+msgstr ""
+
 #: build/admin/index.js:1
 msgid "No blocks are available yet."
 msgstr ""
@@ -596,6 +608,18 @@ msgstr ""
 #: build/table/view.js:2
 msgid "Search within this table"
 msgstr ""
+
+#: build/table/view.js:2
+msgid "No results for this search."
+msgstr ""
+
+#. translators: %d: number of rows that match the search.
+#: build/table/view.js:2
+#, js-format
+msgid "%d result"
+msgid_plural "%d results"
+msgstr[0] ""
+msgstr[1] ""
 
 #. translators: %s: recipe name.
 #: build/table/view.js:3
