@@ -9,17 +9,23 @@ import {
 
 import { supportsAlignment } from './utils';
 
-const COLUMN_TYPE_LABELS = {
-	text: __( 'Text', 'lunar-blocks' ),
-	number: __( 'Number', 'lunar-blocks' ),
-	image: __( 'Image', 'lunar-blocks' ),
-};
+// Translated when the menu is drawn, not when this file loads, so the
+// strings never depend on the order translations are registered in.
+function getColumnTypeLabels() {
+	return {
+		text: __( 'Text', 'lunar-blocks' ),
+		number: __( 'Number', 'lunar-blocks' ),
+		image: __( 'Image', 'lunar-blocks' ),
+	};
+}
 
-const COLUMN_ALIGN_LABELS = {
-	left: __( 'Align column left', 'lunar-blocks' ),
-	center: __( 'Align column center', 'lunar-blocks' ),
-	right: __( 'Align column right', 'lunar-blocks' ),
-};
+function getColumnAlignLabels() {
+	return {
+		left: __( 'Align column left', 'lunar-blocks' ),
+		center: __( 'Align column center', 'lunar-blocks' ),
+		right: __( 'Align column right', 'lunar-blocks' ),
+	};
+}
 
 // A menu entry that runs its action and then closes the menu.
 function Action( { disabled, isDestructive, onAction, onClose, children } ) {
@@ -146,16 +152,18 @@ function ColumnMenu( {
 					<MenuGroup
 						label={ __( 'Change column type', 'lunar-blocks' ) }
 					>
-						{ Object.keys( COLUMN_TYPE_LABELS ).map( ( type ) => (
-							<Action
-								key={ type }
-								disabled={ disabled }
-								onAction={ () => onSetColumnType( type ) }
-								onClose={ onClose }
-							>
-								{ COLUMN_TYPE_LABELS[ type ] }
-							</Action>
-						) ) }
+						{ Object.entries( getColumnTypeLabels() ).map(
+							( [ type, label ] ) => (
+								<Action
+									key={ type }
+									disabled={ disabled }
+									onAction={ () => onSetColumnType( type ) }
+									onClose={ onClose }
+								>
+									{ label }
+								</Action>
+							)
+						) }
 					</MenuGroup>
 					{ supportsAlignment( preset ) && (
 						<MenuGroup
@@ -164,8 +172,8 @@ function ColumnMenu( {
 								'lunar-blocks'
 							) }
 						>
-							{ Object.keys( COLUMN_ALIGN_LABELS ).map(
-								( align ) => (
+							{ Object.entries( getColumnAlignLabels() ).map(
+								( [ align, label ] ) => (
 									<Action
 										key={ align }
 										disabled={ disabled }
@@ -174,7 +182,7 @@ function ColumnMenu( {
 										}
 										onClose={ onClose }
 									>
-										{ COLUMN_ALIGN_LABELS[ align ] }
+										{ label }
 									</Action>
 								)
 							) }

@@ -63,7 +63,7 @@ class SettingsRegistry {
 		if ( isset( $value['disabled_blocks'] ) && is_array( $value['disabled_blocks'] ) ) {
 			$names = array_filter(
 				$value['disabled_blocks'],
-				static fn( $name ) => is_string( $name ) && 1 === preg_match( '/^lunar-blocks\/[a-z][a-z0-9-]*$/', $name )
+				static fn( $name ) => is_string( $name ) && 1 === preg_match( '/^lunar-blocks\/[a-z][a-z0-9-]*$/D', $name )
 			);
 			$names = array_unique( $names );
 			sort( $names );

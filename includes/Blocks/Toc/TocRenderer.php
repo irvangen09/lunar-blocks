@@ -4,6 +4,8 @@ namespace LunarBlocks\Blocks\Toc;
 
 /**
  * Builds the TOC markup from the collected entries. Every value is escaped here.
+ * The visible texts are texturized first, because the headings they point to are
+ * (curly quotes, dashes), and escaping alone would leave straight quotes.
  */
 class TocRenderer {
 
@@ -23,7 +25,7 @@ class TocRenderer {
 
 		$html  = '<details ' . $wrapper_attributes . '>';
 		$html .= '<summary class="lunar-toc__header">';
-		$html .= '<span class="lunar-toc__title">' . esc_html( $title ) . '</span>';
+		$html .= '<span class="lunar-toc__title">' . esc_html( wptexturize( $title ) ) . '</span>';
 		$html .= '<span class="lunar-toc__toggle" aria-hidden="true"></span>';
 		$html .= '</summary>';
 		$html .= '<nav class="lunar-toc__nav" aria-label="' . esc_attr( $title ) . '">';
@@ -76,7 +78,7 @@ class TocRenderer {
 			$html .= '<li class="lunar-toc__item">';
 			$html .= '<a class="lunar-toc__link" href="#' . esc_attr( $node->entry['id'] ) . '">';
 			$html .= '<span class="lunar-toc__marker" aria-hidden="true"></span>';
-			$html .= '<span class="lunar-toc__text">' . esc_html( $node->entry['text'] ) . '</span>';
+			$html .= '<span class="lunar-toc__text">' . esc_html( wptexturize( $node->entry['text'] ) ) . '</span>';
 			$html .= '</a>';
 
 			if ( ! empty( $node->children ) ) {

@@ -17,38 +17,44 @@ import {
 	isCardPreset,
 } from '../utils';
 
-const PRESET_OPTIONS = [
-	{ label: __( 'Default', 'lunar-blocks' ), value: PRESET_DEFAULT },
-	{ label: __( 'Preset 1', 'lunar-blocks' ), value: PRESET_1 },
-	{ label: __( 'Preset 2', 'lunar-blocks' ), value: PRESET_2 },
-	{ label: __( 'Preset 3', 'lunar-blocks' ), value: PRESET_3 },
-	{ label: __( 'Preset 4', 'lunar-blocks' ), value: PRESET_4 },
-];
+// Translated when the panel is drawn, not when this file loads, so the
+// strings never depend on the order translations are registered in.
+function getPresetOptions() {
+	return [
+		{ label: __( 'Default', 'lunar-blocks' ), value: PRESET_DEFAULT },
+		{ label: __( 'Preset 1', 'lunar-blocks' ), value: PRESET_1 },
+		{ label: __( 'Preset 2', 'lunar-blocks' ), value: PRESET_2 },
+		{ label: __( 'Preset 3', 'lunar-blocks' ), value: PRESET_3 },
+		{ label: __( 'Preset 4', 'lunar-blocks' ), value: PRESET_4 },
+	];
+}
 
 // Presets lay columns out by role, so the Inspector says which column
 // does what.
-const PRESET_HELP = {
-	[ PRESET_DEFAULT ]: __(
-		'A plain table that scrolls sideways on small screens.',
-		'lunar-blocks'
-	),
-	[ PRESET_1 ]: __(
-		'A table with a flat header. On small screens each row becomes a card. An image first column becomes the card image and the next column its title.',
-		'lunar-blocks'
-	),
-	[ PRESET_2 ]: __(
-		'A grid of cards. An image first column becomes the card image and the next column its title. The other columns become rows.',
-		'lunar-blocks'
-	),
-	[ PRESET_3 ]: __(
-		'A list of cards with a checklist. An image first column becomes the card image and the next column its name. The next two text columns become badges, and the first is split at commas. The rest become fields.',
-		'lunar-blocks'
-	),
-	[ PRESET_4 ]: __(
-		'A list of cards with a checklist. An image first column becomes the card image and the next column its name. The other columns become fields.',
-		'lunar-blocks'
-	),
-};
+function getPresetHelp() {
+	return {
+		[ PRESET_DEFAULT ]: __(
+			'A plain table that scrolls sideways on small screens.',
+			'lunar-blocks'
+		),
+		[ PRESET_1 ]: __(
+			'A table with a flat header. On small screens each row becomes a card. An image first column becomes the card image and the next column its title.',
+			'lunar-blocks'
+		),
+		[ PRESET_2 ]: __(
+			'A grid of cards. An image first column becomes the card image and the next column its title. The other columns become rows.',
+			'lunar-blocks'
+		),
+		[ PRESET_3 ]: __(
+			'A list of cards with a checklist. An image first column becomes the card image and the next column its name. The next two text columns become badges, and the first is split at commas. The rest become fields.',
+			'lunar-blocks'
+		),
+		[ PRESET_4 ]: __(
+			'A list of cards with a checklist. An image first column becomes the card image and the next column its name. The other columns become fields.',
+			'lunar-blocks'
+		),
+	};
+}
 
 function CardToggles( { showCardNote, showCardHighlight, setAttributes } ) {
 	return (
@@ -127,9 +133,9 @@ export default function SettingsPanel( {
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					label={ __( 'Preset', 'lunar-blocks' ) }
-					help={ PRESET_HELP[ preset ] }
+					help={ getPresetHelp()[ preset ] }
 					value={ preset }
-					options={ PRESET_OPTIONS }
+					options={ getPresetOptions() }
 					onChange={ ( value ) => setAttributes( { preset: value } ) }
 				/>
 				<ToggleControl

@@ -26,6 +26,13 @@ class HeadingAnchorInjector {
 	 */
 	private array $stack = array();
 
+	/**
+	 * How many synced patterns (core/block) are being rendered right now. The
+	 * collector does not read inside them, so their headings must not take an
+	 * id that belongs to a heading of the post.
+	 */
+	private int $pattern_depth = 0;
+
 	public function __construct( HeadingCollector $collector ) {
 		$this->collector = $collector;
 	}
@@ -33,6 +40,8 @@ class HeadingAnchorInjector {
 	public function register(): void {
 		add_filter( 'the_content', array( $this, 'begin' ), 8 );
 		add_filter( 'the_content', array( $this, 'end' ), 99999 );
+		add_filter( 'pre_render_block', array( $this, 'enter_pattern' ), 10, 2 );
+		add_filter( 'render_block_core/block', array( $this, 'leave_pattern' ), 10, 1 );
 		add_filter( 'render_block_data', array( $this, 'claim' ), 10, 1 );
 		add_filter( 'render_block_core/heading', array( $this, 'write' ), 10, 2 );
 		add_filter( 'render_block_lunar-blocks/accordion-item', array( $this, 'write' ), 10, 2 );
@@ -75,13 +84,40 @@ class HeadingAnchorInjector {
 	}
 
 	/**
+	 * Notes that a synced pattern starts to render. The value passes through.
+	 *
+	 * @param string|null $pre_render   Value that may replace the block output.
+	 * @param array       $parsed_block Parsed block.
+	 * @return string|null
+	 */
+	public function enter_pattern( $pre_render, $parsed_block = array() ) {
+		if ( is_array( $parsed_block ) && 'core/block' === ( $parsed_block['blockName'] ?? '' ) ) {
+			++$this->pattern_depth;
+		}
+
+		return $pre_render;
+	}
+
+	/**
+	 * Notes that a synced pattern has finished rendering. The output passes through.
+	 *
+	 * @param string $block_content Rendered block.
+	 * @return string
+	 */
+	public function leave_pattern( $block_content ) {
+		$this->pattern_depth = max( 0, $this->pattern_depth - 1 );
+
+		return $block_content;
+	}
+
+	/**
 	 * Gives the next matching, still unclaimed entry to a heading about to render.
 	 *
 	 * @param array $parsed_block Parsed block.
 	 * @return array
 	 */
 	public function claim( $parsed_block ) {
-		if ( empty( $this->stack ) || ! is_array( $parsed_block ) ) {
+		if ( empty( $this->stack ) || $this->pattern_depth > 0 || ! is_array( $parsed_block ) ) {
 			return $parsed_block;
 		}
 
