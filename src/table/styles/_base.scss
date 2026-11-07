@@ -51,6 +51,24 @@
 		appearance: none;
 	}
 
+	/* Read out by screen readers when a search finishes. It is cut down to
+	   1px rather than removed, so it still counts as visible text to them. */
+	.lunar-table__status {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: 0;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+
+	.lunar-table__filter-empty {
+		margin: 0;
+		color: var(--lunar-color-text-muted);
+		font-size: var(--lunar-font-size-sm);
+	}
+
 	/* The sort select and direction button. A table with a header row sorts
 	   there instead, so Preset 1 shows the bar on small screens only. */
 	.lunar-table__sort-bar {
