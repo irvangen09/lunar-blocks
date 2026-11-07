@@ -3,7 +3,7 @@ Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,14 @@ Yes. Open Settings > Lunar Blocks > Blocks and switch off any block. Turning off
 Yes. Open Settings > Lunar Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme. The tick of the Table checklist stays green.
 
 == Changelog ==
+
+= 2.1.1 =
+
+* Table: when you search a table, a screen reader now says how many rows match, and the table shows "No results for this search." when none do.
+* Settings: the color buttons on the Appearance tab have clear, different names, keyboard focus stays on Save Changes after you save, and changes you make while a save is running are kept.
+* Table of contents: headings inside a synced pattern no longer take the link of a heading in the post, and the entries use the same curly quotes and dashes as the headings.
+* Smaller fixes: sorting a large table is faster, and a block name that ends with a line break is no longer accepted in the settings.
+* Indonesian (id_ID) translation of the new texts.
 
 = 2.1.0 =
 
