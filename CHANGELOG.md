@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [2.1.1] - 2026-11-07
+
+### Fixed
+
+- Table: when you search a table, a screen reader now says how many rows match, and the table shows "No results for this search." when none do.
+- Settings: the color buttons on the Appearance tab have clear, different names, such as "Primary color: Theme default" and "Reset Primary".
+- Settings: keyboard focus stays on the Save Changes button after you save, and changes you make while a save is running are kept.
+- Table of contents: headings inside a synced pattern no longer take the link of a heading in the post.
+- Table of contents: the entries and the title use the same curly quotes and dashes as the headings.
+- Table: sorting a large table is faster.
+- Settings: a block name that ends with a line break is no longer accepted.
+- The Table editor and the Accordion item settings no longer cause a console warning about the select size, and the Table editor reads its translations when it draws, not when it loads.
+- Indonesian (id_ID) translation of the new texts. The translation files carry a current date.
+
 ## [2.1.0] - 2026-11-03
 
 ### Changed
