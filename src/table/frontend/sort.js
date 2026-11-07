@@ -40,6 +40,13 @@ function getCellText( row, key ) {
 	return texts.get( key );
 }
 
+// One collator for every comparison: building it is what costs time, and a
+// sort makes thousands of comparisons.
+const textCollator = new Intl.Collator( undefined, {
+	numeric: true,
+	sensitivity: 'base',
+} );
+
 // Empty cells go last in both directions. Amounts sort by their value; the
 // text breaks a tie, so equal amounts still come out in a stable order.
 function compareRows( a, b, { key, direction }, numeric ) {
@@ -54,10 +61,7 @@ function compareRows( a, b, { key, direction }, numeric ) {
 		return Number( aEmpty ) - Number( bEmpty );
 	}
 
-	const byText = aText.localeCompare( bText, undefined, {
-		numeric: true,
-		sensitivity: 'base',
-	} );
+	const byText = textCollator.compare( aText, bText );
 	const result = numeric ? aValue - bValue || byText : byText;
 
 	return 'desc' === direction ? -result : result;

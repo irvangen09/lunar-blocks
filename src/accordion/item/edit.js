@@ -31,6 +31,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			<InspectorControls>
 				<PanelBody title={ __( 'Title Settings', 'lunar-blocks' ) }>
 					<SelectControl
+						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						label={ __( 'Heading Level', 'lunar-blocks' ) }
 						value={ headingLevel }

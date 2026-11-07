@@ -5,20 +5,23 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 // The plugin is not loaded during uninstall, so the option and cache names are repeated here.
-function lunar_blocks_delete_site_data(): void {
-	global $wpdb;
+// The guard keeps a second load of this file from declaring the function twice.
+if ( ! function_exists( 'lunar_blocks_delete_site_data' ) ) {
+	function lunar_blocks_delete_site_data(): void {
+		global $wpdb;
 
-	delete_option( 'lunar_blocks_settings' );
+		delete_option( 'lunar_blocks_settings' );
 
-	// The TOC cache has one transient per post, so the rows are found by their prefix.
-	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-	$wpdb->query(
-		$wpdb->prepare(
-			"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
-			$wpdb->esc_like( '_transient_lunar_blocks_toc_' ) . '%',
-			$wpdb->esc_like( '_transient_timeout_lunar_blocks_toc_' ) . '%'
-		)
-	);
+		// The TOC cache has one transient per post, so the rows are found by their prefix.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$wpdb->query(
+			$wpdb->prepare(
+				"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
+				$wpdb->esc_like( '_transient_lunar_blocks_toc_' ) . '%',
+				$wpdb->esc_like( '_transient_timeout_lunar_blocks_toc_' ) . '%'
+			)
+		);
+	}
 }
 
 if ( is_multisite() ) {
