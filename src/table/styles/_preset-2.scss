@@ -92,8 +92,10 @@
 			font-size: var(--lunar-font-size-sm);
 		}
 
+		/* The column name is as strong as a table header. */
 		.lunar-table__card-label {
-			color: var(--lunar-color-text-muted);
+			color: inherit;
+			font-weight: var(--lunar-font-weight-strong);
 		}
 
 		.lunar-table__card-value {
@@ -108,6 +110,11 @@
 			margin-block-start: var(--lunar-space-2);
 			padding-block: var(--lunar-space-3);
 			background: var(--lunar-color-surface);
+
+			/* The band is already set apart, and its value is the strong part. */
+			.lunar-table__card-label {
+				font-weight: inherit;
+			}
 
 			.lunar-table__card-value {
 				font-weight: var(--lunar-font-weight-strong);

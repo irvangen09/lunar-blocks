@@ -308,8 +308,14 @@ export function initSort( blockEl, tableEl, controlsEl ) {
 	headers.forEach( ( th ) => addHeaderButton( th, getSort, applySort ) );
 
 	// A table with a header row sorts there; the bar is for the layouts that
-	// have none, and for Preset 1 on small screens, where its header is hidden.
-	if ( headers.length && 'preset-1' !== blockEl.dataset.preset ) {
+	// have none, and for Preset 1 on small screens, where its header is hidden
+	// unless the table layout is kept.
+	const keepsTable = 'table' === blockEl.dataset.mobile;
+
+	if (
+		headers.length &&
+		( 'preset-1' !== blockEl.dataset.preset || keepsTable )
+	) {
 		return;
 	}
 
