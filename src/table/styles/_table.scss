@@ -137,75 +137,93 @@ $lunar-table-breakpoint-desktop: $lunar-breakpoint-mobile + 1;
 	}
 }
 
-/* Preset 1, desktop: flat header, hairline rows, no vertical lines. */
-@media (min-width: $lunar-table-breakpoint-desktop) {
+/* Preset 1 as a table: flat header, hairline rows, no vertical lines. The
+   header and the cells follow the alignment set on their column. It shows on
+   wide screens, and on small ones too when the block keeps its table. */
+@mixin lunar-table-preset-1-flat {
 
-	.lunar-table.lunar-table[data-preset="preset-1"] {
+	/* The header row sorts here. */
+	.lunar-table__sort-bar {
+		display: none;
+	}
 
-		/* The header row sorts here. */
-		.lunar-table__sort-bar {
-			display: none;
+	.lunar-table__table {
+		border: var(--lunar-border);
+		border-radius: var(--lunar-radius);
+
+		th {
+			padding: var(--lunar-space-3);
+			border-width: 0 0 var(--lunar-border-width-strong);
+			white-space: nowrap;
 		}
 
-		.lunar-table__table {
-			border: var(--lunar-border);
-			border-radius: var(--lunar-radius);
+		/* Corners follow the rounded border of the table. */
+		thead tr:first-child th:first-child {
+			border-top-left-radius: var(--lunar-radius);
+		}
 
-			th {
-				padding: var(--lunar-space-3);
-				border-width: 0 0 var(--lunar-border-width-strong);
-				text-align: center;
-				white-space: nowrap;
-			}
+		thead tr:first-child th:last-child {
+			border-top-right-radius: var(--lunar-radius);
+		}
 
-			/* Corners follow the rounded border of the table. */
-			thead tr:first-child th:first-child {
-				border-top-left-radius: var(--lunar-radius);
-			}
+		td {
+			border-width: 0 0 var(--lunar-border-width);
+		}
 
-			thead tr:first-child th:last-child {
-				border-top-right-radius: var(--lunar-radius);
-			}
+		td.lunar-table__divider-cell {
+			border-width: var(--lunar-border-width) 0;
+		}
 
-			td {
-				border-width: 0 0 var(--lunar-border-width);
-			}
+		tbody tr:last-child td {
+			border-bottom-width: 0;
+		}
 
-			td.lunar-table__divider-cell {
-				border-width: var(--lunar-border-width) 0;
-			}
+		td.lunar-table__cell--title {
+			font-weight: var(--lunar-font-weight-strong);
+		}
 
-			tbody tr:last-child td {
-				border-bottom-width: 0;
-			}
+		td.lunar-table__cell--image {
+			text-align: center;
+		}
 
-			td.lunar-table__cell--title {
-				font-weight: var(--lunar-font-weight-strong);
-			}
+		tbody tr:hover td {
+			background: var(--lunar-color-surface);
+		}
 
-			td.lunar-table__cell--image {
-				text-align: center;
-			}
+		tbody tr td.lunar-table__cell--sorted {
+			background: var(--lunar-color-primary-subtle);
+		}
 
-			tbody tr:hover td {
-				background: var(--lunar-color-surface);
-			}
-
-			tbody tr td.lunar-table__cell--sorted {
-				background: var(--lunar-color-primary-subtle);
-			}
-
-			tbody tr:hover td.lunar-table__cell--sorted {
-				background: var(--lunar-color-surface);
-			}
+		tbody tr:hover td.lunar-table__cell--sorted {
+			background: var(--lunar-color-surface);
 		}
 	}
 }
 
-/* Preset 1, mobile: every row becomes a card of label and value rows. */
-@media (max-width: $lunar-breakpoint-mobile) {
+@media (min-width: $lunar-table-breakpoint-desktop) {
 
 	.lunar-table.lunar-table[data-preset="preset-1"] {
+
+		@include lunar-table-preset-1-flat;
+	}
+}
+
+.lunar-table.lunar-table[data-preset="preset-1"][data-mobile="table"] {
+
+	@include lunar-table-preset-1-flat;
+
+	/* A wide table scrolls sideways instead of squeezing its columns until
+	   words break, as Default does. */
+	.lunar-table__table {
+		min-width: calc(var(--lunar-table-columns, 1) * var(--lunar-table-min-column));
+	}
+}
+
+/* Preset 1, mobile: every row becomes a card of label and value rows,
+   unless the block keeps its table. */
+@media (max-width: $lunar-breakpoint-mobile) {
+
+	.lunar-table.lunar-table[data-preset="preset-1"]:not([data-mobile="table"]) {
 
 		.lunar-table__table {
 			display: block;

@@ -1,5 +1,6 @@
 import metadata from './block.json';
 import save from './deprecated/save-v1';
+import saveV2 from './deprecated/save-v2';
 import { isCardPreset, isRecipePreset } from './utils';
 
 // Before sorting reached the card layouts, enableSort had no effect on them
@@ -20,4 +21,13 @@ const v1 = {
 	},
 };
 
-export default [ v1 ];
+// Up to 2.1.1 a Preset 1 header with no column alignment was written with an
+// inline `text-align: center`. Nothing in the data changes: the table is
+// written again with the current markup when it is opened and updated.
+const v2 = {
+	attributes: metadata.attributes,
+	supports: metadata.supports,
+	save: saveV2,
+};
+
+export default [ v2, v1 ];

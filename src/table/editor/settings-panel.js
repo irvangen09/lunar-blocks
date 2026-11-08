@@ -38,7 +38,7 @@ function getPresetHelp() {
 			'lunar-blocks'
 		),
 		[ PRESET_1 ]: __(
-			'A table with a flat header. On small screens each row becomes a card. An image first column becomes the card image and the next column its title.',
+			'A table with a flat header. On small screens each row becomes a card, unless you keep the table layout. An image first column becomes the card image and the next column its title.',
 			'lunar-blocks'
 		),
 		[ PRESET_2 ]: __(
@@ -84,6 +84,21 @@ function CardToggles( { showCardNote, showCardHighlight, setAttributes } ) {
 				}
 			/>
 		</>
+	);
+}
+
+function MobileTableToggle( { mobileTable, setAttributes } ) {
+	return (
+		<ToggleControl
+			__nextHasNoMarginBottom
+			label={ __( 'Table on small screens', 'lunar-blocks' ) }
+			help={ __(
+				'Keeps the table layout instead of cards. Best for tables with up to three columns; a wider table scrolls sideways.',
+				'lunar-blocks'
+			) }
+			checked={ mobileTable }
+			onChange={ ( value ) => setAttributes( { mobileTable: value } ) }
+		/>
 	);
 }
 
@@ -159,6 +174,13 @@ export default function SettingsPanel( {
 					<CardToggles
 						showCardNote={ attributes.showCardNote }
 						showCardHighlight={ attributes.showCardHighlight }
+						setAttributes={ setAttributes }
+					/>
+				) }
+
+				{ PRESET_1 === preset && (
+					<MobileTableToggle
+						mobileTable={ attributes.mobileTable }
 						setAttributes={ setAttributes }
 					/>
 				) }

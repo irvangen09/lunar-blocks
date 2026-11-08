@@ -98,7 +98,7 @@
 
 			/* The label and the value center on each other, whichever is taller. */
 			align-items: center;
-			gap: var(--lunar-space-2);
+			gap: var(--lunar-space-3);
 			margin-block-start: var(--lunar-space-2);
 			padding-block-start: var(--lunar-space-2);
 			border-top: var(--lunar-border);
@@ -106,13 +106,16 @@
 		}
 
 		/* A label never breaks inside a word: it grows to its longest word
-		   instead, even when the theme allows breaks inside words. */
+		   instead, even when the theme allows breaks inside words. It is the
+		   column name, so it is as strong as a table header; a checked card
+		   dims it with the rest of the field. */
 		.lunar-table__recipe-field-label {
 			flex: 0 0 var(--lunar-table-recipe-label-width);
 			min-inline-size: min-content;
 			overflow-wrap: normal;
 			word-break: normal;
-			color: var(--lunar-color-text-muted);
+			color: inherit;
+			font-weight: var(--lunar-font-weight-strong);
 		}
 
 		.lunar-table__recipe-field-value {

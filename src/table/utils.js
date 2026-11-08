@@ -35,14 +35,32 @@ export function columnAlignStyle( col, preset ) {
 	return { textAlign: col.align };
 }
 
-// Default headers follow the body (left); Preset 1 centers them. An
-// alignment set on the column overrides both.
+// The header alignment written up to 2.1.1: Default headers follow the body
+// (left), Preset 1 centered them. The saved markup of those versions is kept
+// by deprecated/save-v1.js and deprecated/save-v2.js, which call this, so do
+// not change it; save() uses getHeaderAlignStyle() instead.
 export function headerAlignStyle( col, preset ) {
 	return (
 		columnAlignStyle( col, preset ) ?? {
 			textAlign: PRESET_1 === preset ? 'center' : 'left',
 		}
 	);
+}
+
+// A header follows its column. Without an alignment, Default keeps its
+// explicit left and Preset 1 writes nothing, so the stylesheet aligns it to
+// the start like the body cells (right to left included).
+export function getHeaderAlignStyle( col, preset ) {
+	if ( PRESET_1 === preset ) {
+		return columnAlignStyle( col, preset );
+	}
+
+	return headerAlignStyle( col, preset );
+}
+
+// Only Preset 1 can keep its table layout on small screens.
+export function isMobileTable( { preset, mobileTable } ) {
+	return PRESET_1 === preset && true === mobileTable;
 }
 
 // A value that can be sorted carries the key of its column. Image columns

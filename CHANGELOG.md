@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- Table: Preset 1 has a "Table on small screens" setting. It keeps the table layout on small screens instead of turning each row into a card, which suits tables with up to three columns. A wider table scrolls sideways. Tables you made before keep their cards. The Indonesian (id_ID) translation follows.
+
+### Changed
+
+- Table: a Preset 1 header is now aligned to the start, like the body cells and the Default preset. It used to be centered, so the column alignment had to be set on every column to line it up with the data. A header and its cells still follow the alignment you set on a column. A table made before this change shows the new header after you open it in the editor and update it.
+- Table: in Presets 2, 3 and 4 the column name in front of each value is as dark as the value and bold, instead of faded.
+
+### Fixed
+
+- Table: in Presets 3 and 4 a column name such as "Ingredient 1" no longer breaks onto two lines, and there is more space between the name and the value.
+
 ## [2.1.1] - 2026-11-07
 
 ### Fixed

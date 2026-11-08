@@ -6,13 +6,14 @@ import {
 	getCardRoles,
 	getCardRowCount,
 	getColumnRoles,
+	getHeaderAlignStyle,
 	getImageWidth,
 	getPlainText,
 	getSortColumns,
 	getSortProps,
-	headerAlignStyle,
 	isBlankCell,
 	isCardPreset,
+	isMobileTable,
 	isNotApplicable,
 	isRecipePreset,
 } from './utils';
@@ -104,7 +105,7 @@ function renderTable( { columns, rows, preset } ) {
 							scope="col"
 							data-key={ col.key }
 							data-type={ col.type }
-							style={ headerAlignStyle( col, preset ) }
+							style={ getHeaderAlignStyle( col, preset ) }
 						>
 							{ col.label }
 						</th>
@@ -403,6 +404,7 @@ export default function save( { attributes } ) {
 		enableFilter,
 		showCardNote,
 		showCardHighlight,
+		mobileTable,
 	} = attributes;
 
 	if ( ! columns.length ) {
@@ -421,6 +423,10 @@ export default function save( { attributes } ) {
 		'data-preset': preset,
 		'data-sort': enableSort ? 'true' : 'false',
 		'data-filter': enableFilter ? 'true' : 'false',
+		// Written only when on, so a table that never used it keeps its markup.
+		'data-mobile': isMobileTable( { preset, mobileTable } )
+			? 'table'
+			: undefined,
 		'data-columns': sortable
 			? JSON.stringify( getSortColumns( columns ) )
 			: undefined,

@@ -36,6 +36,10 @@
     "showCardHighlight": {
       "type": "boolean",
       "default": false
+    },
+    "mobileTable": {
+      "type": "boolean",
+      "default": false
     }
   },
   "supports": {

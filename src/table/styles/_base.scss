@@ -7,7 +7,7 @@
 
 	/* No token for these widths; they only set how wide a label column is. */
 	--lunar-table-label-width: calc(var(--lunar-unit) * 6);
-	--lunar-table-recipe-label-width: calc(var(--lunar-unit) * 4);
+	--lunar-table-recipe-label-width: calc(var(--lunar-unit) * 7);
 	--lunar-table-min-column: calc(var(--lunar-unit) * 6);
 
 	/* Checkbox box and tick proportions; the tick is drawn with borders. */
