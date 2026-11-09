@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [2.2.0] - 2026-11-09
+
 ### Added
 
 - Table: Preset 1 has a "Table on small screens" setting. It keeps the table layout on small screens instead of turning each row into a card, which suits tables with up to three columns. A wider table scrolls sideways. Tables you made before keep their cards. The Indonesian (id_ID) translation follows.
