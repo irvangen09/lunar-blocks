@@ -217,6 +217,15 @@ $lunar-table-breakpoint-desktop: $lunar-breakpoint-mobile + 1;
 	.lunar-table__table {
 		min-width: calc(var(--lunar-table-columns, 1) * var(--lunar-table-min-column));
 	}
+
+	/* The kept table does not set its first column apart by weight on a small
+	   screen; wide screens still do. */
+	@media (max-width: $lunar-breakpoint-mobile) {
+
+		.lunar-table__table td.lunar-table__cell--title {
+			font-weight: inherit;
+		}
+	}
 }
 
 /* Preset 1, mobile: every row becomes a card of label and value rows,
