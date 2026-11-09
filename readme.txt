@@ -3,7 +3,7 @@ Tags: blocks, gutenberg, documentation, wiki, knowledge base
 Requires at least: 6.9
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.1.1
+Stable tag: 2.2.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,14 @@ Yes. Open Settings > Lunar Blocks > Blocks and switch off any block. Turning off
 Yes. Open Settings > Lunar Blocks > Appearance to set Primary, Surface, and Border. Please make sure the colors you choose have enough contrast with your theme. The tick of the Table checklist stays green.
 
 == Changelog ==
+
+= 2.2.0 =
+
+* Table: Preset 1 has a "Table on small screens" setting. It keeps the table layout on small screens instead of turning each row into a card, which suits tables with up to three columns. A wider table scrolls sideways. Tables you made before keep their cards.
+* Table: a Preset 1 header is now aligned to the start, like the body cells and the Default preset, and a header and its cells follow the alignment you set on a column. A table made before shows the new header after you open it in the editor and update it.
+* Table: in Preset 1 the first column is no longer bold, and in Presets 2, 3 and 4 the column name in front of each value is as dark as the value and bold, instead of faded.
+* Table: in Presets 3 and 4 a column name such as "Ingredient 1" no longer breaks onto two lines, and there is more space between the name and the value.
+* Indonesian (id_ID) translation of the new texts.
 
 = 2.1.1 =
 

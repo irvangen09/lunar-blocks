@@ -178,10 +178,6 @@ $lunar-table-breakpoint-desktop: $lunar-breakpoint-mobile + 1;
 			border-bottom-width: 0;
 		}
 
-		td.lunar-table__cell--title {
-			font-weight: var(--lunar-font-weight-strong);
-		}
-
 		td.lunar-table__cell--image {
 			text-align: center;
 		}
@@ -216,15 +212,6 @@ $lunar-table-breakpoint-desktop: $lunar-breakpoint-mobile + 1;
 	   words break, as Default does. */
 	.lunar-table__table {
 		min-width: calc(var(--lunar-table-columns, 1) * var(--lunar-table-min-column));
-	}
-
-	/* The kept table does not set its first column apart by weight on a small
-	   screen; wide screens still do. */
-	@media (max-width: $lunar-breakpoint-mobile) {
-
-		.lunar-table__table td.lunar-table__cell--title {
-			font-weight: inherit;
-		}
 	}
 }
 
