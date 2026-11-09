@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Table: a Preset 1 header is now aligned to the start, like the body cells and the Default preset. It used to be centered, so the column alignment had to be set on every column to line it up with the data. A header and its cells still follow the alignment you set on a column. A table made before this change shows the new header after you open it in the editor and update it.
 - Table: in Presets 2, 3 and 4 the column name in front of each value is as dark as the value and bold, instead of faded.
+- Table: in Preset 1 the first column is no longer bold, so every column of the table looks the same. When Preset 1 turns each row into a card on small screens, the first value stays bold as the card title.
 
 ### Fixed
 
